@@ -6,17 +6,17 @@ class Mentat < Formula
   url "https://files.pythonhosted.org/packages/e0/8b/a808d6663065e3b446d3be521d7836f774f3b39bdd30f786d093aca383b6/mentat-1.0.8.tar.gz"
   sha256 "81679055448a495c3e7e55eeb8b59373dc0658cea6b2549d0ae48d26937494ba"
   license "Apache-2.0"
-  revision 2
+  revision 3
   head "https://github.com/AbanteAI/mentat.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "8115fcaa35f5975e87bbe169fd4172f3a2a5df0928de38336ef941bb27183296"
-    sha256 cellar: :any,                 arm64_ventura:  "ac4c2bbfcbd684512f542dca1c27258449e515adbbc28b37883269615a8874c7"
-    sha256 cellar: :any,                 arm64_monterey: "70844b4c5be504e81499dd454100c457c2fb7ae980db3b4d4351c20c1ca634cb"
-    sha256 cellar: :any,                 sonoma:         "3831e7daa898fae93d8ff96f8e888a1bbb690b244de94d74aac7d59e992d5036"
-    sha256 cellar: :any,                 ventura:        "72adfc735fd3472d5c1746867d7125fee67585d2480dddb85787d40c793521cb"
-    sha256 cellar: :any,                 monterey:       "15746836fb448e42c762fb818552d5aca0e64a3be2417829e65676c115887507"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "ab496f1c2cc1bdfbbbc699ec96347e97af6a6541c0eb85a0c8e1eb060dbeef28"
+    sha256 cellar: :any,                 arm64_sonoma:   "06f91e3553a418ff3d4002467c5490996c5daf08e0cbc04d408b2f88d4a83d7f"
+    sha256 cellar: :any,                 arm64_ventura:  "f472fee094ce43c23c838432a94136279cfe9dfebe1503f667a2c1d6fc58ead7"
+    sha256 cellar: :any,                 arm64_monterey: "f60ae0a65efb301be68987c370c13363e0e6453b68049dbc91c0737192c3cf1d"
+    sha256 cellar: :any,                 sonoma:         "0baa094536dc29fd2d1f93270b8e89257ec3a1a15a10f8a6b212d528f96bdb8e"
+    sha256 cellar: :any,                 ventura:        "514d9bab0b7167e18210590cfd1f73feb0d375849303ef0c6a1f96af8d5e16b4"
+    sha256 cellar: :any,                 monterey:       "98971a04d93bbf20ee2e1bf3774e453b1cb35b715b0de483b10a00ee5818f6f9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "cb9feeabced4de5e8a7d0237c1df317eeb816df380f831ebf68a38bde72a3c3a"
   end
 
   depends_on "rust" => :build # for tiktoken
@@ -24,6 +24,8 @@ class Mentat < Formula
   depends_on "numpy"
   depends_on "pillow"
   depends_on "python@3.12"
+
+  uses_from_macos "libffi"
 
   resource "annotated-types" do
     url "https://files.pythonhosted.org/packages/ee/67/531ea369ba64dcff5ec9c3402f9f51bf748cec26dde048a2f973a4eea7f5/annotated_types-0.7.0.tar.gz"
@@ -131,8 +133,8 @@ class Mentat < Formula
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/ee/b5/b43a27ac7472e1818c4bafd44430e69605baefe1f34440593e0332ec8b4d/packaging-24.0.tar.gz"
-    sha256 "eb82c5e3e56209074766e6885bb04b8c38a0c015d0a30036ebe7ece34c9989e9"
+    url "https://files.pythonhosted.org/packages/51/65/50db4dda066951078f0a96cf12f4b9ada6e4b811516bf0262c0f4f7064d4/packaging-24.1.tar.gz"
+    sha256 "026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002"
   end
 
   resource "pluggy" do
@@ -151,13 +153,13 @@ class Mentat < Formula
   end
 
   resource "pydantic" do
-    url "https://files.pythonhosted.org/packages/1f/74/0d009e056c2bd309cdc053b932d819fcb5ad3301fc3e690c097e1de3e714/pydantic-2.7.1.tar.gz"
-    sha256 "e9dbb5eada8abe4d9ae5f46b9939aead650cd2b68f249bb3a8139dbe125803cc"
+    url "https://files.pythonhosted.org/packages/0d/fc/ccd0e8910bc780f1a4e1ab15e97accbb1f214932e796cff3131f9a943967/pydantic-2.7.4.tar.gz"
+    sha256 "0c84efd9548d545f63ac0060c1e4d39bb9b14db8b3c0652338aecc07b5adec52"
   end
 
   resource "pydantic-core" do
-    url "https://files.pythonhosted.org/packages/e9/23/a609c50e53959eb96393e42ae4891901f699aaad682998371348650a6651/pydantic_core-2.18.2.tar.gz"
-    sha256 "2e29d20810dfc3043ee13ac7d9e25105799817683348823f305ab3f349b9386e"
+    url "https://files.pythonhosted.org/packages/02/d0/622cdfe12fb138d035636f854eb9dc414f7e19340be395799de87c1de6f6/pydantic_core-2.18.4.tar.gz"
+    sha256 "ec3beeada09ff865c344ff3bc2f427f5e6c26401cc6113d77e372c3fdac73864"
   end
 
   resource "pygments" do
@@ -206,8 +208,8 @@ class Mentat < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/86/ec/535bf6f9bd280de6a4637526602a146a68fde757100ecf8c9333173392db/requests-2.32.2.tar.gz"
-    sha256 "dd951ff5ecf3e3b3aa26b40703ba77495dab41da839ae72ef3c8e5d8e2433289"
+    url "https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz"
+    sha256 "55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760"
   end
 
   resource "rpds-py" do
@@ -286,8 +288,8 @@ class Mentat < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/7a/50/7fd50a27caa0652cd4caf224aa87741ea41d3265ad13f010886167cfcc79/urllib3-2.2.1.tar.gz"
-    sha256 "d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"
+    url "https://files.pythonhosted.org/packages/43/6d/fa469ae21497ddc8bc93e5877702dca7cb8f911e337aca7452b5724f1bb6/urllib3-2.2.2.tar.gz"
+    sha256 "dd505485549a7a552833da5e6063639d0d177c04f23bc3864e41e5dc5f612168"
   end
 
   resource "wcwidth" do

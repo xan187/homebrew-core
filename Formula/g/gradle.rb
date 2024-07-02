@@ -1,9 +1,10 @@
 class Gradle < Formula
   desc "Open-source build automation tool based on the Groovy and Kotlin DSL"
   homepage "https://www.gradle.org/"
-  url "https://services.gradle.org/distributions/gradle-8.7-all.zip"
-  sha256 "194717442575a6f96e1c1befa2c30e9a4fc90f701d7aee33eb879b79e7ff05c0"
+  url "https://services.gradle.org/distributions/gradle-8.8-all.zip"
+  sha256 "f8b4f4772d302c8ff580bc40d0f56e715de69b163546944f787c87abf209c961"
   license "Apache-2.0"
+  revision 1
 
   livecheck do
     url "https://gradle.org/install/"
@@ -11,15 +12,16 @@ class Gradle < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "02120d61732a8fa55d3800dcd8e7ca737a0c0ad82c590d6e4bad6545cebd52aa"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "02120d61732a8fa55d3800dcd8e7ca737a0c0ad82c590d6e4bad6545cebd52aa"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "02120d61732a8fa55d3800dcd8e7ca737a0c0ad82c590d6e4bad6545cebd52aa"
-    sha256 cellar: :any_skip_relocation, sonoma:         "aeadc9c405ea2d083f5d8f481bb82cbd4f73c570dd0f08bbf37606364e11b512"
-    sha256 cellar: :any_skip_relocation, ventura:        "aeadc9c405ea2d083f5d8f481bb82cbd4f73c570dd0f08bbf37606364e11b512"
-    sha256 cellar: :any_skip_relocation, monterey:       "aeadc9c405ea2d083f5d8f481bb82cbd4f73c570dd0f08bbf37606364e11b512"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "02120d61732a8fa55d3800dcd8e7ca737a0c0ad82c590d6e4bad6545cebd52aa"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "4e74dd8ea5b8b7ee1f11a81bc51e987bd4bbeb2ed4aab44ef09e1a751cef751a"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "4e74dd8ea5b8b7ee1f11a81bc51e987bd4bbeb2ed4aab44ef09e1a751cef751a"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "4e74dd8ea5b8b7ee1f11a81bc51e987bd4bbeb2ed4aab44ef09e1a751cef751a"
+    sha256 cellar: :any_skip_relocation, sonoma:         "f34aea09fe33ccbdba75de64bedf303221405b2f8ebae11ed842c0487e72698c"
+    sha256 cellar: :any_skip_relocation, ventura:        "f34aea09fe33ccbdba75de64bedf303221405b2f8ebae11ed842c0487e72698c"
+    sha256 cellar: :any_skip_relocation, monterey:       "f34aea09fe33ccbdba75de64bedf303221405b2f8ebae11ed842c0487e72698c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "0d7c13cd0e6ccb8a694c2433e3604b32f9de3d7e6030d7850f1e5a6fe11aa724"
   end
 
+  # https://github.com/gradle/gradle/blob/master/platforms/documentation/docs/src/docs/userguide/releases/compatibility.adoc
   depends_on "openjdk"
 
   def install

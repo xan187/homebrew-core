@@ -3,20 +3,19 @@ class Twine < Formula
 
   desc "Utilities for interacting with PyPI"
   homepage "https://github.com/pypa/twine"
-  url "https://files.pythonhosted.org/packages/66/6d/dcf5c58dbc468b52f20f2de0470caaae09a7ab91d847f7ca4a786137ca4f/twine-5.1.0.tar.gz"
-  sha256 "4d74770c88c4fcaf8134d2a6a9d863e40f08255ff7d8e2acb3cbbd57d25f6e9d"
+  url "https://files.pythonhosted.org/packages/77/68/bd982e5e949ef8334e6f7dcf76ae40922a8750aa2e347291ae1477a4782b/twine-5.1.1.tar.gz"
+  sha256 "9aa0825139c02b3434d913545c7b847a21c835e11597f5255842d457da2322db"
   license "Apache-2.0"
-  revision 1
   head "https://github.com/pypa/twine.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "d1272f3f899bb4acd467fcadf339bd7c4e5236946a6738ca056c67f2f8594c75"
-    sha256 cellar: :any,                 arm64_ventura:  "2dd708d69e9b4de9b15c1862a6f66345e28243b416223efef29b990062c309b1"
-    sha256 cellar: :any,                 arm64_monterey: "3aa3a27b46ee6731d2c327640c26b7b65c6f5bc473ef0a80faec9e9341b1e885"
-    sha256 cellar: :any,                 sonoma:         "7e03818194327effc321ae2c321a8aab0434a6b11251d47325034935846b1203"
-    sha256 cellar: :any,                 ventura:        "78dab0795a7a37c940f8b98dcfa151c1013e929768ae96b49d5f4bc3a5acab36"
-    sha256 cellar: :any,                 monterey:       "0c7233e65383c86ea0850f5b4ec85c0ae18d076de64d3f5681858eaa6c7ce067"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "744c3da9a3738011c7537bd1f024d4cb294d666f4b2732067fd324f93431e31a"
+    sha256 cellar: :any,                 arm64_sonoma:   "dc49769cf0469075adafa5ef8577326dbd04df4da6043d8ce126e43aa59902fc"
+    sha256 cellar: :any,                 arm64_ventura:  "4b3f8657addd25067299494145f1dcd086c8e67a47afad652baaa88e2476e794"
+    sha256 cellar: :any,                 arm64_monterey: "3d3c6c985e3c14f4a22a027070793f915f23b3aefd2d9519e1a32b5b18cc27b9"
+    sha256 cellar: :any,                 sonoma:         "a5863bb4b33578e5c3cc2e20bd88453c05222a9012ae94f3682c99032be71b70"
+    sha256 cellar: :any,                 ventura:        "49c8ebd0bbaba79c31e8ab344089348381a23b446b002f9071e3530d3bd4b978"
+    sha256 cellar: :any,                 monterey:       "fb98d807779dffbe8b175584556b4f11625c65ca6856f5262b778337452b2096"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "1c66701d17ee661a3f73a90a75121b6a05e2ad4a81d820786c2006e321041c74"
   end
 
   depends_on "rust" => :build
@@ -39,8 +38,8 @@ class Twine < Formula
   end
 
   resource "importlib-metadata" do
-    url "https://files.pythonhosted.org/packages/a0/fc/c4e6078d21fc4fa56300a241b87eae76766aa380a23fc450fc85bb7bf547/importlib_metadata-7.1.0.tar.gz"
-    sha256 "b78938b926ee8d5f020fc4772d487045805a55ddbad2ecf21c6d60938dc7fcd2"
+    url "https://files.pythonhosted.org/packages/20/ff/bd28f70283b9cca0cbf0c2a6082acbecd822d1962ae7b2a904861b9965f8/importlib_metadata-8.0.0.tar.gz"
+    sha256 "188bd24e4c346d3f0a933f275c2fec67050326a856b9a359881d7c2a697e8812"
   end
 
   resource "jaraco-classes" do
@@ -74,8 +73,8 @@ class Twine < Formula
   end
 
   resource "more-itertools" do
-    url "https://files.pythonhosted.org/packages/df/ad/7905a7fd46ffb61d976133a4f47799388209e73cbc8c1253593335da88b4/more-itertools-10.2.0.tar.gz"
-    sha256 "8fccb480c43d3e99a00087634c06dd02b0d50fbf088b380de5a41a015ec239e1"
+    url "https://files.pythonhosted.org/packages/01/33/77f586de725fc990d12dda3d4efca4a41635be0f99a987b9cc3a78364c13/more-itertools-10.3.0.tar.gz"
+    sha256 "e5d93ef411224fbcef366a6e8ddc4c5781bc6359d43412a65dd5964e46111463"
   end
 
   resource "nh3" do
@@ -99,8 +98,8 @@ class Twine < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/86/ec/535bf6f9bd280de6a4637526602a146a68fde757100ecf8c9333173392db/requests-2.32.2.tar.gz"
-    sha256 "dd951ff5ecf3e3b3aa26b40703ba77495dab41da839ae72ef3c8e5d8e2433289"
+    url "https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz"
+    sha256 "55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760"
   end
 
   resource "requests-toolbelt" do
@@ -119,13 +118,13 @@ class Twine < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/7a/50/7fd50a27caa0652cd4caf224aa87741ea41d3265ad13f010886167cfcc79/urllib3-2.2.1.tar.gz"
-    sha256 "d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"
+    url "https://files.pythonhosted.org/packages/43/6d/fa469ae21497ddc8bc93e5877702dca7cb8f911e337aca7452b5724f1bb6/urllib3-2.2.2.tar.gz"
+    sha256 "dd505485549a7a552833da5e6063639d0d177c04f23bc3864e41e5dc5f612168"
   end
 
   resource "zipp" do
-    url "https://files.pythonhosted.org/packages/16/e5/8efdac4c61bd5fd24f4face2295103f42790ad2ad0f322e3a81bb8391812/zipp-3.18.2.tar.gz"
-    sha256 "6278d9ddbcfb1f1089a88fde84481528b07b0e10474e09dcfe53dad4069fa059"
+    url "https://files.pythonhosted.org/packages/d3/20/b48f58857d98dcb78f9e30ed2cfe533025e2e9827bbd36ea0a64cc00cbc1/zipp-3.19.2.tar.gz"
+    sha256 "bf1dcf6450f873a13e952a29504887c89e6de7506209e5b1bcc3460135d4de19"
   end
 
   def install

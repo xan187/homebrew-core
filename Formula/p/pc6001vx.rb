@@ -2,33 +2,28 @@ class Pc6001vx < Formula
   desc "PC-6001 emulator"
   # http://eighttails.seesaa.net/ gives 405 error
   homepage "https://github.com/eighttails/PC6001VX"
+  url "https://eighttails.up.seesaa.net/bin/PC6001VX_4.2.8_src.tar.gz"
+  sha256 "18d33c364f8d28c06de9df67c5fa46fe4c14dacbe5f56d2c64af8403e64d64c0"
   license "LGPL-2.1-or-later"
-  revision 2
   head "https://github.com/eighttails/PC6001VX.git", branch: "master"
 
-  stable do
-    url "https://eighttails.up.seesaa.net/bin/PC6001VX_4.2.5_src.tar.gz"
-    sha256 "4f44df8940db6d412bf4d316c950c540f03c5ab543b028b793998bfeeaac64ac"
-
-    # backport a fix for incorrectly handling SIGTERM
-    patch do
-      url "https://github.com/eighttails/PC6001VX/commit/93f2a366d1944237d4712a6de4290ac1bda15771.patch?full_index=1"
-      sha256 "f4e9d7f23ec7d0f87d869cfcef84de80f1371cc703600313a00970f84d77c632"
-    end
-  end
-
   bottle do
-    sha256 cellar: :any, arm64_sonoma:   "d9f0c85994080637e87e46e657c1fa0a585d69d74548a2305654dd9a1f545e08"
-    sha256 cellar: :any, arm64_ventura:  "1e8a92b9a880400821197103bb6571997b468e1bc2777c80d6b7a4c0d8233370"
-    sha256 cellar: :any, arm64_monterey: "6931561bcb1b2bf2b3f56cc24867458dc96bb79e7dd1305fa3f4becf77088b9d"
-    sha256 cellar: :any, sonoma:         "c86a325c279e134b003bfac3483aac49d8d7202ec90e774bcacc4cede9fc8d93"
-    sha256 cellar: :any, ventura:        "5f87fb22702196d38f976a764a970ae4bfee3b394a3b5090e0aaacf2500985ba"
-    sha256 cellar: :any, monterey:       "dc8fdc3a168a600b1f98a40c03d8b2032a3f3cee6eb18974cd9c738ce55838ce"
+    sha256 cellar: :any, arm64_sonoma:   "6b5e394c0c5e4cc3ff91ed130256e6bcbf42fc95e982ba074dcf7fcb38e56ce0"
+    sha256 cellar: :any, arm64_ventura:  "8127057088cbe8fbb33525ab5fbaa73fef600ed551bc5aa2983b066bb6e3ec58"
+    sha256 cellar: :any, arm64_monterey: "8f4dd14bf5027483bd5ffdd610375fbd0bd31490b69cf5fc70b5cb34a8e34b0b"
+    sha256 cellar: :any, sonoma:         "bb40a0aad2d32b91819cd7b240b6b514265490f5965b60a7e18cf6766265ee94"
+    sha256 cellar: :any, ventura:        "835bd689bb35e2d7e63c17f4e514044cb5185684a3c459c1748faf2e225499e8"
+    sha256 cellar: :any, monterey:       "9ba8b6b9087109613b97bd799b969838abaf1de03280a9268c7f7833df058048"
   end
 
   depends_on "pkg-config" => :build
   depends_on "ffmpeg@6"
   depends_on "qt"
+  depends_on "sdl2"
+
+  on_macos do
+    depends_on "gettext"
+  end
 
   fails_with gcc: "5" # ffmpeg is compiled with GCC
 

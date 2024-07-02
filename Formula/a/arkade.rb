@@ -1,9 +1,8 @@
 class Arkade < Formula
   desc "Open Source Kubernetes Marketplace"
   homepage "https://blog.alexellis.io/kubernetes-marketplace-two-year-update/"
-  url "https://github.com/alexellis/arkade.git",
-      tag:      "0.11.12",
-      revision: "d93098490dd3ba78c556c89a502bdf139c29a458"
+  url "https://github.com/alexellis/arkade/archive/refs/tags/0.11.16.tar.gz"
+  sha256 "aec300681c8568c62461800cb0f17a49947baa34da1c7525ceb8b438d8c2a523"
   license "MIT"
 
   livecheck do
@@ -12,13 +11,13 @@ class Arkade < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "d611afcc045dd4acb0d13dc415581ffcd3a4b48b479294124c5ca137753ed90e"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "23286462e94a117d6db807791c01364b6490629a730a6e6c82fbefeb4b37b436"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "e33c34cfb4ad85e0773fb9931f0f5ad07fe4f8f643dabc772540b31169ab2c4f"
-    sha256 cellar: :any_skip_relocation, sonoma:         "6057d36f0c651a6f77504d0108019c284b3a72d5164b4b9be69b2659c4a7c50d"
-    sha256 cellar: :any_skip_relocation, ventura:        "207414b563fe9a5f12e5d59d6a1fa31a68984a86622a5771be01a6eae00211c6"
-    sha256 cellar: :any_skip_relocation, monterey:       "81a471e2096475fc2f33e58c33bd08f671f6bdb274e1ae52a48f633ee99b31e6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2ba3daeba9830f55e36c36f6f42d43f661b13ca07c4fa8bf70f2ed1f8474c96d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "65ef665dab3b6fddb3d61a300b2df6fac845b22d8798db2f3b4b365fdebf457c"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "72fbd46c431d09aa7e506afa7690a202bc6c2155619790363ecb460eb56125f6"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "4ddd36bd52a5732aed3fc450d43e29c349310d384154c4b623fea7c974352377"
+    sha256 cellar: :any_skip_relocation, sonoma:         "572468910fb4648d8b68579bb0dc239ee908585a1aebde7ef8664233a87e4be2"
+    sha256 cellar: :any_skip_relocation, ventura:        "18aae532770a8c043627267b38fc9748d7bf1cb4c4c73c5b2c580f0c59f91fb0"
+    sha256 cellar: :any_skip_relocation, monterey:       "603be8209bb25f5e1e7dac713979470b60fff2a711e01af0bd8ea30bd9c835ef"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "9a3a8be4074f3ecd133fd219e26e0447f3a14fc153531da60b12fd4502fe838e"
   end
 
   depends_on "go" => :build
@@ -27,7 +26,7 @@ class Arkade < Formula
     ldflags = %W[
       -s -w
       -X github.com/alexellis/arkade/pkg.Version=#{version}
-      -X github.com/alexellis/arkade/pkg.GitCommit=#{Utils.git_head}
+      -X github.com/alexellis/arkade/pkg.GitCommit=#{tap.user}
     ]
     system "go", "build", *std_go_args(ldflags:)
 

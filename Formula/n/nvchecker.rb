@@ -3,22 +3,24 @@ class Nvchecker < Formula
 
   desc "New version checker for software releases"
   homepage "https://github.com/lilydjwg/nvchecker"
-  url "https://files.pythonhosted.org/packages/2b/ad/f48d2bcce3acfbfd2ac78d10fa1448598b46f98f7e84718810b5f2d9a8c6/nvchecker-2.14.1.tar.gz"
-  sha256 "7a2992e6d5cab1907a16d079281a175cffa355b5d3c97fc782fa92f2fa3cdaca"
+  url "https://files.pythonhosted.org/packages/7b/60/fd880c869c6a03768fcfe44168d7667f036e2499c8816dd106440e201332/nvchecker-2.15.1.tar.gz"
+  sha256 "a2e2b0a8dd4545e83e0032e8d4a4d586c08e2d8378a61b637b45fdd4556f1167"
   license "MIT"
+  revision 1
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "5ca0abe68ece2ec1b65889b0d13d29d69ee267258854a5dd794de85ec32f1b5e"
-    sha256 cellar: :any,                 arm64_ventura:  "310c5089b9b19a0c42692f64b7f080d45a3de2902c372e078f0db167e3622acc"
-    sha256 cellar: :any,                 arm64_monterey: "213ae682f520c5ece21eda8498cfe814a789b389536c64f6d2cc063fe847fe26"
-    sha256 cellar: :any,                 sonoma:         "f879f0699331cf1f629bbdabccd2985fc319b0ad30bdfd8223fa084ea3aa454c"
-    sha256 cellar: :any,                 ventura:        "7287f329c7c6a3117266e30d8aa521b90da9c8675de7be45663dc8c0c07b84cd"
-    sha256 cellar: :any,                 monterey:       "746322251f84185af8a733b9c7afb87d36d520fae1769f62df46f3cc6c85f605"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "7beb766ebd854b2ab40348d982231bbcad85b9742eee4bbfa08de6b8ab9347d7"
+    sha256 cellar: :any,                 arm64_sonoma:   "344b6b08f4321b14758c0b807e3e9131874917920a312e77dfe054bf673c5936"
+    sha256 cellar: :any,                 arm64_ventura:  "4712d70f895b55bce21491792a2f7e5dfe4946faa590ae95e34f9b4524c3cd92"
+    sha256 cellar: :any,                 arm64_monterey: "91e4397ebcc8882e8d4e299813998cd7110c690ded807b215637cba52e0e41e8"
+    sha256 cellar: :any,                 sonoma:         "3801d03c3f34cf1c70ce19c8dcb90eaee17924d23c73ddb31b400b69ad48682f"
+    sha256 cellar: :any,                 ventura:        "5a4b8c21fc8540743febf8d913004c7207fa448d2decd157ecc868b7c8c0657e"
+    sha256 cellar: :any,                 monterey:       "32808fe993c10a4ab7de50ee0c981890134d28bb2fdd2f911682634126b9eb03"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d00485828972efa74808b34d98219060fc93c96b16000c0b1a5f0f1884c4eef4"
   end
 
   depends_on "jq" => :test
   depends_on "curl"
+  depends_on "openssl@3"
   depends_on "python@3.12"
 
   resource "packaging" do
@@ -27,8 +29,8 @@ class Nvchecker < Formula
   end
 
   resource "platformdirs" do
-    url "https://files.pythonhosted.org/packages/96/dc/c1d911bf5bb0fdc58cc05010e9f3efe3b67970cef779ba7fbc3183b987a8/platformdirs-4.2.0.tar.gz"
-    sha256 "ef0cc731df711022c174543cb70a9b5bd22e5a9337c8624ef2c2ceb8ddad8768"
+    url "https://files.pythonhosted.org/packages/f5/52/0763d1d976d5c262df53ddda8d8d4719eedf9594d046f117c25a27261a19/platformdirs-4.2.2.tar.gz"
+    sha256 "38b7b51f512eed9e84a22788b4bce1de17c0adb134d6becb09836e37d8654cd3"
   end
 
   resource "pycurl" do
@@ -37,13 +39,13 @@ class Nvchecker < Formula
   end
 
   resource "structlog" do
-    url "https://files.pythonhosted.org/packages/d1/ac/87aedb7a9ba52f645b9d29a7f48bb12a5c6b7e204b8137549fbe4754b563/structlog-24.1.0.tar.gz"
-    sha256 "41a09886e4d55df25bdcb9b5c9674bccfab723ff43e0a86a1b7b236be8e57b16"
+    url "https://files.pythonhosted.org/packages/87/87/9b237eda856dc3e72f2485e884f59fe0ee8be49aa2ce8eff3a425c388766/structlog-24.2.0.tar.gz"
+    sha256 "0e3fe74924a6d8857d3f612739efb94c72a7417d7c7c008d12276bca3b5bf13b"
   end
 
   resource "tornado" do
-    url "https://files.pythonhosted.org/packages/bd/a2/ea124343e3b8dd7712561fe56c4f92eda26865f5e1040b289203729186f2/tornado-6.4.tar.gz"
-    sha256 "72291fa6e6bc84e626589f1c29d90a5a6d593ef5ae68052ee2ef000dfd273dee"
+    url "https://files.pythonhosted.org/packages/ee/66/398ac7167f1c7835406888a386f6d0d26ee5dbf197d8a571300be57662d3/tornado-6.4.1.tar.gz"
+    sha256 "92d3ab53183d8c50f8204a51e6f91d18a15d5ef261e84d452800d4ff6fc504e9"
   end
 
   def install

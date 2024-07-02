@@ -6,7 +6,7 @@ class Torchvision < Formula
   url "https://github.com/pytorch/vision/archive/refs/tags/v0.17.0.tar.gz"
   sha256 "55e395d5c7d9bf7658c82ac633cac2224aa168e1bfe8bb5b2b2a296c792a3500"
   license "BSD-3-Clause"
-  revision 3
+  revision 5
 
   livecheck do
     url :stable
@@ -14,23 +14,25 @@ class Torchvision < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "df7f946be163a8525ce627f70656345e189cb001d325271682e7d76dfffa3a20"
-    sha256 cellar: :any,                 arm64_ventura:  "95cef3493e8398e2b4b88a6cb877e01f9aa212c1c9f267c2ea9f9c12213535b6"
-    sha256 cellar: :any,                 arm64_monterey: "557595a2dd490ce89657205beefb16446148422323566f40255464fdfe294ef6"
-    sha256 cellar: :any,                 sonoma:         "22c7faa55dbf78ffa60b7b21b583c7bcaa8b88c0caa03c84728e4e6dea61b05b"
-    sha256 cellar: :any,                 ventura:        "6fb38e025316f68d2f0abaf799d595ed3c76b12e81b76973743d7a8c9c352617"
-    sha256 cellar: :any,                 monterey:       "2b04230010c99cf4cd2efbc020bcacd1d09699780c6455adde780034e8c5f9d2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "1575c7aed788dbb65579cb1cfcd17e96fdb1d932296c45caf8a8cfd567619945"
+    sha256 cellar: :any,                 arm64_sonoma:   "00ec3371f348541cbfe6e45d3c05cc54f3f65cd97ccd1698dadb1f432806107f"
+    sha256 cellar: :any,                 arm64_ventura:  "30a4148f2a5668c1f9c92bf3ea986a616fdf71fccfac81be41984e4360e68279"
+    sha256 cellar: :any,                 arm64_monterey: "996fab366b76fac5592b7d8c9a40c28e3719c9c792eacb745d35bf3795d39463"
+    sha256 cellar: :any,                 sonoma:         "f934a34c8ecd3fdc3f56c2ca33664f6499d2bab5c23c30c7db952b1cf159618c"
+    sha256 cellar: :any,                 ventura:        "22c40fefaf8b653622950d0b8307292fdbdd5301f55d5b4ba8612af1b1dbe5cc"
+    sha256 cellar: :any,                 monterey:       "257200438bb32df54f44ac6baa13309b6ca8a602aba9fa79fdfdbd308ebd6f62"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b790e890330c69f607b83cab455c81d9be5954831cbe42b909eb31dd4e689195"
   end
 
   depends_on "cmake" => :build
   depends_on "ninja" => :build
   depends_on "python@3.12" => [:build, :test]
+  depends_on "abseil"
   depends_on "certifi"
   depends_on "jpeg-turbo"
   depends_on "libpng"
   depends_on "numpy"
   depends_on "pillow"
+  depends_on "protobuf"
   depends_on "pytorch"
 
   on_macos do

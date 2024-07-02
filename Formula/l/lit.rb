@@ -1,19 +1,18 @@
 class Lit < Formula
   desc "Portable tool for LLVM- and Clang-style test suites"
   homepage "https://llvm.org"
-  url "https://files.pythonhosted.org/packages/20/87/98366aa460de9a1413a41178acb9f83de106208f889fdccf47c5322163ed/lit-18.1.6.tar.gz"
-  sha256 "70878fb0a2eee81c95898ed59605b0ee5e41565f8fd382322bca769a2bc3d4e5"
+  url "https://files.pythonhosted.org/packages/47/b4/d7e210971494db7b9a9ac48ff37dfa59a8b14c773f9cf47e6bda58411c0d/lit-18.1.8.tar.gz"
+  sha256 "47c174a186941ae830f04ded76a3444600be67d5e5fb8282c3783fba671c4edb"
   license "Apache-2.0" => { with: "LLVM-exception" }
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "9d79c3ff5bc24f53fb5d84a4e46db916e5eb8d787f790ada4bbacd7b2c6aade0"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "9d79c3ff5bc24f53fb5d84a4e46db916e5eb8d787f790ada4bbacd7b2c6aade0"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "9d79c3ff5bc24f53fb5d84a4e46db916e5eb8d787f790ada4bbacd7b2c6aade0"
-    sha256 cellar: :any_skip_relocation, sonoma:         "9d79c3ff5bc24f53fb5d84a4e46db916e5eb8d787f790ada4bbacd7b2c6aade0"
-    sha256 cellar: :any_skip_relocation, ventura:        "9d79c3ff5bc24f53fb5d84a4e46db916e5eb8d787f790ada4bbacd7b2c6aade0"
-    sha256 cellar: :any_skip_relocation, monterey:       "9d79c3ff5bc24f53fb5d84a4e46db916e5eb8d787f790ada4bbacd7b2c6aade0"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d318e53a5fe192d3fb2fe46806a44a0ea7d46283946e5b64ca825fada65b7ea0"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "345fad1f0bcc64749305dc2b92af16357afffd2eb18b58dbbe1557f79813e427"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "345fad1f0bcc64749305dc2b92af16357afffd2eb18b58dbbe1557f79813e427"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "345fad1f0bcc64749305dc2b92af16357afffd2eb18b58dbbe1557f79813e427"
+    sha256 cellar: :any_skip_relocation, sonoma:         "345fad1f0bcc64749305dc2b92af16357afffd2eb18b58dbbe1557f79813e427"
+    sha256 cellar: :any_skip_relocation, ventura:        "345fad1f0bcc64749305dc2b92af16357afffd2eb18b58dbbe1557f79813e427"
+    sha256 cellar: :any_skip_relocation, monterey:       "345fad1f0bcc64749305dc2b92af16357afffd2eb18b58dbbe1557f79813e427"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "be87887f940ca0a898fcf6bf8efd732df71142b424260b2a512cf04b4e3e0964"
   end
 
   depends_on "llvm" => :test
@@ -22,6 +21,8 @@ class Lit < Formula
   def python3
     which("python3.12")
   end
+
+  conflicts_with "luvit", because: "both install `lit` binaries"
 
   def install
     system python3, "-m", "pip", "install", *std_pip_args(build_isolation: true), "."

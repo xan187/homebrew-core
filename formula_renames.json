@@ -131,6 +131,7 @@
   "prql-compiler": "prqlc",
   "pyqt5": "pyqt@5",
   "python-certifi": "certifi",
+  "python-chardet": "chardet",
   "python-cryptography": "cryptography",
   "qt5": "qt@5",
   "racket": "minimal-racket",

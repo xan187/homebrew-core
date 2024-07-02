@@ -1,8 +1,8 @@
 class Pmtiles < Formula
   desc "Single-file executable tool for creating, reading and uploading PMTiles archives"
   homepage "https://protomaps.com/docs/pmtiles"
-  url "https://github.com/protomaps/go-pmtiles/archive/refs/tags/v1.19.1.tar.gz"
-  sha256 "f33cd53cc9307d7674d860cc6d91098efc5e8756fa4b86200729eee69f56081f"
+  url "https://github.com/protomaps/go-pmtiles/archive/refs/tags/v1.20.0.tar.gz"
+  sha256 "21f5da4802d4860b50fbd4fb59d4b2081b80fb30c33e8d4373432e23165d3dfb"
   license "BSD-3-Clause"
 
   livecheck do
@@ -11,13 +11,13 @@ class Pmtiles < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "032d3da35cc06592a116e8eaf689d055778522a3357dd2e4a0d01dab70e4bf1a"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "44b1b6206951ce3527f46c5ef6aabfe62af67cb1b3c83999046368ca635d3577"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "8b92e953c79bce1cd2394496297034efea3e5236b56dc8a8f8f857913da9a8d7"
-    sha256 cellar: :any_skip_relocation, sonoma:         "88e1b30a7fccf34cdd48f081490d319783c1f6674974f1e665cc743575346049"
-    sha256 cellar: :any_skip_relocation, ventura:        "0c1af2f6fdc5c9b3468a29e22892a1915ce0143a3b903f2ce300cfe630b7fe52"
-    sha256 cellar: :any_skip_relocation, monterey:       "62d7cfb6cc531032110e19bb81e2b21bc4c8fccc00e95e23fb3cc30f7c85fbbc"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "1ff65125a5de05367232b71a844f9a50dccb375841bf0d8bc9bcba32e21daf76"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "fcdd71956da9b00de4a1e719e1ba673efff88be1d451f900271fbd99413644d7"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "4c51964fcbfc13d9bef5e2c7317da2f732bdb3f6c97dce8c2fa507a90b22d35e"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "5de2f5768122d02d6238c2c7f599d5f0d49f9fe900143a4a980b19c9988adfac"
+    sha256 cellar: :any_skip_relocation, sonoma:         "0e3bca78debb39976957e5b492507ee3e9ff0db53cd9b13a96c516f88ad211e5"
+    sha256 cellar: :any_skip_relocation, ventura:        "4914dbfa681bf46d7653c191d1a34e7bff89be2b9fc9980a5a9658666d6deb88"
+    sha256 cellar: :any_skip_relocation, monterey:       "8d5110feede0e2410937050affedbaefec1cfe9e4a5267352cc7fa6b443cd316"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2a0e5363717e7e88440455e0358694a779282607495e596a5afc2a8d6a1e55cb"
   end
 
   depends_on "go" => :build

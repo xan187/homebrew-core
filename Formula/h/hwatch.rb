@@ -1,19 +1,19 @@
 class Hwatch < Formula
   desc "Modern alternative to the watch command"
   homepage "https://github.com/blacknon/hwatch"
-  url "https://github.com/blacknon/hwatch/archive/refs/tags/0.3.13.tar.gz"
-  sha256 "a9fb477ce8682919fe2af89a4f8c9286c525fa384161aa2cf1e0fad2c57b1877"
+  url "https://github.com/blacknon/hwatch/archive/refs/tags/0.3.15.tar.gz"
+  sha256 "0c6d60e837a9f94685581d815265a60a16331c0a3cb2d6fc5abfe1c97963160e"
   license "MIT"
   head "https://github.com/blacknon/hwatch.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "a487ce037a517ce27cfdb66989385c3e6b683ba1a7894af945eeb4a0ee29fa27"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "0e0aa825a8792ae6d6605b728875914cc1c8df4780e099e06d70af6e0eca1fbd"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "0aef00561e2b7568770fd7916cd9ced544d5b316fb10d069e5ec56f0aa5ebd05"
-    sha256 cellar: :any_skip_relocation, sonoma:         "52a84a0ca33c34844aad5b0a1a2d81a69cd3949fff95888cf30f74bf8fe3a51c"
-    sha256 cellar: :any_skip_relocation, ventura:        "fa3f82557e2668882c0395d39135316eee8295a6cbff7f626cf0b606f2dcf116"
-    sha256 cellar: :any_skip_relocation, monterey:       "72e8df1238474abedde217289bd454ad1c2d6e643543fc73a202dece3a23e377"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "893ea5a3680db6231b700d793196ed2e63158a40617ef89cbb5e153f911e4b77"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "1144c287fedea8ba41a937b3637baa62b820215c82f1d781e11c59b8afbeaed6"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "39066c4c706ebc634848418c2d07921759ef031092a0250c3eb9ceb71b088770"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "559394446325a340d1d026c9ed7d1f49aff91c4ccff62d73ff44eb01a51c65cf"
+    sha256 cellar: :any_skip_relocation, sonoma:         "96d3a1f00c5de835f4f70bd0db658bba4b4ee9dcea35669247d4fad87535b62b"
+    sha256 cellar: :any_skip_relocation, ventura:        "9def15db47e02c7323745b201e122cd7a728052d3518e0690734b5c28caf9664"
+    sha256 cellar: :any_skip_relocation, monterey:       "f074d1b2dd7f26e1dcdb93be668aa60761376878d0d7f8e1c8908ff812afc607"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "9afa54192a1290ff2e58863748ac050ed7d6777711f609ad0bf280ecf3033be9"
   end
 
   depends_on "rust" => :build

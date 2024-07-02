@@ -1,8 +1,8 @@
 class Rio < Formula
   desc "Hardware-accelerated GPU terminal emulator powered by WebGPU"
   homepage "https://raphamorim.io/rio/"
-  url "https://github.com/raphamorim/rio/archive/refs/tags/v0.0.39.tar.gz"
-  sha256 "493b63ba87b97af35c2822e3008c793890e3887c439d30b2d4c556058094041e"
+  url "https://github.com/raphamorim/rio/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "076609d37a5ec1156a4f623d60913f3e4a48245687277838e80d28c645945e72"
   license "MIT"
   head "https://github.com/raphamorim/rio.git", branch: "main"
 
@@ -12,12 +12,12 @@ class Rio < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "e81ebd431a8bbb27019c5b518c7027f8105a40aa91d0599eeec5a6ef8cb7d3c0"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "d62cc74ff88fd1d9c658a071b0a17c048111f4b5bd688293a4cbe24e28b60223"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "e63e0cbf45f2c50e378cfb5250bae54f6ad828c21cb52939e1fec20ee65177b8"
-    sha256 cellar: :any_skip_relocation, sonoma:         "ca74305c61464fd34440ad193d228a2a3244a0ac3a1c033ce2d1af237e2d5cb0"
-    sha256 cellar: :any_skip_relocation, ventura:        "be24d288bbffa89b7cce6618d48e3a1fe7e4e86654d61628d5da6d4a088a6830"
-    sha256 cellar: :any_skip_relocation, monterey:       "c76a4c0a04eca46f962191722066440aad05e3967b86af826a141f52491494b9"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "7636866c5f3dc6947b77d24f00d54ee49b434ccf3be8dd198ed223e7e5659009"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "37a57ab3c93efab68d2925be5a52040a194d5896dc6651132f64f31e240b960a"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "3b239e4fd82286d5a17aa83626ef4709fc991248f15960599571d419d1091068"
+    sha256 cellar: :any_skip_relocation, sonoma:         "b251195db947cb3664e3c5ffc15756731e414771da5ec4acf61abc85e0c9a879"
+    sha256 cellar: :any_skip_relocation, ventura:        "0884d0b4bb69b08252b7a707189f8e5fa2827c4b0f9b9698bd8194f0c22bcfcf"
+    sha256 cellar: :any_skip_relocation, monterey:       "d585c3aaaff69e2f96e68c4597974b555392c2f148eaed90afbb392be4896b70"
   end
 
   depends_on "rust" => :build
@@ -26,7 +26,7 @@ class Rio < Formula
   depends_on :macos
 
   def install
-    system "cargo", "install", *std_cargo_args(path: "frontends/cross-winit")
+    system "cargo", "install", *std_cargo_args(path: "frontends/rioterm")
   end
 
   test do

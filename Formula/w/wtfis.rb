@@ -3,19 +3,20 @@ class Wtfis < Formula
 
   desc "Passive hostname, domain, and IP lookup tool"
   homepage "https://github.com/pirxthepilot/wtfis"
-  url "https://files.pythonhosted.org/packages/c3/7b/95909403d2a2f7049548749d99e352e053af21ce1cdf78166d763c79d7d0/wtfis-0.9.1.tar.gz"
-  sha256 "45c05721815da1e67d239b113a935295453bb3a6f453e9d8de9b7ca1ab989106"
+  url "https://files.pythonhosted.org/packages/c8/8e/d8005d43adcfd263723de2ee643eb2a6a48e645a9338202c7eda800a0df5/wtfis-0.10.0.tar.gz"
+  sha256 "1a364350e51d3daca0fba2135207f5eb5234cebd43ac40bda82f7e7b6817bf36"
   license "MIT"
+  revision 1
   head "https://github.com/pirxthepilot/wtfis.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "8a7a0a9072f5f69ff129520b64b5ae2f28e671b376866b02cfff0a7cec741cdc"
-    sha256 cellar: :any,                 arm64_ventura:  "91431c30da3b7730653e7a498d1cb5db24ebbf92d304fac5f397ed7e280e3c17"
-    sha256 cellar: :any,                 arm64_monterey: "ce68c3c8d7814f8e047aa245a2e1661a4fb9f3d8103872fa9d314a58436bb613"
-    sha256 cellar: :any,                 sonoma:         "48ae5bcaed4deab531a60dcfe409156060e1f572bc98ecebce62723763bb3cd2"
-    sha256 cellar: :any,                 ventura:        "2465eec4475d9888623504db3cbec5439398089a63075c814e9726573173c86b"
-    sha256 cellar: :any,                 monterey:       "b0efa88d1a8f6cd65839d59bce03cf1a37051fde08a58bd78d54da3273f1b6b0"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "95b4301567c69729c712bac8258852c27b8bc69289a5337c9d9cd4792da3f13f"
+    sha256 cellar: :any,                 arm64_sonoma:   "b9ee4182b8df999bda76d6d33ba856528e8fa60ac504673ef15fd5168efe358f"
+    sha256 cellar: :any,                 arm64_ventura:  "5eec75893e8d91fd851a2f375d7937814ed1d3f0a007ee11123985753f73c9ef"
+    sha256 cellar: :any,                 arm64_monterey: "a77541879a3c5ae6248f2f4a005c8404119f799cadfe380fb1207c9398b4fbe9"
+    sha256 cellar: :any,                 sonoma:         "153a911915aa4a0adc60a2f425103de56250a45c0fd4d8b3f69f72471bde76f5"
+    sha256 cellar: :any,                 ventura:        "a5f7a0681d63bef7f6845372e4fd8bb676db48083e720c99ebb1f70e094bc8de"
+    sha256 cellar: :any,                 monterey:       "b7d42788322bd52abe7139697ae364f3b7c9357b019a330f35a7678739d00da7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d27cd0048eed541085be139c36a3aae846f543daefd537d495125e90825062f8"
   end
 
   depends_on "rust" => :build
@@ -23,8 +24,8 @@ class Wtfis < Formula
   depends_on "python@3.12"
 
   resource "annotated-types" do
-    url "https://files.pythonhosted.org/packages/67/fe/8c7b275824c6d2cd17c93ee85d0ee81c090285b6d52f4876ccc47cf9c3c4/annotated_types-0.6.0.tar.gz"
-    sha256 "563339e807e53ffd9c267e99fc6d9ea23eb8443c08f112651963e24e22f84a5d"
+    url "https://files.pythonhosted.org/packages/ee/67/531ea369ba64dcff5ec9c3402f9f51bf748cec26dde048a2f973a4eea7f5/annotated_types-0.7.0.tar.gz"
+    sha256 "aff07c09a53a08bc8cfccb9c85b05f1aa9a2a6f23728d790723543408344ce89"
   end
 
   resource "charset-normalizer" do
@@ -48,8 +49,8 @@ class Wtfis < Formula
   end
 
   resource "filelock" do
-    url "https://files.pythonhosted.org/packages/06/ae/f8e03746f0b62018dcf1120f5ad0a1db99e55991f2cda0cf46edc8b897ea/filelock-3.14.0.tar.gz"
-    sha256 "6ea72da3be9b8c82afd3edcf99f2fffbb5076335a5ae4d03248bb5b6c3eae78a"
+    url "https://files.pythonhosted.org/packages/69/7d/73d36db6955bde2ed495ce40ce02c9a2533b8c7b64fd42a38b1ee879ea18/filelock-3.15.1.tar.gz"
+    sha256 "58a2549afdf9e02e10720eaa4d4470f56386d7a6f72edd7d0596337af8ed7ad8"
   end
 
   resource "idna" do
@@ -68,13 +69,13 @@ class Wtfis < Formula
   end
 
   resource "pydantic" do
-    url "https://files.pythonhosted.org/packages/1f/74/0d009e056c2bd309cdc053b932d819fcb5ad3301fc3e690c097e1de3e714/pydantic-2.7.1.tar.gz"
-    sha256 "e9dbb5eada8abe4d9ae5f46b9939aead650cd2b68f249bb3a8139dbe125803cc"
+    url "https://files.pythonhosted.org/packages/0d/fc/ccd0e8910bc780f1a4e1ab15e97accbb1f214932e796cff3131f9a943967/pydantic-2.7.4.tar.gz"
+    sha256 "0c84efd9548d545f63ac0060c1e4d39bb9b14db8b3c0652338aecc07b5adec52"
   end
 
   resource "pydantic-core" do
-    url "https://files.pythonhosted.org/packages/e9/23/a609c50e53959eb96393e42ae4891901f699aaad682998371348650a6651/pydantic_core-2.18.2.tar.gz"
-    sha256 "2e29d20810dfc3043ee13ac7d9e25105799817683348823f305ab3f349b9386e"
+    url "https://files.pythonhosted.org/packages/02/d0/622cdfe12fb138d035636f854eb9dc414f7e19340be395799de87c1de6f6/pydantic_core-2.18.4.tar.gz"
+    sha256 "ec3beeada09ff865c344ff3bc2f427f5e6c26401cc6113d77e372c3fdac73864"
   end
 
   resource "pygments" do
@@ -88,13 +89,13 @@ class Wtfis < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/9d/be/10918a2eac4ae9f02f6cfe6414b7a155ccd8f7f9d4380d62fd5b955065c3/requests-2.31.0.tar.gz"
-    sha256 "942c5a758f98d790eaed1a29cb6eefc7ffb0d1cf7af05c3d2791656dbd6ad1e1"
+    url "https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz"
+    sha256 "55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760"
   end
 
   resource "requests-file" do
-    url "https://files.pythonhosted.org/packages/2b/69/ba1b5f52f96cde4f2d8eca74a0aa2c11a66b2fe58d0fb63b2e46edce6ed3/requests-file-2.0.0.tar.gz"
-    sha256 "20c5931629c558fda566cacc10cfe2cd502433e628f568c34c80d96a0cc95972"
+    url "https://files.pythonhosted.org/packages/72/97/bf44e6c6bd8ddbb99943baf7ba8b1a8485bcd2fe0e55e5708d7fee4ff1ae/requests_file-2.1.0.tar.gz"
+    sha256 "0f549a3f3b0699415ac04d167e9cb39bccfb730cb832b4d20be3d9867356e658"
   end
 
   resource "rich" do
@@ -113,13 +114,13 @@ class Wtfis < Formula
   end
 
   resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/f6/f3/b827b3ab53b4e3d8513914586dcca61c355fa2ce8252dea4da56e67bf8f2/typing_extensions-4.11.0.tar.gz"
-    sha256 "83f085bd5ca59c80295fc2a82ab5dac679cbe02b9f33f7d83af68e241bea51b0"
+    url "https://files.pythonhosted.org/packages/df/db/f35a00659bc03fec321ba8bce9420de607a1d37f8342eee1863174c69557/typing_extensions-4.12.2.tar.gz"
+    sha256 "1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/7a/50/7fd50a27caa0652cd4caf224aa87741ea41d3265ad13f010886167cfcc79/urllib3-2.2.1.tar.gz"
-    sha256 "d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"
+    url "https://files.pythonhosted.org/packages/43/6d/fa469ae21497ddc8bc93e5877702dca7cb8f911e337aca7452b5724f1bb6/urllib3-2.2.2.tar.gz"
+    sha256 "dd505485549a7a552833da5e6063639d0d177c04f23bc3864e41e5dc5f612168"
   end
 
   resource "xlsxwriter" do

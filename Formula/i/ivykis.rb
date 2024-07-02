@@ -1,8 +1,8 @@
 class Ivykis < Formula
   desc "Async I/O-assisting library"
   homepage "https://sourceforge.net/projects/libivykis/"
-  url "https://github.com/buytenh/ivykis/archive/refs/tags/v0.43-trunk.tar.gz"
-  sha256 "29174b99f45a39bea13f79079d5e17dd58bb800f62e78b44de044715d13d4bdb"
+  url "https://github.com/buytenh/ivykis/archive/refs/tags/v0.43.2-trunk.tar.gz"
+  sha256 "22621ae6a7144039cfb8666ed509b99ea1876d7642021a3505c7351502641103"
   license "LGPL-2.1-only"
 
   livecheck do
@@ -11,13 +11,13 @@ class Ivykis < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "ef3dd26e5ce7524f9383d2a4b04ac39dda04524943c5eb29f4e4ebacec1d223d"
-    sha256 cellar: :any,                 arm64_ventura:  "a697da62470856eeaad5092e8082f49c586240af1fbbafbe5fdf668ecc917001"
-    sha256 cellar: :any,                 arm64_monterey: "9e28629c45a83f480c21eaebb37b43416f8600345cc84f78be251480e9652c54"
-    sha256 cellar: :any,                 sonoma:         "ccc6d0bbb38559ebc9016f3ae8966aeea6eadf99cd3da0fe01e57bbb91e12d35"
-    sha256 cellar: :any,                 ventura:        "4767945fe273c9832c5d2a3e7aff1b8eb0b76c5f1ab693becf079bfdf6f7b72a"
-    sha256 cellar: :any,                 monterey:       "b8a8642c4dc589444bcd2f2e1a9c48ca115e245f3e6367599c6ef8f868e49d48"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "199e983c9cd1d8b28c1a347a4b8760cbacacf9ea99af7bfceb3fee214e049ba1"
+    sha256 cellar: :any,                 arm64_sonoma:   "041ef153175797ab1ffdc43c6f66792ccab6bf7bb30b0458e9a0e2796c208135"
+    sha256 cellar: :any,                 arm64_ventura:  "075569d21dab788f26ae067e2d3b68de653041f8964df56fb49212162657cf77"
+    sha256 cellar: :any,                 arm64_monterey: "97757eff18712b8e6e994bf1d84aa89f4d371793117f11e802570af83a2b8fc0"
+    sha256 cellar: :any,                 sonoma:         "c70c4ccd6872f0be9b0d0ab49218fca35d43077d6a82be5b541aa4b5573af1f2"
+    sha256 cellar: :any,                 ventura:        "ed59e7e11206ff76514c05ab2bbe5bc302bfff40e73959ee3294cb6759640dda"
+    sha256 cellar: :any,                 monterey:       "8246dcfdc88e144a353448209a0f86c06e9fce2c4ad05a493648b4db7d70e496"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "63cc7d328a6c1816803b8a4a90377dfe86dfe0ce21d895bc1968e27c46ed083f"
   end
 
   depends_on "autoconf" => :build

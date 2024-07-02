@@ -1,8 +1,8 @@
 class Root < Formula
   desc "Object oriented framework for large scale data analysis"
   homepage "https://root.cern.ch/"
-  url "https://root.cern.ch/download/root_v6.30.06.source.tar.gz"
-  sha256 "300db7ed1b678ed2fb9635ca675921a1945c7c2103da840033b493091f55700c"
+  url "https://root.cern.ch/download/root_v6.32.02.source.tar.gz"
+  sha256 "3d0f76bf05857e1807ccfb2c9e014f525bcb625f94a2370b455f4b164961602d"
   license "LGPL-2.1-or-later"
   head "https://github.com/root-project/root.git", branch: "master"
 
@@ -15,13 +15,13 @@ class Root < Formula
   end
 
   bottle do
-    sha256 arm64_sonoma:   "6bb71f42e538001ef19e857980cc818f24e7cd10c08c09807fab861df126f6a1"
-    sha256 arm64_ventura:  "e5acb2d64803db1debb33ed9c46fa384012cdfb4ac8c3f6bc79d3f88a43668f6"
-    sha256 arm64_monterey: "fe2e1b0dfc6887d398497cc2f303fd1b3d1364d0e0d914d79345c3141254b1d0"
-    sha256 sonoma:         "647753b1e3f8413f7a5c12c06316a779519df264762f4a22e1e58661e6bdc59c"
-    sha256 ventura:        "fa1aa3bce621fbaeb3d03f796a70120fc4b0b34fe881d11608bfd768c339c3cb"
-    sha256 monterey:       "8d9b24cf58b872d710c2098643c4704af44035d7be7af6adf944ae453cd7ccc7"
-    sha256 x86_64_linux:   "c56a683f7e18d977bccbdaba866e416e456e3cf1f9b5d38bb8aca388756ec8b5"
+    sha256 arm64_sonoma:   "38bd7f14161e2eba087af7722cc4919e55635bf5be40768531823abc5c3e5bf9"
+    sha256 arm64_ventura:  "0863e61db093b8f0c24ef4473a5f0f9bf9b7b70730ed51ae0c798fb2a267114b"
+    sha256 arm64_monterey: "82760f80f4080596b8c95e88640a438867af3181efa296fa5cc8e941442eb1c1"
+    sha256 sonoma:         "936e4d4a64495017bfa149f974c6e3017433fe4638989e20ede886fc232c3c70"
+    sha256 ventura:        "d485ba1d0cc0ab30f9d1e3040b63c3b9c912c4beb9e3f78643a14bddfff7e968"
+    sha256 monterey:       "7cfa69c80200db9126ff945e5477dfd41e9d6c116d41431d4e30a908627f2e81"
+    sha256 x86_64_linux:   "795b59b8f4ed714b3d8b91ea8b3a235c8771779897d9b49331f4f0a2b36f0c8b"
   end
 
   depends_on "cmake" => :build
@@ -44,6 +44,7 @@ class Root < Formula
   depends_on "openblas"
   depends_on "openssl@3"
   depends_on "pcre"
+  depends_on "pcre2"
   depends_on "python@3.12"
   depends_on "sqlite"
   depends_on "tbb"
@@ -51,15 +52,24 @@ class Root < Formula
   depends_on "xrootd"
   depends_on "xxhash"
   depends_on "xz" # for LZMA
+  depends_on "zlib"
   depends_on "zstd"
 
   uses_from_macos "libxcrypt"
   uses_from_macos "libxml2"
-  uses_from_macos "zlib"
+  uses_from_macos "ncurses"
 
   on_linux do
+    depends_on "giflib"
+    depends_on "jpeg-turbo"
+    depends_on "libpng"
+    depends_on "libtiff"
+    depends_on "libx11"
+    depends_on "libxext"
     depends_on "libxft"
     depends_on "libxpm"
+    depends_on "mesa"
+    depends_on "mesa-glu"
   end
 
   skip_clean "bin"
@@ -130,7 +140,6 @@ class Root < Formula
       -Dgnuinstall=ON
       -Dimt=ON
       -Dmathmore=ON
-      -Dminuit2=ON
       -Dmysql=ON
       -Docaml=OFF
       -Doracle=OFF

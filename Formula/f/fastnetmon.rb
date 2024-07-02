@@ -4,16 +4,16 @@ class Fastnetmon < Formula
   url "https://github.com/pavel-odintsov/fastnetmon/archive/refs/tags/v1.2.6.tar.gz"
   sha256 "b6a7d1e9ba98c1c042d774bff82ea3e8bbf03085e0be43a2676e41d590f668cf"
   license "GPL-2.0-only"
-  revision 11
+  revision 13
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "45c13a5b00ab30daf9c077593df9f788e5d990e405c0b340d61ecfdaa6248162"
-    sha256 cellar: :any,                 arm64_ventura:  "cf407d27c358ffa2131e7379f073f9ace08d2e42e9eb2316d09d097b21607156"
-    sha256 cellar: :any,                 arm64_monterey: "dca5f20e5560f06820042fa244f3e5fa084c6683022bb15077d15bcd66b77bad"
-    sha256 cellar: :any,                 sonoma:         "663e90de3938d9e9706a464230365926a37f2dc2579b365ca4398d15721deb06"
-    sha256 cellar: :any,                 ventura:        "a1e3cae0e7cd44899dfaae3d9f40a74350454d170e153448945b7355f3653c55"
-    sha256 cellar: :any,                 monterey:       "47b92fa909554a0318de56213a2088ef0a2659773fe45cfd42af2001a54d585e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "0db06c9a5a962f7b306e5815b82f3de0a630aaed43b8ad8432dcdab185f139bc"
+    sha256 cellar: :any,                 arm64_sonoma:   "fa74c8af0c445163ce5b2d4b5d5fe7723d04d79fa2a8dbe54bd29661b69f2c0a"
+    sha256 cellar: :any,                 arm64_ventura:  "88b081f8be5a98df8b0ed0375d96889b8a1680f97ada4a493c2a664cb04bdcf6"
+    sha256 cellar: :any,                 arm64_monterey: "f43e32e6f15b68622419711f146eff4a40cb842aaa905d8acde1750c7772a101"
+    sha256 cellar: :any,                 sonoma:         "1517cbab5085b4d34e7b12c876aca3471b4664f0645cdc3afab21515d974b290"
+    sha256 cellar: :any,                 ventura:        "79fe68fecd2a16821d131b93aff465e1c108a408d998db5c2b5bef5e04c6288b"
+    sha256 cellar: :any,                 monterey:       "95e9fd6fb0be10fac036c7bd17200375f820e33246b9702bd038757f38820dca"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "24cc6b09a6f2acb365ace771389ed5905c0f6f60fd18f62de5181637daf7016d"
   end
 
   depends_on "cmake" => :build

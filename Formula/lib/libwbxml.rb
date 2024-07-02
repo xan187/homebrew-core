@@ -1,43 +1,47 @@
 class Libwbxml < Formula
   desc "Library and tools to parse and encode WBXML documents"
   homepage "https://github.com/libwbxml/libwbxml"
-  url "https://github.com/libwbxml/libwbxml/archive/refs/tags/libwbxml-0.11.8.tar.gz"
-  sha256 "a6fe0e55369280c1a7698859a5c2bb37c8615c57a919b574cd8c16458279db66"
-  license "LGPL-2.1"
+  url "https://github.com/libwbxml/libwbxml/archive/refs/tags/libwbxml-0.11.10.tar.gz"
+  sha256 "027b77ab7c06458b73cbcf1f06f9cf73b65acdbb2ac170b234c1d736069acae4"
+  license "LGPL-2.1-or-later"
   head "https://github.com/libwbxml/libwbxml.git", branch: "master"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_sonoma:   "96d521767660b9f716d38654a02dbc9aa9a6eea639808b7ab67c3847edc525b5"
-    sha256 cellar: :any,                 arm64_ventura:  "98d058e5bcb1eb4846a21d474774cbec312ce4b49c37585eae02c601c64e201e"
-    sha256 cellar: :any,                 arm64_monterey: "fe2ac6ea506094bb84685b873d59cb9b0ea225b2ce56cb13b2fc1197bcd6b906"
-    sha256 cellar: :any,                 arm64_big_sur:  "ac5e42ae5a76a5d3cf1d731b80b40ae019ffd90c0cef0ea4ad24d700958f3dc3"
-    sha256 cellar: :any,                 sonoma:         "2609521b850d61fc4164142ffe21e9530653586013e40a3fdac4ca790a79d860"
-    sha256 cellar: :any,                 ventura:        "a3d9904a0466a386a6572f5dbe8834960511574475511cc5096e5751c5a2c1c1"
-    sha256 cellar: :any,                 monterey:       "08e5267c81b874f8115b1fb110a3a0553553863b139c950e60aeead99701ac7f"
-    sha256 cellar: :any,                 big_sur:        "1d656b5fd3c1c1486db641b7e00a129b71071c1f26a522dad2bc29795d6c2a85"
-    sha256 cellar: :any,                 catalina:       "1a5739cb2c803bc0580ef5cab2c58effaa2d849f7f0d55060f325a5cd9cf8ec2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "ec4cdd3a2ead2da218798ef2a020fe2ef66f18b44d6a995977838af60257e8a2"
+    sha256 cellar: :any,                 arm64_sonoma:   "eec64b623fdf01ee3124f51673a09730bc15cd60c190d056319ae0a52d998516"
+    sha256 cellar: :any,                 arm64_ventura:  "f3406dd887132a07e67da3066e036c712d7594b8ba8cba43b072a66b87196714"
+    sha256 cellar: :any,                 arm64_monterey: "3e05f1f285a6f28cc3e1840b18badd6874d04e605a4d365fabe034e99d1496ae"
+    sha256 cellar: :any,                 sonoma:         "f1254abc997a20ba1365b0338224547b22d0fa70e96be10533d1f73ecb1434cb"
+    sha256 cellar: :any,                 ventura:        "574ee31b76288b7d5d76eeeafeca1463b022e1d6764b2c7b9998703db1537468"
+    sha256 cellar: :any,                 monterey:       "21c569684b6cf9018b4128fa8bf110d2b693a4eaabcf7edbfe478fccbef0ebf7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "6730a5a4348d5bddee6e064cd3728d5753986631dec4299cc93270da7d84645c"
   end
 
   depends_on "cmake" => :build
   depends_on "doxygen" => :build
   depends_on "graphviz" => :build
+  depends_on "pkg-config" => :build
   depends_on "wget"
 
   uses_from_macos "expat"
 
   def install
-    # Sandbox fix:
-    # Install in Cellar & then automatically symlink into top-level Module path
-    inreplace "cmake/CMakeLists.txt", "${CMAKE_ROOT}/Modules/",
-                                      "#{share}/cmake/Modules"
+    args = %W[
+      -DBUILD_DOCUMENTATION=ON
+      -DCMAKE_INSTALL_RPATH=#{rpath}
+    ]
+    system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
+  end
 
-    mkdir "build" do
-      system "cmake", "..", *std_cmake_args,
-                            "-DBUILD_DOCUMENTATION=ON",
-                            "-DCMAKE_INSTALL_RPATH=#{rpath}"
-      system "make", "install"
-    end
+  test do
+    (testpath/"input.xml").write <<~EOS
+      <?xml version="1.0"?>
+      <!DOCTYPE sl PUBLIC "-//WAPFORUM//DTD SL 1.0//EN" "http://www.wapforum.org/DTD/sl.dtd">
+      <sl href="http://www.xyz.com/ppaid/123/abc.wml"></sl>
+    EOS
+
+    system bin/"xml2wbxml", "-o", "output.wbxml", "input.xml"
+    assert_predicate testpath/"output.wbxml", :exist?
   end
 end

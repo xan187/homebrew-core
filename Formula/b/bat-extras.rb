@@ -1,8 +1,8 @@
 class BatExtras < Formula
   desc "Bash scripts that integrate bat with various command-line tools"
   homepage "https://github.com/eth-p/bat-extras"
-  url "https://github.com/eth-p/bat-extras/archive/refs/tags/v2024.02.12.tar.gz"
-  sha256 "53e1c43a0ab660a8f7b2176a9c89de17616d42011ad63f30e2793ceb0f8c6688"
+  url "https://github.com/eth-p/bat-extras/archive/refs/tags/v2024.07.10.tar.gz"
+  sha256 "c8e528dc5e46c0d57b187b9951fcd3c3dea890ad2df92b0f7577c4a195e8e346"
   license "MIT"
 
   livecheck do
@@ -11,13 +11,13 @@ class BatExtras < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "28c25f890fcb7ac8a5005e2978a22b323a8576d260bfdcf8840dc66d636a29a7"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "d80f2e74b58984dea7db6d10755fc056ec2e78b72826f533feda4fcb68d7f2e2"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "5d9fb45e615645b1961a60d109629fd49760d11bff64e4341e1517ebc3a9a91f"
-    sha256 cellar: :any_skip_relocation, sonoma:         "e16448c1541536e670eec467d86f9e8ec0e928baed5ce4adf91e3d66e844c360"
-    sha256 cellar: :any_skip_relocation, ventura:        "692c1f6c21b1303b42700d8fe017d5daccdc404faf80b48582e1c39a49d85837"
-    sha256 cellar: :any_skip_relocation, monterey:       "7079d6ef58054dc6bc984ade2c43cfcb99666c922aab1f1f24269e32d613c527"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5992573102b28616d8ee2b6042c1021cbe020cbf6a25394ca3504747ec5eda2f"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "92db55effe4560fe73df546b1353e55f5a1095bc91e55d951be575b7dd60bfa3"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "b70f522d0e3d96d03d821ddce77f4cf777feffa00588d2f672ef1ec1f606c909"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "c02db413fe7a5df51570d186c34c80f8441e9eaec932c702ac322fe371e83164"
+    sha256 cellar: :any_skip_relocation, sonoma:         "480216cdf90e14a372caf595455b173bc8712b7d9a98982c23598299a25bd434"
+    sha256 cellar: :any_skip_relocation, ventura:        "b3a2a0dca3d88633c2f229f1bfee933f129f52bd7ba7be559c0000da0b429f2b"
+    sha256 cellar: :any_skip_relocation, monterey:       "7f06db0afcb14516102be1d25b44d9d3c32bf22c02cfaf79b8662abd7a8d8938"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d55b1d2b3eaf756e530e596bb7e44c14078906203df8f37a3008532561e82ca4"
   end
 
   depends_on "bat" => [:build, :test]

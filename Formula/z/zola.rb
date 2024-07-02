@@ -1,18 +1,18 @@
 class Zola < Formula
   desc "Fast static site generator in a single binary with everything built-in"
   homepage "https://www.getzola.org/"
-  url "https://github.com/getzola/zola/archive/refs/tags/v0.18.0.tar.gz"
-  sha256 "c0e1711a68bc005c2e0ecc76a468f3459739c9e54af34850cb725d04391e19b5"
+  url "https://github.com/getzola/zola/archive/refs/tags/v0.19.1.tar.gz"
+  sha256 "9926c3e7c64ee20a48dc292785c5a29f387c1fab639005ced894982f9c3d7258"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "706543efe5f32db0ff1023aab7f328840063cb9a2593b5542dc1b7f1789305db"
-    sha256 cellar: :any,                 arm64_ventura:  "f8409ef328f001e5fa4353d9d28ecb8696a9facc070b1d8e33e0fa92d3706c19"
-    sha256 cellar: :any,                 arm64_monterey: "53bdd6614e4a9e27baf2d0f05b39218d27c84748e786357b1408272e8328bf2a"
-    sha256 cellar: :any,                 sonoma:         "2850406d66a619b2d2a51360be5c1f7c54aa882f8d0a2291f86953480870dff0"
-    sha256 cellar: :any,                 ventura:        "8dcacfaaaca73e8f820006997350f86d02be3b2ebc20890ae7655593b62ce12b"
-    sha256 cellar: :any,                 monterey:       "a6e05f121e0bb85dbee8fc6f257b7afce67ba19cadb6e1cd62a06068b8a7788f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5fcbc5ce0a3118cff8b9fd322736cb75b411984b276d3f24b5ed3904b6b854e8"
+    sha256 cellar: :any,                 arm64_sonoma:   "bfceff7dacbb356ff1114d4c72db21094032026574bb5ba450f2c2a0ccb55709"
+    sha256 cellar: :any,                 arm64_ventura:  "9e13b76a2b6c56228c8959c196c4b076f0e04ec1dcfe71e1969f928c2782b272"
+    sha256 cellar: :any,                 arm64_monterey: "74246794a4f0d3a017eb6b97bf77257d3381e3aff95173f2e4d068b72e8a9818"
+    sha256 cellar: :any,                 sonoma:         "a36fcbc3c54569cdd52ff7aa547df388b60f7a89945bccde9f6c5a316fe64dc1"
+    sha256 cellar: :any,                 ventura:        "57843d05bcac5c01d0996466bf8b4d66d5bebe8b10056aaad5f49b5f96a876d9"
+    sha256 cellar: :any,                 monterey:       "b8c5f07fdac086d975824469066987feb4ab79d173a725774ac31745793459bd"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "25ef9f5d9e5aab6f4383c83d8958c0407143b69f72cf043c3ce5386b0c1015f4"
   end
 
   depends_on "pkg-config" => :build

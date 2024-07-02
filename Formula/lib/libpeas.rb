@@ -1,30 +1,33 @@
 class Libpeas < Formula
   desc "GObject plugin library"
   homepage "https://wiki.gnome.org/Projects/Libpeas"
-  url "https://download.gnome.org/sources/libpeas/1.36/libpeas-1.36.0.tar.xz"
-  sha256 "297cb9c2cccd8e8617623d1a3e8415b4530b8e5a893e3527bbfd1edd13237b4c"
+  url "https://download.gnome.org/sources/libpeas/2.0/libpeas-2.0.3.tar.xz"
+  sha256 "39e3b507c29d2d01df1345e9b3380fd7a9d0aeb5b2e657d38e6c2bea5023e5f0"
   license "LGPL-2.1-or-later"
-  revision 1
 
   bottle do
-    sha256 arm64_sonoma:   "249a30363c03546d15f68df7d8c3f0fe102effb6bac4b5ee3af6c1c57266eef5"
-    sha256 arm64_ventura:  "6665b8a64464d0af0bc1a4bfb7f12e8437a163dc76d6f85c0dde4e25e2a35ccd"
-    sha256 arm64_monterey: "33937a96502980298f719024ce5b4ab328e491fc2aca16a1ca65632360e31591"
-    sha256 sonoma:         "625a76fc14d1ded3604b981c1a5464dd5173943b4798292dbf288730863f551a"
-    sha256 ventura:        "0aa535e04f1759c3e6b8de5ca7caf178437149643481e1a2d24ee13b23993ce8"
-    sha256 monterey:       "1d2456328df18f6ab771a2aa3f866078f73cd2be07c07b246baae5c05c773488"
-    sha256 x86_64_linux:   "baa8d94412cd5d63a202de7a2935cfc8aba6879563077f676b59655e2d42bb5a"
+    sha256 arm64_sonoma:  "42e6ded6c04525304a112370557d5c15e6f5a5326881c4e259e0031f015ce1b8"
+    sha256 arm64_ventura: "5d7477d40b259db22ef12d090d06e7b1ba3423479f3b0c79a904577c16debf8d"
+    sha256 sonoma:        "31bff770d772fb86b11867b60f24d7b2fbe859cd5e05bdf871861d77a8176682"
+    sha256 ventura:       "17547e83be3e50cb03789ae940f00f1ca6ca579b5daa95c947fad502240acf2d"
+    sha256 x86_64_linux:  "217766dae766058274846f542a6094ee9c8deeeb1c7983a54664ae200544eec4"
   end
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
   depends_on "vala" => :build
+  depends_on "gjs"
   depends_on "glib"
   depends_on "gobject-introspection"
   depends_on "gtk+3"
   depends_on "pygobject3"
   depends_on "python@3.12"
+  depends_on "spidermonkey"
+
+  on_macos do
+    depends_on "gettext"
+  end
 
   def install
     pyver = Language::Python.major_minor_version "python3.12"
@@ -32,11 +35,10 @@ class Libpeas < Formula
     inreplace "meson.build", "'python3-embed'", "'python-#{pyver}-embed'"
 
     args = %w[
+      -Dlua51=false
       -Dpython3=true
       -Dintrospection=true
       -Dvapi=true
-      -Dwidgetry=true
-      -Ddemos=false
     ]
 
     system "meson", "setup", "build", *args, *std_meson_args
@@ -46,7 +48,7 @@ class Libpeas < Formula
 
   test do
     (testpath/"test.c").write <<~EOS
-      #include <libpeas/peas.h>
+      #include <libpeas.h>
 
       int main(int argc, char *argv[]) {
         PeasObjectModule *mod = peas_object_module_new("test", "test", FALSE);
@@ -62,7 +64,7 @@ class Libpeas < Formula
       -I#{glib.opt_include}/glib-2.0
       -I#{glib.opt_lib}/glib-2.0/include
       -I#{gobject_introspection.opt_include}/gobject-introspection-1.0
-      -I#{include}/libpeas-1.0
+      -I#{include}/libpeas-2
       -I#{libffi.opt_lib}/libffi-3.0.13/include
       -D_REENTRANT
       -L#{gettext.opt_lib}
@@ -74,7 +76,7 @@ class Libpeas < Formula
       -lglib-2.0
       -lgmodule-2.0
       -lgobject-2.0
-      -lpeas-1.0
+      -lpeas-2
     ]
     flags << "-lintl" if OS.mac?
     system ENV.cc, "test.c", "-o", "test", *flags

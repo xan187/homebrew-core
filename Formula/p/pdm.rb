@@ -3,27 +3,27 @@ class Pdm < Formula
 
   desc "Modern Python package and dependency manager supporting the latest PEP standards"
   homepage "https://pdm.fming.dev"
-  url "https://files.pythonhosted.org/packages/f1/6f/4f3c970b6c4257c3a60938e1339da3098716d72bd92845063887f7c2db3c/pdm-2.15.3.tar.gz"
-  sha256 "c227d81f6bf109626a5643a7bb531c5f5b777a850c4eac8d08b472c1146beee5"
+  url "https://files.pythonhosted.org/packages/ec/e1/89c9cb77e9e3d50d2f1d7bc65b481aefe2dd28bd43722424bfeac7739536/pdm-2.16.1.tar.gz"
+  sha256 "b8680028b3aff3af8e15b483467da36bb9f02fcd402cf939da8ab6375d955131"
   license "MIT"
   head "https://github.com/pdm-project/pdm.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "a3243fbc30fc00e9bf453f22a55bafff8435efb11ec6965d14f9cf1da47e8f60"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "8231b1cd4d2daf8545110478c210c2ebcd5694f92a5e3e7f82387a57ebad5cf5"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "dfd39befca863f483c36349e3e502197c19e32ecd87e75fdcd02f158b8754a6b"
-    sha256 cellar: :any_skip_relocation, sonoma:         "68fc39100e83dc3f26dc59bdcd5f02b41a390a4f77464bfd3662581fa04a97dc"
-    sha256 cellar: :any_skip_relocation, ventura:        "4ab7000848b8efc03bf5f62f2974f3a367c062059a5354b29485583d3df84808"
-    sha256 cellar: :any_skip_relocation, monterey:       "7debde72fd6f0e9d8719216fb4c46d9bd8aad0128d1bcd792499dd93f03e6636"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5b5dd5d8fdabe1718ba5bfdaee928f65475a3a686366ce655757b4a8ca17e58b"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "babf3415c7213733025e390b074cf79fee6db60652eb3fb9561ce830d7d97100"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "72ed6b12f3fbe81558e2d40fd5beb5ece1db50f2e4007e7a58c2f214aae5a789"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "243c3b9cfbd8342d7ea303c3a0c52d13c56f3aa31203edf3cbcb0407980085d9"
+    sha256 cellar: :any_skip_relocation, sonoma:         "2c6c2637b289dc2562f3f48c9873097ba5746867a8718fc2b1748e67bf264d00"
+    sha256 cellar: :any_skip_relocation, ventura:        "9d0ab774472591feae06e659b88267ede115cca46fbda018102605909b92f4ce"
+    sha256 cellar: :any_skip_relocation, monterey:       "7cbe73708c700286f02a369494ef7f13fa3ceef745b4667d075c38ac47008803"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "661d0f29ef9164b291b00c3279e27aa3264ac20f44f1884be6b900c6f19a4939"
   end
 
   depends_on "certifi"
   depends_on "python@3.12"
 
   resource "anyio" do
-    url "https://files.pythonhosted.org/packages/db/4d/3970183622f0330d3c23d9b8a5f52e365e50381fd484d08e3285104333d3/anyio-4.3.0.tar.gz"
-    sha256 "f75253795a87df48568485fd18cdd2a3fa5c4f7c5be8e5e36637733fce06fed6"
+    url "https://files.pythonhosted.org/packages/e6/e3/c4c8d473d6780ef1853d630d581f70d655b4f8d7553c6997958c283039a2/anyio-4.4.0.tar.gz"
+    sha256 "5aadc6a1bbb7cdb0bede386cac5e2940f5e2ff3aa20277e991cf028e0585ce94"
   end
 
   resource "blinker" do
@@ -42,8 +42,8 @@ class Pdm < Formula
   end
 
   resource "filelock" do
-    url "https://files.pythonhosted.org/packages/06/ae/f8e03746f0b62018dcf1120f5ad0a1db99e55991f2cda0cf46edc8b897ea/filelock-3.14.0.tar.gz"
-    sha256 "6ea72da3be9b8c82afd3edcf99f2fffbb5076335a5ae4d03248bb5b6c3eae78a"
+    url "https://files.pythonhosted.org/packages/08/dd/49e06f09b6645156550fb9aee9cc1e59aba7efbc972d665a1bd6ae0435d4/filelock-3.15.4.tar.gz"
+    sha256 "2207938cbc1844345cb01a5a95524dae30f0ce089eba5b00378295a17e3e90cb"
   end
 
   resource "findpython" do
@@ -57,8 +57,8 @@ class Pdm < Formula
   end
 
   resource "hishel" do
-    url "https://files.pythonhosted.org/packages/21/9c/e97476b0e594ee9ad7af48701138b87d0a21387b4f0fcfcc803d5520fb14/hishel-0.0.26.tar.gz"
-    sha256 "f0ae2766214499cb0253a5ec7694f0d6e3835c9a35634356f8926fb7a1cf379e"
+    url "https://files.pythonhosted.org/packages/55/d1/17f755f5f7e0cec3a33daeba80c22cc1b9787f29330e96913251b694486a/hishel-0.0.29.tar.gz"
+    sha256 "2e49e444ff0dd412962de060ea8803b6bf1a1daca6365221ffb5a160a015126b"
   end
 
   resource "httpcore" do
@@ -97,8 +97,8 @@ class Pdm < Formula
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/ee/b5/b43a27ac7472e1818c4bafd44430e69605baefe1f34440593e0332ec8b4d/packaging-24.0.tar.gz"
-    sha256 "eb82c5e3e56209074766e6885bb04b8c38a0c015d0a30036ebe7ece34c9989e9"
+    url "https://files.pythonhosted.org/packages/51/65/50db4dda066951078f0a96cf12f4b9ada6e4b811516bf0262c0f4f7064d4/packaging-24.1.tar.gz"
+    sha256 "026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002"
   end
 
   resource "pbs-installer" do
@@ -162,18 +162,18 @@ class Pdm < Formula
   end
 
   resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/f6/f3/b827b3ab53b4e3d8513914586dcca61c355fa2ce8252dea4da56e67bf8f2/typing_extensions-4.11.0.tar.gz"
-    sha256 "83f085bd5ca59c80295fc2a82ab5dac679cbe02b9f33f7d83af68e241bea51b0"
+    url "https://files.pythonhosted.org/packages/df/db/f35a00659bc03fec321ba8bce9420de607a1d37f8342eee1863174c69557/typing_extensions-4.12.2.tar.gz"
+    sha256 "1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"
   end
 
   resource "unearth" do
-    url "https://files.pythonhosted.org/packages/4e/27/312c0976a8c35aca68b81bfd2cc3b5cc4b9c8901bfd1c9a6658ccee687b4/unearth-0.15.2.tar.gz"
-    sha256 "381f3e6969db0b28d9fc2fbfb216860579bf341bd695472f2c62e2bcce9e6d3d"
+    url "https://files.pythonhosted.org/packages/fb/c1/5d4e3c3696bbec5d9884c38e44e593fb0e67844a76e3af2875bfc79555dd/unearth-0.15.5.tar.gz"
+    sha256 "98b017f41fbd9cf4811c94c380138b535979f0b90091dcb07dd379f1e4aa3fe2"
   end
 
   resource "virtualenv" do
-    url "https://files.pythonhosted.org/packages/44/5a/cabd5846cb550e2871d9532def625d0771f4e38f765c30dc0d101be33697/virtualenv-20.26.2.tar.gz"
-    sha256 "82bf0f4eebbb78d36ddaee0283d43fe5736b53880b8a8cdcd37390a07ac3741c"
+    url "https://files.pythonhosted.org/packages/68/60/db9f95e6ad456f1872486769c55628c7901fb4de5a72c2f7bdd912abf0c1/virtualenv-20.26.3.tar.gz"
+    sha256 "4c43a2a236279d9ea36a0d76f98d84bd6ca94ac4e0f4a3b9d46d05e10fea542a"
   end
 
   def install

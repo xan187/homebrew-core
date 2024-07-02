@@ -1,8 +1,8 @@
 class Questdb < Formula
   desc "Time Series Database"
   homepage "https://questdb.io"
-  url "https://github.com/questdb/questdb/releases/download/7.4.2/questdb-7.4.2-no-jre-bin.tar.gz"
-  sha256 "36bb7102a5ecd2d12c59e8b16915af598140e912746749b9902663827dc9a555"
+  url "https://github.com/questdb/questdb/releases/download/8.0.1/questdb-8.0.1-no-jre-bin.tar.gz"
+  sha256 "4ba8ba5cbc45a48c58025c42bbe300ce730b9015afa7c415c6079dfab602593d"
   license "Apache-2.0"
 
   livecheck do
@@ -11,7 +11,13 @@ class Questdb < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "79dc7204f199f6c1db1c7e919e8d9d717b9d5073e96a082d658cf2a3750d5809"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "458851d5c14f843de01710bc4e6b5ec7f2a159345c71913b9ef4ee735b99c882"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "458851d5c14f843de01710bc4e6b5ec7f2a159345c71913b9ef4ee735b99c882"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "458851d5c14f843de01710bc4e6b5ec7f2a159345c71913b9ef4ee735b99c882"
+    sha256 cellar: :any_skip_relocation, sonoma:         "458851d5c14f843de01710bc4e6b5ec7f2a159345c71913b9ef4ee735b99c882"
+    sha256 cellar: :any_skip_relocation, ventura:        "458851d5c14f843de01710bc4e6b5ec7f2a159345c71913b9ef4ee735b99c882"
+    sha256 cellar: :any_skip_relocation, monterey:       "458851d5c14f843de01710bc4e6b5ec7f2a159345c71913b9ef4ee735b99c882"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2c02e9e85196edc9ddc3c13495d4f7a9a9f77adab8a8513760a0b8ff7b093fdf"
   end
 
   depends_on "openjdk"

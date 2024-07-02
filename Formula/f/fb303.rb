@@ -1,41 +1,37 @@
 class Fb303 < Formula
   desc "Thrift functions for querying information from a service"
   homepage "https://github.com/facebook/fb303"
-  url "https://github.com/facebook/fb303/archive/refs/tags/v2024.05.06.00.tar.gz"
-  sha256 "bc5ee6bdd16a181c26c496a4b07604517bbf1453c992303e0bffdb2f5f6d02aa"
+  url "https://github.com/facebook/fb303/archive/refs/tags/v2024.06.24.00.tar.gz"
+  sha256 "c72ba9f67cd2c3afd3298ee54ea88c8b80aa32d423cafcc7f0181debb1a94513"
   license "Apache-2.0"
   head "https://github.com/facebook/fb303.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "c79e54d002616fc1ae312cd4bb267050d1a871c1c6271ba0ac56d71ffd949939"
-    sha256 cellar: :any,                 arm64_ventura:  "fda99ab5188790c7870b60c1f14752a1be7bc6468e8d64054742c4256836c56a"
-    sha256 cellar: :any,                 arm64_monterey: "1561f1813a47209f06ec6513752a8405d80a2a952d1eb81bd2e77f9ff7c49d4e"
-    sha256 cellar: :any,                 sonoma:         "8fb3726487333f97a22d7d8074e741c5fc50b4999fb7c3c3ab4fe133331c8297"
-    sha256 cellar: :any,                 ventura:        "d4ec35e094dceb9c1e9babc60442336dc05c6e6e54e35378053fee2a5083fd62"
-    sha256 cellar: :any,                 monterey:       "2558c5b0f047687811f130c395369a443a673b81545e180d4245f6c95e212afd"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "689f7aac29516e18abee25ababcc319b9bef3b961652a37e2d95f694450a1c0a"
+    sha256 cellar: :any,                 arm64_sonoma:   "c8c0f105bfaf997f153eee0d4c0d6a3888e623433baad1186c2b91d5c37d142d"
+    sha256 cellar: :any,                 arm64_ventura:  "6a85b8e7992d32cddbdf3effb3843149e19837d0e49636da155d81c7a022b414"
+    sha256 cellar: :any,                 arm64_monterey: "afd1b2da10fe8c59efb906647679b81f1191c18b2b9474a7e1ab0eb37e7e59aa"
+    sha256 cellar: :any,                 sonoma:         "3b6d91fec9c683f06693f74011f549d35d0747c03554c23c1abcf7819eaeb6c4"
+    sha256 cellar: :any,                 ventura:        "119dca0a6d66bd9f04ea1ea313d9cd204f5eb96af68478e7ff62af77bac65362"
+    sha256 cellar: :any,                 monterey:       "4d599cfafff5ab1c718057836b14d7d6fe37d067c51f39a44c094fbd6b468236"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "4d2f146a1a738c5de83b5fb093876b2f5da412cc0e423329bfa918133162db70"
   end
 
   depends_on "cmake" => :build
-  depends_on "mvfst" => :build
   depends_on "fbthrift"
   depends_on "fizz"
   depends_on "fmt"
   depends_on "folly"
   depends_on "gflags"
   depends_on "glog"
-  depends_on "libsodium"
   depends_on "openssl@3"
-  depends_on "wangle"
 
   fails_with gcc: "5" # C++17
 
   def install
-    system "cmake", "-S", ".", "-B", "build",
-                    "-DPYTHON_EXTENSIONS=OFF",
-                    "-DBUILD_SHARED_LIBS=ON",
-                    "-DCMAKE_INSTALL_RPATH=#{rpath}",
-                    *std_cmake_args
+    shared_args = ["-DBUILD_SHARED_LIBS=ON", "-DCMAKE_INSTALL_RPATH=#{rpath}"]
+    shared_args << "-DCMAKE_SHARED_LINKER_FLAGS=-Wl,-dead_strip_dylibs" if OS.mac?
+
+    system "cmake", "-S", ".", "-B", "build", "-DPYTHON_EXTENSIONS=OFF", *shared_args, *std_cmake_args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
   end

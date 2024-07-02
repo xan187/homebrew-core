@@ -15,9 +15,6 @@ on:
     # Every 3 hours with an offset of 15 minutes
     - cron: "15 */3 * * *"
 
-env:
-  HOMEBREW_FORCE_HOMEBREW_ON_LINUX: 1
-
 permissions:
   contents: read
 

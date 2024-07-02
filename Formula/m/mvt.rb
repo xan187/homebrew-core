@@ -3,20 +3,19 @@ class Mvt < Formula
 
   desc "Mobile device forensic toolkit"
   homepage "https://docs.mvt.re/en/latest/"
-  url "https://files.pythonhosted.org/packages/0b/a7/e12932647247b7cd253698e6aa0d5f831700d3dd7688c366af85eb255b62/mvt-2.5.3.tar.gz"
-  sha256 "5727877815b3d5a2a98e21a6be9da51c3629eb548e424457e9e78ae183344264"
+  url "https://files.pythonhosted.org/packages/0d/12/a87132ab005aaa685663348df0a927c123a921ad8385813c83098c544269/mvt-2.5.4.tar.gz"
+  sha256 "bb539d853ad27d6499acbe03f9f4686b8738c624b68d226e1794fa1358f1dd0e"
   license :cannot_represent # Adaptation of MPL-2.0
-  revision 1
   head "https://github.com/mvt-project/mvt.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "a194e0740eda32553525dbe106c93fba090603384e10b1c1025d0f5a25b311bd"
-    sha256 cellar: :any,                 arm64_ventura:  "3b71b307c051aa8def0ee12e0ee0b70980dea21b5399cb226d1695f2a180161a"
-    sha256 cellar: :any,                 arm64_monterey: "fe3e1e1d074321b9bc9e718a7ec9d14a7ff43f1dd56aba2ecf83c851092d5071"
-    sha256 cellar: :any,                 sonoma:         "e0cbc9a61e41272d705fef29ee42dd56db4f9c51c4dd202b71444e0d8e945f04"
-    sha256 cellar: :any,                 ventura:        "d4b6f437958f23de29725cb5f552aaa5993270154a801655e97c1cef9968b3dc"
-    sha256 cellar: :any,                 monterey:       "64b879f93fe8efef83bd01e81686907b0a8133f0b6ce3d8cc8e8be2b7229414b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "fecc6242df3514909a1789553cf3e38e584be35153e71e5f1e49d89d1984d0bb"
+    sha256 cellar: :any,                 arm64_sonoma:   "c8ffe44fe33fab85b1a096199142b82b3e60d4a9c61278dc1b4dadb8448f1632"
+    sha256 cellar: :any,                 arm64_ventura:  "08f7d90d39f957d989bf78ce9a52a0c0318ff2e484fca943b193290c676f0f17"
+    sha256 cellar: :any,                 arm64_monterey: "7b58b012a3c61ba10fd45529cfb74de4181ee3e626baff04d5909b7f8b9cf0f5"
+    sha256 cellar: :any,                 sonoma:         "4f3badbd0687dc0149d61afca3a2cdd75f536b3780e53c15140019a1db848805"
+    sha256 cellar: :any,                 ventura:        "21e5e751f862a5dbc67a8f8444825682e6090ca2d734899ba58ece0e51542538"
+    sha256 cellar: :any,                 monterey:       "d7a1c4ca7d3e8379a4a79a78e7d0a04fa2e520254e470b72a43b27e3500eef73"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a6b167ef9e4e88367e027284939b18baa7e828408fddd46f13c63d4493fa3940"
   end
 
   depends_on "certifi"
@@ -75,8 +74,8 @@ class Mvt < Formula
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/ee/b5/b43a27ac7472e1818c4bafd44430e69605baefe1f34440593e0332ec8b4d/packaging-24.0.tar.gz"
-    sha256 "eb82c5e3e56209074766e6885bb04b8c38a0c015d0a30036ebe7ece34c9989e9"
+    url "https://files.pythonhosted.org/packages/51/65/50db4dda066951078f0a96cf12f4b9ada6e4b811516bf0262c0f4f7064d4/packaging-24.1.tar.gz"
+    sha256 "026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002"
   end
 
   resource "pyahocorasick" do
@@ -105,8 +104,8 @@ class Mvt < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/86/ec/535bf6f9bd280de6a4637526602a146a68fde757100ecf8c9333173392db/requests-2.32.2.tar.gz"
-    sha256 "dd951ff5ecf3e3b3aa26b40703ba77495dab41da839ae72ef3c8e5d8e2433289"
+    url "https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz"
+    sha256 "55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760"
   end
 
   resource "rich" do
@@ -130,8 +129,8 @@ class Mvt < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/7a/50/7fd50a27caa0652cd4caf224aa87741ea41d3265ad13f010886167cfcc79/urllib3-2.2.1.tar.gz"
-    sha256 "d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"
+    url "https://files.pythonhosted.org/packages/43/6d/fa469ae21497ddc8bc93e5877702dca7cb8f911e337aca7452b5724f1bb6/urllib3-2.2.2.tar.gz"
+    sha256 "dd505485549a7a552833da5e6063639d0d177c04f23bc3864e41e5dc5f612168"
   end
 
   def install

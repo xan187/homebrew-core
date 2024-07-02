@@ -2,21 +2,21 @@ class Filebeat < Formula
   desc "File harvester to ship log files to Elasticsearch or Logstash"
   homepage "https://www.elastic.co/products/beats/filebeat"
   url "https://github.com/elastic/beats.git",
-      tag:      "v8.13.4",
-      revision: "b24ddd14c936c216817afed0cc7d0b23fd920194"
+      tag:      "v8.14.1",
+      revision: "c74896ed7acbb92921ee46fa5e3d66d575a8b0a9"
   # Outside of the "x-pack" folder, source code in a given file is licensed
   # under the Apache License Version 2.0
   license "Apache-2.0"
   head "https://github.com/elastic/beats.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "690d6689848d9160793dff50915ed93cade993422ff20b4b470566f6b8e5064d"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "a807e72e0b1db9a699423f7579cdd57758e5d3078aa229db18dbff2952896269"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "1a5dabe56710651d92736ca91bcdad53ef44d7ba68daca0d7c81d7ffaf5ab8a6"
-    sha256 cellar: :any_skip_relocation, sonoma:         "fc0cec25b9e05419b458b88523d1026bd81ceaabdde7ba7b2f1e558bcac4231b"
-    sha256 cellar: :any_skip_relocation, ventura:        "a69a46a774fa12f788abe55a26fba61dedbe8496035129f6a5b72fa413b360b1"
-    sha256 cellar: :any_skip_relocation, monterey:       "f3fe2fc09df9c2a8a61b4aceabaf477a447776c818cca7d400ab7b1d38bc16da"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "bd5f1793267203afba5c404af227b9caba2f66fb8b0b49b72ab0e7350ad9c1db"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "a786113d55ef2db57b2e3cb98500a406885023b1e97a20af31965cf08fa2b154"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "e165e2b8b619422795d13995b6bee1b74822526243c8d5d42e25b96cd022d43d"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "817024010572e92fc309fa0a0a4d831a119acc0838708f04c69efaed87a0e9c6"
+    sha256 cellar: :any_skip_relocation, sonoma:         "cb9e8da6169e029d1ba98b5571ead06ae175931dd3dc49fe09586aed3ad3de55"
+    sha256 cellar: :any_skip_relocation, ventura:        "afcd3144eb7a93e2f2c34e67d85d25fff32463123b43d749fcc20232cc52780a"
+    sha256 cellar: :any_skip_relocation, monterey:       "9db6f78fa4f137016caf59b99d77c4cc71c968002d0ca710e55c98a19581633c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "54e550f72b377a662f4159fb5f688651eaaa4838103aaa80d2f6f557043aeb09"
   end
 
   depends_on "go" => :build
@@ -32,8 +32,8 @@ class Filebeat < Formula
     cd "filebeat" do
       # don't build docs because it would fail creating the combined OSS/x-pack
       # docs and we aren't installing them anyway
-      inreplace "magefile.go", "mg.SerialDeps(Fields, Dashboards, Config, includeList, fieldDocs,",
-                               "mg.SerialDeps(Fields, Dashboards, Config, includeList,"
+      inreplace "magefile.go", "mg.SerialDeps(Fields, Dashboards, Config, GenerateModuleIncludeListGo, fieldDocs,",
+                               "mg.SerialDeps(Fields, Dashboards, Config, GenerateModuleIncludeListGo,"
 
       # prevent downloading binary wheels during python setup
       system "make", "PIP_INSTALL_PARAMS=--no-binary :all", "python-env"

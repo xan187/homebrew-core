@@ -1,23 +1,25 @@
 class Jackett < Formula
   desc "API Support for your favorite torrent trackers"
   homepage "https://github.com/Jackett/Jackett"
-  url "https://github.com/Jackett/Jackett/archive/refs/tags/v0.21.2503.tar.gz"
-  sha256 "9523b192d900300cd18b806f90085124c9ecabae819c00a6a4b0fc3c00a0ea49"
+  url "https://github.com/Jackett/Jackett/archive/refs/tags/v0.22.260.tar.gz"
+  sha256 "4987a84204eb649e5bb8f05b077a9ca96d4df5a385fc012676795be7f53aa236"
   license "GPL-2.0-only"
   head "https://github.com/Jackett/Jackett.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_ventura:  "e726637607bee444100e3e0d6ebf1c466da9049c4f1dadf9a0e69ccddb849084"
-    sha256 cellar: :any,                 arm64_monterey: "264c57646f384922eaa7dae83db33d2a894dc76114882d808593f99fe999ec13"
-    sha256 cellar: :any,                 ventura:        "4e6cdee3e2455377cd95f66bfc99f220963aabd1c851bf42721ab8b7cdf55044"
-    sha256 cellar: :any,                 monterey:       "27a4f539c29d04ac76070e73bdac6f01dcf8a0241da65b147d3f9a4fd67f5c6c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "26a1d455470a2c04326b9a3cff9f28ba0a232133fb1d2321449c8b12d3c0fb7c"
+    sha256 cellar: :any,                 arm64_sonoma:   "bd29f54f2b41e3a1de6e66b4665b37469ef55e6eabd30e8359eaaa3a2693d3c2"
+    sha256 cellar: :any,                 arm64_ventura:  "c264c393e1179534dddf293789538cf2a6811f5af96ed856cf5c2bf23c78b841"
+    sha256 cellar: :any,                 arm64_monterey: "f1460d615fc7f895a13e2f4fbe965ecb603e6a1a065f9c11fd26afdc5f4e9587"
+    sha256 cellar: :any,                 sonoma:         "09b2790ab3b3effd394aa07e3add9a3a97b28722f4103d0cb175461b95e62ad7"
+    sha256 cellar: :any,                 ventura:        "4a82fe153145cd9be7fc9df822c5463ffcceb979b90da223bebbbb7603b65285"
+    sha256 cellar: :any,                 monterey:       "5c80e4e373e8fe6add1a1122cf978ac4cba08e3985b9ae1b8a173739f24b0f7f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "57fef4bb0809ce6aa9419bf73689fc2d86c6bd7641a304b93306e5a2a3762859"
   end
 
-  depends_on "dotnet@6"
+  depends_on "dotnet"
 
   def install
-    dotnet = Formula["dotnet@6"]
+    dotnet = Formula["dotnet"]
     os = OS.mac? ? "osx" : OS.kernel_name.downcase
     arch = Hardware::CPU.intel? ? "x64" : Hardware::CPU.arch.to_s
 

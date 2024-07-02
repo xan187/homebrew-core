@@ -1,8 +1,8 @@
 class Kumactl < Formula
   desc "Kuma control plane command-line utility"
   homepage "https://kuma.io/"
-  url "https://github.com/kumahq/kuma/archive/refs/tags/2.7.3.tar.gz"
-  sha256 "08fc913cfe39cf8e70dd5aecdbdb2bd828ec8be0f9dfd9e8650828e6371d22c0"
+  url "https://github.com/kumahq/kuma/archive/refs/tags/2.8.0.tar.gz"
+  sha256 "334d6ed2f739e9a8fbdfa478d8e2461e5d439a2b0c5f73ae97406e490ffc44f6"
   license "Apache-2.0"
 
   livecheck do
@@ -11,13 +11,13 @@ class Kumactl < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "97aa64ddc52dbd53362b995f94d14e93b6e864ca6e43734152a3f013c7340c59"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "5c1e55865967c38924d9dc0d057b327ca50fa3c70506d0cabe8921116778efed"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "dbadf2d9d2dbb90ac7fa489ef87b135c8099d9cc88f273e6841c091cb67e7304"
-    sha256 cellar: :any_skip_relocation, sonoma:         "a6b6d999dc7bf84e0f12a708b8a7408eaaf03d78e3b5b6ab6003c5bd598fad76"
-    sha256 cellar: :any_skip_relocation, ventura:        "7b14ccabedd80a307cea02cf4c1553bac01d74efb2c5087f1236de15b4eeda6f"
-    sha256 cellar: :any_skip_relocation, monterey:       "879a942974fe9e03cb293a3491d5d5a34416af40685e2a4c0173bba4b5b1457c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "9ef99220b8ac264efabb67963aae9f4a8ad614cdb96b1943a2f22b26da98b367"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "fcd72e4dcf9ba20d7fdbb59f1f845cfb492b62b1c57f8e111aa53f7558e1d719"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "d1de80b70f455fbdc1de7de54ccf576fa84ddd481615a1d1617d6b5532c83002"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "cbc4c775e5315b722e570ed7ac5d20e279f152611968b033a32650cdd8fbf48a"
+    sha256 cellar: :any_skip_relocation, sonoma:         "b4144d5ca02850eb513534e7a55413378826ba8f854eae7b1a9c6298781999dc"
+    sha256 cellar: :any_skip_relocation, ventura:        "d14737216cda856eb600a9887843679bb859fb59747927d954fc38bdc5ca62be"
+    sha256 cellar: :any_skip_relocation, monterey:       "7873ce759b526ae1d7b7e7a8e2a796bc8fa78a3ce2264cc47c92d6ca478ac3dc"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "97c1d76ebde9c4e75927e936db3c8632f4f971a8ad118b1d39be0e74053c281a"
   end
 
   depends_on "go" => :build

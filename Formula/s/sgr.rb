@@ -6,16 +6,16 @@ class Sgr < Formula
   url "https://files.pythonhosted.org/packages/dd/61/7d6cf822edb39d2426f6f185c7fc4de0ad4b80e0da3e5f50d94952795c11/splitgraph-0.3.12.tar.gz"
   sha256 "76a4476002b5ac5a2b9fba36b6fcffd85b878bcc25f5aae411387e04a5532459"
   license "Apache-2.0"
-  revision 11
+  revision 12
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "007eaa707a19cbb7fb1c1ab50681af74d84f68956e5f72675ca50ce48896f977"
-    sha256 cellar: :any,                 arm64_ventura:  "a33316fdd214f985e1e04fab73f0a710e1b48210ec216454f7689d50c0f6be25"
-    sha256 cellar: :any,                 arm64_monterey: "137d66e49c8f11df0145bd80bec50ed06f579b1ab546798cd4abfda125893e2c"
-    sha256 cellar: :any,                 sonoma:         "8d39ae2429a9ca2203db82a34d2dd6073d76f90a40a42ae88c157b7a56c042f7"
-    sha256 cellar: :any,                 ventura:        "c8b301c0ad724fe2a386eadb6650337632e4ff443f9df42e2cf09b398a784821"
-    sha256 cellar: :any,                 monterey:       "ea07150c55489e9f3b8e7389d8dee0c00912b1f664d53afd71785a9758e14f25"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "9621c400f9407246cfe146baa2cbeacb13399bf9f6208e751a2b5d89fb95cba6"
+    sha256 cellar: :any,                 arm64_sonoma:   "307cb0fe6d3dc16b5015834648bfbe002dae28edcb3277129db1a8fae787e20c"
+    sha256 cellar: :any,                 arm64_ventura:  "8ea136e242a1657b9659d43de45387b1a1d2ba62cfa2c50db5cc0512d3565067"
+    sha256 cellar: :any,                 arm64_monterey: "c2dd65f7bf656db480a9f73f500a71a29e81f896d973a96ca2f57d741384ee9b"
+    sha256 cellar: :any,                 sonoma:         "83e352482d42295813c076f9e7d081784075bc04633cfe7b40d1a2b60cfea9a8"
+    sha256 cellar: :any,                 ventura:        "5753957d007902c1b06387830292724f24465dc6aa653b4e5a90ccfc814ef60d"
+    sha256 cellar: :any,                 monterey:       "741bfd746d6e30b17cfa61476453776281a8aafebd3395cca842dc056c3cb455"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "45aff3df501154d9f7b624139cfd90c391dea090c73ab5bbff1b99a2d382a0f2"
   end
 
   depends_on "cython" => :build # TODO: remove with newer `pglast` (4.4+)
@@ -75,8 +75,8 @@ class Sgr < Formula
   end
 
   resource "docker" do
-    url "https://files.pythonhosted.org/packages/25/14/7d40f8f64ceca63c741ee5b5611ead4fb8d3bcaf3e6ab57d2ab0f01712bc/docker-7.0.0.tar.gz"
-    sha256 "323736fb92cd9418fc5e7133bc953e11a9da04f4483f828b527db553f1e7e5a3"
+    url "https://files.pythonhosted.org/packages/91/9b/4a2ea29aeba62471211598dac5d96825bb49348fa07e906ea930394a83ce/docker-7.1.0.tar.gz"
+    sha256 "ad8c70e6e3f8926cb8a92619b832b4ea5299e2831c14284663184e200546fa6c"
   end
 
   resource "idna" do
@@ -110,8 +110,8 @@ class Sgr < Formula
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/ee/b5/b43a27ac7472e1818c4bafd44430e69605baefe1f34440593e0332ec8b4d/packaging-24.0.tar.gz"
-    sha256 "eb82c5e3e56209074766e6885bb04b8c38a0c015d0a30036ebe7ece34c9989e9"
+    url "https://files.pythonhosted.org/packages/51/65/50db4dda066951078f0a96cf12f4b9ada6e4b811516bf0262c0f4f7064d4/packaging-24.1.tar.gz"
+    sha256 "026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002"
   end
 
   resource "parsimonious" do
@@ -135,13 +135,13 @@ class Sgr < Formula
   end
 
   resource "pydantic" do
-    url "https://files.pythonhosted.org/packages/1f/74/0d009e056c2bd309cdc053b932d819fcb5ad3301fc3e690c097e1de3e714/pydantic-2.7.1.tar.gz"
-    sha256 "e9dbb5eada8abe4d9ae5f46b9939aead650cd2b68f249bb3a8139dbe125803cc"
+    url "https://files.pythonhosted.org/packages/0d/fc/ccd0e8910bc780f1a4e1ab15e97accbb1f214932e796cff3131f9a943967/pydantic-2.7.4.tar.gz"
+    sha256 "0c84efd9548d545f63ac0060c1e4d39bb9b14db8b3c0652338aecc07b5adec52"
   end
 
   resource "pydantic-core" do
-    url "https://files.pythonhosted.org/packages/e9/23/a609c50e53959eb96393e42ae4891901f699aaad682998371348650a6651/pydantic_core-2.18.2.tar.gz"
-    sha256 "2e29d20810dfc3043ee13ac7d9e25105799817683348823f305ab3f349b9386e"
+    url "https://files.pythonhosted.org/packages/02/d0/622cdfe12fb138d035636f854eb9dc414f7e19340be395799de87c1de6f6/pydantic_core-2.18.4.tar.gz"
+    sha256 "ec3beeada09ff865c344ff3bc2f427f5e6c26401cc6113d77e372c3fdac73864"
   end
 
   resource "referencing" do
@@ -150,8 +150,8 @@ class Sgr < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/86/ec/535bf6f9bd280de6a4637526602a146a68fde757100ecf8c9333173392db/requests-2.32.2.tar.gz"
-    sha256 "dd951ff5ecf3e3b3aa26b40703ba77495dab41da839ae72ef3c8e5d8e2433289"
+    url "https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz"
+    sha256 "55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760"
   end
 
   resource "rpds-py" do
@@ -200,13 +200,13 @@ class Sgr < Formula
   end
 
   resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/f6/f3/b827b3ab53b4e3d8513914586dcca61c355fa2ce8252dea4da56e67bf8f2/typing_extensions-4.11.0.tar.gz"
-    sha256 "83f085bd5ca59c80295fc2a82ab5dac679cbe02b9f33f7d83af68e241bea51b0"
+    url "https://files.pythonhosted.org/packages/df/db/f35a00659bc03fec321ba8bce9420de607a1d37f8342eee1863174c69557/typing_extensions-4.12.2.tar.gz"
+    sha256 "1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/7a/50/7fd50a27caa0652cd4caf224aa87741ea41d3265ad13f010886167cfcc79/urllib3-2.2.1.tar.gz"
-    sha256 "d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"
+    url "https://files.pythonhosted.org/packages/43/6d/fa469ae21497ddc8bc93e5877702dca7cb8f911e337aca7452b5724f1bb6/urllib3-2.2.2.tar.gz"
+    sha256 "dd505485549a7a552833da5e6063639d0d177c04f23bc3864e41e5dc5f612168"
   end
 
   # Switch build-system to poetry-core to avoid rust dependency on Linux.

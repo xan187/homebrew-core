@@ -1,12 +1,18 @@
 class Lsix < Formula
   desc "Shows thumbnails in terminal using sixel graphics"
   homepage "https://github.com/hackerb9/lsix"
-  url "https://github.com/hackerb9/lsix/archive/refs/tags/1.8.2.tar.gz"
-  sha256 "79bf81bd66747a9fab1692c52dcda004fe500fbae118dc0a6bdbc6d6aefa20c1"
+  url "https://github.com/hackerb9/lsix/archive/refs/tags/1.9.1.tar.gz"
+  sha256 "310e25389da13c19a0793adcea87f7bc9aa8acc92d9534407c8fbd5227a0e05d"
   license "GPL-3.0-only"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "e85eb94ac6efc8a2a31093981b58d60d5eb0fb0845ab14c5afdc89a22f91c01c"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "24d1e4ecae9bc35d3c0c9c027c9aa8dd08b85e77494e2dece0fda02274e2a4a4"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "24d1e4ecae9bc35d3c0c9c027c9aa8dd08b85e77494e2dece0fda02274e2a4a4"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "24d1e4ecae9bc35d3c0c9c027c9aa8dd08b85e77494e2dece0fda02274e2a4a4"
+    sha256 cellar: :any_skip_relocation, sonoma:         "24d1e4ecae9bc35d3c0c9c027c9aa8dd08b85e77494e2dece0fda02274e2a4a4"
+    sha256 cellar: :any_skip_relocation, ventura:        "24d1e4ecae9bc35d3c0c9c027c9aa8dd08b85e77494e2dece0fda02274e2a4a4"
+    sha256 cellar: :any_skip_relocation, monterey:       "24d1e4ecae9bc35d3c0c9c027c9aa8dd08b85e77494e2dece0fda02274e2a4a4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f8bde10359a7cad3e60dbd77bbb0e89eeefbc7f914de6ac27d3e038681c90523"
   end
 
   depends_on "bash"

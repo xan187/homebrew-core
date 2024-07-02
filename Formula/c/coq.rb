@@ -1,8 +1,8 @@
 class Coq < Formula
   desc "Proof assistant for higher-order logic"
   homepage "https://coq.inria.fr/"
-  url "https://github.com/coq/coq/releases/download/V8.19.1/coq-8.19.1.tar.gz"
-  sha256 "1e535ed924234f18394efce94b12d9247a67e8af29241eb79615804160f21674"
+  url "https://github.com/coq/coq/releases/download/V8.19.2/coq-8.19.2.tar.gz"
+  sha256 "18035624bcda4f8cffe5f348e02f0ae2503af1c40de165788d7d45578e6c5725"
   license "LGPL-2.1-only"
   head "https://github.com/coq/coq.git", branch: "master"
 
@@ -12,13 +12,13 @@ class Coq < Formula
   end
 
   bottle do
-    sha256 arm64_sonoma:   "a93180d61587f2b1de891d1e44209e3a6b4c3309358237a5c8ee51512b37e1ee"
-    sha256 arm64_ventura:  "64d2843a331221922ecb451d7fcf9e9452e11d6cafc989f7a72f5ddd5fb95731"
-    sha256 arm64_monterey: "dffe71678cacfc2a3b632e75eee1d5b1c7984bf9ddc2a4afe4e9df454709e782"
-    sha256 sonoma:         "890818aa86192050cb0aef368a339653988bc473b526b9610b34487bac0668ff"
-    sha256 ventura:        "d6285f8393333c3e1b83f7948f25cbd4a939d0011d9f1783fb83602ddf98fda9"
-    sha256 monterey:       "d417eff81ca483b9832493dba3f9e6653e5eea1b9fcffe1c645725edd2db48f3"
-    sha256 x86_64_linux:   "b9979855e4fe5fbca8ad5927c0fd06e041223ae252e148cf98e042106dd23708"
+    sha256 arm64_sonoma:   "0f0c69959c6fbb5ad52e0e450c944eabb3f18820cde79d243e1610fd69991398"
+    sha256 arm64_ventura:  "e11d1435807f4c6f7b8d78b1227fc84f468fb30ab8238cffacd08b1ced35d608"
+    sha256 arm64_monterey: "cc5a5286a2773c13a8f236668effa6e4d4ad7e3dbb1420c938230dcff167d749"
+    sha256 sonoma:         "634040df2917f725db2ded48ff6d9a905133d78f9d50957b6bd521cf531d61b0"
+    sha256 ventura:        "68a39ec1b317ebdc28b9be0d355e4bd49c580c41cc950cdfc1841fb238e3fb7f"
+    sha256 monterey:       "0994ccb597ba1d4729e542eba344ead8aaac81a78ccc03ef93188cb4c3d5a697"
+    sha256 x86_64_linux:   "53292ddc6831b7974932e6211731aaa648fbef06b8ca3852eee0cdbfc57cdb17"
   end
 
   depends_on "dune" => :build
@@ -31,6 +31,10 @@ class Coq < Formula
   uses_from_macos "unzip" => :build
 
   def install
+    # Work around for https://github.com/Homebrew/homebrew-test-bot/issues/805
+    if ENV["HOMEBREW_GITHUB_ACTIONS"] && !(Formula["ocaml-findlib"].etc/"findlib.conf").exist?
+      ENV["OCAMLFIND_CONF"] = Formula["ocaml-findlib"].opt_libexec/"findlib.conf"
+    end
     ENV.prepend_path "OCAMLPATH", Formula["ocaml-zarith"].opt_lib/"ocaml"
     ENV.prepend_path "OCAMLPATH", Formula["ocaml-findlib"].opt_lib/"ocaml"
     system "./configure", "-prefix", prefix,
@@ -49,6 +53,10 @@ class Coq < Formula
   end
 
   test do
+    # Work around for https://github.com/Homebrew/homebrew-test-bot/issues/805
+    if ENV["HOMEBREW_GITHUB_ACTIONS"] && !(Formula["ocaml-findlib"].etc/"findlib.conf").exist?
+      ENV["OCAMLFIND_CONF"] = Formula["ocaml-findlib"].opt_libexec/"findlib.conf"
+    end
     (testpath/"testing.v").write <<~EOS
       Require Coq.micromega.Lia.
       Require Coq.ZArith.ZArith.

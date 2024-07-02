@@ -1,9 +1,9 @@
 class Glassfish < Formula
   desc "Java EE application server"
   homepage "https://glassfish.org/"
-  url "https://download.eclipse.org/ee4j/glassfish/glassfish-7.0.14.zip"
-  mirror "https://github.com/eclipse-ee4j/glassfish/releases/download/7.0.14/glassfish-7.0.14.zip"
-  sha256 "efcb6e86a9418fe8b33f0b982b52c56e0c7e63d16f91a324a39047a50b8bf2f4"
+  url "https://download.eclipse.org/ee4j/glassfish/glassfish-7.0.15.zip"
+  mirror "https://github.com/eclipse-ee4j/glassfish/releases/download/7.0.15/glassfish-7.0.15.zip"
+  sha256 "5bb3eb534cb1fbbb0df40d9b872351849c52f7fa8226cc6521288a4ca7fa4f03"
   license "EPL-2.0"
 
   livecheck do
@@ -12,10 +12,18 @@ class Glassfish < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "eccb506fc6021318a113c083245af2945b6815ec8b5514f158ffde53d6138b84"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "b07289d1264ca7424b461c91615da75efe7e838c55a0d0ff1570418629489806"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "b07289d1264ca7424b461c91615da75efe7e838c55a0d0ff1570418629489806"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "b07289d1264ca7424b461c91615da75efe7e838c55a0d0ff1570418629489806"
+    sha256 cellar: :any_skip_relocation, sonoma:         "b07289d1264ca7424b461c91615da75efe7e838c55a0d0ff1570418629489806"
+    sha256 cellar: :any_skip_relocation, ventura:        "b07289d1264ca7424b461c91615da75efe7e838c55a0d0ff1570418629489806"
+    sha256 cellar: :any_skip_relocation, monterey:       "b07289d1264ca7424b461c91615da75efe7e838c55a0d0ff1570418629489806"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "0468d3fc76d5a897d00521edc756ef5a419bd1c732c68bad9f5c7570eda9f3ed"
   end
 
-  depends_on "openjdk"
+  # no java 22 support for glassfish 7.x
+  # https://github.com/eclipse-ee4j/glassfish/blob/master/docs/website/src/main/resources/download.md
+  depends_on "openjdk@21"
 
   conflicts_with "payara", because: "both install the same scripts"
 
@@ -26,7 +34,7 @@ class Glassfish < Formula
     libexec.install Dir["*"]
     bin.install Dir["#{libexec}/bin/*"]
 
-    env = Language::Java.overridable_java_home_env
+    env = Language::Java.overridable_java_home_env("21")
     env["GLASSFISH_HOME"] = libexec
     bin.env_script_all_files libexec/"bin", env
 

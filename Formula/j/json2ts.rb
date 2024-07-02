@@ -3,18 +3,18 @@ require "language/node"
 class Json2ts < Formula
   desc "Compile JSONSchema to TypeScript type declarations"
   homepage "https://github.com/bcherny/json-schema-to-typescript"
-  url "https://registry.npmjs.org/json-schema-to-typescript/-/json-schema-to-typescript-14.0.4.tgz"
-  sha256 "d273385c79026f1b3dde358fd5be7e034fcc16339173e34b45404af2eaa66ebc"
+  url "https://registry.npmjs.org/json-schema-to-typescript/-/json-schema-to-typescript-14.1.0.tgz"
+  sha256 "76e8e65b8a4d0d3965e08a069d53cce1cc301074a58c7e14f63b850c8388593b"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "632391d512fb2a71795a5c050cf2ba701aeae31a77ad474a9279ae84a903c455"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "632391d512fb2a71795a5c050cf2ba701aeae31a77ad474a9279ae84a903c455"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "632391d512fb2a71795a5c050cf2ba701aeae31a77ad474a9279ae84a903c455"
-    sha256 cellar: :any_skip_relocation, sonoma:         "0667b3259f07123cd9543d357d612e6bc3a6510993d0367b4c07a01d4cee3350"
-    sha256 cellar: :any_skip_relocation, ventura:        "0667b3259f07123cd9543d357d612e6bc3a6510993d0367b4c07a01d4cee3350"
-    sha256 cellar: :any_skip_relocation, monterey:       "0667b3259f07123cd9543d357d612e6bc3a6510993d0367b4c07a01d4cee3350"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "632391d512fb2a71795a5c050cf2ba701aeae31a77ad474a9279ae84a903c455"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "356ec8e580d8ddf1640cc7674388c8ea3dc904ff8f9195409406f14f8e969cc7"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "356ec8e580d8ddf1640cc7674388c8ea3dc904ff8f9195409406f14f8e969cc7"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "356ec8e580d8ddf1640cc7674388c8ea3dc904ff8f9195409406f14f8e969cc7"
+    sha256 cellar: :any_skip_relocation, sonoma:         "431a220f4b5354bef7c66a5ecb1cc7ea675a3a308a220dbbfa67e619fc484bb4"
+    sha256 cellar: :any_skip_relocation, ventura:        "431a220f4b5354bef7c66a5ecb1cc7ea675a3a308a220dbbfa67e619fc484bb4"
+    sha256 cellar: :any_skip_relocation, monterey:       "431a220f4b5354bef7c66a5ecb1cc7ea675a3a308a220dbbfa67e619fc484bb4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "21abaff39c354b3078918f7e985836c2c7a9ac7dd4b89ad9ddd11595b9537a51"
   end
 
   depends_on "node"

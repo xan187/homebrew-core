@@ -3,8 +3,8 @@ require "language/node"
 class Artillery < Formula
   desc "Cloud-native performance & reliability testing for developers and SREs"
   homepage "https://artillery.io/"
-  url "https://registry.npmjs.org/artillery/-/artillery-2.0.14.tgz"
-  sha256 "fd006e6023268afea2ea89756a996f8ad7643e4b4c1c318e64426b95e06cc72e"
+  url "https://registry.npmjs.org/artillery/-/artillery-2.0.16.tgz"
+  sha256 "72f0a777c9cd206ab72c75d3f8f4579ce987e839128fed3f83b2b142e5985eac"
   license "MPL-2.0"
 
   livecheck do
@@ -13,13 +13,13 @@ class Artillery < Formula
   end
 
   bottle do
-    sha256                               arm64_sonoma:   "fb6167c3edb3fd06f9d17107efc81768868fc33047cb41c71c9367b8c04bd7e8"
-    sha256                               arm64_ventura:  "2e099789abe4c1c369b2ca0b7de432fddfb9a2ee7980d4df82c93fdc3daea768"
-    sha256                               arm64_monterey: "6f199ec8bd7dcf0c70854d3d69ff8f3022cd4a5c71b725260d73b4c1f0bf711b"
-    sha256                               sonoma:         "10c7072ddf3171a26a8b43a20755e1746ea5335fe92059b9581d7115a44a0b8e"
-    sha256                               ventura:        "ee107b8247672ed5d286ab07d2185c87791d91ddd1923863d30161f4637f7a0a"
-    sha256                               monterey:       "dbf274365a7b5cea1f363d91ee7277591fea04aae12ad5df0ae03bbe03887214"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f3d2c8cea815c26558bf49bb41253896ba5b2c016372e97174f64f740c44d755"
+    sha256                               arm64_sonoma:   "788f7d6043879016c3ca70d706fa3a427ca923559feb63643458e67a14c65f64"
+    sha256                               arm64_ventura:  "0c4aaed820d67013421c4635b96fccf235f69561ad7957d831982850d49c6546"
+    sha256                               arm64_monterey: "081231b95808aed1f09a2baf136c706fb59703ad0525f1d00706d2361d671c03"
+    sha256                               sonoma:         "3c0013488b655fd517586347541f15c8d2c5f611e069a04dd2073c576f26fd76"
+    sha256                               ventura:        "4b4b2cbfba8914ba1c82e60133cb4b3132fc520d8bbfe61c8056ba43b4877360"
+    sha256                               monterey:       "a280767b9422afc9213bec89ecf45b5c2758c93bad44c3c1b7817f8cf3fb8612"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2bf429c1a47a63aa69d69ec9c0716e7c829916c45288760b8e705180dfebad3f"
   end
 
   depends_on "node"

@@ -4,16 +4,16 @@ class Networkit < Formula
   url "https://github.com/networkit/networkit/archive/refs/tags/11.0.tar.gz"
   sha256 "3cba54b384db4adfd88c984805647a3b74ed52168b6178cba6dd58f1cbd73120"
   license "MIT"
+  revision 1
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_sonoma:   "aeca1389873b623451264b1fa1d44d523c63cb9ea2728c64e312b7baa91eb24a"
-    sha256 cellar: :any,                 arm64_ventura:  "c4399d2cadbc56465ab7d3b6381eb2102f7900196d1afcc9c26fde900c31e4d2"
-    sha256 cellar: :any,                 arm64_monterey: "e73e3ffd843c1f2174c0bbefd721ba0309cb41d9783866aeaa8fc9c512822efb"
-    sha256 cellar: :any,                 sonoma:         "3aaf130e9d503254b0aa715c8fa879edb13ce048a7ac5a34b8e7d0ac6bf6303a"
-    sha256 cellar: :any,                 ventura:        "1f45434288fe627d17555645be06405a2d1a62c36404bf466b89c0f2227048de"
-    sha256 cellar: :any,                 monterey:       "02e26531757bb9412e6e3ec9f24468fffef797377de1a955e484393b1a2707ae"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c53c33bf47a6ce53d4181b787fa233096a406ec0b3de7f13d24d8d987f22f36c"
+    sha256 cellar: :any,                 arm64_sonoma:   "70c1c15cd23f64eebc96c298bd0f14568713859c88a4a0d3c4e3750162ff16cc"
+    sha256 cellar: :any,                 arm64_ventura:  "440bf3494d183b0fedd042d315715cd846309e1e4376989b67b61d1ac3a96737"
+    sha256 cellar: :any,                 arm64_monterey: "3d760b478449d4868f3b1f2512ae7de755143bdedb18e2fa7049c9e81c328fea"
+    sha256 cellar: :any,                 sonoma:         "07ec12c1a32223d664983d98c5631b34e078c50f0d0b9a840c338625d754dd1e"
+    sha256 cellar: :any,                 ventura:        "1e283912462220c5ecc227563a3a47619d3f8861e1cb8c63a53e4e6f2b17d625"
+    sha256 cellar: :any,                 monterey:       "4465ee60841f24f90c56c77c49cbbc458aa91d4119950209f3c889991f8c46f4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d6ccf846d0116fd132d46f3b8f8a9348f9edc46cec5d927e9b6f368ed1a310dc"
   end
 
   depends_on "cmake" => :build
@@ -27,8 +27,18 @@ class Networkit < Formula
   depends_on "python@3.12"
   depends_on "scipy"
 
+  on_macos do
+    depends_on "libomp"
+  end
+
   def python3
     which("python3.12")
+  end
+
+  # Add compat for numpy 2.0
+  patch do
+    url "https://github.com/networkit/networkit/commit/165503580caac864c7a31558b4c5fee27bcb007e.patch?full_index=1"
+    sha256 "67bd2d1fe3ebccb42ccdd1f7cf5aeea40967caa4e9bc96cc69737dc14ffa9654"
   end
 
   def install

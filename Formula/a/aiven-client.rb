@@ -3,20 +3,19 @@ class AivenClient < Formula
 
   desc "Official command-line client for Aiven"
   homepage "https://docs.aiven.io/docs/tools/cli"
-  url "https://files.pythonhosted.org/packages/21/c2/3b05dce5bfce7fa1081ee460002ecf65e66349c49767c17cc423f0ab9e68/aiven_client-4.1.1.tar.gz"
-  sha256 "f2ccd6b140cfd86765e81cfcc2a949f030d9ec494b2c32802105d91b47e15ee5"
+  url "https://files.pythonhosted.org/packages/fd/45/9d082f86318981c254f5c784b0dda9d673cc30f992cc4f6bf69cecb08aec/aiven_client-4.2.1.tar.gz"
+  sha256 "456e91afe8e97bc4d0adb6f784888a6f241a3d47bfef4008b2938b9d9a128cb3"
   license "Apache-2.0"
-  revision 2
   head "https://github.com/aiven/aiven-client.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "a547860dfe1bc09d099f4d400acf5107da0d6f3e52870bad6aebe418c4aa8f0c"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "2dad221d992e0b316a530d39031297ecd4ece414fde7edd86fe68d30077b4f35"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "0cfe683cd8f1c78e45886737427df191dd9ae800f7b0a90be1be207872168ecf"
-    sha256 cellar: :any_skip_relocation, sonoma:         "a5313fc680e3cba19dc08259a6856223d77103fc0abf4b330ae12d023c176f44"
-    sha256 cellar: :any_skip_relocation, ventura:        "df001ae951eda8da77365d1113a8f378a5da7622b7b802965436016aefb7e516"
-    sha256 cellar: :any_skip_relocation, monterey:       "2ca2e283da298f2e8710c35bcaa4a5553ac078e773b7379f340bf50ef2361fa0"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c87914a85699a0a87843c1e0fac621262d5eed47259be0b178346d9e3bd2db2a"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "c555d93477f9214d649bd15bda819c9f4cd77cc8fada4e3047cc4957abf77d08"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "c555d93477f9214d649bd15bda819c9f4cd77cc8fada4e3047cc4957abf77d08"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "c555d93477f9214d649bd15bda819c9f4cd77cc8fada4e3047cc4957abf77d08"
+    sha256 cellar: :any_skip_relocation, sonoma:         "c555d93477f9214d649bd15bda819c9f4cd77cc8fada4e3047cc4957abf77d08"
+    sha256 cellar: :any_skip_relocation, ventura:        "c555d93477f9214d649bd15bda819c9f4cd77cc8fada4e3047cc4957abf77d08"
+    sha256 cellar: :any_skip_relocation, monterey:       "c555d93477f9214d649bd15bda819c9f4cd77cc8fada4e3047cc4957abf77d08"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "14c976c89d9292fb179899bd6cff643db17ad7dedaa2a9478ae160d5716ff089"
   end
 
   depends_on "certifi"
@@ -33,8 +32,8 @@ class AivenClient < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/d8/c1/f32fb7c02e7620928ef14756ff4840cae3b8ef1d62f7e596bc5413300a16/requests-2.32.1.tar.gz"
-    sha256 "eb97e87e64c79e64e5b8ac75cee9dd1f97f49e289b083ee6be96268930725685"
+    url "https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz"
+    sha256 "55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760"
   end
 
   resource "requests-toolbelt" do
@@ -43,8 +42,8 @@ class AivenClient < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/7a/50/7fd50a27caa0652cd4caf224aa87741ea41d3265ad13f010886167cfcc79/urllib3-2.2.1.tar.gz"
-    sha256 "d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"
+    url "https://files.pythonhosted.org/packages/43/6d/fa469ae21497ddc8bc93e5877702dca7cb8f911e337aca7452b5724f1bb6/urllib3-2.2.2.tar.gz"
+    sha256 "dd505485549a7a552833da5e6063639d0d177c04f23bc3864e41e5dc5f612168"
   end
 
   def install

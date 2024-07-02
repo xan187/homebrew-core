@@ -1,18 +1,18 @@
 class Pgvector < Formula
   desc "Open-source vector similarity search for Postgres"
   homepage "https://github.com/pgvector/pgvector"
-  url "https://github.com/pgvector/pgvector/archive/refs/tags/v0.7.0.tar.gz"
-  sha256 "1b5503a35c265408b6eb282621c5e1e75f7801afc04eecb950796cfee2e3d1d8"
+  url "https://github.com/pgvector/pgvector/archive/refs/tags/v0.7.2.tar.gz"
+  sha256 "617fba855c9bcb41a2a9bc78a78567fd2e147c72afd5bf9d37b31b9591632b30"
   license "PostgreSQL"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "ab47a8f281f589175d1288d5b9b32cda768a471c3884406c0dd549a494ab0ce6"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "8a1beb6a1884c509434f42d330ee8145305e904d19865ef371e0339b1fdddc37"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "e5a319dce4f149ca3ca3a7c79135706c77d88352b2d5a2850fb16d61651509eb"
-    sha256 cellar: :any_skip_relocation, sonoma:         "757221c0bcaf2e6fb5134987a09691b9fc0efdf4c6c4c67b591ddc4fd93d7936"
-    sha256 cellar: :any_skip_relocation, ventura:        "dc80380565d1a6bc3dbed361ddb00793310344683108bac4a1ee383fc2f933b9"
-    sha256 cellar: :any_skip_relocation, monterey:       "df847410a1b876eac5732a770daf7c574e91c910a9877bcfce603a47eced407d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "04669a47f98c031ebf556d8225e7c38d95e002ca1e9b1ed7904bc9c12da1216d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "0eed4f81fcd136fde91361839255f29fb81df63a8796c2cde289df7d98961eb0"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "55d7b398d4fabf284531305f6413125458adec0b73cf60973fb58eeb58bef603"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "eb04d8d99d8c66f9b44cb2f8f7c523643791151797f5ebd37166ee11f4e48ca9"
+    sha256 cellar: :any_skip_relocation, sonoma:         "4ad636a1cbfdf65498bede546865033798d6aa15f0f8448d6b40bf6e8f6f13e0"
+    sha256 cellar: :any_skip_relocation, ventura:        "6e8c122e1a6ce76fe1af6830b31a288a30362199fb6ba84f0c9887d240f467e2"
+    sha256 cellar: :any_skip_relocation, monterey:       "47239b5717b61c2c362c41495947925d8ea1355c10a5b29578ab2fd67eb07568"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "66d4f32b8830ca8c40c7cf3486aac4f8421a0cb980b89682ebff457946fafc94"
   end
 
   depends_on "postgresql@14"

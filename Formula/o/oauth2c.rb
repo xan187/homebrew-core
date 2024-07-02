@@ -7,19 +7,24 @@ class Oauth2c < Formula
   head "https://github.com/cloudentity/oauth2c.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "adf7482bf4878de6be4b565c694305db011ddb3431ab01916a4df0d9a166e82b"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "2d5892cdeebafff738bc7b0066a8ea29f25a886b99478151fa09ead5b6f5d2c4"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "f4263251f3c53acb9b631fc589833617cb2031228c024d2a774d37f70ad1877c"
-    sha256 cellar: :any_skip_relocation, sonoma:         "927e208079445a4e8cbf5b60d447c1498f92ef79de0c9f92184a60954645b8f4"
-    sha256 cellar: :any_skip_relocation, ventura:        "3ec37d27d8756e4bc4d52fc4737a8044a42614e35fe8dff171ba0b78c17c3d84"
-    sha256 cellar: :any_skip_relocation, monterey:       "1e6e3dbf12650211722d69f574f14cfac241458df742667ffadacddb03b95ec8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e77999d0705e67d372c69525395b11d3e2768c1fe0d3a1754871592c7e78633f"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "4fb8e261a101b3fd7ea005339c75b3dc513913312769d6d1378e632a4d18e130"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "1e576794a359b064a1a0b37068b0b1822d4f95dd526b23f6985431ee13d1613a"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "9dd32fb7dd4e620ed93f22d30ae79e1a987b2106ff0c6c2fb9dfb8a937dd50ed"
+    sha256 cellar: :any_skip_relocation, sonoma:         "7de2d621c168aee33ed3500492d1cbb5c0aaf24c23538431eac255f8077d6a27"
+    sha256 cellar: :any_skip_relocation, ventura:        "bd12f2cd324555314280279d9dc82d2f04bf5badcb22482068011e172a7b6272"
+    sha256 cellar: :any_skip_relocation, monterey:       "e40e024cb93e84d1a88dcdf50e814fbfe8d80b272ec82f0001d487eb4a83e35c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "7109870bc9261198f43b24163591e44f93445ee3cad8c5969f7912afb65d4fa2"
   end
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w")
+    ldflags = "-s -w -X main.commit= -X main.version=#{version} -X main.date=#{time.iso8601}"
+
+    system "go", "build", *std_go_args(ldflags:)
+
+    generate_completions_from_executable(bin/"oauth2c", "completion")
   end
 
   test do

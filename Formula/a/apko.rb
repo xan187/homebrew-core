@@ -1,8 +1,8 @@
 class Apko < Formula
   desc "Build OCI images from APK packages directly without Dockerfile"
   homepage "https://github.com/chainguard-dev/apko"
-  url "https://github.com/chainguard-dev/apko/archive/refs/tags/v0.14.1.tar.gz"
-  sha256 "5aa15316e6eb54474d7177145b7a07949001246a6689b120df551a8b1faeb3da"
+  url "https://github.com/chainguard-dev/apko/archive/refs/tags/v0.14.7.tar.gz"
+  sha256 "2615f3844cb180db4a346f526dbb2385ef2eae3c2b74b49e40fb71d2b11d0496"
   license "Apache-2.0"
   head "https://github.com/chainguard-dev/apko.git", branch: "main"
 
@@ -15,13 +15,13 @@ class Apko < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "b3e53a0ce8cc1752880192f1f09253e10b2376f5274e3c267a10cb326ff6e041"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "85655e060831f23580088975fea5d19480abb346ea68a3d9f530735198540672"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "32ceafda30436ca8d1359de695e3410c5a1f65b58aa9bab3d96868ed975ec159"
-    sha256 cellar: :any_skip_relocation, sonoma:         "a9da8283b6459e7dadbcb9c700aad00cec3063aa2cc80ee10fd56dd5d3c89192"
-    sha256 cellar: :any_skip_relocation, ventura:        "75a1f2ae0b258fdb18ea658b9487d00e2007aad57e0bb73ad7b62d8a0f3e80c4"
-    sha256 cellar: :any_skip_relocation, monterey:       "021428f47293baa1d7195f8a947ff65521937e788fa4138a54134280674ceff9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e70013fff21b718eba863c5e044333dea3f379926839543db2aa04e04c9a7c5a"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "ec0b33258fcd6ea9901c25932f9fe09bbe2824a1258e77b056f0c788fd7ab053"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "37a686d92b833950fa9ed0b5bbb8e03373ff305af777b2093907c1759b44bdda"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "13304d996f28b84c59e1bb7f4e5d5ea8ae61bd82eeff9d7d00417e3eff93054f"
+    sha256 cellar: :any_skip_relocation, sonoma:         "5342935d4d21e32ab37b42fb4d7645470c95da0bb91aa75e2399c737e5ee6ce5"
+    sha256 cellar: :any_skip_relocation, ventura:        "b6982d848138bb78540c9cd97e238ac3cb595c7a54a9d1fe1d162496f5f6284c"
+    sha256 cellar: :any_skip_relocation, monterey:       "58b192edf4e1b25c6a3929c2d347bc5be3a616b6a48750b1d6d21a11b174462d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "460bbe36f0949a9b56fc43611eac90d8ef26b88a660255078e52bb6c727ffaec"
   end
 
   depends_on "go" => :build

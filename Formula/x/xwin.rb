@@ -1,18 +1,18 @@
 class Xwin < Formula
   desc "Microsoft CRT and Windows SDK headers and libraries loader"
   homepage "https://github.com/Jake-Shadle/xwin"
-  url "https://github.com/Jake-Shadle/xwin/archive/refs/tags/0.5.2.tar.gz"
-  sha256 "96f58c79e87a3ebf8c9b707907c6f2cb915958704761e2a22c377ed730ccb0e3"
+  url "https://github.com/Jake-Shadle/xwin/archive/refs/tags/0.6.1.tar.gz"
+  sha256 "c832b596aba957f5de7f576520352166b58e89a51f2484f3b98e7aa4b9c151e2"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "f96cb5a40565d3f43907ebd24d35dac831ef34562cf7692f8054f6fa188ba50a"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "55155e28fa925f0e494ab480f436e86123fa868b6594e8ef1b869ff91c4b80ef"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "36ae2b24c79b2c68bf6e7de4a260e7609e04807bd5b6176b8cf6e9f11d574615"
-    sha256 cellar: :any_skip_relocation, sonoma:         "3c487a21b85e6ed259e5c96977182875a426f58d33f92168b6a229003695faec"
-    sha256 cellar: :any_skip_relocation, ventura:        "fdf8cfa107faf2293a83e5be8a6e554042e1315db96b734a746ece9193001ad7"
-    sha256 cellar: :any_skip_relocation, monterey:       "71d838871ff5146aea1236cc06d9c3c6e10b557d5dad34e312e30acfe4fe42f0"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "cf81d6dbfc9be751a8eb42abd26f0479706d7d8084a699db339095ba4a05244f"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "b9857f1a77163eab2a6ce3419bd9c1f32f083862746b3db2b0cf5259aa269874"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "cccbf0fa8a0986b1dd8a37ab2abd60c9efe8675459e2644ce43a3e7eb6718f5a"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "8f26d88c16466d373a14309ce6b4930a62043c99ee5f7dff1cd61462cf3ae97c"
+    sha256 cellar: :any_skip_relocation, sonoma:         "8de35f8205a8ccc2ac4807cd650d6b132099caca6fa2e1d3639a3d8529250aaf"
+    sha256 cellar: :any_skip_relocation, ventura:        "bc92dc0859390af184ef37fb7cc56ad695082f878b5e0956cf7a6cb3de3895c0"
+    sha256 cellar: :any_skip_relocation, monterey:       "fe0ac24ec4f4b43aceae9dba8a842e0c85404a092c06c2364d3e938f68526053"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f5e02a782c8c43f1a9273d6aabdd25d0502ccbf4694a7538293929ddd44fe394"
   end
 
   depends_on "rust" => :build

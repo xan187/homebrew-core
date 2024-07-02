@@ -3,19 +3,19 @@ class ArxivLatexCleaner < Formula
 
   desc "Clean LaTeX code to submit to arXiv"
   homepage "https://github.com/google-research/arxiv-latex-cleaner"
-  url "https://files.pythonhosted.org/packages/2b/51/480fd178c8a0ef0b3b8a7280dfc47273f512a8acc51ef92841152f503b17/arxiv_latex_cleaner-1.0.5.tar.gz"
-  sha256 "df9a9035b5a94873be77999f52683233619fc39e5ad7b5632934974bb2d4348d"
+  url "https://files.pythonhosted.org/packages/b6/c4/e5347e83a9ae951f8575fc72636631a692dc2d63bf911a12097164428b82/arxiv_latex_cleaner-1.0.7.tar.gz"
+  sha256 "f789e5edad677272db9e3b1026f070bd394013281a6f52aa8cded3821dcb6b8c"
   license "Apache-2.0"
   head "https://github.com/google-research/arxiv-latex-cleaner.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "8f6de1b22e5d020534388d22df0529276f389ffb72c301eaad34213cf08c7463"
-    sha256 cellar: :any,                 arm64_ventura:  "bb9a986fdceafbda0c25fb0d337a3b561bf3a95e013af7979456575dc262b007"
-    sha256 cellar: :any,                 arm64_monterey: "1f80f53f410141b7c91b2d4cf0e6dfd7a4082eff2157ec32a28a38b73f16df01"
-    sha256 cellar: :any,                 sonoma:         "bc5e11edf6af1baeba52a6708d9ab93159b83761c3394fde90f06b14099cff26"
-    sha256 cellar: :any,                 ventura:        "fa192de0424d068bb53d31bb48d74795a663de071373ec61d2bacbd61ca30766"
-    sha256 cellar: :any,                 monterey:       "f3c8cd3cd991d2bc09a3883f9fd553a0bba24b474ace696ccf4eda4114d8cb92"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2e314c116276dcf202f358e0d7abc8a4c062c44e22b87c5becd4dbae4d6df3bb"
+    sha256 cellar: :any,                 arm64_sonoma:   "199097f12165c2d0e99c45df44cf5b5120f5203ef894e8fe134709d90b615a86"
+    sha256 cellar: :any,                 arm64_ventura:  "cc362c9e3f269d5c5e2af6b005db01ebeb4ef68b5d6246a09968d123cabae109"
+    sha256 cellar: :any,                 arm64_monterey: "1490f77d4c16068ba49b323c7926e75c61762df6b2dc6166367a16d9c813c624"
+    sha256 cellar: :any,                 sonoma:         "9d9de5c14132d82225eea8fc4d5f47788e6d7435fcfc28e5dbce2a4b1bc1bdb6"
+    sha256 cellar: :any,                 ventura:        "c30ecde049903234c8f8c904fd0ea70090c04f2b6921dfdf294b961ece570c60"
+    sha256 cellar: :any,                 monterey:       "e5874bf8bfe74d6b01ff4e7a2f5d9e9da4d43f2126dd2876cf7731056e734422"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b743c497d9e22261d607535b2a80a852d8071805b2143429fe47e942e0d96699"
   end
 
   depends_on "libyaml"
@@ -33,8 +33,8 @@ class ArxivLatexCleaner < Formula
   end
 
   resource "regex" do
-    url "https://files.pythonhosted.org/packages/b5/39/31626e7e75b187fae7f121af3c538a991e725c744ac893cc2cfd70ce2853/regex-2023.12.25.tar.gz"
-    sha256 "29171aa128da69afdf4bde412d5bedc335f2ca8fcfe4489038577d05f16181e5"
+    url "https://files.pythonhosted.org/packages/7a/db/5ddc89851e9cc003929c3b08b9b88b429459bf9acbf307b4556d51d9e49b/regex-2024.5.15.tar.gz"
+    sha256 "d3ee02d9e5f482cc8309134a91eeaacbdd2261ba111b0fef3748eeb4913e6a2c"
   end
 
   def install

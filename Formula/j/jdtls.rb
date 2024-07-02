@@ -3,9 +3,9 @@ class Jdtls < Formula
 
   desc "Java language specific implementation of the Language Server Protocol"
   homepage "https://github.com/eclipse-jdtls/eclipse.jdt.ls"
-  url "https://download.eclipse.org/jdtls/milestones/1.35.0/jdt-language-server-1.35.0-202404251256.tar.gz"
-  version "1.35.0"
-  sha256 "0139dca1ae264834c3620d7cb9dbe3310186221a42ff40a5673942c07b080f15"
+  url "https://download.eclipse.org/jdtls/milestones/1.37.0/jdt-language-server-1.37.0-202406271335.tar.gz"
+  version "1.37.0"
+  sha256 "d04cd9f4df45ce85ae9cf49530c72a1a324b14eee747af26e3374500e36b5bd0"
   license "EPL-2.0"
   version_scheme 1
 
@@ -15,7 +15,13 @@ class Jdtls < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "ab8aeda945bb63bb1e4fb2f68442a485a5af6c170895cb23d140208a8ac85337"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "49e7cf48236f9530005592c4954723d77b008e390c93739b679995c2bea4f7ff"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "49e7cf48236f9530005592c4954723d77b008e390c93739b679995c2bea4f7ff"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "49e7cf48236f9530005592c4954723d77b008e390c93739b679995c2bea4f7ff"
+    sha256 cellar: :any_skip_relocation, sonoma:         "49e7cf48236f9530005592c4954723d77b008e390c93739b679995c2bea4f7ff"
+    sha256 cellar: :any_skip_relocation, ventura:        "49e7cf48236f9530005592c4954723d77b008e390c93739b679995c2bea4f7ff"
+    sha256 cellar: :any_skip_relocation, monterey:       "49e7cf48236f9530005592c4954723d77b008e390c93739b679995c2bea4f7ff"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "075e2e829eb23d0605691f69297dbd2c14e6e3a834a69e08dc81148651445a89"
   end
 
   depends_on "openjdk"

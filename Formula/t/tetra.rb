@@ -1,8 +1,8 @@
 class Tetra < Formula
   desc "Tetragon CLI to observe, manage and troubleshoot Tetragon instances"
   homepage "https://github.com/cilium/tetragon"
-  url "https://github.com/cilium/tetragon/archive/refs/tags/v1.1.0.tar.gz"
-  sha256 "07f0e1c0a7492c64324abde277e283f096e601408ac8edb242097dd5c14d70c1"
+  url "https://github.com/cilium/tetragon/archive/refs/tags/v1.1.2.tar.gz"
+  sha256 "67d7368d82e2aa455bdc06704a7af5c0ef78406e65e9bd6d3f57e5550b7a3eb9"
   license "Apache-2.0"
 
   livecheck do
@@ -11,13 +11,13 @@ class Tetra < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "2e17ac76269371424ff09c600ca10cb2d5d586e7ca09b45d48215fad4b35fc6c"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "665589f2f711df7b796c5cf1b8bc03ca2759b708f532946c2dacbe8e0dd2dcc8"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "79bdcb77284a8c0716b138c86b69c917a07a2e3c5f5a647aea87165669a36dc9"
-    sha256 cellar: :any_skip_relocation, sonoma:         "233278a6a05a3e4039e94ae6020f012fbaa00d58d53ef9911e4e66f2896e9f28"
-    sha256 cellar: :any_skip_relocation, ventura:        "2f4c300764de924bb541fd3e053c2e3b4dfebf8c73a2f7822a38843b7ed6be06"
-    sha256 cellar: :any_skip_relocation, monterey:       "ff087413013642b72c2b2776ce182075ee4107face6e3e16c35fa0eb69998e57"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "42e2b31a9ec0bf2cdfb4840df0de0ebac5e905127dd8c5567d4cc781635c8d4a"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "99e5a8e52bde307609735174d8c9925b9b64c7683a10309ad585be4232234e44"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "9c8ec607d3552789bb6cb7467da2aac5b6720b3e920054e6fb543afd6286fb52"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "20483f4596226ec7a1b0c52901d64ca4fca13f504bfe75f6c78ddb07c85fa126"
+    sha256 cellar: :any_skip_relocation, sonoma:         "a577812ce1a9f6920ecbd1aff86e49babe02af6882875d3f7c7f3d60cfef1000"
+    sha256 cellar: :any_skip_relocation, ventura:        "b8499209831fec4bfac948df064d16a0d2437a45cc3defd7941bf3a01ada5671"
+    sha256 cellar: :any_skip_relocation, monterey:       "35eda4da7c435944362ba527cd61217e5a76e8c2003baccd85cb055f703b0d15"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "933a7db10db2dea93b67bb3d473e34ee4c3b1738199d3a11c5fe25eb85d52b09"
   end
 
   depends_on "go" => :build

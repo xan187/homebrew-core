@@ -2,19 +2,19 @@ class Breezy < Formula
   include Language::Python::Virtualenv
 
   desc "Version control system implemented in Python with multi-format support"
-  homepage "https://www.breezy-vcs.org/"
-  url "https://files.pythonhosted.org/packages/94/15/6246755badf310cd8397cfc8b0e6cc454db6eec2a42d7a926ad2f72b4482/breezy-3.3.7.tar.gz"
-  sha256 "e70e03277ffa97e1bc27a24b30539bd3132e6d0ad9512b91db6dd499c254980d"
+  homepage "https://github.com/breezy-team/breezy"
+  url "https://files.pythonhosted.org/packages/bb/3f/f1b74d0e32c5455e53655bf095724d37e31b2f184b2dddb899cedbbb6c56/breezy-3.3.8.tar.gz"
+  sha256 "14d59bbdf86b66c17327eb79a5883b4c70cc7794ed34f3e8a0adfce64edc58bf"
   license "GPL-2.0-or-later"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "be4d4cbeb36fffc55211e159cfe823fb529c43acb356613b8503978619f97282"
-    sha256 cellar: :any,                 arm64_ventura:  "d2b491b41868386353ad86be69475b91c8d918b70593696ac86771d339de34b4"
-    sha256 cellar: :any,                 arm64_monterey: "98aafd9d3af0051e7abf9e3c46bac9ae511b2fc1f35ba2b5ef4219999b5211ae"
-    sha256 cellar: :any,                 sonoma:         "559e96b577b213cbf66378e38251e9321028c5db51aef512343780e0b47c1955"
-    sha256 cellar: :any,                 ventura:        "18d9be24dda3f803fc4a26b478207e14e1608e8c0f5b0138dbcb50e9cfc4e109"
-    sha256 cellar: :any,                 monterey:       "a079c9d477e9f56fb19728a97366d8196993dae9351565d2b942986a3c343e5f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5daa8297424f8c68510ccd840950522e4a62616a82caa8032a281cd88694a0d2"
+    sha256 cellar: :any,                 arm64_sonoma:   "edab49633772709291400f725343ba8cfe84aa826f27e91c31fbd0db0da5c6fe"
+    sha256 cellar: :any,                 arm64_ventura:  "73f514eaba1a5cdb3484576c194333750bcb78dcd9a58b8369f193389a7f6313"
+    sha256 cellar: :any,                 arm64_monterey: "ea1db54566f6c6d7382704537bfde477d022cd55aaee391cf92f41a58852855b"
+    sha256 cellar: :any,                 sonoma:         "a7b1c719596410c2325aae139aa61cae610fbbc11051e16001e57a72e747a69f"
+    sha256 cellar: :any,                 ventura:        "8255ce072473e845096bb43e378a34af9dc01a448ac62927e5120e5e9b91fa04"
+    sha256 cellar: :any,                 monterey:       "a8ccd1ba70ac273ca529e37a920482ef03b108844fab168abf4782f38b4a39b7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c3535c3f987f6ed3e8824c74dd9efe6da885483db7a474890f15bde754d1c53a"
   end
 
   depends_on "gettext" => :build
@@ -28,28 +28,33 @@ class Breezy < Formula
   end
 
   resource "dulwich" do
-    url "https://files.pythonhosted.org/packages/2b/e2/788910715b4910d08725d480278f625e315c3c011eb74b093213363042e0/dulwich-0.21.7.tar.gz"
-    sha256 "a9e9c66833cea580c3ac12927e4b9711985d76afca98da971405d414de60e968"
+    url "https://files.pythonhosted.org/packages/cf/ac/cf6420b90832c4ffbc88b92962dd0167c58632c2b8d508d5baf4ecb0c61d/dulwich-0.22.1.tar.gz"
+    sha256 "e36d85967cfbf25da1c7bc3d6921adc5baa976969d926aaf1582bd5fd7e94758"
   end
 
   resource "fastbencode" do
-    url "https://files.pythonhosted.org/packages/20/ab/33ca3005953d689f1be9c1e0662f5359b7365479f7a8fbd66cb05e9a840d/fastbencode-0.2.tar.gz"
-    sha256 "578eb9c4700d6705d71fbc8d7d57bca2cd987eca2cec1d9e77b9e0702db1e56f"
+    url "https://files.pythonhosted.org/packages/5c/15/98e1cbac7871d9b12823c5869d942715b022c9091ce19a3ff6eb29dbff2b/fastbencode-0.3.1.tar.gz"
+    sha256 "5fe0cb7d1736891af61d2ade40ce948941d46e908b16f5383f55f127848da197"
   end
 
   resource "merge3" do
-    url "https://files.pythonhosted.org/packages/af/40/98be4a5641b0244be5881ff5e00057f8227ff183d8675a697bdfeae43b1a/merge3-0.0.14.tar.gz"
-    sha256 "30406e99386f4a65280fb9c43e681890fa2a1d839cac2759d156c7cc16030159"
+    url "https://files.pythonhosted.org/packages/91/e1/fe09c161f80b5a8d8ede3270eadedac7e59a64ea1c313b97c386234480c1/merge3-0.0.15.tar.gz"
+    sha256 "d3eac213d84d56dfc9e39552ac8246c7860a940964ebeed8a8be4422f6492baf"
   end
 
   resource "patiencediff" do
-    url "https://files.pythonhosted.org/packages/57/9f/0973293d232696ae191cef7c4e8eb1ebbdb7728c48662ebf04c26fd576e4/patiencediff-0.2.14.tar.gz"
-    sha256 "a604d5727f996f0fd9de4534b143d3e803ec4f1b18e40cd78e91ab48a289a95f"
+    url "https://files.pythonhosted.org/packages/19/51/828577f3b7199fc098d6f440d9af41fbef27067ddd1b60892ad0f9a2d943/patiencediff-0.2.15.tar.gz"
+    sha256 "d00911efd32e3bc886c222c3a650291440313ee94ac857031da6cc3be7935204"
   end
 
   resource "pyyaml" do
     url "https://files.pythonhosted.org/packages/cd/e5/af35f7ea75cf72f2cd079c95ee16797de7cd71f29ea7c68ae5ce7be1eda0/PyYAML-6.0.1.tar.gz"
     sha256 "bfdf460b1736c775f2ba9f6a92bca30bc2095067b8a9d77876d1fad6cc3b4a43"
+  end
+
+  resource "setuptools" do
+    url "https://files.pythonhosted.org/packages/0d/9d/c587bea18a7e40099857015baee4cece7aca32cd404af953bdeb95ac8e47/setuptools-70.1.1.tar.gz"
+    sha256 "937a48c7cdb7a21eb53cd7f9b59e525503aa8abaf3584c730dc5f7a5bec3a650"
   end
 
   resource "six" do
@@ -63,8 +68,8 @@ class Breezy < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/7a/50/7fd50a27caa0652cd4caf224aa87741ea41d3265ad13f010886167cfcc79/urllib3-2.2.1.tar.gz"
-    sha256 "d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"
+    url "https://files.pythonhosted.org/packages/43/6d/fa469ae21497ddc8bc93e5877702dca7cb8f911e337aca7452b5724f1bb6/urllib3-2.2.2.tar.gz"
+    sha256 "dd505485549a7a552833da5e6063639d0d177c04f23bc3864e41e5dc5f612168"
   end
 
   def install

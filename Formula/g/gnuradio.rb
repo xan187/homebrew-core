@@ -6,7 +6,7 @@ class Gnuradio < Formula
   url "https://github.com/gnuradio/gnuradio/archive/refs/tags/v3.10.9.2.tar.gz"
   sha256 "7fa154c423d01494cfa4c739faabad70b97f605238cd3fea8907b345b421fea1"
   license "GPL-3.0-or-later"
-  revision 4
+  revision 8
   head "https://github.com/gnuradio/gnuradio.git", branch: "main"
 
   livecheck do
@@ -15,13 +15,13 @@ class Gnuradio < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "7d89cd313db8652bb6d7750b19e48ea375140db44bdb6a9c0f0c58629c86a9a4"
-    sha256 cellar: :any,                 arm64_ventura:  "74ef42bfdef8d7e8d19a85365b28513cb811bd0a542c2b260d97ffb3436fffcb"
-    sha256 cellar: :any,                 arm64_monterey: "5350eb2e872664e4c9d45aedaf079d79169b6b738c52aee335150fc7e9c4a44c"
-    sha256 cellar: :any,                 sonoma:         "e92aacf02b119ecbb87853061add7013c621dd588c381374d716f43116fcc2c3"
-    sha256 cellar: :any,                 ventura:        "6eeae35bb57fa4809f85805ddc18a43ef1d6273264df2be7dddfbf894a700bf9"
-    sha256 cellar: :any,                 monterey:       "40a3d44b596b7ddf19133b1bbd645839a4cf607371e865fd772d386ef506b68b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c910cc25ec48ff4971af3655c74b4ec5b91b8ccf9c2cbdaf6afad83f57f48bdd"
+    sha256 cellar: :any,                 arm64_sonoma:   "f3add6e4368ce2bce1342e4ae8e92a0a5b6276827fa0c953823b81ea86614c0b"
+    sha256 cellar: :any,                 arm64_ventura:  "ad5174b5202f96164f0e2413c893fe55481f488dc6cf79bdb42f14e4d4148fb5"
+    sha256 cellar: :any,                 arm64_monterey: "4560e37a37a88e8929e895fe495681315ed8e2e56045e2c9165d057299cfcd2a"
+    sha256 cellar: :any,                 sonoma:         "7908f8019170c8d3a2838bec8fed4fffd4cb5b224f727b0dd975378ce90a9b30"
+    sha256 cellar: :any,                 ventura:        "6a419d17949fdd45eae48e300196a6ff5d096717e8c633ffdf5ae9aef0e778bd"
+    sha256 cellar: :any,                 monterey:       "2147ea37b4d92a8df44ccd18c401a8b7978f74e17799a20f8d68b0d7a12b2ddf"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "1d84ae46a0e5552ec4d46cdadf0e98e8cbcab07f1ba4b053c6703e219161e17e"
   end
 
   depends_on "cmake" => :build
@@ -33,6 +33,7 @@ class Gnuradio < Formula
   depends_on "boost"
   depends_on "cppzmq"
   depends_on "fftw"
+  depends_on "fmt"
   depends_on "gmp"
   depends_on "gsl"
   depends_on "gtk+3"
@@ -48,6 +49,7 @@ class Gnuradio < Formula
   depends_on "qt@5"
   depends_on "qwt-qt5"
   depends_on "soapyrtlsdr"
+  depends_on "soapysdr"
   depends_on "spdlog"
   depends_on "uhd"
   depends_on "volk"
@@ -55,6 +57,11 @@ class Gnuradio < Formula
 
   uses_from_macos "libxml2", since: :ventura
   uses_from_macos "libxslt"
+
+  on_linux do
+    depends_on "alsa-lib"
+    depends_on "llvm"
+  end
 
   fails_with gcc: "5"
 
@@ -156,11 +163,10 @@ class Gnuradio < Formula
     ENV.cxx11
     ENV["XML_CATALOG_FILES"] = etc/"xml/catalog"
 
-    venv_root = libexec/"venv"
     site_packages = Language::Python.site_packages(python3)
-    ENV.prepend_create_path "PYTHONPATH", venv_root/site_packages
-    venv = virtualenv_create(venv_root, python3)
+    venv = virtualenv_create(libexec/"venv", python3)
     venv.pip_install resources
+    ENV.prepend_create_path "PYTHONPATH", venv.root/site_packages
 
     # Avoid references to the Homebrew shims directory
     inreplace "CMakeLists.txt" do |s|
@@ -177,7 +183,7 @@ class Gnuradio < Formula
       -DGR_PREFSDIR=#{etc}/gnuradio/conf.d
       -DGR_PYTHON_DIR=#{prefix/site_packages}
       -DENABLE_DEFAULT=OFF
-      -DPYTHON_EXECUTABLE=#{venv_root}/bin/python
+      -DPYTHON_EXECUTABLE=#{venv.root}/bin/python
       -DPYTHON_VERSION_MAJOR=3
       -DQWT_LIBRARIES=#{qwt_lib}
       -DQWT_INCLUDE_DIRS=#{qwt_include}
@@ -206,15 +212,13 @@ class Gnuradio < Formula
     plugin_pth_dir = etc/"gnuradio/plugins.d"
     plugin_pth_dir.mkpath
 
-    venv_site_packages = venv_root/site_packages
-
-    (venv_site_packages/"homebrew_gr_plugins.py").write <<~EOS
+    (venv.site_packages/"homebrew_gr_plugins.py").write <<~EOS
       import site
       site.addsitedir("#{plugin_pth_dir}")
     EOS
 
     pth_contents = "#{prefix/site_packages}\nimport homebrew_gr_plugins\n"
-    (venv_site_packages/"homebrew-gnuradio.pth").write pth_contents
+    (venv.site_packages/"homebrew-gnuradio.pth").write pth_contents
 
     # Patch the grc config to change the search directory for blocks
     inreplace etc/"gnuradio/conf.d/grc.conf", share.to_s, "#{HOMEBREW_PREFIX}/share"

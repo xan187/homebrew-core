@@ -2,7 +2,7 @@ class Woof < Formula
   include Language::Python::Shebang
 
   desc "Ad-hoc single-file webserver"
-  homepage "http://www.home.unix-ag.org/simon/woof.html"
+  homepage "https://www.home.unix-ag.org/simon/woof.html"
   url "https://github.com/simon-budig/woof/archive/refs/tags/woof-20220202.tar.gz"
   sha256 "cf29214aca196a1778e2f5df1f5cc653da9bee8fc2b19f01439c750c41ae83c1"
   license "GPL-2.0-or-later"
@@ -13,6 +13,8 @@ class Woof < Formula
   end
 
   depends_on "python@3.12"
+
+  conflicts_with "woof-doom", because: "both install `woof` binaries"
 
   def install
     rewrite_shebang detected_python_shebang, "woof"

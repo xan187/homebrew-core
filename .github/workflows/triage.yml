@@ -219,7 +219,90 @@ jobs:
               content: system "swift", "build"
 
             - label: long build
-              path: Formula/.+/(agda|aom|apache-pulsar|arangodb|at-spi2-core|aws-sdk-cpp|boost|brotli|c-ares|cp2k|dav1d|deno|dotnet|emscripten|envoy|freetype|gcc|ghc|glib|graph-tool|gsettings-desktop-schemas|gstreamer|gtk\+3|harfbuzz|haskell-language-server|highway|hwloc|icu4c|imath|jasper|jpeg-turbo|libgcrypt|libgpg-error|libidn2|libmicrohttpd|librist|libnghttp2|libomp|libpng|libtensorflow|libunistring|llvm|mame|metashell|mlkit|mpfr|mpg123|mpich|nghttp2|node|numpy|nwchem|openblas|openjpeg|p11-kit|pango|pcre2|ponyc|pytorch|rav1e|rust|shared-mime-info|suite-sparse|swift|texlive|qt|readline|root|souffle|unbound|v8|vtk|xz|zstd)(@[0-9]+)?.rb
+              path: "Formula/.+/(\
+                agda|\
+                apache-pulsar|\
+                arangodb|\
+                aws-sdk-cpp|\
+                cp2k|\
+                deno|\
+                dotnet|\
+                emscripten|\
+                envoy|\
+                gcc|\
+                ghc|\
+                graph-tool|\
+                gstreamer|\
+                haskell-language-server|\
+                libtensorflow|\
+                mame|\
+                metashell|\
+                mlkit|\
+                mpich|\
+                node|\
+                nwchem|\
+                ponyc|\
+                pytorch|\
+                rust|\
+                swift|\
+                texlive|\
+                qt|\
+                root|\
+                souffle|\
+                v8|\
+                vtk\
+                )(@[0-9]+)?.rb"
+              keep_if_no_match: true
+              allow_any_match: true
+
+            - label: long dependent tests
+              path: "Formula/.+/(\
+                at-spi2-core|\
+                boost|\
+                brotli|\
+                c-ares|\
+                dav1d|\
+                freetype|\
+                gcc|\
+                ghc|\
+                glib|\
+                gsettings-desktop-schemas|\
+                gtk\\+3|\
+                harfbuzz|\
+                highway|\
+                hwloc|\
+                icu4c|\
+                imath|\
+                jasper|\
+                jpeg-turbo|\
+                libgcrypt|\
+                libgpg-error|\
+                libidn2|\
+                libmicrohttpd|\
+                librist|\
+                libnghttp2|\
+                libomp|\
+                libpng|\
+                libunistring|\
+                mpfr|\
+                mpg123|\
+                node|\
+                numpy|\
+                openblas|\
+                openjpeg|\
+                p11-kit|\
+                pango|\
+                pcre2|\
+                rav1e|\
+                rust|\
+                shared-mime-info|\
+                suite-sparse|\
+                qt|\
+                readline|\
+                unbound|\
+                xz|\
+                zstd\
+                )(@[0-9]+)?.rb"
               keep_if_no_match: true
               allow_any_match: true
 
@@ -236,7 +319,67 @@ jobs:
               keep_if_no_match: true
 
             - label: CI-linux-self-hosted
-              path: Formula/.+/(alsa-lib|aom|brotli|cups|dart-sdk|dbus|envoy|freetype|gdbm|glib|glslang|gmp|gtk4|gzip|harfbuzz|hdf5|icu4c|json-c|krb5|libarchive|libedit|libnghttp2|libsndfile|libssh2|libtiff|libva|libx11|libxcrypt|libxml2|libxrandr|llvm|mesa|minizip|mpfr|mysql-connector-c\+\+|nghttp2|nss|numpy|open-mpi|openexr|p11-kit|python@3.12|qt(@5)?|readline|remind|shared-mime-info|souffle|systemd|texlive|unbound|utf8cpp|util-linux|webp|xz|zlib|zstd).rb
+              path: Formula/.+/(dart-sdk|envoy|qt(@5)?|souffle|texlive).rb
+              keep_if_no_match: true
+              allow_any_match: true
+
+            - label: CI-linux-self-hosted-deps
+              path: "Formula/.+/(\
+                alsa-lib|\
+                aom|\
+                brotli|\
+                cups|\
+                dart-sdk|\
+                dbus|\
+                freetype|\
+                gdbm|\
+                glib|\
+                glslang|\
+                gmp|\
+                gtk4|\
+                gzip|\
+                harfbuzz|\
+                hdf5|\
+                icu4c|\
+                json-c|\
+                krb5|\
+                libarchive|\
+                libedit|\
+                libnghttp2|\
+                libsndfile|\
+                libssh2|\
+                libtiff|\
+                libva|\
+                libx11|\
+                libxcrypt|\
+                libxml2|\
+                libxrandr|\
+                llvm|\
+                mesa|\
+                minizip|\
+                mpfr|\
+                mysql-connector-c\\+\\+|\
+                nss|\
+                numpy|\
+                open-mpi|\
+                openexr|\
+                p11-kit|\
+                python@3.12|\
+                qt(@5)?|\
+                readline|\
+                remind|\
+                shared-mime-info|\
+                souffle|\
+                systemd|\
+                texlive|\
+                unbound|\
+                utf8cpp|\
+                util-linux|\
+                webp|\
+                xz|\
+                zlib|\
+                zstd\
+                ).rb"
               keep_if_no_match: true
               allow_any_match: true
 

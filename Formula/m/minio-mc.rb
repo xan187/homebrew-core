@@ -2,9 +2,9 @@ class MinioMc < Formula
   desc "Replacement for ls, cp and other commands for object storage"
   homepage "https://github.com/minio/mc"
   url "https://github.com/minio/mc.git",
-      tag:      "RELEASE.2024-05-24T09-08-49Z",
-      revision: "a8fdcbe7cb2f85ce98d60e904717aa00016a7d37"
-  version "20240524090849"
+      tag:      "RELEASE.2024-06-29T19-08-46Z",
+      revision: "f5b325d9d399e09b4d21384081e397a52f6ca89d"
+  version "20240629190846"
   license "AGPL-3.0-or-later"
   head "https://github.com/minio/mc.git", branch: "master"
 
@@ -17,13 +17,13 @@ class MinioMc < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "b3a79b263fb49de2dfa7aeab0403f0c05f372ab9154c51663a9faf0b527c28b0"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "19dc7399b8adab30330c82614ed11d7cae88d9e6eaac85d3aa28e0bf593dd86e"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "f33cc3119206152a4ea71278748bf8ea5d95c81820fa4ed4c29a78ea19424e7b"
-    sha256 cellar: :any_skip_relocation, sonoma:         "e58dc170adfc28d6f919ba9b4b7db4a51c49dd553ba2e0502305ee3639c94a29"
-    sha256 cellar: :any_skip_relocation, ventura:        "f068059f9184b99f67e89b0c3a6bc64ebd17620ffe442f540f017e85aab73f07"
-    sha256 cellar: :any_skip_relocation, monterey:       "6dadc0398635ab76d2940d499825aa31fb08028ad6de0962bb5e7f02db38f04f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c130d91624f1658c646e483fc4b4380a344354e93b4e437c1ec894a4287c2e59"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "78daa656bae21097996941c995b10f1368b7a76305e278acef63648e63a62bbe"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "fc4027d216b451d8d5bdc0c4bf292b37fe53d4f6df090f50abb61721101596e6"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "53d147d3c61a081926b0044fb112ee93043b10f049b04405bfb2b2f9a92ffff7"
+    sha256 cellar: :any_skip_relocation, sonoma:         "af3b7f241dca6a8f95e2954123d596f910f5030b23f46ee67f3bc5a0d4125a54"
+    sha256 cellar: :any_skip_relocation, ventura:        "caba3ad7f2a615c4f9e727cb54ffd52e7c534de819f9a89fc3cc4287263c1dd2"
+    sha256 cellar: :any_skip_relocation, monterey:       "48471de5768f8b9a9681086666e5b79ca3acccd24bcb8946bba2ac16c7dd4f29"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "010237f57fd94e25b1189ee4325954d06b303b1df40c00962012829a18955dc0"
   end
 
   depends_on "go" => :build

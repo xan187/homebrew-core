@@ -1,33 +1,42 @@
 class Ccache < Formula
   desc "Object-file caching compiler wrapper"
   homepage "https://ccache.dev/"
-  url "https://github.com/ccache/ccache/releases/download/v4.9.1/ccache-4.9.1.tar.xz"
-  sha256 "4c03bc840699127d16c3f0e6112e3f40ce6a230d5873daa78c60a59c7ef59d25"
+  url "https://github.com/ccache/ccache/releases/download/v4.10.1/ccache-4.10.1.tar.xz"
+  sha256 "3a43442ce3916ea48bb6ccf6f850891cbff01d1feddff7cd4bbd49c5cf1188f6"
   license "GPL-3.0-or-later"
-  revision 1
   head "https://github.com/ccache/ccache.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "4da9fb3b1d7ef251fef128c5cf7772f28e2e1f4c02d61ec90a7d1ba0aae7b19d"
-    sha256 cellar: :any,                 arm64_ventura:  "8059bcb107c4e93bf06cadaa8115506adba34b583ce9821073d52c8474bb56f5"
-    sha256 cellar: :any,                 arm64_monterey: "0b6e1a41c5759eb9884269a5e2831fd7bb8d4420e31a868e5d1cf52b014a65e8"
-    sha256 cellar: :any,                 sonoma:         "103799f0530de714df250dffda1b303c61eba69561d0d235dcfd4c8e7eb7693e"
-    sha256 cellar: :any,                 ventura:        "bca74e577f458a57cc930254504dd0e4502af1fb864911df2f3b70a02bf3b272"
-    sha256 cellar: :any,                 monterey:       "25313faf0635759be3012be2f20baf26f84873e791362690f7ca72497782a7a9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "7070283ae70a576649139de2c1b45fd7756e922cd6b989628e7f921890ade57c"
+    sha256 cellar: :any,                 arm64_sonoma:   "430b224f19756fc5d226cf68ce209b4450738b47127a05a3089e255f59721b74"
+    sha256 cellar: :any,                 arm64_ventura:  "27f66da31f0b7c0874a0a5c736f3427ba5576279a5548f5c701ea634f8a66c62"
+    sha256 cellar: :any,                 arm64_monterey: "9625bf6777aba2d25a406ef62fdbb7b8f70cbeb7c47bfdea7054c5dd3c24cd21"
+    sha256 cellar: :any,                 sonoma:         "2e97103e91c45076427780d4d3f00b2c4aa127292ae5fb4cb79487d47da007e5"
+    sha256 cellar: :any,                 ventura:        "b927910be81371b99234bc6035ea750b1b7a661bb5f001c12bb3d95e7ed47119"
+    sha256 cellar: :any,                 monterey:       "65662794d7d69a1db73d53a37dcb55d3945b6afcdf2d65af6cf72811cbfc4722"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "29bd86ce0666b328b52a5f3c4e4c982041aac5f8e3cb6efe3fb4da750f4f4561"
   end
 
   depends_on "asciidoctor" => :build
   depends_on "cmake" => :build
+  depends_on "cpp-httplib" => :build
+  depends_on "doctest" => :build
   depends_on "pkg-config" => :build
-
+  depends_on "span-lite" => :build
+  depends_on "tl-expected" => :build
+  depends_on "blake3"
+  depends_on "fmt"
   depends_on "hiredis"
+  depends_on "xxhash"
   depends_on "zstd"
 
   fails_with gcc: "5"
 
   def install
-    system "cmake", "-S", ".", "-B", "build", *std_cmake_args, "-DENABLE_IPO=TRUE"
+    system "cmake", "-S", ".", "-B", "build",
+                    "-DENABLE_IPO=TRUE",
+                    "-DREDIS_STORAGE_BACKEND=ON",
+                    "-DDEPS=LOCAL",
+                    *std_cmake_args
     system "cmake", "--build", "build"
 
     # Homebrew compiler shim actively prevents ccache usage (see caveats), which will break the test suite.

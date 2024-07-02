@@ -1,23 +1,22 @@
 class Wangle < Formula
   desc "Modular, composable client/server abstractions framework"
   homepage "https://github.com/facebook/wangle"
-  url "https://github.com/facebook/wangle/archive/refs/tags/v2024.05.06.00.tar.gz"
-  sha256 "44e22905a7d5334b37cc25b27ca4124a63df6891b55641e157d9a75fea7bc21c"
+  url "https://github.com/facebook/wangle/archive/refs/tags/v2024.06.24.00.tar.gz"
+  sha256 "9978bee23de44cde9c9d2c09b02272b2b5717fe8b5dac7fba454b6468fa6b469"
   license "Apache-2.0"
   head "https://github.com/facebook/wangle.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "ac0a527fbe9ed86432f46b255874887afd2d644f6f5a78668edd154152dcd2a0"
-    sha256 cellar: :any,                 arm64_ventura:  "0bc6c6319946c5d2099d4f20fcc95053e6d2d2d3804d4599ba66385823c0a553"
-    sha256 cellar: :any,                 arm64_monterey: "b392423226bf007b64d82160648f36d22611d98a6253a2411e4a15f84a2cf0e8"
-    sha256 cellar: :any,                 sonoma:         "5019c4a960ff7617c0c6eea273f1f0f6a9e9dc8740d100b942c21969051d511a"
-    sha256 cellar: :any,                 ventura:        "96734b18803e9f475425a4bcf8a5895457975594753b5af11d62f43a455c3911"
-    sha256 cellar: :any,                 monterey:       "f551fff3999090e18f5c97f1dcf19a2aca2272f52549634b152f9e020695422e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "6743cb8b91b0aa6d8d73c770f46e8a71c92047cb8929457ebf717216e866cdce"
+    sha256 cellar: :any,                 arm64_sonoma:   "ec361911f096040b99b7ffcf5930bb2d5542381359ccc872edd272b79bc812da"
+    sha256 cellar: :any,                 arm64_ventura:  "245e4ec06f0809212f8a3a5a23805e062d280365d53bd624e4526acc1c8d601a"
+    sha256 cellar: :any,                 arm64_monterey: "46af95a6d0501c26dede4368941756d239bbef28b4fd7ff15136ee263c6d3fe3"
+    sha256 cellar: :any,                 sonoma:         "874a7262ec3f7d69cd5ba373b7d85cd0d7868463cf30ca3fef65937d7fe6b715"
+    sha256 cellar: :any,                 ventura:        "cd3c814544e360ec807603c022e4302b960b9a205e3b99e767c297a4982f0d94"
+    sha256 cellar: :any,                 monterey:       "c1c19fd4f4a89f9cfe1ff33e009314ba2e69de7c783b2fb9b69e48c1b1f02a2b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "14fe060b620bfcc4425833c013d3c30e6fd57fa2b6c908a98e0b45665972d545"
   end
 
   depends_on "cmake" => :build
-  depends_on "boost"
   depends_on "double-conversion"
   depends_on "fizz"
   depends_on "fmt"
@@ -25,19 +24,19 @@ class Wangle < Formula
   depends_on "gflags"
   depends_on "glog"
   depends_on "libevent"
-  depends_on "libsodium"
   depends_on "lz4"
   depends_on "openssl@3"
-  depends_on "snappy"
   depends_on "zstd"
-
   uses_from_macos "bzip2"
-  uses_from_macos "zlib"
 
   fails_with gcc: "5"
 
   def install
     args = ["-DBUILD_TESTS=OFF"]
+    # Prevent indirect linkage with boost, libsodium, snappy and xz
+    linker_flags = %w[-dead_strip_dylibs]
+    linker_flags << "-ld_classic" if OS.mac? && MacOS.version == :ventura
+    args << "-DCMAKE_SHARED_LINKER_FLAGS=-Wl,#{linker_flags.join(",")}" if OS.mac?
 
     system "cmake", "-S", "wangle", "-B", "build/shared", "-DBUILD_SHARED_LIBS=ON", *args, *std_cmake_args
     system "cmake", "--build", "build/shared"

@@ -3,20 +3,20 @@ class SlitherAnalyzer < Formula
 
   desc "Solidity static analysis framework written in Python 3"
   homepage "https://github.com/crytic/slither"
-  url "https://files.pythonhosted.org/packages/1d/62/6963e21c75a783de0683fe9267c827a93dc5294dcc0001bf52bf3a9ff809/slither-analyzer-0.10.1.tar.gz"
-  sha256 "b99b81dfe949238e15e48d2ca9b3e756144a194f3a25c7d61c22712b2f99e9a6"
+  url "https://files.pythonhosted.org/packages/40/e4/83b4a1bceb17dfb9f83bfc921bd47832a3252fb5b55e92b2591b28d8a3d3/slither_analyzer-0.10.3.tar.gz"
+  sha256 "5e6c96c0428b79159fbb5f08ff4ed9dc0f1c47ac5af240679fc4afc34762c60b"
   license "AGPL-3.0-only"
-  revision 2
+  revision 1
   head "https://github.com/crytic/slither.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "3e61c1b72b75b144cc5a46e7c3901381cc1c2a4e90aa1f1fe556ab90aea69243"
-    sha256 cellar: :any,                 arm64_ventura:  "ed9d0053ac66da712b3fde3c81bc81a5f092c17c4ca204e8551da3dcfbd7aec6"
-    sha256 cellar: :any,                 arm64_monterey: "0c362226502ffca040b6fd1e83174ff2773a898f7faf0781794e8dad0d648e87"
-    sha256 cellar: :any,                 sonoma:         "4aacbaaea013c98104f7d2ef7effe9ff10def132b1c54fb288419fc878047046"
-    sha256 cellar: :any,                 ventura:        "8b396ced9290f3667fdbdb150c311f905bf2bc50f8285631c85c94a75e2825f9"
-    sha256 cellar: :any,                 monterey:       "35c5455cf652e7cd38a4d187b315f15f48958ebb94e5f9ac735abe5e61815682"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2ae24cbcd1a503d5f2657628a6ecfea21e963fca30e184ba200ff181eacf07b6"
+    sha256 cellar: :any,                 arm64_sonoma:   "559805a5fb1b8d8f118e15b634d370cef6787f3c4ef680c61de476096d55812e"
+    sha256 cellar: :any,                 arm64_ventura:  "1294a9094b6277bdb91f1640259da81ee761df59b6f8b84199cf1933b2f34ac3"
+    sha256 cellar: :any,                 arm64_monterey: "f335127e641e23d69ad61ad5c74d774addf7b71ce866eba6895190009e7a1360"
+    sha256 cellar: :any,                 sonoma:         "a7a40106289829cae15f3810fbd10274bf64baf7a63824bae2b0d098b6c25e4e"
+    sha256 cellar: :any,                 ventura:        "e39153cfc459dc5a7f5f5c5b28ed0edb57d7f22384bd1d7c992afae6d5e64891"
+    sha256 cellar: :any,                 monterey:       "7e998b84eab7dfad5e57a2b6720cd7f9c8484d0cff72393c143df0612b3800be"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f4351926a15eda8dc43cf0b7fcfd700886000a69148b326a20b4b9328bed63bd"
   end
 
   depends_on "rust" => :build # for rpds-py
@@ -44,8 +44,8 @@ class SlitherAnalyzer < Formula
   end
 
   resource "cbor2" do
-    url "https://files.pythonhosted.org/packages/15/40/167a05149eff1c0b7d19e27d0e1c96a463c5f670f879bffb7d124e3a6539/cbor2-5.6.3.tar.gz"
-    sha256 "e6f0ae2751c2d333a960e0807c0611494eb1245631a167965acbc100509455d3"
+    url "https://files.pythonhosted.org/packages/fe/da/6e62e701797c627e8d8cb3d5cc0cdcb6f4a876083386ee1b1a35321fdac7/cbor2-5.6.4.tar.gz"
+    sha256 "1c533c50dde86bef1c6950602054a0ffa3c376e8b0e20c7b8f5b108793f6983e"
   end
 
   resource "charset-normalizer" do
@@ -99,8 +99,8 @@ class SlitherAnalyzer < Formula
   end
 
   resource "eth-typing" do
-    url "https://files.pythonhosted.org/packages/ff/0a/733167844f5daf2b32a070358bb456d4c13d1c34786cd6c78c3948a92b83/eth_typing-4.2.3.tar.gz"
-    sha256 "8ee3ae7d4136d14fcb955c34f9dbef8e52170984d4dc68c0ab0d61621eab29d8"
+    url "https://files.pythonhosted.org/packages/e7/ab/a3256296a299995fded3f8b72ce1bf3791f8ca6f24a8d310d31b9268c959/eth_typing-4.3.1.tar.gz"
+    sha256 "4504559c87a9f71f4b99aa5a1e0549adaa7f192cbf8e37a295acfcddb1b5412d"
   end
 
   resource "eth-utils" do
@@ -144,8 +144,8 @@ class SlitherAnalyzer < Formula
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/ee/b5/b43a27ac7472e1818c4bafd44430e69605baefe1f34440593e0332ec8b4d/packaging-24.0.tar.gz"
-    sha256 "eb82c5e3e56209074766e6885bb04b8c38a0c015d0a30036ebe7ece34c9989e9"
+    url "https://files.pythonhosted.org/packages/51/65/50db4dda066951078f0a96cf12f4b9ada6e4b811516bf0262c0f4f7064d4/packaging-24.1.tar.gz"
+    sha256 "026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002"
   end
 
   resource "parsimonious" do
@@ -159,8 +159,8 @@ class SlitherAnalyzer < Formula
   end
 
   resource "protobuf" do
-    url "https://files.pythonhosted.org/packages/73/cb/8d83e166a822d893c2c07ef4a57598873634b65a68153ca62b6ba85f67b9/protobuf-5.27.0.tar.gz"
-    sha256 "07f2b9a15255e3cf3f137d884af7972407b556a7a220912b252f26dc3121e6bf"
+    url "https://files.pythonhosted.org/packages/20/5f/00d891817d4031bbf4e846a99834bf949a76714c10a726833aa184176772/protobuf-5.27.1.tar.gz"
+    sha256 "df5e5b8e39b7d1c25b186ffdf9f44f40f810bbcc9d2b71d9d3156fee5a9adf15"
   end
 
   resource "pycryptodome" do
@@ -184,8 +184,8 @@ class SlitherAnalyzer < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/86/ec/535bf6f9bd280de6a4637526602a146a68fde757100ecf8c9333173392db/requests-2.32.2.tar.gz"
-    sha256 "dd951ff5ecf3e3b3aa26b40703ba77495dab41da839ae72ef3c8e5d8e2433289"
+    url "https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz"
+    sha256 "55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760"
   end
 
   resource "rlp" do
@@ -209,13 +209,13 @@ class SlitherAnalyzer < Formula
   end
 
   resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/ce/6a/aa0a40b0889ec2eb81a02ee0daa6a34c6697a605cf62e6e857eead9e4f85/typing_extensions-4.12.0.tar.gz"
-    sha256 "8cbcdc8606ebcb0d95453ad7dc5065e6237b6aa230a31e81d0f440c30fed5fd8"
+    url "https://files.pythonhosted.org/packages/df/db/f35a00659bc03fec321ba8bce9420de607a1d37f8342eee1863174c69557/typing_extensions-4.12.2.tar.gz"
+    sha256 "1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/7a/50/7fd50a27caa0652cd4caf224aa87741ea41d3265ad13f010886167cfcc79/urllib3-2.2.1.tar.gz"
-    sha256 "d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"
+    url "https://files.pythonhosted.org/packages/43/6d/fa469ae21497ddc8bc93e5877702dca7cb8f911e337aca7452b5724f1bb6/urllib3-2.2.2.tar.gz"
+    sha256 "dd505485549a7a552833da5e6063639d0d177c04f23bc3864e41e5dc5f612168"
   end
 
   resource "wcwidth" do
@@ -236,13 +236,6 @@ class SlitherAnalyzer < Formula
   resource "yarl" do
     url "https://files.pythonhosted.org/packages/e0/ad/bedcdccbcbf91363fd425a948994f3340924145c2bc8ccb296f4a1e52c28/yarl-1.9.4.tar.gz"
     sha256 "566db86717cf8080b99b58b083b773a908ae40f06681e87e589a976faf8246bf"
-  end
-
-  # Drop setuptools dep
-  # https://github.com/crytic/slither/pull/2290
-  patch do
-    url "https://github.com/crytic/slither/commit/93cbf7d887a930e20c1ea8cf543ec2f41e84aadd.patch?full_index=1"
-    sha256 "6c6278b86c8d75fb01a50715a8891ab8a94ec6d4372092440f1cefd67fbe0940"
   end
 
   def install

@@ -3,19 +3,19 @@ class CheckJsonschema < Formula
 
   desc "JSON Schema CLI"
   homepage "https://github.com/python-jsonschema/check-jsonschema"
-  url "https://files.pythonhosted.org/packages/53/bb/c8c1d02b38cbc4726b08db61ba36d9f1aa8c99c62d5de515966eb35dfa09/check_jsonschema-0.28.4.tar.gz"
-  sha256 "e6acd2e89a7cbc41d2813a5b00fb5dfb7a14a5e72f4898a62bc761cf0899ad97"
+  url "https://files.pythonhosted.org/packages/c3/fd/dc07a94d3cc000b2dd9a1a7180d198814d6befd36662676aae8d05b78ca7/check_jsonschema-0.28.6.tar.gz"
+  sha256 "b4df7b94df5b0ac181969687ad519491b5f47e6c76230c846a05e06623bbb5c6"
   license "Apache-2.0"
   head "https://github.com/python-jsonschema/check-jsonschema.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "4b920e16f9073f193b5918411c1ea2da66564a9e81583b122c8c25737f20f353"
-    sha256 cellar: :any,                 arm64_ventura:  "e7deca47a806674463af8e21cee61860481347d90501b9f37c52d3d7317c463b"
-    sha256 cellar: :any,                 arm64_monterey: "4602e500a915b6785b8447fa84d9a6393a267287993bc88ec6241a8b1af5e4eb"
-    sha256 cellar: :any,                 sonoma:         "17b76e417f3b38e50e4261747dd9fa1c8a942fbb045598f414a0567b50cc7726"
-    sha256 cellar: :any,                 ventura:        "6e0a03432849d5c9cadeb4706908142ad5de68dd1f68b78dd4615419977ce093"
-    sha256 cellar: :any,                 monterey:       "176b14e2537443a82c92f0a9f62e23a75673d015d31ccb9d045770ff59907ac0"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "1cd36ab7ffa5b818ffc620ad916659b85144c2479b055e488d5ed3d5f9febcc9"
+    sha256 cellar: :any,                 arm64_sonoma:   "5dad34509464e24ff75dea3dfc614ca4eb2e8c36ecef733a4fd7a84b2aaceba6"
+    sha256 cellar: :any,                 arm64_ventura:  "2dc4b266db53da8260d3b10b6d246ae818f1a6737d0ea01237e3ca8e80541d98"
+    sha256 cellar: :any,                 arm64_monterey: "b4eee3a7733bb8746e5d4a3b29778dbff10f8754cc2c3fb655410c1117e22407"
+    sha256 cellar: :any,                 sonoma:         "71de5dd9427e87a721f4ea97702978e428dce283b06d47318e70d76095606bb0"
+    sha256 cellar: :any,                 ventura:        "b00eb23b324c051d7d6100ee5206415b753be521ed6138a194001c6ba038aaa3"
+    sha256 cellar: :any,                 monterey:       "a08144d08756d6c1d45080fb266fe75161893814ecc4bc0f06b475987b2f6296"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "07a58cdb01a0c2020d4b651f98c75fd594ef900fe3ea5b1f1c955929fe211911"
   end
 
   depends_on "rust" => :build
@@ -58,8 +58,8 @@ class CheckJsonschema < Formula
   end
 
   resource "jsonpointer" do
-    url "https://files.pythonhosted.org/packages/8f/5e/67d3ab449818b629a0ffe554bb7eb5c030a71f7af5d80fbf670d7ebe62bc/jsonpointer-2.4.tar.gz"
-    sha256 "585cee82b70211fa9e6043b7bb89db6e1aa49524340dde8ad6b63206ea689d88"
+    url "https://files.pythonhosted.org/packages/6a/0a/eebeb1fa92507ea94016a2a790b93c2ae41a7e18778f85471dc54475ed25/jsonpointer-3.0.0.tar.gz"
+    sha256 "2b2d729f2091522d61c3b31f82e11870f60b68f43fbc705cb76bf4b832af59ef"
   end
 
   resource "jsonschema" do
@@ -88,8 +88,8 @@ class CheckJsonschema < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/28/a2/423f4d16d6934ef502f10ad56673719dd4345e656aedbd6687ccc359ffc5/requests-2.32.0.tar.gz"
-    sha256 "fa5490319474c82ef1d2c9bc459d3652e3ae4ef4c4ebdd18a21145a47ca4b6b8"
+    url "https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz"
+    sha256 "55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760"
   end
 
   resource "rfc3339-validator" do
@@ -133,13 +133,13 @@ class CheckJsonschema < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/7a/50/7fd50a27caa0652cd4caf224aa87741ea41d3265ad13f010886167cfcc79/urllib3-2.2.1.tar.gz"
-    sha256 "d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"
+    url "https://files.pythonhosted.org/packages/43/6d/fa469ae21497ddc8bc93e5877702dca7cb8f911e337aca7452b5724f1bb6/urllib3-2.2.2.tar.gz"
+    sha256 "dd505485549a7a552833da5e6063639d0d177c04f23bc3864e41e5dc5f612168"
   end
 
   resource "webcolors" do
-    url "https://files.pythonhosted.org/packages/a1/fb/f95560c6a5d4469d9c49e24cf1b5d4d21ffab5608251c6020a965fb7791c/webcolors-1.13.tar.gz"
-    sha256 "c225b674c83fa923be93d235330ce0300373d02885cef23238813b0d5668304a"
+    url "https://files.pythonhosted.org/packages/b3/bf/cfe993a8acab0976a08cfa1a0a23cf9ce212b8c52cca40fbcca6e994acea/webcolors-24.6.0.tar.gz"
+    sha256 "1d160d1de46b3e81e58d0a280d0c78b467dc80f47294b91b1ad8029d2cedb55b"
   end
 
   def install

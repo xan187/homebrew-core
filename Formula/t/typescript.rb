@@ -3,13 +3,19 @@ require "language/node"
 class Typescript < Formula
   desc "Language for application scale JavaScript development"
   homepage "https://www.typescriptlang.org/"
-  url "https://registry.npmjs.org/typescript/-/typescript-5.4.5.tgz"
-  sha256 "154fae77169f04155ac52d521ac59abb07c9be29ea3744732adbf9f14abb2440"
+  url "https://registry.npmjs.org/typescript/-/typescript-5.5.3.tgz"
+  sha256 "f47d21b40c99188b4158f8a444f132207957d528b1f80ccbc019ce9c4765c3d1"
   license "Apache-2.0"
   head "https://github.com/Microsoft/TypeScript.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "e9a93bf3035058ebe45cfe31be63616aec6d16f772144e50c6284051846b1686"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "356dcef9f8ad0f1789d1f295c71085c9ba5f631fe037f26c5633b966be9df9b2"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "356dcef9f8ad0f1789d1f295c71085c9ba5f631fe037f26c5633b966be9df9b2"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "356dcef9f8ad0f1789d1f295c71085c9ba5f631fe037f26c5633b966be9df9b2"
+    sha256 cellar: :any_skip_relocation, sonoma:         "356dcef9f8ad0f1789d1f295c71085c9ba5f631fe037f26c5633b966be9df9b2"
+    sha256 cellar: :any_skip_relocation, ventura:        "356dcef9f8ad0f1789d1f295c71085c9ba5f631fe037f26c5633b966be9df9b2"
+    sha256 cellar: :any_skip_relocation, monterey:       "356dcef9f8ad0f1789d1f295c71085c9ba5f631fe037f26c5633b966be9df9b2"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "4a7b3199e241f01b3983e59c69a08a242a4715a0e2cc84f979b5b9281b0d546a"
   end
 
   depends_on "node"

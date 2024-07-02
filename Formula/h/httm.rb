@@ -1,19 +1,19 @@
 class Httm < Formula
   desc "Interactive, file-level Time Machine-like tool for ZFS/btrfs"
   homepage "https://github.com/kimono-koans/httm"
-  url "https://github.com/kimono-koans/httm/archive/refs/tags/0.38.2.tar.gz"
-  sha256 "bd52926e8d39a735a2694412a578168a08a4f0c7c2cc66e8afaf750481005ae2"
+  url "https://github.com/kimono-koans/httm/archive/refs/tags/0.39.1.tar.gz"
+  sha256 "fa8151768ebb7e2667ce454fc74cce80cbc85d168cd0c05ffe6349c791e75fb2"
   license "MPL-2.0"
   head "https://github.com/kimono-koans/httm.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "6b1c0c7ed7e19b3692bfcb0b94fb14eea00faa29279a832c59a7e96958e8aa1d"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "3b82efeba25a47067811918d4394ef7a2bf937895d80bf4f47e998a91a31abe7"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "01cf3b8f4d4b15a647ba1e77b4faa35d7733ff5707739baee0337bfdf8f5c8cd"
-    sha256 cellar: :any_skip_relocation, sonoma:         "35c9f02794ecdb1cfc40e39f6067e547ec43806c4e931ebb062ea1a46a5d82f4"
-    sha256 cellar: :any_skip_relocation, ventura:        "b8073dd29bdd416881feed76aa01cd5882ae0ce811315c941b3317c891c9a719"
-    sha256 cellar: :any_skip_relocation, monterey:       "a1bd675d25f9776f5ea623424e956c612947a1ae034f38906b98cd0bba3b0dd9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "c72394b14e42e1882aab82ddd60ae5847584f2992bf3646f3f4b5102a3a50e57"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "edd4f7d77f4a215c11e7663d55649d6839f0b12865077e18cd42876416335ad2"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "421a57c485b9c4282bd5d096774702d5e4a451fe1ea76045eb567383b31061a5"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "8808149b9c79deba22adae701464dbccef4611dddb1933e44f6279736a6fee7c"
+    sha256 cellar: :any_skip_relocation, sonoma:         "9139d1bfc3749ed44ab9c00b7a64ab81c134978c99444373b515bd54e3189008"
+    sha256 cellar: :any_skip_relocation, ventura:        "6b5d9e942612c0838e98dc63c6b9fad9553f97160af2f90d1f95ac4ee92f9d93"
+    sha256 cellar: :any_skip_relocation, monterey:       "7db1cb7d23257475f25b5698eab59d2a5644ec9f7258204ae0442f84a7ded141"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a8055b25ec19eea3e3d76b101b973188abb54a09aa6c44cccfcd478c4999e1d3"
   end
 
   depends_on "rust" => :build
@@ -21,6 +21,8 @@ class Httm < Formula
   on_linux do
     depends_on "acl"
   end
+
+  conflicts_with "nicotine-plus", because: "both install `nicotine` binaries"
 
   def install
     system "cargo", "install", "--features", "xattrs,acls", *std_cargo_args
