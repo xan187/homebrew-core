@@ -3,25 +3,25 @@ class Tox < Formula
 
   desc "Generic Python virtualenv management and test command-line tool"
   homepage "https://tox.wiki/en/latest/"
-  url "https://files.pythonhosted.org/packages/b7/7e/94a8cc264b9d2674d6ce7dccaa7cebe66d0f4262d6423ab9797b071d31d5/tox-4.16.0.tar.gz"
-  sha256 "43499656f9949edb681c0f907f86fbfee98677af9919d8b11ae5ad77cb800748"
+  url "https://files.pythonhosted.org/packages/55/28/a426845ea686fdb2d9f981293127821abbbc9cdd94bb301b4441912e64b3/tox-4.17.1.tar.gz"
+  sha256 "2c41565a571e34480bd401d668a4899806169a4633e972ac296c54406d2ded8a"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "c0725abf571c05f07e535b7b402596124b63f0c09057245755c1edc8bf6309ef"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "c0725abf571c05f07e535b7b402596124b63f0c09057245755c1edc8bf6309ef"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "c0725abf571c05f07e535b7b402596124b63f0c09057245755c1edc8bf6309ef"
-    sha256 cellar: :any_skip_relocation, sonoma:         "15eebb0187595aee905d7b787afd50c10d3fa8ba93990aed0f42eb4696cdb9ad"
-    sha256 cellar: :any_skip_relocation, ventura:        "15eebb0187595aee905d7b787afd50c10d3fa8ba93990aed0f42eb4696cdb9ad"
-    sha256 cellar: :any_skip_relocation, monterey:       "15eebb0187595aee905d7b787afd50c10d3fa8ba93990aed0f42eb4696cdb9ad"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "97756a56596b220232be07a2249133228fe51a72575afad3ebf51998c7e5a32d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "55d56c5203da63f971f362e6a2c63caa48607e9cbe51e6d1d623d61a1b5cb167"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "55d56c5203da63f971f362e6a2c63caa48607e9cbe51e6d1d623d61a1b5cb167"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "55d56c5203da63f971f362e6a2c63caa48607e9cbe51e6d1d623d61a1b5cb167"
+    sha256 cellar: :any_skip_relocation, sonoma:         "8817a4018684a0022c652dcdb9f4e6267c25b6f747991907d30b7320cb55654c"
+    sha256 cellar: :any_skip_relocation, ventura:        "8817a4018684a0022c652dcdb9f4e6267c25b6f747991907d30b7320cb55654c"
+    sha256 cellar: :any_skip_relocation, monterey:       "8817a4018684a0022c652dcdb9f4e6267c25b6f747991907d30b7320cb55654c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b96a9bb2bc2be7918e5f40d6b2019c36c072da0a91c6a47f3dc1718e85e02008"
   end
 
   depends_on "python@3.12"
 
   resource "cachetools" do
-    url "https://files.pythonhosted.org/packages/b3/4d/27a3e6dd09011649ad5210bdf963765bc8fa81a0827a4fc01bafd2705c5b/cachetools-5.3.3.tar.gz"
-    sha256 "ba29e2dfa0b8b556606f097407ed1aa62080ee108ab0dc5ec9d6a723a007d105"
+    url "https://files.pythonhosted.org/packages/a7/3f/ea907ec6d15f68ea7f381546ba58adcb298417a59f01a2962cb5e486489f/cachetools-5.4.0.tar.gz"
+    sha256 "b8adc2e7c07f105ced7bc56dbb6dfbe7c4a00acce20e2227b3f355be89bc6827"
   end
 
   resource "chardet" do

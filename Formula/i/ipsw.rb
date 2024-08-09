@@ -1,8 +1,8 @@
 class Ipsw < Formula
   desc "Research tool for iOS & macOS devices"
   homepage "https://blacktop.github.io/ipsw"
-  url "https://github.com/blacktop/ipsw/archive/refs/tags/v3.1.531.tar.gz"
-  sha256 "39b506c88b8eac59c90d12996578012929b5f43f6835e55ad9a4dab2e558668b"
+  url "https://github.com/blacktop/ipsw/archive/refs/tags/v3.1.534.tar.gz"
+  sha256 "e0b5a4145d9e952593fdc6b008ef3a7e3295f5cc4d4053746a81a952864ee890"
   license "MIT"
   head "https://github.com/blacktop/ipsw.git", branch: "master"
 
@@ -12,13 +12,13 @@ class Ipsw < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "7b044866192b90aa766faceee2fbea6d5894491cbb89e20f94c3ea9a3eb16207"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "3462eb4dbc74f0be094ac291dc250d16d95c595406acef1469c06165cf0e0deb"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "e9c084f77e60d300e8a8e66b14918fcec07429e9d4350662fe3a5a603c1a9ab0"
-    sha256 cellar: :any_skip_relocation, sonoma:         "893136e0490a20fd00d29d2000f8104897b18a7a642aaaec5230870c76cde33b"
-    sha256 cellar: :any_skip_relocation, ventura:        "3f9996601d747e4d114a4166191596c9ec1eb2ba43eb98043b9f0031a0a7afd3"
-    sha256 cellar: :any_skip_relocation, monterey:       "c02281aed18f8ba445115a4b0cae71e5358593fc12786e5e0cea42fec99055fe"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a5035ef0bb3d4d9023420a26c5cfa8de0e955d571fba5afee21b5cb098ce6bec"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "4443aace0c810a9f8f7d948f3de67ea83da038cfd2185cffcd592ab81e603938"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "dcccced82a05a9201011ecb893d800a79054aba0d5eed32e049b181ce46d1a44"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "9f37513aa247fb50886dd40e2f0ccb2a451c2668576629a0d20f89aeb3e59986"
+    sha256 cellar: :any_skip_relocation, sonoma:         "5eff2fa59edffb1c217f9eddf3fef1d209603a5bea9a649d0aa9b4dc8dc724fb"
+    sha256 cellar: :any_skip_relocation, ventura:        "55116a3db2e8bae104e4e08ec86c019e035642dc82398bed13bdc0a1d52527d8"
+    sha256 cellar: :any_skip_relocation, monterey:       "e8ede3c8e30d97b9c9d62602f4e5e3dbe5b66d6f9048a72de0e33f569e253d37"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "475b42406f25df6465980e595b5a2307109b1202de483c38797e6d1ca9032463"
   end
 
   depends_on "go" => :build
@@ -30,6 +30,7 @@ class Ipsw < Formula
       -X github.com/blacktop/ipsw/cmd/ipsw/cmd.AppBuildCommit=Homebrew
     ]
     system "go", "build", *std_go_args(ldflags:), "./cmd/ipsw"
+    generate_completions_from_executable(bin/"ipsw", "completion")
   end
 
   test do

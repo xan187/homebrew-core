@@ -1,8 +1,8 @@
 class Mx < Formula
   desc "Command-line tool used for the development of Graal projects"
   homepage "https://github.com/graalvm/mx"
-  url "https://github.com/graalvm/mx/archive/refs/tags/7.28.0.tar.gz"
-  sha256 "e8e3bd5dce67995b5c87d940e34a97e3ebfdc6b2d2eaada2de00a2aeb8db6bd9"
+  url "https://github.com/graalvm/mx/archive/refs/tags/7.29.3.tar.gz"
+  sha256 "f1dd15ba3e803f6c3f4865b639c0dc449e081e68056eea57317558478607bbdf"
   license "GPL-2.0-only"
 
   livecheck do
@@ -11,13 +11,7 @@ class Mx < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "b4c3b2640889ab040d688b348ff1f150adc7238fbebaf4d0744b4cd92edb94f9"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "b4c3b2640889ab040d688b348ff1f150adc7238fbebaf4d0744b4cd92edb94f9"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "b4c3b2640889ab040d688b348ff1f150adc7238fbebaf4d0744b4cd92edb94f9"
-    sha256 cellar: :any_skip_relocation, sonoma:         "b4c3b2640889ab040d688b348ff1f150adc7238fbebaf4d0744b4cd92edb94f9"
-    sha256 cellar: :any_skip_relocation, ventura:        "b4c3b2640889ab040d688b348ff1f150adc7238fbebaf4d0744b4cd92edb94f9"
-    sha256 cellar: :any_skip_relocation, monterey:       "b4c3b2640889ab040d688b348ff1f150adc7238fbebaf4d0744b4cd92edb94f9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f63f96f657b4ccfc28193e9d424fe1af21c7dbd3ca60af6606d3252c74272b25"
+    sha256 cellar: :any_skip_relocation, all: "9707b6bb42b18de76647f32c3216e5a6932277f07cdd7d79d47aa13a91853781"
   end
 
   depends_on "openjdk" => :test

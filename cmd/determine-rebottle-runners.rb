@@ -45,7 +45,7 @@ module Homebrew
               nil
             else
               ephemeral_suffix = "-#{ENV.fetch("GITHUB_RUN_ID")}"
-              macos_runners = [{ runner: "#{macos_version}#{ephemeral_suffix}" }]
+              macos_runners = [{ runner: "#{macos_version}-x86_64#{ephemeral_suffix}" }]
               macos_runners << { runner: "#{macos_version}-arm64#{ephemeral_suffix}" }
               macos_runners
             end
@@ -58,7 +58,7 @@ module Homebrew
               nil # Don't rebottle for older macOS versions (no CI to build them).
             else
               runner = macos_version.to_s
-              runner += "-#{tag.arch}" if tag.arch != :x86_64
+              runner += "-#{tag.arch}"
               runner += "-#{ENV.fetch("GITHUB_RUN_ID")}"
 
               { runner: }

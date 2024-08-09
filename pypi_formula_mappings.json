@@ -1,4 +1,7 @@
 {
+  "aider": {
+    "exclude_packages": ["certifi", "cffi", "numpy", "pillow", "scipy"]
+  },
   "aiven-client": {
     "exclude_packages": ["certifi"]
   },
