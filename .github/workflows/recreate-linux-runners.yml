@@ -11,6 +11,10 @@ on:
     types:
       - completed
 
+defaults:
+  run:
+    shell: bash -xeuo pipefail {0}
+
 concurrency:
   group: recreate-linux-runners-${{ github.event.workflow_run.id || github.ref }}
   cancel-in-progress: true

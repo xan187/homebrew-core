@@ -3,8 +3,8 @@ class Mesa < Formula
 
   desc "Graphics Library"
   homepage "https://www.mesa3d.org/"
-  url "https://mesa.freedesktop.org/archive/mesa-24.2.2.tar.xz"
-  sha256 "fd077d3104edbe459e2b8597d2757ec065f9bd2d620b8c0b9cc88c2bf9891d02"
+  url "https://mesa.freedesktop.org/archive/mesa-24.2.4.tar.xz"
+  sha256 "5ea42a8bb6d58aec9754c9f553b1e413f67c09403741f8e2786c3f9e63d3461a"
   license all_of: [
     "MIT",
     "Apache-2.0", # include/{EGL,GLES*,vk_video,vulkan}, src/egl/generate/egl.xml, src/mapi/glapi/registry/gl.xml
@@ -23,14 +23,12 @@ class Mesa < Formula
   head "https://gitlab.freedesktop.org/mesa/mesa.git", branch: "main"
 
   bottle do
-    sha256 arm64_sequoia:  "e19df43117b858e2a65935066adec7381234fcbbb5477bebaa7e3e30d8cf299d"
-    sha256 arm64_sonoma:   "ef83b8e4fecdeae04ff9b04879c00a7e53477a3e484c57aa504c7069acfbb685"
-    sha256 arm64_ventura:  "81966d69090662e0ed4775a5948d945c1308942f0029bad91e5d1d79a254d57a"
-    sha256 arm64_monterey: "c2cbe117066a30c2b4412b70bd868f3a2cb36317af136bbfbc927b82f75bb828"
-    sha256 sonoma:         "115ddb20c6001b009a0d8df2764fa60e69245cf0011a417237bdf8ae1b3bffe8"
-    sha256 ventura:        "fc5cbc7e515fd41774e1d969977794fa4cbc2fea54a418ae22319d3b6b957e5c"
-    sha256 monterey:       "c38947888449d19b8822c90439d7b4be693483f6c9a3dc9053461afd4576c791"
-    sha256 x86_64_linux:   "53e4a61bec12e8199e7c002f82e20fdfbc1253e156092c0fe92bef1738338ccd"
+    sha256 arm64_sequoia: "f1c332decb7635b8c1752b2875cf58330f2b1606ec2f2b791a7fb650987acbd9"
+    sha256 arm64_sonoma:  "8b941cdd66accc8191f786f022d4a8b935cc8a2e49021c130db01d91462ea402"
+    sha256 arm64_ventura: "12afa87cff60326dd949206fe5013acfa2070fde09f7d5a62735b02b8c7e2830"
+    sha256 sonoma:        "313f8a90ccbc2c57cd741d8e2c26e7b065c934e0d1a5a5ce72bf2f016872804d"
+    sha256 ventura:       "fcda36b7ea6f129a2124baf2d639b1853d19301a814965496169b6737d802429"
+    sha256 x86_64_linux:  "c00dc57cc4e8947c926e214a7180d019862aacbc7a906abee44b3977f2dcf679"
   end
 
   depends_on "bison" => :build # can't use from macOS, needs '> 2.3'

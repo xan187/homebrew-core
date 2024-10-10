@@ -1,20 +1,18 @@
 class Pandoc < Formula
   desc "Swiss-army knife of markup format conversion"
   homepage "https://pandoc.org/"
-  url "https://github.com/jgm/pandoc/archive/refs/tags/3.3.tar.gz"
-  sha256 "7025e32e9cce7cbde9f43afedbf34f16b37fd71b96626752fd18425ae67baef7"
+  url "https://github.com/jgm/pandoc/archive/refs/tags/3.5.tar.gz"
+  sha256 "1d378e5721eb26ebcdc31232dcd26d041eb3237e85ac3650ce809e9fa0fcacb8"
   license "GPL-2.0-or-later"
   head "https://github.com/jgm/pandoc.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "f8839435dbf7f22caec98bd518717fb608cedd289b43739ddcdd4169f6b5e3da"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "4d2d723abab4cbe54eb9bcc30bde8412c58b708203833dd32cf79c4c9aa2e830"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "68e33efb596ef5dc6ffea7326c0772ac975e01871fd904231cacb5a0fb20843b"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "825acbda6041526458b7004ed7d712a7c08534b75d3bf60992d951b9af360473"
-    sha256 cellar: :any_skip_relocation, sonoma:         "eea2768ec327af33c47b4a2c30a6cc025ad0d0ab3c3a07c396632129e8883ad6"
-    sha256 cellar: :any_skip_relocation, ventura:        "7a387350b73838bcdd9cee1c91bb81739fa8e74839e639128845bd8fcb316889"
-    sha256 cellar: :any_skip_relocation, monterey:       "637e5e99b56af6608247c65990be24c1b9870a642ce3a451ba2470051d2de813"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2875eaebe531bedcdc73d576047e855708ee380c1302519a3661cc7647596d4f"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a0e1effa23e96fd7aeabade0da2ba30aba26022d23c4a300e4d89250a733b6ae"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "423a1a43968e90be9ffd7ee744846d437a703a606e45673f4f7fda32ad289563"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "a3358e15498855a569cc0373961d70745b0af8b870034a93a99aa73214021dd2"
+    sha256 cellar: :any_skip_relocation, sonoma:        "ca547d7cab7d8193a3be16f443a479ccc3aa3220698aa6d39f368032af881327"
+    sha256 cellar: :any_skip_relocation, ventura:       "d77b25257036107ad9da955bfe13c9d52d1d7c4b625fbc82b4657e25d02342c4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6409b83fd2ecd212973a01798722ad95bfe2d23fb5e4d44ee509f1326ecb5578"
   end
 
   depends_on "cabal-install" => :build

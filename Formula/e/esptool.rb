@@ -3,25 +3,27 @@ class Esptool < Formula
 
   desc "ESP8266 and ESP32 serial bootloader utility"
   homepage "https://docs.espressif.com/projects/esptool/en/latest/esp32/"
-  url "https://files.pythonhosted.org/packages/1b/8b/f0d1e75879dee053874a4f955ed1e9ad97275485f51cb4bc2cb4e9b24479/esptool-4.7.0.tar.gz"
-  sha256 "01454e69e1ef3601215db83ff2cb1fc79ece67d24b0e5d43d451b410447c4893"
+  url "https://files.pythonhosted.org/packages/5c/6b/3ce9bb7f36bdef3d6ae71646a1d3b7d59826a478f3ed8a783a93a2f8f537/esptool-4.8.1.tar.gz"
+  sha256 "dc4ef26b659e1a8dcb019147c0ea6d94980b34de99fbe09121c7941c8b254531"
   license "GPL-2.0-or-later"
-  revision 1
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia:  "41efc76e20564f5141147ce7a92f18f0fe5fd3f123c6832be8a8294b8916b6a1"
-    sha256 cellar: :any,                 arm64_sonoma:   "1bea1d3fd71a60716ecea4655c11727a80c4e3b05f4bb00cb1e86af32225c713"
-    sha256 cellar: :any,                 arm64_ventura:  "5cb962e470e183db67b3db7a175b98326f6e909a23e6b55de39ae634d45774ce"
-    sha256 cellar: :any,                 arm64_monterey: "60fbfb222d24b267aa1958706617d070ab189b47f0a64ecd8d3a4ccd53d5c917"
-    sha256 cellar: :any,                 sonoma:         "7984f99134cf4392e7be2e11edddc52a4fa3da45c5f2c9083ac7c276c8b1dc32"
-    sha256 cellar: :any,                 ventura:        "c76a0541d101ed1002ebf9d83b3fd71b5e30e890882cb41815a5b0d1feb09e84"
-    sha256 cellar: :any,                 monterey:       "f765c02e94b6d2ddadd4b43f27e2665d9f9770aa01e297446d08fc69cc4a345d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d3f6dcc74c3ae4f255ad7ff562b67ac723fb59dccdaa55728cad130c84c14980"
+    sha256 cellar: :any,                 arm64_sequoia: "a6c251c00bcd0db0cf7a24cfc19d019964af4348784c3b6cf68698f8d5f859e9"
+    sha256 cellar: :any,                 arm64_sonoma:  "5c1fbe4c38793bf1cf0e35d5d9346f4022a559e8a6200ce96adc7409e834b148"
+    sha256 cellar: :any,                 arm64_ventura: "5b948b967078deeadf91209ae140128962fb97d30ec2a1c1a83e83dfce58355b"
+    sha256 cellar: :any,                 sonoma:        "189fbee589d3a52bcdea881875a157354051a5c48890698832e917d714e9fb1d"
+    sha256 cellar: :any,                 ventura:       "b46ee19677f2c554294b68c86e235abdc413f157dbd780f2ff98d25ac449f5c7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f00cc619d59c94294a641f12c44f4079f3e3a6a1cb64655895b0a06a0a850911"
   end
 
   depends_on "cryptography"
   depends_on "libyaml"
   depends_on "python@3.12"
+
+  resource "argcomplete" do
+    url "https://files.pythonhosted.org/packages/75/33/a3d23a2e9ac78f9eaf1fce7490fee430d43ca7d42c65adabbb36a2b28ff6/argcomplete-3.5.0.tar.gz"
+    sha256 "4349400469dccfb7950bb60334a680c58d88699bff6159df61251878dc6bf74b"
+  end
 
   resource "bitarray" do
     url "https://files.pythonhosted.org/packages/c7/bf/25cf92a83e1fe4948d7935ae3c02f4c9ff9cb9c13e977fba8af11a5f642c/bitarray-2.9.2.tar.gz"
@@ -29,8 +31,8 @@ class Esptool < Formula
   end
 
   resource "bitstring" do
-    url "https://files.pythonhosted.org/packages/7f/07/0fd502a29127b968bada3d1824a8af997546d2b9ff73f00e800b3d9888cb/bitstring-4.1.4.tar.gz"
-    sha256 "94f3f1c45383ebe8fd4a359424ffeb75c2f290760ae8fcac421b44f89ac85213"
+    url "https://files.pythonhosted.org/packages/d8/d0/d6f57409bb50f54fe2894ec5a50b5c04cb41aa814c3bdb8a7eeb4a0f7697/bitstring-4.2.3.tar.gz"
+    sha256 "e0c447af3fda0d114f77b88c2d199f02f97ee7e957e6d719f40f41cf15fbb897"
   end
 
   resource "ecdsa" do
@@ -49,8 +51,8 @@ class Esptool < Formula
   end
 
   resource "pyyaml" do
-    url "https://files.pythonhosted.org/packages/cd/e5/af35f7ea75cf72f2cd079c95ee16797de7cd71f29ea7c68ae5ce7be1eda0/PyYAML-6.0.1.tar.gz"
-    sha256 "bfdf460b1736c775f2ba9f6a92bca30bc2095067b8a9d77876d1fad6cc3b4a43"
+    url "https://files.pythonhosted.org/packages/54/ed/79a089b6be93607fa5cdaedf301d7dfb23af5f25c398d5ead2525b063e17/pyyaml-6.0.2.tar.gz"
+    sha256 "d584d9ec91ad65861cc08d42e834324ef890a082e591037abe114850ff7bbc3e"
   end
 
   resource "reedsolo" do

@@ -1,8 +1,8 @@
 class Pgroonga < Formula
   desc "PostgreSQL plugin to use Groonga as index"
   homepage "https://pgroonga.github.io/"
-  url "https://packages.groonga.org/source/pgroonga/pgroonga-3.2.2.tar.gz"
-  sha256 "1495c1e8a16d2f22859be0d60e639873f94a7cc5a536ead3f7bc26ac36fb2e32"
+  url "https://packages.groonga.org/source/pgroonga/pgroonga-3.2.4.tar.gz"
+  sha256 "591aa7cbd4920e01211c0a74e36e6b286aa332d55892615df1c389eb66fd5bff"
   license "PostgreSQL"
 
   livecheck do
@@ -11,47 +11,54 @@ class Pgroonga < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia:  "5197757f045dfb1267cde346b66a118ad99d40dfbc4d48307a6239e7dd136a73"
-    sha256 cellar: :any,                 arm64_sonoma:   "33267f0b6fc7cb7d079a953e44c53eec66014a716232f58ad4a66ba63a41bf4d"
-    sha256 cellar: :any,                 arm64_ventura:  "bbc83ea803f8ef049bf2c889eb7ae2344de45e590ada563d31c4e3fc8b44d067"
-    sha256 cellar: :any,                 arm64_monterey: "e792216b086872de58e75339585383f906d047146e1ca2255421f9566c5cff4d"
-    sha256 cellar: :any,                 sonoma:         "475cfc414934c772aae6684d01bd8bf0d859c4bb8159a8a1bae37837c8a595f9"
-    sha256 cellar: :any,                 ventura:        "9e91abe9e54d59e8c801d007c5bd2f5373274e16b56f7a7b22b9b2fef675643c"
-    sha256 cellar: :any,                 monterey:       "d3647a4a44417b208a95f56db43e4f088de4439c37f3776899a16986ae35653b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "bb18fff9baa32134d1287eb1c2bad17a99e842d3914aa30471e7412d90ec45dc"
+    sha256 cellar: :any,                 arm64_sequoia: "7dee11d56208c67b9beafece4b6a7c7404da6dfa676886360881b90bf91e5679"
+    sha256 cellar: :any,                 arm64_sonoma:  "2158f0b6232901d491cdfaa4711379b96c4c62015d1c229706b0421362703c26"
+    sha256 cellar: :any,                 arm64_ventura: "ec4693dc5b4f3cd0c6f1cfdd3080537491bc5b7a5c4f4ef202fb88c8cf12dc5a"
+    sha256 cellar: :any,                 sonoma:        "7aaa568304d039b29b0104586c6bc059ba3ea6b2786908a3e2e55a3cfbd6b1b9"
+    sha256 cellar: :any,                 ventura:       "3c40a14775b2b5f4caba6baeec0717e64537294d697c5b5bf709ef111b3c010d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "97e067ef693da8269ef9fccfee8f787704dc019714b4637b723d481d8e050b32"
   end
 
   depends_on "pkg-config" => :build
+  depends_on "postgresql@14" => [:build, :test]
+  depends_on "postgresql@17" => [:build, :test]
   depends_on "groonga"
-  depends_on "postgresql@14"
 
-  def postgresql
-    Formula["postgresql@14"]
+  def postgresqls
+    deps.map(&:to_formula).sort_by(&:version).filter { |f| f.name.start_with?("postgresql@") }
   end
 
   def install
-    system "make"
-    system "make", "install", "bindir=#{bin}",
-                              "datadir=#{share/postgresql.name}",
-                              "pkglibdir=#{lib/postgresql.name}",
-                              "pkgincludedir=#{include/postgresql.name}"
+    postgresqls.each do |postgresql|
+      with_env(PATH: "#{postgresql.opt_bin}:#{ENV["PATH"]}") do
+        system "make"
+        system "make", "install", "bindir=#{bin}",
+                                  "datadir=#{share/postgresql.name}",
+                                  "pkglibdir=#{lib/postgresql.name}",
+                                  "pkgincludedir=#{include/postgresql.name}"
+        system "make", "clean"
+      end
+    end
   end
 
   test do
     ENV["LC_ALL"] = "C"
-    pg_ctl = postgresql.opt_bin/"pg_ctl"
-    psql = postgresql.opt_bin/"psql"
-    port = free_port
+    postgresqls.each do |postgresql|
+      pg_ctl = postgresql.opt_bin/"pg_ctl"
+      psql = postgresql.opt_bin/"psql"
+      port = free_port
 
-    system pg_ctl, "initdb", "-D", testpath/"test"
-    (testpath/"test/postgresql.conf").write <<~EOS, mode: "a+"
-      port = #{port}
-    EOS
-    system pg_ctl, "start", "-D", testpath/"test", "-l", testpath/"log"
-    begin
-      system psql, "-p", port.to_s, "-c", "CREATE EXTENSION \"pgroonga\";", "postgres"
-    ensure
-      system pg_ctl, "stop", "-D", testpath/"test"
+      datadir = testpath/postgresql.name
+      system pg_ctl, "initdb", "-D", datadir
+      (datadir/"postgresql.conf").write <<~EOS, mode: "a+"
+        port = #{port}
+      EOS
+      system pg_ctl, "start", "-D", datadir, "-l", testpath/"log-#{postgresql.name}"
+      begin
+        system psql, "-p", port.to_s, "-c", "CREATE EXTENSION \"pgroonga\";", "postgres"
+      ensure
+        system pg_ctl, "stop", "-D", datadir
+      end
     end
   end
 end

@@ -1,20 +1,18 @@
 class Usage < Formula
   desc "Tool for working with usage-spec CLIs"
   homepage "https://usage.jdx.dev/"
-  url "https://github.com/jdx/usage/archive/refs/tags/v0.3.1.tar.gz"
-  sha256 "0d83f635e5ba75f09f16c8481d3bae644e48b077cc6aba36898b1500d030b346"
+  url "https://github.com/jdx/usage/archive/refs/tags/v0.8.4.tar.gz"
+  sha256 "7f1a0fa1442bd6e09c4e471e0f62c129cbabcdf6050e3e69c0ad3780e6b93aca"
   license "MIT"
   head "https://github.com/jdx/usage.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "361efac80112fa8529c9cd101302efd859529857e78dfcf85f7d092de51f3d25"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "80df4d1dd979d58f255efe6d061d8611111a280b2ecb2f8051d31a219ca69113"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "fe9a3c486729be70d6c91cae69a9ac3cbe8d263906daf0805e5a41dd81ffcadc"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "fcf46eaaea8e47237627099e2b9fa4cb33a143398aea541f5316e744ff104178"
-    sha256 cellar: :any_skip_relocation, sonoma:         "58e8649f6890ee7e7c0dd124de05fe646bf81217486da1289826e67d7cdf7f74"
-    sha256 cellar: :any_skip_relocation, ventura:        "f52107aa87acebe45e5997d67d16ff382b1d0f4ea571c473e92e38300daee8c1"
-    sha256 cellar: :any_skip_relocation, monterey:       "2a8c13335482cd56c52332501b47e351a38e9e70d7ce4f55c3e4fb4053a35fac"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "da0ede147d944b721358a5577ae321d686be53e20349b0f2283f68ad41d445da"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8cbafe56f4c76327b2e746d7ef8246f5c7d44d0b5ef67d3402c1960255479fb8"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "5b35c295f8daf4fa29581f2db2abc150852904dc40ff86c04b89fb64d3d39097"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "efd823995d97dac25d582ac7817ff8692eec7845c202fcff3601374faf00b554"
+    sha256 cellar: :any_skip_relocation, sonoma:        "1ed192b30d2c756bcba2199c646b8e5c32beb00ecfb10c824584d051bd54755f"
+    sha256 cellar: :any_skip_relocation, ventura:       "318589cb743138493a9ddc96ced68ac11a10f9510b3c0501f943489a001d6467"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c10ac4f297776fad2e03a82e61b42cee76ad8a508aa02fffae89d3a4468081e5"
   end
 
   depends_on "rust" => :build

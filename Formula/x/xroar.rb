@@ -1,19 +1,17 @@
 class Xroar < Formula
   desc "Dragon and Tandy 8-bit computer emulator"
   homepage "https://www.6809.org.uk/xroar/"
-  url "https://www.6809.org.uk/xroar/dl/xroar-1.6.3.tar.gz"
-  sha256 "e8e8d5563dec2b77685db1b44f4bb8bc7b76cdbdf55d06eee905d986f059dbb5"
+  url "https://www.6809.org.uk/xroar/dl/xroar-1.6.5.tar.gz"
+  sha256 "fd2e5812578924d4b0cbc5c87375caae8a56aebea0b78f63a2399a216778b4f8"
   license "GPL-3.0-or-later"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia:  "8c606b1bbed48fa8c1bc0840ac2e1152eb1aafea9d59daf8ac5d03e05aea01be"
-    sha256 cellar: :any,                 arm64_sonoma:   "4e5a4c5b2671af95c92174d2622e7ce47aacffa3a13af19c13a0cf1044ed2cde"
-    sha256 cellar: :any,                 arm64_ventura:  "f1cd591c5476fe261ad30a92e2a5598825ce7bd172dea3c1483266b3ab3ed682"
-    sha256 cellar: :any,                 arm64_monterey: "68441cd6dafaee71289c7c4712e7b03665f8ba3b783d0e4c4f83d2d8af2c0247"
-    sha256 cellar: :any,                 sonoma:         "3e1e76b6354669bd27d72e055bc0984123bf0f40d5fab6a58527e428dcae1dae"
-    sha256 cellar: :any,                 ventura:        "3e30345a0d607f7beb33488a1eb6a56db328bbdc9b0f79078eedd39040e2fe65"
-    sha256 cellar: :any,                 monterey:       "df607176efa0760f0e5b94f24e3d0520eaf901867319720878085bb156c4c8fc"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "92ebf55e433dfde15881fc9a9f0d9baabb598efaf1c1d93f24885b6445f91005"
+    sha256 cellar: :any,                 arm64_sequoia: "32c9802cca6fccfb27e357d554516b0e54fe5ec6401e762b3edf7e3f75595ca9"
+    sha256 cellar: :any,                 arm64_sonoma:  "9fb94d2563d8953bba54a143b05722b3d1a6d042e5d7cf03a07b83b033ba3a1f"
+    sha256 cellar: :any,                 arm64_ventura: "21a8c3a2415ee9853d89da0f9edbc9f3af4d239e0ec7e9b8ff54ab160e1bb8d2"
+    sha256 cellar: :any,                 sonoma:        "aca75c44f5052a3fb66186ad09851f928e2b51b9793042d6e963def6f394b234"
+    sha256 cellar: :any,                 ventura:       "b31e54b4643b071d8e5605c0a28ebcb817eaeb63486c51a2089102241e252b6d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "428c6278734912b2bc40a385bb2108630a75e144d8458e827ab08ad7566d6c79"
   end
 
   head do

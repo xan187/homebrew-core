@@ -5,7 +5,7 @@ class PerconaXtrabackup < Formula
   url "https://downloads.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.35-31/source/tarball/percona-xtrabackup-8.0.35-31.tar.gz"
   sha256 "c6bda1e7f983e5a667bff22d1d67d33404db4e741676d03c9c60bbd4b263cabf"
   license "GPL-2.0-only"
-  revision 2
+  revision 4
 
   livecheck do
     url "https://docs.percona.com/percona-xtrabackup/latest/"
@@ -20,12 +20,12 @@ class PerconaXtrabackup < Formula
   end
 
   bottle do
-    sha256 arm64_sequoia: "61f9d428a004b5e63a6605f5d06a31791ce61644489161ec187bbf4e6061722e"
-    sha256 arm64_sonoma:  "fd27721b01aeadb935a2544d5999221399d244160fcbe53246605d1a8324ec1d"
-    sha256 arm64_ventura: "4d24af87d61b3c9786f4a1de63c33b0943799e7e2a2231ef451f5a542616b93d"
-    sha256 sonoma:        "09f8ff12ba6b61fe85d3b00e7f4d94e639d746d5e4acb2ca2cec8fba8e53a8ca"
-    sha256 ventura:       "a86822570ffe68c6eb0b722a50bf715d4ae6423ffeaebf078025003002afbc57"
-    sha256 x86_64_linux:  "895b32b23b4191f3461bf9c28e352274a614a7a9a6ac6497b9e49e7c2e136972"
+    sha256 arm64_sequoia: "c8ef081b00871cc792e94dcbc5ac96794cf31c91dc56f5a01f0946c115b7e092"
+    sha256 arm64_sonoma:  "23d34ca8f1609a8cb6184af74d8b3ddbf396e233b1ab25156e63dbb1c5fa59da"
+    sha256 arm64_ventura: "12b6d3fd4ef4f173c1a984086399e3a7c83ead787d5d3fa82f8fa054392c6d69"
+    sha256 sonoma:        "b3a41cd550b4841671ba7a9b128ca48711e3beed022633faf96f8b91c39a05d2"
+    sha256 ventura:       "421fd016c758138601b16e9dfdc141df14dea99137867366da81037f57d500d7"
+    sha256 x86_64_linux:  "a5481f586f2bbf168acc14e5d5bdb5ae32e2b938795844e9dd735ea3fb68e4cd"
   end
 
   depends_on "bison" => :build # needs bison >= 3.0.4
@@ -34,7 +34,7 @@ class PerconaXtrabackup < Formula
   depends_on "pkg-config" => :build
   depends_on "sphinx-doc" => :build
   depends_on "abseil"
-  depends_on "icu4c"
+  depends_on "icu4c@75"
   depends_on "libev"
   depends_on "libgcrypt"
   depends_on "lz4"
@@ -114,6 +114,7 @@ class PerconaXtrabackup < Formula
       end
     end
 
+    icu4c = deps.map(&:to_formula).find { |f| f.name.match?(/^icu4c@\d+$/) }
     # -DWITH_FIDO=system isn't set as feature isn't enabled and bundled copy was removed.
     # Formula paths are set to avoid HOMEBREW_HOME logic in CMake scripts
     cmake_args = %W[
@@ -125,7 +126,7 @@ class PerconaXtrabackup < Formula
       -DINSTALL_MYSQLTESTDIR=
       -DBISON_EXECUTABLE=#{Formula["bison"].opt_bin}/bison
       -DOPENSSL_ROOT_DIR=#{Formula["openssl@3"].opt_prefix}
-      -DWITH_ICU=#{Formula["icu4c"].opt_prefix}
+      -DWITH_ICU=#{icu4c.opt_prefix}
       -DWITH_SYSTEM_LIBS=ON
       -DWITH_BOOST=#{buildpath}/boost
       -DWITH_EDITLINE=system
@@ -197,7 +198,7 @@ index 42e63d0..5d21cc3 100644
 @@ -1942,31 +1942,6 @@ MYSQL_CHECK_RAPIDJSON()
  MYSQL_CHECK_FIDO()
  MYSQL_CHECK_FIDO_DLLS()
- 
+
 -IF(APPLE)
 -  GET_FILENAME_COMPONENT(HOMEBREW_BASE ${HOMEBREW_HOME} DIRECTORY)
 -  IF(EXISTS ${HOMEBREW_BASE}/include/boost)

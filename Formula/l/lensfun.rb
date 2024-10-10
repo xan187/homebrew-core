@@ -23,6 +23,7 @@ class Lensfun < Formula
 
   bottle do
     rebuild 1
+    sha256 arm64_sequoia:  "18a1546247aa250745d81cd55dfcd8aed35386999146883c7efcb1fa50db6080"
     sha256 arm64_sonoma:   "4509de164f26e03f7dde33e45c7c82994ade1cd087118ea44d096966e820aa21"
     sha256 arm64_ventura:  "4d66d4326ff847e40cbdea3efad6b141ca4a60e3af369dfd38b0bbac05377693"
     sha256 arm64_monterey: "d3b2be29200d9d2fed399acfa6c3688630f67a8d92d934fa201ccb926ba9d3ee"
@@ -34,7 +35,6 @@ class Lensfun < Formula
 
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
-  depends_on "python-setuptools" => :build
   depends_on "glib"
   depends_on "libpng"
   depends_on "python@3.12"
@@ -47,6 +47,7 @@ class Lensfun < Formula
     # Homebrew's python "prefix scheme" patch tries to install into
     # HOMEBREW_PREFIX/lib, which fails due to sandbox. As a workaround,
     # we disable the install step and manually run pip install later.
+    inreplace "apps/CMakeLists.txt", "${PYTHON} ${SETUP_PY} build", "mkdir build"
     inreplace "apps/CMakeLists.txt", /^\s*INSTALL\(CODE "execute_process\(.*SETUP_PY/, "#\\0"
 
     system "cmake", "-S", ".", "-B", "build", "-DBUILD_LENSTOOL=ON", *std_cmake_args
@@ -54,7 +55,7 @@ class Lensfun < Formula
     system "cmake", "--install", "build"
     rewrite_shebang detected_python_shebang, *bin.children
 
-    system "python3.12", "-m", "pip", "install", *std_pip_args, "./build/apps"
+    system "python3.12", "-m", "pip", "install", *std_pip_args(build_isolation: true), "./build/apps"
   end
 
   test do

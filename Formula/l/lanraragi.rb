@@ -4,17 +4,16 @@ class Lanraragi < Formula
   url "https://github.com/Difegue/LANraragi/archive/refs/tags/v.0.9.21.tar.gz"
   sha256 "ed2d704d058389eb4c97d62080c64fa96fcc230be663ec8958f35764d229c463"
   license "MIT"
+  revision 2
   head "https://github.com/Difegue/LANraragi.git", branch: "dev"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_sonoma:   "6fae9d6c20a48326cbd9ea44d9d974ab4004af1a2321e1987d7e49d025da4908"
-    sha256 cellar: :any,                 arm64_ventura:  "9ee44ada4bdaa609d91dc9f09788a5d3d6ba7b9a5b6766e2ac995e69bab890e9"
-    sha256 cellar: :any,                 arm64_monterey: "f4eb81ea0f98d1f4a277bc65322cbc3fa91d953f6de27a53ed9df962d860b83b"
-    sha256 cellar: :any,                 sonoma:         "754026306df0ce7a6985955846c193597b78f1fd3063d937d34e6a248d5cbabe"
-    sha256 cellar: :any,                 ventura:        "8f81574cb6abb21b30a77e82a2148aa7ac4dcad1138e6594f4e1b7c343ed8cd8"
-    sha256 cellar: :any,                 monterey:       "45ae93581953466567ca4d0d6712aa8a9dccc07348967d1fd70e74db2bf42470"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5b19a62ceb6089cd7c1d3772b51fc0b87ffbf42a097a5be272d9cca51dac8497"
+    sha256 cellar: :any,                 arm64_sequoia: "32b94989e04f1bc1643bf9ac3fd53798e660f0e3988d9482782648e29a9a144d"
+    sha256 cellar: :any,                 arm64_sonoma:  "007d0eb316f50682547e931268e501db9c9f70bead21f98901e3f67a7e90c271"
+    sha256 cellar: :any,                 arm64_ventura: "f1b0826609df1a9aa730ee2ba788432855112786b0b897d002c85d9b1a3991e6"
+    sha256 cellar: :any,                 sonoma:        "e3e9780e0a10edd57708c134759e6760ad42868ec0bca0f2e563bf2b1986a55c"
+    sha256 cellar: :any,                 ventura:       "162dd99fdbae029248a39482b69c83afede408fa7d5058557c1cd03b1012fd02"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6dbae601b895428500313e9c4851fafb8e5edd3c94278b2b7d37639a141bb5a6"
   end
 
   depends_on "nettle" => :build
@@ -73,6 +72,14 @@ class Lanraragi < Formula
       bin.install "lanraragi"
       libexec.install "redis.conf"
     end
+
+    return if OS.linux? || Hardware::CPU.intel?
+
+    # FIXME: This installs its own `libarchive`, but we should use our own to begin with.
+    #        As a workaround, install symlinks to our `libarchive` instead of the downloaded ones.
+    libarchive_install_dir = libexec/"lib/perl5/darwin-thread-multi-2level/auto/share/dist/Alien-Libarchive3/dynamic"
+    libarchive_install_dir.children.map(&:unlink)
+    ln_sf Formula["libarchive"].opt_lib.children, libarchive_install_dir
   end
 
   test do

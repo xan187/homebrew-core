@@ -1,20 +1,18 @@
 class Qsv < Formula
   desc "Ultra-fast CSV data-wrangling toolkit"
   homepage "https://github.com/jqnatividad/qsv"
-  url "https://github.com/jqnatividad/qsv/archive/refs/tags/0.134.0.tar.gz"
-  sha256 "276b34e830564daf3a7643855628ceda4379291c7818076a8f8648ebc9e345f4"
+  url "https://github.com/jqnatividad/qsv/archive/refs/tags/0.136.0.tar.gz"
+  sha256 "12149c7d84a3f1a28a65bb6e82a5d87b3f2f886e1142be90233e1507158f94a0"
   license any_of: ["MIT", "Unlicense"]
   head "https://github.com/jqnatividad/qsv.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "2e6bf2115a56ebd6479f4153adc41ee87ea6f819d0e296a446b7ae503e226fc8"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "5420a6f66509fcb9d4ec32b19d819afadf0d56e813255bc35592af2a49046975"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "3829930d8fcfd5f1f23a5b96e21e61bea7672476c0af093cff52df1119348a01"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "53ec1c72dcef55b58810bac1d51e259525d014c9fcdd6525692a373d5adb3d4b"
-    sha256 cellar: :any_skip_relocation, sonoma:         "d68237a0f040d865daf418b50f12222a81a0f71da4ef320956199853db323575"
-    sha256 cellar: :any_skip_relocation, ventura:        "dc477aa69ead83285fd835be6ca3c95d44cc7706f1a38e5e32528410985066d7"
-    sha256 cellar: :any_skip_relocation, monterey:       "009fffa6336c1b118076d2711466974dc6c94d8024344c0195e011822e485669"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "fd7000cdf2d9fc215043e0613ea777c5411c620607d12fff3b82d28dc2e97a1b"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "60d56abdf8f4e8f2a7ec12d848aaf01754f17a401dd50e403275cbf20d1faaba"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2048215e3a795558b3ea8c164990b1e7cbbfdd7dcb28b16bd256024f8f88c2e6"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "4e1db731c78b3f828bc1812f1f59fdb3b1f519ef72a7f33c342994aeef0c15ae"
+    sha256 cellar: :any_skip_relocation, sonoma:        "e8a0b7171f5e6308b3b4aaa5fb07ec9174e1ee6f074296bb435fa8479bdf2bfa"
+    sha256 cellar: :any_skip_relocation, ventura:       "ea01cb419ed8127ae0c7f577555d06fc240739bb8d7397b142dec2c89146c8cb"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4c64c80f1489938d081fd381a87336576dd8ca380f2afb176f1d5a9f77304618"
   end
 
   depends_on "rust" => :build

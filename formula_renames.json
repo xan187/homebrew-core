@@ -143,6 +143,7 @@
   "root6": "root",
   "rt-audio": "rtaudio",
   "rtx": "mise",
+  "rustfmt": "rust",
   "rustup-init": "rustup",
   "screenbrightness": "brightness",
   "sdl": "sdl12-compat",

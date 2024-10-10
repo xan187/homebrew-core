@@ -1,6 +1,10 @@
 name: Create replacement pull request
 run-name: "Replace PR #${{ inputs.pull_request }}"
 
+defaults:
+  run:
+    shell: bash -xeuo pipefail {0}
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.inputs.pull_request }}-${{ github.event.inputs.upload }}
   cancel-in-progress: ${{ !fromJson(github.event.inputs.upload) }}
@@ -56,9 +60,6 @@ jobs:
       repository-projects: write # for `gh pr edit`
       attestations: write # for actions/attest-build-provenance
       id-token: write # for actions/attest-build-provenance
-    defaults:
-      run:
-        shell: bash
     steps:
       - name: Post comment once started
         uses: Homebrew/actions/post-comment@master

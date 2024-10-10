@@ -1,8 +1,8 @@
 class Neo4j < Formula
   desc "Robust (fully ACID) transactional property graph database"
   homepage "https://neo4j.com/"
-  url "https://neo4j.com/artifact.php?name=neo4j-community-5.23.0-unix.tar.gz"
-  sha256 "ba71776c80ff5882524e6a535c942776249cffdcd0036baf9e1a1a257722285f"
+  url "https://neo4j.com/artifact.php?name=neo4j-community-5.24.1-unix.tar.gz"
+  sha256 "93986d1085b2e50fa1a569876b1a14e4d44b495b670767c0a12697909e8c6aa9"
   license "GPL-3.0-or-later"
 
   livecheck do
@@ -12,14 +12,7 @@ class Neo4j < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "6a96c2cf085392c178fc5178bf4f34f64d771f85f7ecdc757efc4e2415837098"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "6a96c2cf085392c178fc5178bf4f34f64d771f85f7ecdc757efc4e2415837098"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "6a96c2cf085392c178fc5178bf4f34f64d771f85f7ecdc757efc4e2415837098"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "6a96c2cf085392c178fc5178bf4f34f64d771f85f7ecdc757efc4e2415837098"
-    sha256 cellar: :any_skip_relocation, sonoma:         "acbcc86bd703dd71220ad921843c72df30f8a73b0291d157a7d3d139f27913cf"
-    sha256 cellar: :any_skip_relocation, ventura:        "acbcc86bd703dd71220ad921843c72df30f8a73b0291d157a7d3d139f27913cf"
-    sha256 cellar: :any_skip_relocation, monterey:       "acbcc86bd703dd71220ad921843c72df30f8a73b0291d157a7d3d139f27913cf"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "6a96c2cf085392c178fc5178bf4f34f64d771f85f7ecdc757efc4e2415837098"
+    sha256 cellar: :any_skip_relocation, all: "72fb904607377bbdee67478786292d2b83bb139f61c144d5ed3fccd3455a8d42"
   end
 
   depends_on "cypher-shell"
@@ -36,8 +29,13 @@ class Neo4j < Formula
     # Install jars in libexec to avoid conflicts
     libexec.install Dir["*"]
 
+    bash_completion.install (libexec/"bin/completion").children
+    # Ensure uniform bottles by replacing comments that reference `/usr/local`.
+    inreplace bash_completion.children, "/usr/local", HOMEBREW_PREFIX
+    rm_r libexec/"bin/completion"
+
     # Symlink binaries
-    bin.install Dir["#{libexec}/bin/neo4j{,-shell,-import,-shared.sh,-admin}"]
+    bin.install libexec.glob("bin/neo4j*")
     bin.env_script_all_files(libexec/"bin", env)
 
     # Adjust UDC props

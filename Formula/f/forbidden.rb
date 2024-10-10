@@ -3,19 +3,18 @@ class Forbidden < Formula
 
   desc "Bypass 4xx HTTP response status codes and more"
   homepage "https://github.com/ivan-sincek/forbidden"
-  url "https://files.pythonhosted.org/packages/a3/11/c27ee390aca12b1db6cc9f394a525a8e3609de31818a660dbc87a2ca9897/forbidden-12.3.tar.gz"
-  sha256 "9095063d1c3a43ea3e47b736a548459dc6d21c8bd57e376c800e0c571c8a5258"
+  url "https://files.pythonhosted.org/packages/a3/bd/07a1b00ed63815153713a6b7fa814174b798ab0c1fa97d6e6b6d0d50ccab/forbidden-12.6.tar.gz"
+  sha256 "c4bee241622d64b813295f9f58681fb05cc3fd547264ef6bd6495c2fca74f605"
   license "MIT"
   head "https://github.com/ivan-sincek/forbidden.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "edf8d5c872fa5aae22c94b763c38471738faed06538b3ebb41f17661ee1859e6"
-    sha256 cellar: :any,                 arm64_ventura:  "d3b794ccfc0d00ffcf884806b3a1275568f1fadff443d4511348d065008e9c3d"
-    sha256 cellar: :any,                 arm64_monterey: "8fe70dc3dc14dab8fa13367be50580968a5850269c439544ba7f4d2d44d67032"
-    sha256 cellar: :any,                 sonoma:         "a0783ab2c4a19824b69a5826e7296ee425f5b587ab30436b57f802b5f8fb7a87"
-    sha256 cellar: :any,                 ventura:        "41380d696f36691c6130ceaa25d7e2193928da340912248674d618cd4a313304"
-    sha256 cellar: :any,                 monterey:       "07270e96e7800dc209cf3f64de635f8fcf1ffd1657ee6f3fb480b857e53db9b8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "75f657cc8eadfce869dc5dd84572261e7b06a430cb26c19e6a0472a13e0fd429"
+    sha256 cellar: :any,                 arm64_sequoia: "d227f941f15946cd8b17df192e0c4ff78d534ba2fd315eadadef0a90e28a575a"
+    sha256 cellar: :any,                 arm64_sonoma:  "c4ce0f326e40e9b1c7d2be722b9eb815248d327337d09a04b934bdc27ba58a4a"
+    sha256 cellar: :any,                 arm64_ventura: "c66728a3bb8ab7b65b41279fdaf792b5ba35a55c068bddf8160382ac437d9ae2"
+    sha256 cellar: :any,                 sonoma:        "d560dfbda1b10af0d10c38a2ee191fa7504ea8fecb10806942b339c6f05b681a"
+    sha256 cellar: :any,                 ventura:       "162af7d62a03c2d9660d7ba6f1cac1e1b437fe7bab5b0f974da49b7895345fd2"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c6d95f560e280536ad46ecb41891736f4aff42943ca470db93f494b6049e729f"
   end
 
   depends_on "certifi"
@@ -43,34 +42,33 @@ class Forbidden < Formula
     sha256 "08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"
   end
 
-  resource "datetime" do
-    url "https://files.pythonhosted.org/packages/2f/66/e284b9978fede35185e5d18fb3ae855b8f573d8c90a56de5f6d03e8ef99e/DateTime-5.5.tar.gz"
-    sha256 "21ec6331f87a7fcb57bd7c59e8a68bfffe6fcbf5acdbbc7b356d6a9a020191d3"
-  end
-
   resource "grapheme" do
     url "https://files.pythonhosted.org/packages/ce/e7/bbaab0d2a33e07c8278910c1d0d8d4f3781293dfbc70b5c38197159046bf/grapheme-0.6.0.tar.gz"
     sha256 "44c2b9f21bbe77cfb05835fec230bd435954275267fea1858013b102f8603cca"
   end
 
   resource "idna" do
-    url "https://files.pythonhosted.org/packages/e8/ac/e349c5e6d4543326c6883ee9491e3921e0d07b55fdf3cce184b40d63e72a/idna-3.8.tar.gz"
-    sha256 "d838c2c0ed6fced7693d5e8ab8e734d5f8fda53a039c0164afb0b82e771e3603"
+    url "https://files.pythonhosted.org/packages/f1/70/7703c29685631f5a7590aa73f1f1d3fa9a380e654b86af429e0934a32f7d/idna-3.10.tar.gz"
+    sha256 "12f65c9b470abda6dc35cf8e63cc574b1c52b11df2c86030af0ac09b01b13ea9"
   end
 
   resource "pycurl" do
     url "https://files.pythonhosted.org/packages/c9/5a/e68b8abbc1102113b7839e708ba04ef4c4b8b8a6da392832bb166d09ea72/pycurl-7.45.3.tar.gz"
     sha256 "8c2471af9079ad798e1645ec0b0d3d4223db687379d17dd36a70637449f81d6b"
+
+    # Remove -flat_namespace
+    # PR ref: https://github.com/pycurl/pycurl/pull/855
+    on_sequoia :or_newer do
+      patch do
+        url "https://github.com/pycurl/pycurl/commit/7deb85e24981e23258ea411dcc79ca9b527a297d.patch?full_index=1"
+        sha256 "a49fa9143287398856274f019a04cf07b0c345560e1320526415e9280ce2efbc"
+      end
+    end
   end
 
   resource "pyjwt" do
     url "https://files.pythonhosted.org/packages/fb/68/ce067f09fca4abeca8771fe667d89cc347d1e99da3e093112ac329c6020e/pyjwt-2.9.0.tar.gz"
     sha256 "7e1e5b56cc735432a7369cbfa0efe50fa113ebecdc04ae6922deba8b84582d0c"
-  end
-
-  resource "pytz" do
-    url "https://files.pythonhosted.org/packages/3a/31/3c70bf7603cc2dca0f19bdc53b4537a797747a58875b552c8c413d963a3f/pytz-2024.2.tar.gz"
-    sha256 "2aa355083c50a0f93fa581709deac0c9ad65cca8a9e9beac660adcbd493c798a"
   end
 
   resource "regex" do
@@ -81,11 +79,6 @@ class Forbidden < Formula
   resource "requests" do
     url "https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz"
     sha256 "55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760"
-  end
-
-  resource "setuptools" do
-    url "https://files.pythonhosted.org/packages/3e/2c/f0a538a2f91ce633a78daaeb34cbfb93a54bd2132a6de1f6cec028eee6ef/setuptools-74.1.2.tar.gz"
-    sha256 "95b40ed940a1c67eb70fc099094bd6e99c6ee7c23aa2306f4d2697ba7916f9c6"
   end
 
   resource "tabulate" do
@@ -103,17 +96,12 @@ class Forbidden < Formula
     sha256 "e7d814a81dad81e6caf2ec9fdedb284ecc9c73076b62654547cc64ccdcae26e9"
   end
 
-  resource "zope-interface" do
-    url "https://files.pythonhosted.org/packages/c8/83/7de03efae7fc9a4ec64301d86e29a324f32fe395022e3a5b1a79e376668e/zope.interface-7.0.3.tar.gz"
-    sha256 "cd2690d4b08ec9eaf47a85914fe513062b20da78d10d6d789a792c0b20307fb1"
-  end
-
   def install
-    virtualenv_install_with_resources start_with: "setuptools"
+    virtualenv_install_with_resources
   end
 
   test do
-    output = shell_output(bin/"forbidden -u https://brew.sh -t methods -f GET")
-    assert_match "\"code\": 200", output
+    output = shell_output("#{bin}/forbidden -u https://brew.sh -t methods -f GET")
+    assert_match '"code": 200', output
   end
 end

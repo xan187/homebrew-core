@@ -1,9 +1,10 @@
 class Rebar3 < Formula
   desc "Erlang build tool"
-  homepage "https://github.com/erlang/rebar3"
+  homepage "https://rebar3.org"
   url "https://github.com/erlang/rebar3/archive/refs/tags/3.24.0.tar.gz"
   sha256 "391b0eaa2825bb427fef1e55a0d166493059175f57a33b00346b84a20398216c"
   license "Apache-2.0"
+  revision 1
 
   livecheck do
     url :stable
@@ -11,19 +12,32 @@ class Rebar3 < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "2fa23e681c8f8004bf426321acd2e05999906e798538ad1b37b68cc238633669"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "419937712d474338e34106bd9749cc373f7cde72523d11c352beaf1907f9d076"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "2dcfd8009890e3bee785506b992ab88a6f0dc45cb520566f06bab1af44dc655e"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "241c35af6b39043c65f7321b82fa36fb63b97cd9a0c817ae137f6816516e1d01"
-    sha256 cellar: :any_skip_relocation, sonoma:         "84f894b593e9bbd52c471884bead7294ae0cb7ddc3b1e739f7b75bf6590d9c72"
-    sha256 cellar: :any_skip_relocation, ventura:        "8e976eb647228e085d7ab954ae1bedf74bc050d02c3bee5193f732b996955004"
-    sha256 cellar: :any_skip_relocation, monterey:       "60ac0ee45f7d74525400bf5607f4e21bc8e081152475d86bf7aae5606935dd1d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "1cbcc3cff272dd00d92f36198dff1a98197423a1d544dd7388461498a299f357"
+    rebuild 2
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6c00aba8ef8aa1954959241927a697dbb389af2e53113013ec740950859134b7"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "081a82ce85c737630c4f454e32031c095b5f7fb8c9139705c26ea1463b56bab2"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "daaf2e1860ada7bcaff3c59dd161611f4af4298893ee19d6b543523eecc060fd"
+    sha256 cellar: :any_skip_relocation, sonoma:        "c53cf3cf89d153a1c22c75077eb23e917806af58aac6ab58053537227a438970"
+    sha256 cellar: :any_skip_relocation, ventura:       "96c91363e3a00fc8b4cf1187601941bda4dff426e3e79f06f924225ea6de1c2f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "33ffd13dc4476f1006a2b10b00fbdc818178f902299d0384a98362c929268954"
   end
 
+  depends_on "erlang@25" => [:build, :test]
   depends_on "erlang"
 
   def install
+    erlang_build_dep = deps.find { |dep| dep.build? && dep.name.match?(/^erlang@\d+$/) }&.to_formula
+    odie "Could not find build-time erlang!" if erlang_build_dep.blank?
+
+    # To guarantee compatibility with various erlang versions, build with an older erlang.
+    # We want to use `erlang@#{x-2}` where x is the major version of the `erlang` formula.
+    build_erlang_version = erlang_build_dep.version.major.to_i
+    wanted_erlang_version = Formula["erlang"].version.major.to_i - 2
+    if wanted_erlang_version != build_erlang_version
+      odie "This formula should be built with `erlang@#{wanted_erlang_version}`"
+    end
+
+    # Ensure we're building with versioned `erlang`
+    ENV.remove "PATH", "#{Formula["erlang"].opt_bin}:"
     system "./bootstrap"
     bin.install "rebar3"
 
@@ -33,6 +47,15 @@ class Rebar3 < Formula
   end
 
   test do
-    system bin/"rebar3", "--version"
+    deps.each do |dep|
+      next unless dep.name.match?(/^erlang(@\d+)?$/)
+
+      erlang = dep.to_formula
+      erlang_bin = erlang.opt_bin
+      erlang_version = erlang.version.major
+      with_env(PATH: "#{erlang_bin}:#{ENV["PATH"]}") do
+        assert_match "OTP #{erlang_version}", shell_output("#{bin}/rebar3 --version")
+      end
+    end
   end
 end

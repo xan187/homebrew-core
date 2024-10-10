@@ -32,6 +32,10 @@ on:
         description: "Message to include when autosquashing revision bumps, deletions, and rebuilds (requires autosquash)"
         required: false
 
+defaults:
+  run:
+    shell: bash -xeuo pipefail {0}
+
 env:
   PR: ${{inputs.pull_request}}
   INPUT_MESSAGE: ${{ inputs.message }}
@@ -173,7 +177,7 @@ jobs:
              [[ "$bottles" = "false" ]]
           then
             exit 0
-          elif "$pushable"
+          elif "$pushable" || [[ "$fork_type" = "Organization" ]]
           then
             MESSAGE="$ORG_FORK_MESSAGE"
           else
@@ -251,9 +255,6 @@ jobs:
       actions: read # for `brew pr-pull`
       pull-requests: write # for `gh pr edit|review`
       repository-projects: write # for `gh pr edit`
-    defaults:
-      run:
-        shell: bash
     steps:
       - name: Post comment once started
         uses: Homebrew/actions/post-comment@master

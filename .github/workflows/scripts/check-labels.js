@@ -70,6 +70,7 @@ module.exports = async ({github, context, core}, formulae_detect, dependent_test
     }
 
     const test_bot_formulae_args = ["--only-formulae", "--junit", "--only-json-tab", "--skip-dependents"]
+    test_bot_formulae_args.push(`--testing-formulae="${formulae_detect.testing_formulae}"`)
     test_bot_formulae_args.push(`--added-formulae="${formulae_detect.added_formulae}"`)
     test_bot_formulae_args.push(`--deleted-formulae="${formulae_detect.deleted_formulae}"`)
 

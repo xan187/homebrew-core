@@ -1,20 +1,18 @@
 class Gosec < Formula
   desc "Golang security checker"
   homepage "https://securego.io/"
-  url "https://github.com/securego/gosec/archive/refs/tags/v2.21.2.tar.gz"
-  sha256 "35a55699e6998555f778f604851da4d026bc279bf29956600a1e5bf5aca093a5"
+  url "https://github.com/securego/gosec/archive/refs/tags/v2.21.4.tar.gz"
+  sha256 "fe3d78c52383164906d3cca5b22e693e22a146a4b89a8f60438fdaa833e32b3f"
   license "Apache-2.0"
   head "https://github.com/securego/gosec.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "6e7f99a0844c401bc5fcbd3ddbb390f54fcf2dd81111fed00f89ab2e9ced371f"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "6e7f99a0844c401bc5fcbd3ddbb390f54fcf2dd81111fed00f89ab2e9ced371f"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "6e7f99a0844c401bc5fcbd3ddbb390f54fcf2dd81111fed00f89ab2e9ced371f"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "6e7f99a0844c401bc5fcbd3ddbb390f54fcf2dd81111fed00f89ab2e9ced371f"
-    sha256 cellar: :any_skip_relocation, sonoma:         "c1e70fe291046b67d088d0cac631d248d406557558a0da366eef841760ade47d"
-    sha256 cellar: :any_skip_relocation, ventura:        "c1e70fe291046b67d088d0cac631d248d406557558a0da366eef841760ade47d"
-    sha256 cellar: :any_skip_relocation, monterey:       "c1e70fe291046b67d088d0cac631d248d406557558a0da366eef841760ade47d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "89eb114ea6ad193953ac7cb24217527b7cced9883765c443ff4594beafd12a2b"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "b5571a78eebcc2894002a97d6a0c61aa1e07e982720df4c1dc5696afa96b12de"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "b5571a78eebcc2894002a97d6a0c61aa1e07e982720df4c1dc5696afa96b12de"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "b5571a78eebcc2894002a97d6a0c61aa1e07e982720df4c1dc5696afa96b12de"
+    sha256 cellar: :any_skip_relocation, sonoma:        "e74361f658185b11b73634ccb6c243da37dfef808d38a924f4bd4728ebec728b"
+    sha256 cellar: :any_skip_relocation, ventura:       "e74361f658185b11b73634ccb6c243da37dfef808d38a924f4bd4728ebec728b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ddb2653a49926b73033c002e1b3fd9ec25d0a97d6df7e3ddc002d72fe422cabb"
   end
 
   depends_on "go"

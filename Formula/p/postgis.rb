@@ -1,9 +1,10 @@
 class Postgis < Formula
   desc "Adds support for geographic objects to PostgreSQL"
   homepage "https://postgis.net/"
-  url "https://download.osgeo.org/postgis/source/postgis-3.4.3.tar.gz"
-  sha256 "f8ded505daeb8f57659da2b9e577ff71e183aaa094708d2eece2c56d93361f62"
+  url "https://download.osgeo.org/postgis/source/postgis-3.5.0.tar.gz"
+  sha256 "ca698a22cc2b2b3467ac4e063b43a28413f3004ddd505bdccdd74c56a647f510"
   license "GPL-2.0-or-later"
+  revision 1
 
   livecheck do
     url "https://download.osgeo.org/postgis/source/"
@@ -11,14 +12,12 @@ class Postgis < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia:  "69bcaed51c7fdc66e58141621dbe28a010bcb2ce3d57e789a21cdc0b05e741e7"
-    sha256 cellar: :any,                 arm64_sonoma:   "619e7996364ce78a8c9f34c7762e493be62f0e9467104ff1bf61fa2842266b09"
-    sha256 cellar: :any,                 arm64_ventura:  "1e7641421667a2d99c44032994c66344cab61570b4b9c6c1066702f454f33f94"
-    sha256 cellar: :any,                 arm64_monterey: "beedaffb06905e360eb99351e442f377f91f345e81bdcc7ee7f16bcba1e2a6de"
-    sha256 cellar: :any,                 sonoma:         "c50e0f3b10aea94825f983d75691cf231a0d47c681cd09ce17cd4cb2cc66ea4e"
-    sha256 cellar: :any,                 ventura:        "b606bc9a70e7a1eafb1c84c7a9e8a9e16b523ee836c1e8e4506f2df9d86636f5"
-    sha256 cellar: :any,                 monterey:       "f93e41a5b70d007775c51a065d103860ffbf661cc088df194b2217d7da2ffb01"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "93ec53c8041183126f144dd8628f330cd5f2b6a6a7ed9a92d096315e35f957cc"
+    sha256 cellar: :any,                 arm64_sequoia: "e62283b563babcec87da699f8a55f3b5ffb4f4d4b36fd846ff8ac7ea2bdbf4d4"
+    sha256 cellar: :any,                 arm64_sonoma:  "07140b0b5a70984e0585b12605be0f785f323b3983142cc19bcb54e678e8680a"
+    sha256 cellar: :any,                 arm64_ventura: "861e20ba9f29f26c35b2a69211ea2f0ce6f1153338ea82be4c2af295acc3bf71"
+    sha256 cellar: :any,                 sonoma:        "2321eeccea6eaa85e436e179f6a57f8a2e92bacc657089050e05033bfa9198bd"
+    sha256 cellar: :any,                 ventura:       "3379b2ebf83ea32799961f6821c7568eef036750c35e09f112201f850a458d6f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9f76fa3686dd71f6d04b227d179a8315e97cced6ad72cefac5ac1539763a71c1"
   end
 
   head do
@@ -29,30 +28,33 @@ class Postgis < Formula
     depends_on "libtool" => :build
   end
 
-  depends_on "gpp" => :build
   depends_on "pkg-config" => :build
+  depends_on "postgresql@14" => [:build, :test]
+  depends_on "postgresql@17" => [:build, :test]
 
-  depends_on "gdal" # for GeoJSON and raster handling
+  depends_on "gdal"
   depends_on "geos"
-  depends_on "icu4c"
-  depends_on "json-c" # for GeoJSON and raster handling
+  depends_on "icu4c@75"
+  depends_on "json-c"
+  depends_on "libpq"
   depends_on "libxml2"
   depends_on "pcre2"
-  depends_on "postgresql@14"
   depends_on "proj"
-  depends_on "protobuf-c" # for MVT (map vector tiles) support
-  depends_on "sfcgal" # for advanced 2D/3D functions
+  depends_on "protobuf-c"
+  depends_on "sfcgal"
 
-  uses_from_macos "llvm"
+  uses_from_macos "perl"
 
-  on_linux do
-    depends_on "libpq"
+  on_macos do
+    depends_on "gettext"
   end
 
-  fails_with gcc: "5" # C++17
+  on_linux do
+    depends_on "llvm@18" # align with `apache-arrow`
+  end
 
-  def postgresql
-    Formula["postgresql@14"]
+  def postgresqls
+    deps.map(&:to_formula).sort_by(&:version).filter { |f| f.name.start_with?("postgresql@") }
   end
 
   def install
@@ -65,58 +67,48 @@ class Postgis < Formula
         .each { |llvm_lib| ENV.remove "HOMEBREW_LIBRARY_PATHS", llvm_lib }
     end
 
-    ENV.deparallelize
-
     # C++17 is required.
     ENV.append "CXXFLAGS", "-std=c++17"
 
-    # Workaround for: Built-in generator --c_out specifies a maximum edition
-    # PROTO3 which is not the protoc maximum 2023.
-    # Remove when fixed in `protobuf-c`:
-    # https://github.com/protobuf-c/protobuf-c/pull/711
-    ENV["PROTOCC"] = Formula["protobuf"].opt_bin/"protoc"
-
-    # PostGIS' build system assumes it is being installed to the same place as
-    # PostgreSQL, and looks for the `postgres` binary relative to the
-    # installation `bindir`. We gently support this system using an illusion.
-    #
-    # PostGIS links against the `postgres` binary for symbols that aren't
-    # exported in the public libraries `libpgcommon.a` and similar, so the
-    # build will break with confusing errors if this is omitted.
-    #
-    # See: https://github.com/NixOS/nixpkgs/commit/330fff02a675f389f429d872a590ed65fc93aedb
     bin.mkpath
-    ln_s "#{postgresql.opt_bin}/postgres", "#{bin}/postgres"
-
-    args = [
-      "--with-projdir=#{Formula["proj"].opt_prefix}",
-      "--with-jsondir=#{Formula["json-c"].opt_prefix}",
-      "--with-pgconfig=#{postgresql.opt_bin}/pg_config",
-      "--with-protobufdir=#{Formula["protobuf-c"].opt_bin}",
-      # Unfortunately, NLS support causes all kinds of headaches because
-      # PostGIS gets all of its compiler flags from the PGXS makefiles. This
-      # makes it nigh impossible to tell the buildsystem where our keg-only
-      # gettext installations are.
-      "--disable-nls",
-    ]
-
     system "./autogen.sh" if build.head?
-    system "./configure", *args, *std_configure_args
-    system "make"
-    # Override the hardcoded install paths set by the PGXS makefiles
-    system "make", "install", "bindir=#{bin}",
-                              "docdir=#{doc}",
-                              "mandir=#{man}",
-                              "pkglibdir=#{lib/postgresql.name}",
-                              "datadir=#{share/postgresql.name}",
-                              "PG_SHAREDIR=#{share/postgresql.name}"
 
-    rm "#{bin}/postgres"
+    postgresqls.each do |postgresql|
+      # PostGIS' build system assumes it is being installed to the same place as
+      # PostgreSQL, and looks for the `postgres` binary relative to the
+      # installation `bindir`. We gently support this system using an illusion.
+      #
+      # PostGIS links against the `postgres` binary for symbols that aren't
+      # exported in the public libraries `libpgcommon.a` and similar, so the
+      # build will break with confusing errors if this is omitted.
+      #
+      # See: https://github.com/NixOS/nixpkgs/commit/330fff02a675f389f429d872a590ed65fc93aedb
+      bin.install_symlink postgresql.opt_bin/"postgres"
+
+      mkdir "build-pg#{postgresql.version.major}" do
+        system "../configure", "--with-projdir=#{Formula["proj"].opt_prefix}",
+                               "--with-jsondir=#{Formula["json-c"].opt_prefix}",
+                               "--with-pgconfig=#{postgresql.opt_bin}/pg_config",
+                               "--with-protobufdir=#{Formula["protobuf-c"].opt_bin}",
+                               *std_configure_args
+        # Force `bin/pgsql2shp` to link to `libpq`
+        system "make", "PGSQL_FE_CPPFLAGS=-I#{Formula["libpq"].opt_include}",
+                       "PGSQL_FE_LDFLAGS=-L#{Formula["libpq"].opt_lib} -lpq"
+        # Override the hardcoded install paths set by the PGXS makefiles
+        system "make", "install", "bindir=#{bin}",
+                                  "docdir=#{doc}",
+                                  "mandir=#{man}",
+                                  "pkglibdir=#{lib/postgresql.name}",
+                                  "datadir=#{share/postgresql.name}",
+                                  "PG_SHAREDIR=#{share/postgresql.name}"
+      end
+
+      rm(bin/"postgres")
+    end
 
     # Extension scripts
     bin.install %w[
       utils/create_upgrade.pl
-      utils/postgis_restore.pl
       utils/profile_intersects.pl
       utils/test_estimation.pl
       utils/test_geography_estimation.pl
@@ -126,11 +118,7 @@ class Postgis < Formula
   end
 
   test do
-    pg_version = postgresql.version.major
-    expected = /'PostGIS built for PostgreSQL % cannot be loaded in PostgreSQL %',\s+#{pg_version}\.\d,/
-    postgis_version = Formula["postgis"].version.major_minor
-    assert_match expected, (share/postgresql.name/"contrib/postgis-#{postgis_version}/postgis.sql").read
-
+    ENV["LC_ALL"] = "C"
     require "base64"
     (testpath/"brew.shp").write ::Base64.decode64 <<~EOS
       AAAnCgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoOgDAAALAAAAAAAAAAAAAAAA
@@ -163,22 +151,34 @@ class Postgis < Formula
       AAAAAAAAAAAAAAAAADIAAAASAAAASAAAABIAAABeAAAAEgAAAHQAAAASAAAA
       igAAABI=
     EOS
+
     result = shell_output("#{bin}/shp2pgsql #{testpath}/brew.shp")
     assert_match "Point", result
     assert_match "AddGeometryColumn", result
 
-    pg_ctl = postgresql.opt_bin/"pg_ctl"
-    psql = postgresql.opt_bin/"psql"
-    port = free_port
+    postgresqls.each do |postgresql|
+      pg_version = postgresql.version.major
+      expected = /'PostGIS built for PostgreSQL % cannot be loaded in PostgreSQL %',\s+#{pg_version}\.\d,/
+      postgis_version = version.major_minor
+      assert_match expected, (share/postgresql.name/"contrib/postgis-#{postgis_version}/postgis.sql").read
 
-    system pg_ctl, "initdb", "-D", testpath/"test"
-    (testpath/"test/postgresql.conf").write <<~EOS, mode: "a+"
+      pg_ctl = postgresql.opt_bin/"pg_ctl"
+      psql = postgresql.opt_bin/"psql"
+      port = free_port
 
-      shared_preload_libraries = 'postgis-3'
-      port = #{port}
-    EOS
-    system pg_ctl, "start", "-D", testpath/"test", "-l", testpath/"log"
-    system psql, "-p", port.to_s, "-c", "CREATE EXTENSION \"postgis\";", "postgres"
-    system pg_ctl, "stop", "-D", testpath/"test"
+      datadir = testpath/postgresql.name
+      system pg_ctl, "initdb", "-D", datadir
+      (datadir/"postgresql.conf").write <<~EOS, mode: "a+"
+
+        shared_preload_libraries = 'postgis-3'
+        port = #{port}
+      EOS
+      system pg_ctl, "start", "-D", datadir, "-l", testpath/"log-#{postgresql.name}"
+      begin
+        system psql, "-p", port.to_s, "-c", "CREATE EXTENSION \"postgis\";", "postgres"
+      ensure
+        system pg_ctl, "stop", "-D", datadir
+      end
+    end
   end
 end

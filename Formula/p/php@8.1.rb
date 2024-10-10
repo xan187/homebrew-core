@@ -2,10 +2,11 @@ class PhpAT81 < Formula
   desc "General-purpose scripting language"
   homepage "https://www.php.net/"
   # Should only be updated if the new version is announced on the homepage, https://www.php.net/
-  url "https://www.php.net/distributions/php-8.1.29.tar.xz"
-  mirror "https://fossies.org/linux/www/php-8.1.29.tar.xz"
-  sha256 "288884af60581d4284baba2ace9ca6d646f72facbd3e3c2dd2acc7fe6f903536"
+  url "https://www.php.net/distributions/php-8.1.30.tar.xz"
+  mirror "https://fossies.org/linux/www/php-8.1.30.tar.xz"
+  sha256 "f24a6007f0b25a53cb7fbaee69c85017e0345b62089c2425a0afb7e177192ed1"
   license "PHP-3.01"
+  revision 1
 
   livecheck do
     url "https://www.php.net/downloads"
@@ -13,14 +14,12 @@ class PhpAT81 < Formula
   end
 
   bottle do
-    sha256 arm64_sequoia:  "417d09206aea63569ff7e4c5e7c670f29fce5afbe48aef61f8200721b1c5fe32"
-    sha256 arm64_sonoma:   "9d16413bf0a809e34c40ee2bdf0245748a1980859ffaee4a9336b1f142854df5"
-    sha256 arm64_ventura:  "2aff1f476a667ab5149d733c12c9edbfbe7efea269d4f9692770604cf373583f"
-    sha256 arm64_monterey: "9d75391a871dc0f69fd0a8fb67d5c5c3985ca32a8f74f28d368d3a9ba007d647"
-    sha256 sonoma:         "55125769200c1fa1092e2066d9aafd71d9ccdf6081a5f77d3cf1d1ec9f2dc3fa"
-    sha256 ventura:        "2354d1821e8a948f4299a52626665799578032ed2da79417f5d2967b6236f8aa"
-    sha256 monterey:       "7fd6db41d052fac0dd11a60a297d03adb0d86d9b555b5a8a11048e6ab4581dd8"
-    sha256 x86_64_linux:   "f9b8c400b17157ad739167f0a79fafd5fdae79fad6971a13c3fac2b25cf5e945"
+    sha256 arm64_sequoia: "bda07c54c481d4717807986dc68414e6afb99f212933b7c8ee40b677752db997"
+    sha256 arm64_sonoma:  "34c90ef7ec0014051e18a25da64df075b08f6c2b51c0c28f12921fce0a01ee39"
+    sha256 arm64_ventura: "2ec9f47f5c3c3457f74541c5bc7cc5a0299f283c7bafe2d8db961fe22f43493a"
+    sha256 sonoma:        "8b63e3d897b33cc0b8c51bee88ac8bcb55cc801bae809fd685634693c23fee93"
+    sha256 ventura:       "c2749c7933dffc43ef5e517527f2b1e4730934dd30daabb93a225f1c7994a7ec"
+    sha256 x86_64_linux:  "3ed5dced786f4116d35f61c9996826a87939b1e47b467c4b9e0062ce73fae0cd"
   end
 
   keg_only :versioned_formula
@@ -41,7 +40,7 @@ class PhpAT81 < Formula
   depends_on "gd"
   depends_on "gettext"
   depends_on "gmp"
-  depends_on "icu4c"
+  depends_on "icu4c@75"
   depends_on "krb5"
   depends_on "libpq"
   depends_on "libsodium"
@@ -69,6 +68,16 @@ class PhpAT81 < Formula
   end
 
   def install
+    # Backport fix for libxml2 >= 2.13
+    # Ref: https://github.com/php/php-src/commit/67259e451d5d58b4842776c5696a66d74e157609
+    inreplace "ext/xml/compat.c",
+              "!= XML_PARSER_ENTITY_VALUE && parser->parser->instate != XML_PARSER_ATTRIBUTE_VALUE)",
+              "== XML_PARSER_CONTENT)"
+
+    # Work around to support `icu4c` 75, which needs C++17.
+    # Can remove if upstream backports support into PHP 8.1
+    ENV["ICU_CXXFLAGS"] = "-std=c++17"
+
     # buildconf required due to system library linking bug patch
     system "./buildconf", "--force"
 
@@ -403,7 +412,7 @@ class PhpAT81 < Formula
       pid = fork do
         exec Formula["httpd"].opt_bin/"httpd", "-X", "-f", "#{testpath}/httpd.conf"
       end
-      sleep 3
+      sleep 10
 
       assert_match expected_output, shell_output("curl -s 127.0.0.1:#{port}")
 
@@ -416,7 +425,7 @@ class PhpAT81 < Formula
       pid = fork do
         exec Formula["httpd"].opt_bin/"httpd", "-X", "-f", "#{testpath}/httpd-fpm.conf"
       end
-      sleep 3
+      sleep 10
 
       assert_match expected_output, shell_output("curl -s 127.0.0.1:#{port}")
     ensure

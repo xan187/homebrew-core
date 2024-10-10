@@ -7,6 +7,7 @@ class Paps < Formula
   revision 2
 
   bottle do
+    sha256 cellar: :any, arm64_sequoia:  "1dc9e0d4ae5edd03013091933251474c8dcd4b1bc4f72a4df502734228c62f6f"
     sha256 cellar: :any, arm64_sonoma:   "df67721a4260dd63be5164d348ba57058f3a43298915726c7c1d0d3c43927794"
     sha256 cellar: :any, arm64_ventura:  "fa4ca77e9a2dd79350b705ec7cfcb559cce5e726777431b9a286ebb9b2ec00d2"
     sha256 cellar: :any, arm64_monterey: "b66abd39b5a6c8ee5b65603beb8e33357448af5a0fd8112610b63ffe6fc09df7"
@@ -19,8 +20,22 @@ class Paps < Formula
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
+  depends_on "cairo"
   depends_on "fmt"
+  depends_on "glib"
   depends_on "pango"
+
+  on_macos do
+    depends_on "gettext"
+  end
+
+  # Apply open PR to fix build with recent `glib`. This restores behavior before
+  # https://gitlab.gnome.org/GNOME/glib/-/commit/c583162cc6d7078ff549c72615617092b0bc150a
+  # PR ref: https://github.com/dov/paps/pull/71
+  patch do
+    url "https://github.com/dov/paps/commit/e6ec698be127822661e31f7fca7d2e0107944b24.patch?full_index=1"
+    sha256 "52848f9618dab9bc98c1554cc8a7a0b3ce419cfca53781b909d543ec4e4b27ea"
+  end
 
   def install
     system "meson", "setup", "build", *std_meson_args

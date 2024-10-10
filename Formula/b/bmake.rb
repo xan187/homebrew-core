@@ -1,8 +1,8 @@
 class Bmake < Formula
   desc "Portable version of NetBSD make(1)"
   homepage "https://www.crufty.net/help/sjg/bmake.html"
-  url "https://www.crufty.net/ftp/pub/sjg/bmake-20240808.tar.gz"
-  sha256 "b59189251b483decd4492f1f74387b2a584c03d5aa4637cd48b38ec62b9c0848"
+  url "https://www.crufty.net/ftp/pub/sjg/bmake-20240921.tar.gz"
+  sha256 "b346579e82d296d1a4da29dea8594e3ee596130b20786dec0f3899a3e11275c2"
   license "BSD-3-Clause"
 
   livecheck do
@@ -11,14 +11,12 @@ class Bmake < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "40e163bc8dfac0c25072160176a6d6a43bd8ca1fb6bfb82554436fd0351d0923"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "110273f82e7b948c0ef48d39a50feef6b518e315b15682f76b4d00037813835d"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "86fe92a47d1743d0ee44228c2a9b8f04de12b90c5778467ace6da3d8c26305c5"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "630937b9900fd80c18d7134380d7fd231ade970cf27bdf994d4697593abb640f"
-    sha256                               sonoma:         "09106532f30316f098475f389c24b38acccf3ff1d70349cc53ac3d2d0a22a5d8"
-    sha256                               ventura:        "83c43492a4e759a26dc95ccaf8479b9f243aabcfef4374066ab0dd63990990e5"
-    sha256                               monterey:       "010619f5757730df58ffb0bbbcd8b6bdce1d3a9b478f412da49d513008e221d4"
-    sha256                               x86_64_linux:   "0734ad24c5f0dc8e809d3559926308876e4729064bda8f2b90505a00726272e1"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "2c85dbe90351c8e8058ec94af33e389f5c71145dae4735f4e307c719292bb3a5"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8786570e597d05a1919c6f8e85a8697783a3eb5019878bee02378e707685c371"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "889ca47c405695cff31837b61892228d5e8278811cdaf427453eb25e95543024"
+    sha256                               sonoma:        "15a393bf9eab11a17f79a2b3011e9ad2ad700cc54fcbd8b7fcb76d56079dfd92"
+    sha256                               ventura:       "a5f8e58133ff960824383ac74cd38e05cd25daaeff84924a8a27c91ae4e5d8b2"
+    sha256                               x86_64_linux:  "4f896ff027fcf4ca3453c53bfe4673fce8904aa6a02eda0f09feede7faf0a57f"
   end
 
   uses_from_macos "bc" => :build

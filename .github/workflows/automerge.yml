@@ -8,6 +8,10 @@ on:
     types:
       - completed
 
+defaults:
+  run:
+    shell: bash -xeuo pipefail {0}
+
 concurrency:
   group: automerge-${{ github.event.workflow_run.event }}-${{ github.event.workflow_run.id }}
   cancel-in-progress: true
@@ -182,9 +186,6 @@ jobs:
       contents: read
       pull-requests: read
       actions: write # to dispatch publish workflow
-    defaults:
-      run:
-        shell: bash
     steps:
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@master

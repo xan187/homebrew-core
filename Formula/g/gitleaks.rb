@@ -1,8 +1,8 @@
 class Gitleaks < Formula
   desc "Audit git repos for secrets"
   homepage "https://github.com/gitleaks/gitleaks"
-  url "https://github.com/gitleaks/gitleaks/archive/refs/tags/v8.19.1.tar.gz"
-  sha256 "163eb1afe949220e309496492e271d9c905954420beb646fbe24289eb1567bc4"
+  url "https://github.com/gitleaks/gitleaks/archive/refs/tags/v8.20.1.tar.gz"
+  sha256 "71d538b29514cce569423ff5e57cddb01e917f8b5a4fc95679240c91ab777b4d"
   license "MIT"
 
   # Upstream creates releases that use a stable tag (e.g., `v1.2.3`) but are
@@ -14,12 +14,12 @@ class Gitleaks < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "74cb45c9421b8a4725ce1842f56a638b2a434ea499045eca896ed5cdf2ed57af"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "74cb45c9421b8a4725ce1842f56a638b2a434ea499045eca896ed5cdf2ed57af"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "74cb45c9421b8a4725ce1842f56a638b2a434ea499045eca896ed5cdf2ed57af"
-    sha256 cellar: :any_skip_relocation, sonoma:        "8fc3f14c5524cb0b7a7d320072eac4a62352d1e2f4110aaef0f6090ecef928b7"
-    sha256 cellar: :any_skip_relocation, ventura:       "8fc3f14c5524cb0b7a7d320072eac4a62352d1e2f4110aaef0f6090ecef928b7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "26f8df67b54cca7bc71d52e8e91fda7e89f91322945238ce83dacdcda87e3692"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "b1ddb7cf673d95efad24de11c7e0e4d338105ce38f6bb9695b7d391de4926e1e"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "b1ddb7cf673d95efad24de11c7e0e4d338105ce38f6bb9695b7d391de4926e1e"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "b1ddb7cf673d95efad24de11c7e0e4d338105ce38f6bb9695b7d391de4926e1e"
+    sha256 cellar: :any_skip_relocation, sonoma:        "e9be2dc316ff1fa428e73df4aaeb82943dd599314a0d58d8c87f429cb6f5aaee"
+    sha256 cellar: :any_skip_relocation, ventura:       "e9be2dc316ff1fa428e73df4aaeb82943dd599314a0d58d8c87f429cb6f5aaee"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bccabdfd4cceb8ca166ed9f12c6880c527163c966f029fd5dc3965a136b08749"
   end
 
   depends_on "go" => :build
@@ -32,7 +32,7 @@ class Gitleaks < Formula
   end
 
   test do
-    (testpath/"README").write "ghp_deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+    (testpath/"README").write "ghp_deadbeef61dc214e36cbc4cee5eb6418e38d"
     system "git", "init"
     system "git", "add", "README"
     system "git", "commit", "-m", "Initial commit"

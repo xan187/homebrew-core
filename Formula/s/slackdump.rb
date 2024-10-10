@@ -1,20 +1,18 @@
 class Slackdump < Formula
   desc "Export Slack data without admin privileges"
   homepage "https://github.com/rusq/slackdump"
-  url "https://github.com/rusq/slackdump/archive/refs/tags/v2.5.11.tar.gz"
-  sha256 "93b121c5d38ec676e2827b441073a6b0e1d78799a6c97bb7d2c1bd4fbb7de9ea"
+  url "https://github.com/rusq/slackdump/archive/refs/tags/v2.5.15.tar.gz"
+  sha256 "aba3f78ed6ac9150bfeaf1720398aaaec798ccc89e55a5df501d22c7218e3c69"
   license "GPL-3.0-only"
   head "https://github.com/rusq/slackdump.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "b33ce4731535e6c40a3b4f6515df43b6b232a0d36434ed41687d7e98d7d31e21"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "2bd36967b1466a2757f73d4342a23e32cdfe54809b2143c6fb029b6040e98568"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "2bd36967b1466a2757f73d4342a23e32cdfe54809b2143c6fb029b6040e98568"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "2bd36967b1466a2757f73d4342a23e32cdfe54809b2143c6fb029b6040e98568"
-    sha256 cellar: :any_skip_relocation, sonoma:         "8d9329a83d3dbb4b694861493f7353ea806e37188115b7af41e28dd48e7a82ff"
-    sha256 cellar: :any_skip_relocation, ventura:        "8d9329a83d3dbb4b694861493f7353ea806e37188115b7af41e28dd48e7a82ff"
-    sha256 cellar: :any_skip_relocation, monterey:       "8d9329a83d3dbb4b694861493f7353ea806e37188115b7af41e28dd48e7a82ff"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5f54eb0fe6217a27daa86f69e2942c0a3534cabd67432885d221197478229e0a"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "34f47d8ce997a5acfcad30be790c52a82588bb290e83d0f6e704f6f7fbbe6271"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "34f47d8ce997a5acfcad30be790c52a82588bb290e83d0f6e704f6f7fbbe6271"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "34f47d8ce997a5acfcad30be790c52a82588bb290e83d0f6e704f6f7fbbe6271"
+    sha256 cellar: :any_skip_relocation, sonoma:        "8df38b2eb2f0d56d68ea6c17742a4cfdce6900bb715eabae8d018b2ea7e59b08"
+    sha256 cellar: :any_skip_relocation, ventura:       "8df38b2eb2f0d56d68ea6c17742a4cfdce6900bb715eabae8d018b2ea7e59b08"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3ee86ab6527d4ea8a04611ea9b8c7f1241067702f035e6f5a93f7bc4e289651b"
   end
 
   depends_on "go" => :build

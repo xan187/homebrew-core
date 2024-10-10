@@ -6,17 +6,16 @@ class Drogon < Formula
       tag:      "v1.9.7",
       revision: "73406d122543f548c9d07076e16880b777bfc109"
   license "MIT"
+  revision 1
   head "https://github.com/drogonframework/drogon.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia:  "d3d9197a9f6cc055757bf31b436e709f4bbea928d9c995be0a24694d96a7379d"
-    sha256 cellar: :any,                 arm64_sonoma:   "cf7c74284852f6d0994801dcb43ec9ee803f8461c0dbe73d08b1939c5f054f98"
-    sha256 cellar: :any,                 arm64_ventura:  "84487ed585e740da2bdb68b51bee8d0e44200d0cb042fc0937715518101e96b9"
-    sha256 cellar: :any,                 arm64_monterey: "deec7b3c03c52359fa5e2ee1f00364051f544e7bf149aef99d9b1f161de0a065"
-    sha256 cellar: :any,                 sonoma:         "9241c4a8d933f212f5035a318764eae45718b055e5ff44367c2728dfca831e86"
-    sha256 cellar: :any,                 ventura:        "dc5c334e6b4e70c8691cdc35d310c389a1ba9c9f2648ec4fb8190944faee7253"
-    sha256 cellar: :any,                 monterey:       "be8f0e7ecd6bcda797c7caacd41a2b61735ea0ab7a67a5112efff31718321132"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "46c2cedaf64eb00ddc705fcbaebcea12c940fbf7ca2d1a221f50a1895298490b"
+    sha256 cellar: :any,                 arm64_sequoia: "6e5c2c9f0a9898ed4a9ac341f02248be3109efbf8501f61e005c6cb8920786ce"
+    sha256 cellar: :any,                 arm64_sonoma:  "fd69ea0690b8381d7ca88befe9e67b15f95f75d1047dc9ce26e94b0a12ca0c04"
+    sha256 cellar: :any,                 arm64_ventura: "bcc3bb89f6d57916b909429106b4a7c88d608bc62646619972ad9e47e2ce3eef"
+    sha256 cellar: :any,                 sonoma:        "c6c347855028f544468d042582801eeff704544901f9c57b40bf1ef9d561d163"
+    sha256 cellar: :any,                 ventura:       "ff1e43236ae8d6fe6d400ce3196434aeac2748f96f0c40b7d69c70175634612e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "038d5dae86f567bebcc21b0b57bb5072682f19ecac924f27652208c46411d55e"
   end
 
   depends_on "cmake" => [:build, :test]
@@ -24,18 +23,19 @@ class Drogon < Formula
   depends_on "c-ares"
   depends_on "jsoncpp"
   depends_on "openssl@3"
-  depends_on "ossp-uuid"
 
+  uses_from_macos "sqlite"
   uses_from_macos "zlib"
 
-  def install
-    cmake_args = std_cmake_args
-    if OS.linux?
-      cmake_args << "-DUUID_LIBRARIES=uuid"
-      cmake_args << "-DUUID_INCLUDE_DIRS=#{Formula["ossp-uuid"].opt_include}/ossp"
-    end
+  on_linux do
+    depends_on "util-linux"
+  end
 
-    system "cmake", "-B", "build", *cmake_args
+  def install
+    args = []
+    args << "-DUUID_DIR=#{Formula["util-linux"].opt_prefix}" if OS.linux?
+
+    system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
   end
@@ -46,17 +46,11 @@ class Drogon < Formula
       port = free_port
       inreplace "main.cc", "5555", port.to_s
 
-      cmake_args = []
-      if OS.linux?
-        cmake_args << "-DUUID_LIBRARIES=uuid"
-        cmake_args << "-DUUID_INCLUDE_DIRS=#{Formula["ossp-uuid"].opt_include}/ossp"
-      end
-
-      system "cmake", "-B", "build", *cmake_args
+      system "cmake", "-S", ".", "-B", "build"
       system "cmake", "--build", "build"
 
       begin
-        pid = fork { exec "build/hello" }
+        pid = spawn("build/hello")
         sleep 1
         result = shell_output("curl -s 127.0.0.1:#{port}")
         assert_match "<hr><center>drogon", result

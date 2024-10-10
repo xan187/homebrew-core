@@ -1,20 +1,18 @@
 class Pyright < Formula
   desc "Static type checker for Python"
   homepage "https://github.com/microsoft/pyright"
-  url "https://registry.npmjs.org/pyright/-/pyright-1.1.380.tgz"
-  sha256 "aee03a46faa800d288b015961e97403765f149fdfa620113a612a8916d5b40e2"
+  url "https://registry.npmjs.org/pyright/-/pyright-1.1.384.tgz"
+  sha256 "e14e5c6842def12e5acd6383a2251c6ec17ad77650c5f1fefdade88bfa3f1d9d"
   license "MIT"
   head "https://github.com/microsoft/pyright.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "aa63c7ca85162af939cd602b1a52f6e140fdd379136436f43c21e149419e0e94"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "aa63c7ca85162af939cd602b1a52f6e140fdd379136436f43c21e149419e0e94"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "aa63c7ca85162af939cd602b1a52f6e140fdd379136436f43c21e149419e0e94"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "aa63c7ca85162af939cd602b1a52f6e140fdd379136436f43c21e149419e0e94"
-    sha256 cellar: :any_skip_relocation, sonoma:         "e883f77501f55e5ed85ecb50e770894d02a5e93d90b7fdea4e61956a18c5bc57"
-    sha256 cellar: :any_skip_relocation, ventura:        "e883f77501f55e5ed85ecb50e770894d02a5e93d90b7fdea4e61956a18c5bc57"
-    sha256 cellar: :any_skip_relocation, monterey:       "e883f77501f55e5ed85ecb50e770894d02a5e93d90b7fdea4e61956a18c5bc57"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "aa63c7ca85162af939cd602b1a52f6e140fdd379136436f43c21e149419e0e94"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8aca30c321440d3c0351506612be2ee6c8b777f554ab329dd86d9aeb8b54105c"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8aca30c321440d3c0351506612be2ee6c8b777f554ab329dd86d9aeb8b54105c"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "8aca30c321440d3c0351506612be2ee6c8b777f554ab329dd86d9aeb8b54105c"
+    sha256 cellar: :any_skip_relocation, sonoma:        "1cf0a0bb7e6e44071573737d2155995bfaf028d9d8703dc3661d9cf317c79633"
+    sha256 cellar: :any_skip_relocation, ventura:       "1cf0a0bb7e6e44071573737d2155995bfaf028d9d8703dc3661d9cf317c79633"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8aca30c321440d3c0351506612be2ee6c8b777f554ab329dd86d9aeb8b54105c"
   end
 
   depends_on "node"

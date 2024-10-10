@@ -5,6 +5,10 @@ on:
     types:
       - closed
 
+defaults:
+  run:
+    shell: bash -xeuo pipefail {0}
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number }}
   cancel-in-progress: true
@@ -23,9 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/homebrew/ubuntu22.04:master
-    defaults:
-      run:
-        shell: bash
     permissions:
       contents: read
       actions: write # for `gh run cancel`

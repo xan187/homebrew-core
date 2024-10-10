@@ -6,13 +6,12 @@ class DotnetAT6 < Formula
       tag:      "v6.0.133",
       revision: "48ad8f7176f00900ff49df9fb936bc7c8c79d345"
   license "MIT"
+  revision 1
 
   bottle do
-    sha256 cellar: :any, arm64_sonoma:   "2f732d33c49d2549ca9bd05907d4e86d7c54cb5264b9bc27844118cde98fe5ea"
-    sha256 cellar: :any, arm64_monterey: "823832e04deadfb006e61f0ad100a20b6e07a38b8214ba924e77a2fe4b00d5af"
-    sha256 cellar: :any, sonoma:         "22e6078e1fc3003cad4a5d3cdcab343c76b0e4463a9f376a69a32c97aaf7d9cf"
-    sha256 cellar: :any, monterey:       "9ded0ea147313c22cc23dc5922266a649c07679321249de3a11f81fbde100be0"
-    sha256               x86_64_linux:   "56bae991404a1dc7441fada6fda22a4197f7847ba977b1734aa39bea044ea75b"
+    sha256 cellar: :any,                 arm64_sonoma: "3eb824051504d2753ab5cca847f0b943bc4dc05fb403558d18fe18c5532c3845"
+    sha256 cellar: :any,                 sonoma:       "2f19620dfb82a8bcbcec0a68175426c64ff43e3fa231cf9d05ef21e8616572b1"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "ffe54b54568dd28475dde52acdcd69cba25cd2b4a94ec568908e164477024045"
   end
 
   keg_only :versioned_formula
@@ -23,7 +22,7 @@ class DotnetAT6 < Formula
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "python@3.12" => :build
-  depends_on "icu4c"
+  depends_on "icu4c@75"
   depends_on "openssl@3"
 
   uses_from_macos "llvm" => :build
@@ -61,15 +60,60 @@ class DotnetAT6 < Formula
   # Issue ref: https://github.com/dotnet/source-build/issues/2795
   patch :DATA
 
+  # Backport fix to build with Clang 19
+  # Ref: https://github.com/dotnet/runtime/commit/043ae8c50dbe1c7377cf5ad436c5ac1c226aef79
+  def clang19_patch
+    <<~EOS
+      diff --git a/src/coreclr/vm/comreflectioncache.hpp b/src/coreclr/vm/comreflectioncache.hpp
+      index 08d173e61648c6ebb98a4d7323b30d40ec351d94..12db55251d80d24e3765a8fbe6e3b2d24a12f767 100644
+      --- a/src/coreclr/vm/comreflectioncache.hpp
+      +++ b/src/coreclr/vm/comreflectioncache.hpp
+      @@ -26,6 +26,7 @@ template <class Element, class CacheType, int CacheSize> class ReflectionCache
+
+           void Init();
+
+      +#ifndef DACCESS_COMPILE
+           BOOL GetFromCache(Element *pElement, CacheType& rv)
+           {
+               CONTRACTL
+      @@ -102,6 +103,7 @@ template <class Element, class CacheType, int CacheSize> class ReflectionCache
+               AdjustStamp(TRUE);
+               this->LeaveWrite();
+           }
+      +#endif // !DACCESS_COMPILE
+
+       private:
+           // Lock must have been taken before calling this.
+      @@ -141,6 +143,7 @@ template <class Element, class CacheType, int CacheSize> class ReflectionCache
+               return CacheSize;
+           }
+
+      +#ifndef DACCESS_COMPILE
+           void AdjustStamp(BOOL hasWriterLock)
+           {
+               CONTRACTL
+      @@ -170,6 +173,7 @@ template <class Element, class CacheType, int CacheSize> class ReflectionCache
+               if (!hasWriterLock)
+                   this->LeaveWrite();
+           }
+      +#endif // !DACCESS_COMPILE
+
+           void UpdateHashTable(SIZE_T hash, int slot)
+           {
+    EOS
+  end
+
   def install
     if OS.linux?
-      ENV.append_path "LD_LIBRARY_PATH", Formula["icu4c"].opt_lib
+      icu4c = deps.map(&:to_formula).find { |f| f.name.match?(/^icu4c@\d+$/) }
+      ENV.append_path "LD_LIBRARY_PATH", icu4c.opt_lib if OS.linux?
       ENV.append_to_cflags "-I#{Formula["krb5"].opt_include}"
       ENV.append_to_cflags "-I#{Formula["zlib"].opt_include}"
     end
 
     (buildpath/".dotnet").install resource("dotnet-install.sh")
     (buildpath/"src/SourceBuild/tarball/patches/msbuild").install resource("homebrew-msbuild-patch")
+    (buildpath/"src/SourceBuild/tarball/patches/runtime/clang19.patch").write clang19_patch
 
     # The source directory needs to be outside the installer directory
     (buildpath/"installer").install buildpath.children

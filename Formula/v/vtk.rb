@@ -4,17 +4,16 @@ class Vtk < Formula
   url "https://www.vtk.org/files/release/9.3/VTK-9.3.1.tar.gz"
   sha256 "8354ec084ea0d2dc3d23dbe4243823c4bfc270382d0ce8d658939fd50061cab8"
   license "BSD-3-Clause"
-  revision 1
+  revision 2
   head "https://gitlab.kitware.com/vtk/vtk.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "c709d35b13659060e2f1082b98ac1f9b8abb87b38307b8b7f1e0c76514b4605d"
-    sha256 cellar: :any,                 arm64_ventura:  "c5eb1abb48cd6309b0a17f48b975d6287d8808db2a38fc2686862c7f17d8c918"
-    sha256 cellar: :any,                 arm64_monterey: "3d4601c9974dcdf776f339df052f128e58f67d1d5729cefc28839b8b35808c6e"
-    sha256 cellar: :any,                 sonoma:         "c0904e2327b42490b8cf3464fa67c580da3867c9657801b3635c8fa369d55639"
-    sha256 cellar: :any,                 ventura:        "17d354ab4856c11db5603c6a1d0d8a1dd93d602e4968760369d8036d94fafc1f"
-    sha256 cellar: :any,                 monterey:       "9784b37121178b5fde564bb8aebe6c77fd6307087d7635614bd5eeb703b6dc64"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "13d7f008c59ba8251e1cf71caf5a35a4af3f3c0710c8e8e1730d305c75cca8af"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sonoma:  "52785c8ac91993b76918a78686e63f1ae53ada730e463308cb87325da1f65841"
+    sha256 cellar: :any,                 arm64_ventura: "e9ffe1a3428d109c871d0fda9127e06bb8e5d2f7ed4aaeb35808c387e786659b"
+    sha256 cellar: :any,                 sonoma:        "d9ddbb1ac51c4eea1e8985978a0a6b6354ffcd3d077e52e20552bff0b4a3fdf1"
+    sha256 cellar: :any,                 ventura:       "717cf55c5e9105da6bf00def7678b20194adb9cf21a4c402b9cf0e97ec0b6ec8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "fb218cf265e0d6745f02cf2feb990c7a12504367c72c4e52b7c15fcc4f2b1495"
   end
 
   depends_on "cmake" => [:build, :test]
@@ -117,6 +116,10 @@ class Vtk < Formula
 
     # https://github.com/Homebrew/linuxbrew-core/pull/21654#issuecomment-738549701
     args << "-DOpenGL_GL_PREFERENCE=LEGACY"
+
+    # Help vtk find hdf5 1.14.4.x
+    # https://github.com/Homebrew/homebrew-core/pull/170959#issuecomment-2295288143
+    args << "-DHDF5_INCLUDE_DIR=#{Formula["hdf5"].opt_include}"
 
     args << "-DVTK_USE_COCOA:BOOL=ON" if OS.mac?
 

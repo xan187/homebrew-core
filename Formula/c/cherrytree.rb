@@ -1,44 +1,10 @@
 class Cherrytree < Formula
   desc "Hierarchical note taking application featuring rich text and syntax highlighting"
   homepage "https://www.giuspen.com/cherrytree/"
+  url "https://www.giuspen.com/software/cherrytree_1.2.0.tar.xz"
+  sha256 "b9d9c9a0d7853e846657ceccdf74730f79190e19af296eeb955e5f4b54425ec2"
   license "GPL-3.0-or-later"
-  revision 1
   head "https://github.com/giuspen/cherrytree.git", branch: "master"
-
-  stable do
-    url "https://www.giuspen.com/software/cherrytree_1.1.4.tar.xz"
-    sha256 "46cb974efe050584c2ec7bcc36eb6bb52b1360288c9da1b00746762e3bc823d8"
-
-    # fmt 11 compatibility
-    patch do
-      url "https://github.com/giuspen/cherrytree/commit/ccc2d101f24a409efddb2f29e8c14002c9836a85.patch?full_index=1"
-      sha256 "6f1ee0baf40f536aae4820fcb4d51f108ed21e4168f5164e69fe190416366a36"
-    end
-
-    # fmt 11 compatibility
-    patch do
-      url "https://github.com/giuspen/cherrytree/commit/76f0030e2e2b6e1488148d3828baeb8f5911eb8d.patch?full_index=1"
-      sha256 "6def501a9c094a989d5ee9cd79bda730476f4669cdcda6b03fdda096ecdf62c7"
-    end
-
-    # fmt 11 compatibility
-    patch do
-      url "https://github.com/giuspen/cherrytree/commit/22142f3b44fef81e67c9bfbcdaed2f80ab2ff5de.patch?full_index=1"
-      sha256 "48f08ad7a6ef1b63656cb1a8eb5621c586f926c84bdc5178b8da566c7ca534c9"
-    end
-
-    # fmt 11 compatibility
-    patch do
-      url "https://github.com/giuspen/cherrytree/commit/05233db2b25977037c7520a8316183636a262130.patch?full_index=1"
-      sha256 "53b6dbcd7b7c07bb222cad3e02567ee0978815689beb9c32f007000f0a3412b4"
-    end
-
-    # fmt 11 compatibility
-    patch do
-      url "https://github.com/giuspen/cherrytree/commit/fc1d7499067b9db9841175b5a2d6934dc65e4522.patch?full_index=1"
-      sha256 "9b8c09e1fa82bf646fe9bd884223bb1ba4b94171a9077bb8d6af9bdc2e99b810"
-    end
-  end
 
   livecheck do
     url :homepage
@@ -46,14 +12,13 @@ class Cherrytree < Formula
   end
 
   bottle do
-    sha256 arm64_sequoia:  "2c9f3de5813aa8b4d406232b0cd05ef1aa598560b432f02ecc52b00d0b062b22"
-    sha256 arm64_sonoma:   "2aa0a4d89850ce48f9be1640bd187c1f4c3a6b0c03839c0184d8f3cf460d9990"
-    sha256 arm64_ventura:  "33acf835509cb7a5924a84e9874df91afeab28e9e204ea84cd78af13f68b4eb9"
-    sha256 arm64_monterey: "bd84b1cd146e7e183bace505cb75540a1e9757cfce0a9a623c7b67f049d3884b"
-    sha256 sonoma:         "4e5a27d81be20878eae81c58e80d7461f3a766b204ee58f7554ad7b811e8c76f"
-    sha256 ventura:        "163de01f6dbed58b67b834bc072f295dadf6a3935ea58d2dc4d01a7e21cb23bd"
-    sha256 monterey:       "a389eca43c79cd838d2f30529686896a6c27b28023a1d2fe8db4c18b7c4dd3a4"
-    sha256 x86_64_linux:   "8ddac9e4b25533b4ec3dd3496783454a282cf8de4d07b6a1527611dccd5ecefa"
+    rebuild 1
+    sha256 arm64_sequoia: "64f3af6155b04f791d4bec1387a170d4fd4a152297eba87d53429819fa6e8391"
+    sha256 arm64_sonoma:  "95075e73b231b11df15837588b0946f3dc6c3f1e43587ec99eaf3faf48c8320f"
+    sha256 arm64_ventura: "5023f91619b122b29afa19e98acc5aa4ef07050142986a84d97e3dbf7f62621a"
+    sha256 sonoma:        "f3e131c3c3451283ce32188bff0ed0729d8f67eb51e44589744efe46bb09bc2c"
+    sha256 ventura:       "a6e50efecc1a2db0dc282715e6d9586c63f10469d268b22bd42b1296af989765"
+    sha256 x86_64_linux:  "35e48edc21af1376ead137d04af69bc4d3ffa6736391c79b889bfdc181816a66"
   end
 
   depends_on "cmake" => :build
@@ -70,8 +35,7 @@ class Cherrytree < Formula
   depends_on "gspell"
   depends_on "gtk+3"
   depends_on "gtkmm3"
-  depends_on "gtksourceview3"
-  depends_on "gtksourceviewmm3"
+  depends_on "gtksourceview4"
   depends_on "libsigc++@2"
   depends_on "libxml++"
   depends_on "pango"

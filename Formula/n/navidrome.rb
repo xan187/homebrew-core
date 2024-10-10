@@ -1,20 +1,18 @@
 class Navidrome < Formula
   desc "Modern Music Server and Streamer compatible with Subsonic/Airsonic"
   homepage "https://www.navidrome.org"
-  url "https://github.com/navidrome/navidrome/archive/refs/tags/v0.52.5.tar.gz"
-  sha256 "9e5a81589d3e0c04d8cd06dccc680942d082f3d02aa4f0fd2b67dedf9902063b"
+  url "https://github.com/navidrome/navidrome/archive/refs/tags/v0.53.3.tar.gz"
+  sha256 "e0d5b0280c302938177b2241a5f9868a4b40cd603ddf5acb2ff0f9c40e44c13a"
   license "GPL-3.0-only"
   head "https://github.com/navidrome/navidrome.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia:  "d6397b234958e6520eaf7224a49aa94f5333896eb65b219cd37753c38a405777"
-    sha256 cellar: :any,                 arm64_sonoma:   "37ee945b3c210d57760b8132e470dfb5b7f963c7f551b7f22a3c4ae0385270b7"
-    sha256 cellar: :any,                 arm64_ventura:  "a60a48c4203b74f86db04c2de1c982ba4a7fd75e44b55528818f42a3ec947a45"
-    sha256 cellar: :any,                 arm64_monterey: "916cf2ac13a877e57539dcc9757f098fb00ad6e755246786ddad87bfc8de3778"
-    sha256 cellar: :any,                 sonoma:         "1e4298c375cd4ca19bb17fb488dfbaa3462c694477c46815ed92196fe4317318"
-    sha256 cellar: :any,                 ventura:        "052d6a8e2f04eedb8a3b58e627aa9e86491facccfe4c4f0cf491b249a598bbc9"
-    sha256 cellar: :any,                 monterey:       "e0648dbf7635f108481fac630e28f02db6ba7d8b86693e1ca42402ed5549c475"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a2820f2554b02306483c389a70ba96eca444b192bad8ac9d295adc1cb9909eaa"
+    sha256 cellar: :any,                 arm64_sequoia: "544d6d2a8308f121a8ed3b475dc28d4fdfc5fa0d0cf96af7d78a0578314206e3"
+    sha256 cellar: :any,                 arm64_sonoma:  "60131648342f76dda38a1815d9ec9bed3c6f9452c91d6f144d3e3191da16b257"
+    sha256 cellar: :any,                 arm64_ventura: "4368d6cc4a4cb0f6b5adb5ee75912b2277e7949c7335e6480d24d2ea4bd81913"
+    sha256 cellar: :any,                 sonoma:        "91ea632fa0a630154203bb4ee4a5fb503c72f3cc9e0f1359ad5f6846fd9b76bd"
+    sha256 cellar: :any,                 ventura:       "7ce4dc50dae686e0acc0c77e27c14a1203ab3f8dc1ada4ab2ebb01a5e13d12c7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "cb76a5c3808cb67a7c170d9abe8a4da63020ee7dcfdea3a8d00cbf4a6b5eef8c"
   end
 
   depends_on "go" => :build

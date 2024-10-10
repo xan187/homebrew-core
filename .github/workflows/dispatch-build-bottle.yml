@@ -40,6 +40,10 @@ env:
   DISPATCH_BUILD_BOTTLE_ISSUE: ${{ inputs.issue }}
   DISPATCH_BUILD_BOTTLE_UPLOAD: ${{ inputs.upload }}
 
+defaults:
+  run:
+    shell: bash -xeuo pipefail {0}
+
 # Intentionally the same as dispatch-rebottle
 concurrency: bottle-${{ github.event.inputs.formula }}
 
@@ -143,7 +147,7 @@ jobs:
       contents: read
     defaults:
       run:
-        shell: /bin/bash -e {0}
+        shell: /bin/bash -xeuo pipefail {0}
         working-directory: ${{matrix.workdir || github.workspace}}
     env:
       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -197,9 +201,6 @@ jobs:
     if: inputs.upload
     container:
       image: ghcr.io/homebrew/ubuntu22.04:master
-    defaults:
-      run:
-        shell: bash
     env:
       HOMEBREW_SIMULATE_MACOS_ON_LINUX: 1
       GH_REPO: ${{github.repository}}
@@ -208,15 +209,6 @@ jobs:
       BOTTLE_BRANCH: ${{github.actor}}/dispatch/${{inputs.formula}}/${{github.run_id}}
       BOTTLES_DIR: ${{ github.workspace }}/bottles
     steps:
-      - name: Check that we're not uploading Sequioa x86_64 bottles
-        run: |
-          if [[ "${DISPATCH_BUILD_BOTTLE_RUNNER}" =~ (^|,)15(-x86_64)?($|,) ]]
-          then
-            echo "::error ::Refusing to upload bottles for macOS 15 x86_64!"
-            echo "::error ::Please don't upload macOS 15 x86_64 bottles yet, @${DISPATCH_BUILD_BOTTLE_SENDER}."
-            exit 1
-          fi
-
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@master

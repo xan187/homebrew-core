@@ -2,8 +2,8 @@ class Ollama < Formula
   desc "Create, run, and share large language models (LLMs)"
   homepage "https://ollama.com/"
   url "https://github.com/ollama/ollama.git",
-      tag:      "v0.3.10",
-      revision: "06d4fba851b91eb55da892d23834e8fe75096ca7"
+      tag:      "v0.3.12",
+      revision: "e9e9bdb8d904f009e8b1e54af9f77624d481cfb2"
   license "MIT"
   head "https://github.com/ollama/ollama.git", branch: "main"
 
@@ -16,13 +16,12 @@ class Ollama < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "64f1d43ebb72f5690f9383cf912bc81b310611f58ad95e51afbb1df95d3113a3"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "316d0d6c67a293b8aed8adf90eaa17327385c7e4a69216cf2a046ac0359891ff"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "c19ca9f1816e56c25e7c61b142240c2c25150b5f1465d6d1bca4d03b047938bf"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ea506503e855c8fba0aac309e10527f61de8371bb6e1c94ad0bb1edbcdff344c"
-    sha256 cellar: :any_skip_relocation, ventura:       "4cee68d3cbf4e9bbc705158960e3ae55cfd4e67b2d1de10455e56daccbf1f66e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5dbfa26e50005dbb812dfe98caf05eb71fb60a7ea39378f0a5fe9260992cc80b"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8a55141778f6466a4177f87db3c9693bc8a7ab5730919e24895888d50505e103"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "7b396ce9f32930b7dea1d8f6a4ef5bcbee4269755629d335beca0c026c29b636"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "90dc99f4788b0033b1ff22a7c1c16d94240484203ab42751e1c1c227e29c89c7"
+    sha256 cellar: :any_skip_relocation, sonoma:        "84bbb613e355a95634db587e92e70745fe0c1247a1d4cf772321ba30d7a845cb"
+    sha256 cellar: :any_skip_relocation, ventura:       "326da8c1dcd2c0fa46d6947017c655bc32708b63f2783671a7b1f7c68268b0b7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "19b45b966d9f4369325b9eaeaf5817c125d321584d00db5f0f78e927cb66fdc7"
   end
 
   depends_on "cmake" => :build
