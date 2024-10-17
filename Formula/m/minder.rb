@@ -1,18 +1,18 @@
 class Minder < Formula
   desc "CLI for interacting with Stacklok's Minder platform"
-  homepage "https://minder-docs.stacklok.dev"
-  url "https://github.com/stacklok/minder/archive/refs/tags/v0.0.65.tar.gz"
-  sha256 "8bb24fce4fbb332425c0df5f321683b66f5ea299a9e6a3fb2ce80c0c5d7a30bc"
+  homepage "https://mindersec.github.io/"
+  url "https://github.com/mindersec/minder/archive/refs/tags/v0.0.68.tar.gz"
+  sha256 "75f7bd3a9be5c404a53d6df33cc747a1c4158e1a0183fc8cbe4deeb3281c3835"
   license "Apache-2.0"
-  head "https://github.com/stacklok/minder.git", branch: "main"
+  head "https://github.com/mindersec/minder.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "db939511080f3eebbd17237c9c3a0cd283526bd8572ff3a7429db3eb198db5eb"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "db939511080f3eebbd17237c9c3a0cd283526bd8572ff3a7429db3eb198db5eb"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "db939511080f3eebbd17237c9c3a0cd283526bd8572ff3a7429db3eb198db5eb"
-    sha256 cellar: :any_skip_relocation, sonoma:        "e9060d8e2ec2d227d641b7f5ebdfcfb004f2d3531bf39bae0dac4ff7c0866143"
-    sha256 cellar: :any_skip_relocation, ventura:       "af7dea9ff9c0cc604f32c25c9f29f58096972b763dfa2b45967e7f4cc7eb37e9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5bd87aa3f749ff0a70ce6d7ea6803032cc83b2129b55fe68e68055f735ed7548"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "9af18ee00006b2ace9429391f0e6ecf5c61935075c8c40ec177741987df9e694"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9af18ee00006b2ace9429391f0e6ecf5c61935075c8c40ec177741987df9e694"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "9af18ee00006b2ace9429391f0e6ecf5c61935075c8c40ec177741987df9e694"
+    sha256 cellar: :any_skip_relocation, sonoma:        "44230b8994321ed0479f740dde94eac01a286bc3c7d2264bfc79405ce31bb254"
+    sha256 cellar: :any_skip_relocation, ventura:       "13851e641d75942ea5e0a3ff2f5362e1f32f87864f8c228c817a3088196f7c44"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "19bd76ecfc93bc0be8f79adcfc4477f0f9752b8ac2b8071538b694bb6223f50a"
   end
 
   depends_on "go" => :build
@@ -20,7 +20,7 @@ class Minder < Formula
   def install
     ldflags = %W[
       -s -w
-      -X github.com/stacklok/minder/internal/constants.CLIVersion=#{version}
+      -X github.com/mindersec/minder/internal/constants.CLIVersion=#{version}
     ]
     system "go", "build", *std_go_args(ldflags:), "./cmd/cli"
 
