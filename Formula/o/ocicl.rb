@@ -1,17 +1,17 @@
 class Ocicl < Formula
   desc "OCI-based ASDF system distribution and management tool for Common Lisp"
   homepage "https://github.com/ocicl/ocicl"
-  url "https://github.com/ocicl/ocicl/archive/refs/tags/v2.5.10.tar.gz"
-  sha256 "31dabd42894f246e1c55122542543b04a865b69208259789e625a19d1defe7b2"
+  url "https://github.com/ocicl/ocicl/archive/refs/tags/v2.5.12.tar.gz"
+  sha256 "c7ee9e8c35d0e8ec5203d12a022fd747b0179d1a7f83e3bc96b960ebaf0ec612"
   license "MIT"
 
   bottle do
-    sha256 arm64_sequoia: "d868062bd3bffe0ebc51548c7fe5ade78ac570ffb246924735d80999241304fb"
-    sha256 arm64_sonoma:  "073962beef663c72c07738490b08c27c5808fe52694a2860c40361faec021c0a"
-    sha256 arm64_ventura: "62351e630e71a655216ca333dec97641e54ac0cfed9831c825369655901a9c7c"
-    sha256 sonoma:        "4cdac402cdb853afa43c1ac6644435cd78f7ee47f0dae05d057782aa7187b962"
-    sha256 ventura:       "03ccfdd9908932eb73178c9f5206f60c7eadf6999a2b220163883ac66f41a275"
-    sha256 x86_64_linux:  "f5d998bd87dd7cb820540f4001485823015a61367ef40c400144a8181946aac5"
+    sha256 arm64_sequoia: "671a2283557c41991da3aa0ff73ff956d7273a29ddda725dd10a2683fb0853c3"
+    sha256 arm64_sonoma:  "44a65b9c9ad3b98676b9a2c9d6437d267df430bb3558d3fa713d36074447cf40"
+    sha256 arm64_ventura: "84dbb2e94b93bd231d5b316f2bd14443bf62cbcb7a09b025f2196aac01ec005b"
+    sha256 sonoma:        "44f741c23c48159293ff99a279a5f0d230132a643e6e98108b02d72c58784968"
+    sha256 ventura:       "a0f911f3ae20b073e1ca7b43ee53b33ef4057b79b4869a563329a259072cf58c"
+    sha256 x86_64_linux:  "5ba8b442ee81d714ab2b8dba3ef89b26ff9bad883405313965811c2946ed61f2"
   end
 
   depends_on "sbcl"

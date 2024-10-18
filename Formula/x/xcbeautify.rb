@@ -1,18 +1,18 @@
 class Xcbeautify < Formula
   desc "Little beautifier tool for xcodebuild"
   homepage "https://github.com/cpisciotta/xcbeautify"
-  url "https://github.com/cpisciotta/xcbeautify/archive/refs/tags/2.11.0.tar.gz"
-  sha256 "a64c0bfe9dfb384305e68f043bdda787251dd251e7f40719f7ac997788d0b236"
+  url "https://github.com/cpisciotta/xcbeautify/archive/refs/tags/2.13.0.tar.gz"
+  sha256 "89b40e595700b2aa84f0ac92c8bc8da236b613a0a6eca19129f113fae5fc7b58"
   license "MIT"
   head "https://github.com/cpisciotta/xcbeautify.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "9f41d8a052f642e6b1e1edede3dcf42bd0f1a349a3660c05e8876a4267f44910"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "697d50f9544c2daa242d7787e43fda4460ece2c3440cd7b9baff4ba051fbaa6c"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "f58c2e7342577a7b274bf5be5a9c0915aa3f3ba5b4a05674c6417c8d03637cfb"
-    sha256 cellar: :any_skip_relocation, sonoma:        "629341e7c0add869ed6ec0d3a78d6f69e2e53ccf765296981be5677da789df6c"
-    sha256 cellar: :any_skip_relocation, ventura:       "bb72929872a1b86e7e9ae523e87a738d940667f482d45cfdf7d8888ffc0efc3a"
-    sha256                               x86_64_linux:  "e9d0709beee07adcc9be5137fcb117191c6d908817223ea9bbcd427127f3e642"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "370be6448dd65c55664e085c463982e049c93b44fee300ef970973c78a343fdc"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "b95c1203a9e234e270d9f26052842328883adcde3ea03097584a2e433218e804"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "3e43af8291d07e11aaea2a8bc393d4a563cb629b28364a8b15b73a32fa22ecb9"
+    sha256 cellar: :any_skip_relocation, sonoma:        "7fc45a26e35dc09d2075c4ec84945e16a314c667d0006f07a43006ed50c48979"
+    sha256 cellar: :any_skip_relocation, ventura:       "7fb047be988fcf6c71411cd9a30f84e33fb4751985830faf3e6f8bfce54d0340"
+    sha256                               x86_64_linux:  "b7e0f79b1eb890f6b086051f57fb5f4dedc0354bef3655be8afc2d777c58c75d"
   end
 
   # needs Swift tools version 5.9.0

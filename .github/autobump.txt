@@ -3,6 +3,7 @@ abcmidi
 abi3audit
 abseil
 ack
+acl2
 act
 action-validator
 actionlint
@@ -128,6 +129,7 @@ atuin
 audacious
 auditbeat
 auditwheel
+austin
 autobrr
 autodiff
 automake
@@ -282,6 +284,7 @@ busted
 butane
 bwa
 bwfmetaedit
+bwidget
 byacc
 byobu
 byteman
@@ -382,6 +385,7 @@ chainsaw
 chamber
 changie
 chaoskube
+charm-tools
 charmcraft
 chars
 chart-testing
@@ -1073,6 +1077,7 @@ go@1.22
 goaccess
 goawk
 gobject-introspection
+gocloc
 goctl
 godap
 goffice
@@ -1616,6 +1621,7 @@ libspelling
 libspiro
 libsql
 libssh
+libssh2
 libstrophe
 libsvm
 libtensorflow
@@ -2403,6 +2409,7 @@ ronn-ng
 root
 rosa-cli
 rospo
+roswell
 rover
 roxctl
 rpg-cli
@@ -2787,6 +2794,7 @@ tinymist
 tinyproxy
 tio
 tippecanoe
+titlecase
 tkey-ssh-agent
 tlsx
 tmpmail

@@ -3,18 +3,18 @@ class Snakemake < Formula
 
   desc "Pythonic workflow system"
   homepage "https://snakemake.readthedocs.io/"
-  url "https://files.pythonhosted.org/packages/ec/ba/bb43ae8ccdb728c6b55215474eb983ccd69060c1411ccc8c9ca84c8f62c0/snakemake-8.23.0.tar.gz"
-  sha256 "5c4348f55256eb62b2af10c64b0422ca08206193aef725b6412372a7804ef54b"
+  url "https://files.pythonhosted.org/packages/ac/c1/babf5581609dc42a51c4c000fa57ceaa4bdf889fded1aaf491bc80beade5/snakemake-8.23.2.tar.gz"
+  sha256 "bfda3c75114879f649b03d68d558d7e8edb4e0a17dae24e48434f1556ab7a993"
   license "MIT"
   head "https://github.com/snakemake/snakemake.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "9908f3c82529252956d3a2dc878a4f0d0a02f49dd1756147f155e607200184e4"
-    sha256 cellar: :any,                 arm64_sonoma:  "d6bc97632184c9e88188793fd6b969d99dde9c54497ad1522a453f40762327f4"
-    sha256 cellar: :any,                 arm64_ventura: "b9b6f8a878166e5f019d7fc6e8d569b4ca16115a57d7ec18c297a764152c4e17"
-    sha256 cellar: :any,                 sonoma:        "48185c4cbdf5b7edbc10368cfc6953bdc1b5d24553b28b1faec81fcbd9dd2060"
-    sha256 cellar: :any,                 ventura:       "d8a9a129de3872ad4f51ec3d0ad6bba4d67a10e56f8963b48eb20f1d2ab04863"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f60c0137f10957f8a9fed874efa7fcb149e09b3678487098b38d1658060eb773"
+    sha256 cellar: :any,                 arm64_sequoia: "9d076e8d771d6bb9259de2ef25dee830c984bee2619ee2c96b3d22514f9bd895"
+    sha256 cellar: :any,                 arm64_sonoma:  "153110296c0f1ed4ddbe5b4316f0751f7432ce5e4117d5bf93aa3692a870f555"
+    sha256 cellar: :any,                 arm64_ventura: "3619682ffe5ced5e14630d1721c7e1aee14cc9034fb5fd57f7729cee27c6612b"
+    sha256 cellar: :any,                 sonoma:        "9c4b8ade1aa9991083fe97f85259faa25d9e0a4845099ff8a67d81b1a6068e1a"
+    sha256 cellar: :any,                 ventura:       "7b9de4c24b0f7eb4730d3bafb10334e47a5441167271ff0c80e349d9c963773a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "07eff6294f95c3931af0a687bbe3c9bf132331501fbd4ff236982d31957c8672"
   end
 
   depends_on "rust" => :build
@@ -149,8 +149,8 @@ class Snakemake < Formula
   end
 
   resource "psutil" do
-    url "https://files.pythonhosted.org/packages/18/c7/8c6872f7372eb6a6b2e4708b88419fb46b857f7a2e1892966b851cc79fc9/psutil-6.0.0.tar.gz"
-    sha256 "8faae4f310b6d969fa26ca0545338b21f73c6b15db7c4a8d934a5482faa818f2"
+    url "https://files.pythonhosted.org/packages/26/10/2a30b13c61e7cf937f4adf90710776b7918ed0a9c434e2c38224732af310/psutil-6.1.0.tar.gz"
+    sha256 "353815f59a7f64cdaca1c0307ee13558a0512f6db064e92fe833784f08539c7a"
   end
 
   resource "pulp" do
