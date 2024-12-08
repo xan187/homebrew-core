@@ -16,7 +16,7 @@ class Mailcatcher < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "c70607653632478ba936cb62f56377dc9e17670f453e4018ea39694a15cd2837"
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "libedit"
   depends_on "libyaml"
   depends_on "openssl@3"
@@ -184,10 +184,10 @@ class Mailcatcher < Formula
     smtp_port = free_port
     http_port = free_port
     system bin/"mailcatcher", "--smtp-port", smtp_port.to_s, "--http-port", http_port.to_s
-    (testpath/"mailcatcher.exp").write <<~EOS
-      #! /usr/bin/env expect
+    (testpath/"mailcatcher.exp").write <<~EXPECT
+      #!/usr/bin/env expect
 
-      set timeout 1
+      set timeout 3
       spawn nc -c localhost #{smtp_port}
 
       expect {
@@ -235,7 +235,7 @@ class Mailcatcher < Formula
         "221 *" { }
         eof { exit }
       }
-    EOS
+    EXPECT
 
     system "expect", "-f", "mailcatcher.exp"
     assert_match "bob@example.org", shell_output("curl --silent http://localhost:#{http_port}/messages")

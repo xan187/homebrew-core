@@ -30,7 +30,7 @@ class Podman < Formula
     depends_on "autoconf" => :build
     depends_on "automake" => :build
     depends_on "libtool" => :build
-    depends_on "pkg-config" => :build
+    depends_on "pkgconf" => :build
     depends_on "protobuf" => :build
     depends_on "rust" => :build
     depends_on "conmon"
@@ -162,7 +162,7 @@ class Podman < Formula
       EOS
     end
     on_macos do
-      <<-EOS
+      <<~EOS
         In order to run containers locally, podman depends on a Linux kernel.
         One can be started manually using `podman machine` from this package.
         To start a podman VM automatically at login, also install the cask

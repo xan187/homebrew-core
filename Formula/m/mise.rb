@@ -1,8 +1,8 @@
 class Mise < Formula
   desc "Polyglot runtime manager (asdf rust clone)"
   homepage "https://mise.jdx.dev/"
-  url "https://github.com/jdx/mise/archive/refs/tags/v2024.11.28.tar.gz"
-  sha256 "4fc25c563e4f904cb9b371b60cfcfd54434e5f2ad0ceb2cda68c17e2cce80864"
+  url "https://github.com/jdx/mise/archive/refs/tags/v2024.12.3.tar.gz"
+  sha256 "954b3f017a958d9c55843a4deb529d87b7afa3cf8f639b1246e42697c617d85d"
   license "MIT"
   head "https://github.com/jdx/mise.git", branch: "main"
 
@@ -12,15 +12,15 @@ class Mise < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "15e91422e61c8540ebd18acec4c3fe7222b6d418625570ccca61fd27387d78cb"
-    sha256 cellar: :any,                 arm64_sonoma:  "911087c93ab3e089e1f0c399723603eb07aa23f72b01e525128027c74e13f548"
-    sha256 cellar: :any,                 arm64_ventura: "17edf0c66b26bc7daf7d2c8ba8a27d9ea326263d33ddb708ab87db6203b28f03"
-    sha256 cellar: :any,                 sonoma:        "1a88001e3140cdfc9b84a74f10f77c97003c9f6bcb2a719bd8779a24a4d9b366"
-    sha256 cellar: :any,                 ventura:       "ecffe8250d510ecefd9b4028b4d3fd6de9b345ab23e19e40089efdcd4bf7b724"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2cebe09bee2f98fec44e134bfac1d9f06f724b7a01135f4cce9bad4f9fa289c8"
+    sha256 cellar: :any,                 arm64_sequoia: "dbad980aef98a67b923a231cbd619b3ef31b01af529158b3ed280c3800eb869a"
+    sha256 cellar: :any,                 arm64_sonoma:  "74a46ea31ea4a4577c5ee4d5093cd693f8dea59a2d7de719578aabea3d5f8771"
+    sha256 cellar: :any,                 arm64_ventura: "1e4001dada7b8ec432bafad58e3123b9dfbbee9f656710546bdb1c7dac5b795a"
+    sha256 cellar: :any,                 sonoma:        "6310edd591091a7545c0194a03872b0a5606769ecc30910b8394be6a95510797"
+    sha256 cellar: :any,                 ventura:       "292e5cae6c08f5b454086e974e8a2ebf00f46e6fe81ae54d9360c8dab2a491d1"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7adb1926df23c08acb2c2b8e29c1988beafd25b6180f5e85b4ee8dd11ed51952"
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "rust" => :build
 
   depends_on "libgit2"
@@ -45,11 +45,11 @@ class Mise < Formula
     generate_completions_from_executable(bin/"mise", "completion")
     lib.mkpath
     touch lib/".disable-self-update"
-    (share/"fish"/"vendor_conf.d"/"mise-activate.fish").write <<~EOS
+    (share/"fish"/"vendor_conf.d"/"mise-activate.fish").write <<~FISH
       if [ "$MISE_FISH_AUTO_ACTIVATE" != "0" ]
         #{opt_bin}/mise activate fish | source
       end
-    EOS
+    FISH
   end
 
   def caveats
@@ -68,8 +68,8 @@ class Mise < Formula
 
   test do
     system bin/"mise", "settings", "set", "experimental", "true"
-    system bin/"mise", "use", "node@22"
-    assert_match "22", shell_output("#{bin}/mise exec -- node -v")
+    system bin/"mise", "use", "go@1.23"
+    assert_match "1.23", shell_output("#{bin}/mise exec -- go version")
 
     [
       Formula["libgit2"].opt_lib/shared_library("libgit2"),

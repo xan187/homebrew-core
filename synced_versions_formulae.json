@@ -66,6 +66,6 @@
   ["qwt", "qwt-qt5"],
   ["surelog", "uhdm"],
   ["tmuxinator", "tmuxinator-completion"],
-  ["vulkan-headers", "vulkan-loader", "vulkan-tools", "vulkan-utility-libraries", "vulkan-validationlayers"],
+  ["vulkan-headers", "vulkan-loader", "vulkan-tools", "vulkan-utility-libraries"],
   ["wp-cli", "wp-cli-completion"]
 ]

@@ -3,19 +3,18 @@ class Twine < Formula
 
   desc "Utilities for interacting with PyPI"
   homepage "https://github.com/pypa/twine"
-  url "https://files.pythonhosted.org/packages/77/68/bd982e5e949ef8334e6f7dcf76ae40922a8750aa2e347291ae1477a4782b/twine-5.1.1.tar.gz"
-  sha256 "9aa0825139c02b3434d913545c7b847a21c835e11597f5255842d457da2322db"
+  url "https://files.pythonhosted.org/packages/2c/33/88b80116504b61759fa2db05e13f2296b0d2e73568f5e731d020c13843b8/twine-6.0.1.tar.gz"
+  sha256 "36158b09df5406e1c9c1fb8edb24fc2be387709443e7376689b938531582ee27"
   license "Apache-2.0"
   head "https://github.com/pypa/twine.git", branch: "main"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_sequoia: "d707f5633867023667d3b1087d5c8e2da75fd75833a9d8ce40c53fd5a384ff12"
-    sha256 cellar: :any,                 arm64_sonoma:  "be2b68513880b42c323b73bf6e1eb1a277fac931ac3f1e883800efe1542a2aa2"
-    sha256 cellar: :any,                 arm64_ventura: "7f433b900876a2005e35f710ba000b8ba4592e1695175551e990768983240fde"
-    sha256 cellar: :any,                 sonoma:        "02aef3b064233c62d5a95d8c8ca85ea4ee60b7cfad7780fe009da86431066ffa"
-    sha256 cellar: :any,                 ventura:       "0c9a94207c55e97d2dec07e686979b2767ce4414e814ddcd88ab834bb83aa81e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4e079931ec9d808ace6ede3d53bb9c2a647e96819d950f8ee8e02ca6cf32b06f"
+    sha256 cellar: :any,                 arm64_sequoia: "6dff759325c7f1603c79ca46882f6e0cb9bfee6366ebae605da842e900a59693"
+    sha256 cellar: :any,                 arm64_sonoma:  "f3dbf5104b23ef0c7a05c7167e7c1333dcc18dc84fbec2bb1330033237016efc"
+    sha256 cellar: :any,                 arm64_ventura: "227ed1cf4d96f4219797912f80a4b29c1ef117de6b07885041b73589ed1b4db3"
+    sha256 cellar: :any,                 sonoma:        "41f03b8ab1da44839e1bc19fefb72d02611c588a50f6db7a0e823d746a12d26a"
+    sha256 cellar: :any,                 ventura:       "abd7516363a24c1bd228c0adcf91c5aacbb39c42c8ed6ec713012f30db45a4d9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "005112eb84f72ca2e0fc714a3f139da8036985658ca3809c3e13709c70f97ce7"
   end
 
   depends_on "rust" => :build
@@ -37,11 +36,6 @@ class Twine < Formula
     sha256 "12f65c9b470abda6dc35cf8e63cc574b1c52b11df2c86030af0ac09b01b13ea9"
   end
 
-  resource "importlib-metadata" do
-    url "https://files.pythonhosted.org/packages/cd/12/33e59336dca5be0c398a7482335911a33aa0e20776128f038019f1a95f1b/importlib_metadata-8.5.0.tar.gz"
-    sha256 "71522656f0abace1d072b9e5481a48f07c138e00f079c38c8f883823f9c26bd7"
-  end
-
   resource "jaraco-classes" do
     url "https://files.pythonhosted.org/packages/06/c0/ed4a27bc5571b99e3cff68f8a9fa5b56ff7df1c2251cc715a652ddd26402/jaraco.classes-3.4.0.tar.gz"
     sha256 "47a024b51d0239c0dd8c8540c6c7f484be3b8fcf0b2d85c13825780d3b3f3acd"
@@ -57,9 +51,14 @@ class Twine < Formula
     sha256 "70f7e0e2ae076498e212562325e805204fc092d7b4c17e0e86c959e249701a9d"
   end
 
+  resource "jeepney" do
+    url "https://files.pythonhosted.org/packages/d6/f4/154cf374c2daf2020e05c3c6a03c91348d59b23c5366e968feb198306fdf/jeepney-0.8.0.tar.gz"
+    sha256 "5efe48d255973902f6badc3ce55e2aa6c5c3b3bc642059ef3a91247bcfcc5806"
+  end
+
   resource "keyring" do
-    url "https://files.pythonhosted.org/packages/a5/1c/2bdbcfd5d59dc6274ffb175bc29aa07ecbfab196830e0cfbde7bd861a2ea/keyring-25.4.1.tar.gz"
-    sha256 "b07ebc55f3e8ed86ac81dd31ef14e81ace9dd9c3d4b5d77a6e9a2016d0d71a1b"
+    url "https://files.pythonhosted.org/packages/f6/24/64447b13df6a0e2797b586dad715766d756c932ce8ace7f67bd384d76ae0/keyring-25.5.0.tar.gz"
+    sha256 "4c753b3ec91717fe713c4edd522d625889d8973a349b0e582622f49766de58e6"
   end
 
   resource "markdown-it-py" do
@@ -78,13 +77,18 @@ class Twine < Formula
   end
 
   resource "nh3" do
-    url "https://files.pythonhosted.org/packages/62/73/10df50b42ddb547a907deeb2f3c9823022580a7a47281e8eae8e003a9639/nh3-0.2.18.tar.gz"
-    sha256 "94a166927e53972a9698af9542ace4e38b9de50c34352b962f4d9a7d4c927af4"
+    url "https://files.pythonhosted.org/packages/1d/32/3b8d8471d006333bac3175ad37402414d985ed3f8650a01a33e0e86b9824/nh3-0.2.19.tar.gz"
+    sha256 "790056b54c068ff8dceb443eaefb696b84beff58cca6c07afd754d17692a4804"
+  end
+
+  resource "packaging" do
+    url "https://files.pythonhosted.org/packages/d0/63/68dbb6eb2de9cb10ee4c9c14a0148804425e13c4fb20d61cce69f53106da/packaging-24.2.tar.gz"
+    sha256 "c228a6dc5e932d346bc5739379109d49e8853dd8223571c7c5b55260edc0b97f"
   end
 
   resource "pkginfo" do
-    url "https://files.pythonhosted.org/packages/2f/72/347ec5be4adc85c182ed2823d8d1c7b51e13b9a6b0c1aae59582eca652df/pkginfo-1.10.0.tar.gz"
-    sha256 "5df73835398d10db79f8eecd5cd86b1f6d29317589ea70796994d49399af6297"
+    url "https://files.pythonhosted.org/packages/6f/c3/4f625ca754f4063200216658463a73106bf725dc27a66b84df35ebe7468c/pkginfo-1.11.2.tar.gz"
+    sha256 "c6bc916b8298d159e31f2c216e35ee5b86da7da18874f879798d0a1983537c86"
   end
 
   resource "pygments" do
@@ -113,18 +117,18 @@ class Twine < Formula
   end
 
   resource "rich" do
-    url "https://files.pythonhosted.org/packages/aa/9e/1784d15b057b0075e5136445aaea92d23955aad2c93eaede673718a40d95/rich-13.9.2.tar.gz"
-    sha256 "51a2c62057461aaf7152b4d611168f93a9fc73068f8ded2790f29fe2b5366d0c"
+    url "https://files.pythonhosted.org/packages/ab/3a/0316b28d0761c6734d6bc14e770d85506c986c85ffb239e688eeaab2c2bc/rich-13.9.4.tar.gz"
+    sha256 "439594978a49a09530cff7ebc4b5c7103ef57baf48d5ea3184f21d9a2befa098"
+  end
+
+  resource "secretstorage" do
+    url "https://files.pythonhosted.org/packages/53/a4/f48c9d79cb507ed1373477dbceaba7401fd8a23af63b837fa61f1dcd3691/SecretStorage-3.3.3.tar.gz"
+    sha256 "2403533ef369eca6d2ba81718576c5e0f564d5cca1b58f73a8b23e7d4eeebd77"
   end
 
   resource "urllib3" do
     url "https://files.pythonhosted.org/packages/ed/63/22ba4ebfe7430b76388e7cd448d5478814d3032121827c12a2cc287e2260/urllib3-2.2.3.tar.gz"
     sha256 "e7d814a81dad81e6caf2ec9fdedb284ecc9c73076b62654547cc64ccdcae26e9"
-  end
-
-  resource "zipp" do
-    url "https://files.pythonhosted.org/packages/54/bf/5c0000c44ebc80123ecbdddba1f5dcd94a5ada602a9c225d84b5aaa55e86/zipp-3.20.2.tar.gz"
-    sha256 "bc9eb26f4506fda01b81bcde0ca78103b6e62f991b381fec825435c836edbc29"
   end
 
   def install

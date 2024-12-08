@@ -4,7 +4,7 @@ class Mysql < Formula
   url "https://cdn.mysql.com/Downloads/MySQL-9.0/mysql-9.0.1.tar.gz"
   sha256 "18fa65f1ea6aea71e418fe0548552d9a28de68e2b8bc3ba9536599eb459a6606"
   license "GPL-2.0-only" => { with: "Universal-FOSS-exception-1.0" }
-  revision 6
+  revision 8
 
   livecheck do
     url "https://dev.mysql.com/downloads/mysql/?tpl=files&os=src"
@@ -12,17 +12,17 @@ class Mysql < Formula
   end
 
   bottle do
-    sha256 arm64_sequoia: "f7c2477f3984a22f45a0eab253ed8b5d6333cde99b370fc148f7ab60b6de96f6"
-    sha256 arm64_sonoma:  "14547eeff61a87aeb3174768c064e7786503edd53ecf5902536f0b7272f6920d"
-    sha256 arm64_ventura: "a9c27c77b5d635e991d74f7a7106309b5c758dc69d59571f8e7786d7191be218"
-    sha256 sonoma:        "2e326104a3eaaaf8d552cde8fb68baf24aea8c13bb2b48b1d9453f9287d8ba5a"
-    sha256 ventura:       "2a393c8aa351de38f83f87e744c2c0732ce39ede9517283290647539915f687c"
-    sha256 x86_64_linux:  "30d90c455cb67a3ab4da748a4d2422ab9753e1368c951fe8be0be9bb87e6dbae"
+    sha256 arm64_sequoia: "b1d41015fb342b2cdad6cabf86367bb67a9d556bb8569601a61edc7082a2fceb"
+    sha256 arm64_sonoma:  "14cf3201172723fcd281fb442cebe55fc33b656dfd0576acdcd88f94ec4971ba"
+    sha256 arm64_ventura: "38e9e7a0917b669fb5cb9ce361d7ef2946bd52ecc6f7de4a0c9658499599be8e"
+    sha256 sonoma:        "7e049ab8e53de840edfead04361330e156a53c1723781a65db0638e692c783fe"
+    sha256 ventura:       "f3bb49a402a488f9a9b2f144e0b50e44ebc8f7dae510a311241a5ae30b5bc69a"
+    sha256 x86_64_linux:  "2320863acaa6dbb1e6d77dc1d02f7c42741e74c551c77c549b17f6bbe482068e"
   end
 
   depends_on "bison" => :build
   depends_on "cmake" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "abseil"
   depends_on "icu4c@76"
   depends_on "lz4"
@@ -92,7 +92,8 @@ class Mysql < Formula
       ENV.prepend_path "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib/"c++"
     end
 
-    icu4c = deps.map(&:to_formula).find { |f| f.name.match?(/^icu4c@\d+$/) }
+    icu4c = deps.find { |dep| dep.name.match?(/^icu4c(@\d+)?$/) }
+                .to_formula
     # -DINSTALL_* are relative to `CMAKE_INSTALL_PREFIX` (`prefix`)
     # -DWITH_FIDO=system isn't set as feature isn't enabled and bundled copy was removed.
     # Formula paths are set to avoid HOMEBREW_HOME logic in CMake scripts
@@ -126,7 +127,7 @@ class Mysql < Formula
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
 
-    (prefix/"mysql-test").cd do
+    cd prefix/"mysql-test" do
       system "./mysql-test-run.pl", "status", "--vardir=#{buildpath}/mysql-test-vardir"
     end
 
@@ -140,13 +141,13 @@ class Mysql < Formula
     bin.install_symlink prefix/"support-files/mysql.server"
 
     # Install my.cnf that binds to 127.0.0.1 by default
-    (buildpath/"my.cnf").write <<~EOS
+    (buildpath/"my.cnf").write <<~INI
       # Default Homebrew MySQL server config
       [mysqld]
       # Only allow connections from localhost
       bind-address = 127.0.0.1
       mysqlx-bind-address = 127.0.0.1
-    EOS
+    INI
     etc.install "my.cnf"
   end
 

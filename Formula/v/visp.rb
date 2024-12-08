@@ -4,7 +4,7 @@ class Visp < Formula
   url "https://visp-doc.inria.fr/download/releases/visp-3.6.0.tar.gz"
   sha256 "eec93f56b89fd7c0d472b019e01c3fe03a09eda47f3903c38dc53a27cbfae532"
   license "GPL-2.0-or-later"
-  revision 6
+  revision 8
 
   livecheck do
     url "https://visp.inria.fr/download/"
@@ -12,13 +12,11 @@ class Visp < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:   "aa2ae8cfa6a139b9789cff6b0c91a10cea7b1c854d4d23073bbca8ac53bbb4b4"
-    sha256 cellar: :any,                 arm64_ventura:  "afa24d7d2774a8a53ef166bb1d00cdf81b56b4ad6f71441fc9660f67af93a698"
-    sha256 cellar: :any,                 arm64_monterey: "1a0a7b8cd994f5d302d2f5693071a6c17ec93a4edab19691867e12dc20278911"
-    sha256 cellar: :any,                 sonoma:         "fee41cb44c0c51d1942ae451d8bb2079d2c96e994f341f201fb1b403faf4c274"
-    sha256 cellar: :any,                 ventura:        "a4a5b98f1546f90c563ca8ffef2cf86912a92acdd39965fa8c81a3b1ba52898d"
-    sha256 cellar: :any,                 monterey:       "754fccdcd34b588341ae8a6d846bd500f443a23f3485910a301b2af62dcf0d5f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "8ae66b7767af5ceb8ad682c3328aa9dc6bca569e4705641d45c161e199ff0a55"
+    sha256 cellar: :any,                 arm64_sonoma:  "af4c89b76780c58e894a873e8d42d4885b567e01d6f86bec09de95c517c3ebfc"
+    sha256 cellar: :any,                 arm64_ventura: "52e8b99511e305944e322a477f839926e09aea706966ed8c293155166059df4b"
+    sha256 cellar: :any,                 sonoma:        "1c55447d8f7aa637697e6a7074d5e5fae90099f02ae447eba53cb7965ab17614"
+    sha256 cellar: :any,                 ventura:       "be848c02ccf208389f5ea1104bfe3a25d33bd713604b7e2ff2f64649bc2a9f50"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "006043deaa30823969980eff82a6d1280816da78d5f8e29bee182a1f70acddd6"
   end
 
   depends_on "cmake" => :build
@@ -133,7 +131,8 @@ class Visp < Formula
     system "cmake", "--install", "."
 
     # Make sure software built against visp don't reference opencv's cellar path either
-    inreplace lib/"pkgconfig/visp.pc", opencv.prefix.realpath, opencv.opt_prefix
+    inreplace [lib/"pkgconfig/visp.pc", lib/"cmake/visp/VISPConfig.cmake", lib/"cmake/visp/VISPModules.cmake"],
+              opencv.prefix.realpath, opencv.opt_prefix
   end
 
   test do

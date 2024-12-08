@@ -34,13 +34,13 @@ class Curl < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_sequoia: "0e473c47dbd796d60e564c40f6447f406bc325aae2d0c5085074a60e2466b257"
-    sha256 cellar: :any,                 arm64_sonoma:  "47b31a69fda0558adedb16bdac0d4003a3efd902a0f28a6615734dbf3c1042d1"
-    sha256 cellar: :any,                 arm64_ventura: "fa50c33145ed41a6de273ce0ea9af5491f975bb34c4c1f11dfb598bc899e0c77"
-    sha256 cellar: :any,                 sonoma:        "7dadb384a5a42e7a4b5607791b5e43209d825df771172aca4aea549bb8f09c8a"
-    sha256 cellar: :any,                 ventura:       "e92eb6ae945a5ff54db7e4564df57b98cf02b958a7b0efbf7872103076ffabf2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "48c94b796c1615b3695ebea3b95b8f40168697e80122ca4f1266e410d3eca91c"
+    rebuild 2
+    sha256 cellar: :any,                 arm64_sequoia: "fa00dd72ba2ae659dd1df16944fd500e8b7a661cf6bad08333057f2aa4f04ac0"
+    sha256 cellar: :any,                 arm64_sonoma:  "c72dd1cedeac49b1017aced05874cbc659876f2188b0e2e1a971c4bad3ca655f"
+    sha256 cellar: :any,                 arm64_ventura: "f1aca9b7d22a8b1efa4e6f1f123bd65163bfaf93f9d9e3cd9633754be4e5dea2"
+    sha256 cellar: :any,                 sonoma:        "260961cdb1ae53fb8fc139f795521e47ffa2657d91e4ed39e522aff441a66808"
+    sha256 cellar: :any,                 ventura:       "180e8327f2b6a3442dd1596b81341e8bee042904e3b6027e50d48cb35af8c35e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d05dbe3184bcfcaeb057b67cdb4c53cb4cbf727964ae5df3ba421740e3c28d56"
   end
 
   head do
@@ -53,7 +53,7 @@ class Curl < Formula
 
   keg_only :provided_by_macos
 
-  depends_on "pkgconf" => :build
+  depends_on "pkgconf" => [:build, :test]
   depends_on "brotli"
   depends_on "libnghttp2"
   depends_on "libssh2"
@@ -115,12 +115,20 @@ class Curl < Formula
     system "make", "install"
     system "make", "install", "-C", "scripts"
     libexec.install "scripts/mk-ca-bundle.pl"
+    return if build.head? || !OS.mac?
+
+    # Workaround to fix Requires.private for system libraries that don't have pkg-config files.
+    # We manually inreplace as upstream fix requires re-generating configure.
+    # TODO: Remove in the next release (inreplace will fail)
+    # Ref: https://github.com/curl/curl/commit/e244d50064a56723c2ba4f0df8c847d6b70de0cb
+    requires_private_regex = /^(Requires\.private: (?:.*,)?)ldap,(.*),mit-krb5-gssapi(,|$)/
+    inreplace lib/"pkgconfig/libcurl.pc", requires_private_regex, "\\1\\2\\3", audit_result: build.bottle?
   end
 
   test do
     # Fetch the curl tarball and see that the checksum matches.
     # This requires a network connection, but so does Homebrew in general.
-    filename = (testpath/"test.tar.gz")
+    filename = testpath/"test.tar.gz"
     system bin/"curl", "-L", stable.url, "-o", filename
     filename.verify_checksum stable.checksum
 
@@ -135,7 +143,11 @@ class Curl < Formula
     end
 
     system libexec/"mk-ca-bundle.pl", "test.pem"
-    assert_predicate testpath/"test.pem", :exist?
-    assert_predicate testpath/"certdata.txt", :exist?
+    assert_path_exists testpath/"test.pem"
+    assert_path_exists testpath/"certdata.txt"
+
+    with_env(PKG_CONFIG_PATH: lib/"pkgconfig") do
+      system "pkgconf", "--cflags", "libcurl"
+    end
   end
 end

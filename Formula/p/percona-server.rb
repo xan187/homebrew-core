@@ -4,7 +4,7 @@ class PerconaServer < Formula
   url "https://downloads.percona.com/downloads/Percona-Server-8.0/Percona-Server-8.0.36-28/source/tarball/percona-server-8.0.36-28.tar.gz"
   sha256 "8a4b44bd9cf79a38e6275e8f5f9d4e8d2c308854b71fd5bf5d1728fff43a6844"
   license "BSD-3-Clause"
-  revision 2
+  revision 4
 
   livecheck do
     url "https://docs.percona.com/percona-server/latest/"
@@ -19,18 +19,17 @@ class PerconaServer < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 arm64_sequoia: "29e0b962cb2f38106efe55c33b8110c5d531c88157ff52d8ce5657667f147e36"
-    sha256 arm64_sonoma:  "534428d3ac87a01e2ed1eda3ee30790c9f065dc89f24d1df9afbcc32c3fd3a23"
-    sha256 arm64_ventura: "8ed29556bfdd2c5f81d8b7414b6baba9d04ea19822b816de39f7c22fb37b9313"
-    sha256 sonoma:        "20abc25692b98473b4963e242c8cc38bcafd8c5aea4f0251dc6b783f8c756800"
-    sha256 ventura:       "abadd8d5152e2e72c8d8a5ad030bed067d3dcc6acad2919abe95fcbe1be8a728"
-    sha256 x86_64_linux:  "621e57fa5a0c7cc891a531caf7ec36ad1403dffc269ad6a3a33210419666ed83"
+    sha256 arm64_sequoia: "21585915e7ec90c39317b3c109be1a47a63e2d077dc6d0f1f0f1d1ff91c9021f"
+    sha256 arm64_sonoma:  "a915b522e0a74a0d36110dcce1c1a1880d50535ad7b0ec6fabc6024aaabf1369"
+    sha256 arm64_ventura: "2a2326e4834180eb870a5bd0db7b73a02714953612908331d3a7fbdba341f54a"
+    sha256 sonoma:        "5b9aa766b3133ae4f5bf9c0d6bd861a74fcaca5a4d3cd8973aa4f60fe5d2990e"
+    sha256 ventura:       "ecc54e9c4287e67201f42b549d0bdbb52ba395d41ff91ebf305bd5e840262dd5"
+    sha256 x86_64_linux:  "f99a3bd482a9d279f2eb8221caeca8a4de948a78fb8ec46d7a578ebd1b19ea0c"
   end
 
   depends_on "bison" => :build
   depends_on "cmake" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "abseil"
   depends_on "icu4c@76"
   depends_on "libevent"
@@ -60,11 +59,6 @@ class PerconaServer < Formula
   fails_with :clang do
     build 800
     cause "Wrong inlining with Clang 8.0, see MySQL Bug #86711"
-  end
-
-  fails_with :gcc do
-    version "6"
-    cause "GCC 7.1 or newer is required"
   end
 
   # https://github.com/percona/percona-server/blob/Percona-Server-#{version}/cmake/boost.cmake

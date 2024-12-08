@@ -1,18 +1,18 @@
 class Fbthrift < Formula
   desc "Facebook's branch of Apache Thrift, including a new C++ server"
   homepage "https://github.com/facebook/fbthrift"
-  url "https://github.com/facebook/fbthrift/archive/refs/tags/v2024.11.18.00.tar.gz"
-  sha256 "b38f22448b56fd0692f2dcea47c92ea3cae025f453ef032b20ff848c1a483653"
+  url "https://github.com/facebook/fbthrift/archive/refs/tags/v2024.12.02.00.tar.gz"
+  sha256 "c394eb7a607c54f6ec57979b06f4ebdcab6b3ae66ef71ad4a532b98ed39027fe"
   license "Apache-2.0"
   head "https://github.com/facebook/fbthrift.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "8a6cc60b468a9c35bb9c4f91c47394a71a47888cc873a3a901e0a5763883748f"
-    sha256 cellar: :any,                 arm64_sonoma:  "bfedb7d029fea7e56feb8c042734d999b278ae9b36a88be9230407ae0e9ff540"
-    sha256 cellar: :any,                 arm64_ventura: "04460aaea4254b9504f0c39e40d3bf79773eb6f81ca4d8ab61d1c6c490439f6a"
-    sha256 cellar: :any,                 sonoma:        "56f7e64520962da39bab73a4f938bd23f488ece7c0e468ac821c533668f6a420"
-    sha256 cellar: :any,                 ventura:       "52c84b732d1c58a0b251e5c4f15b8f7e66f325d26c51f32d1c9ce0ff82d68f30"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b3262d928887fd68bb674c86672e28631d3bb193d7b3ffe1c7eae4af2eb22230"
+    sha256 cellar: :any,                 arm64_sequoia: "20142a397f41996e2c57a70d636f09c7b2665ed6735503ed4ffee194921829b1"
+    sha256 cellar: :any,                 arm64_sonoma:  "a08c08f36736349628991d985de838b3aecf27fdb01c898889fa3c83f08fd68e"
+    sha256 cellar: :any,                 arm64_ventura: "7d97c464fe64ad04a4735af5b2b79ef49f889ca04c41aa5b31355f5a7976581b"
+    sha256 cellar: :any,                 sonoma:        "1f7ef47b02c3c0a1cc276cb24251123293f43e802d151ab9c988eead659bf2b7"
+    sha256 cellar: :any,                 ventura:       "0c2d14dc41fee44d2872e15b46a1e9b42cdb15edff72b0d9ad6aec51c794afa3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "514a6273f37f269b5c598d657e4b39cf7a06ab017d59729351e8d45a9cb75d91"
   end
 
   depends_on "bison" => :build # Needs Bison 3.1+
@@ -47,8 +47,6 @@ class Fbthrift < Formula
       error: 'asm goto' constructs are not supported yet
     EOS
   end
-
-  fails_with gcc: "5" # C++ 17
 
   def install
     # Work around build failure with Xcode 16

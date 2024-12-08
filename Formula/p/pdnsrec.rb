@@ -19,7 +19,7 @@ class Pdnsrec < Formula
     sha256 x86_64_linux:  "147788759dc5124c955f4889a8c047534c2ccf8991383c7b600c82add87f5262"
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "rust" => :build
   depends_on "boost"
   depends_on "lua"
@@ -33,13 +33,11 @@ class Pdnsrec < Formula
 
   fails_with :clang do
     build 1100
-    cause <<-EOS
+    cause <<~EOS
       Undefined symbols for architecture x86_64:
         "MOADNSParser::init(bool, std::__1::basic_string_view<char, std::__1::char_traits<char> > const&)"
     EOS
   end
-
-  fails_with gcc: "5"
 
   def install
     ENV.cxx11

@@ -1,19 +1,17 @@
 class Psysh < Formula
   desc "Runtime developer console, interactive debugger and REPL for PHP"
   homepage "https://psysh.org/"
-  url "https://github.com/bobthecow/psysh/releases/download/v0.12.4/psysh-v0.12.4.tar.gz"
-  sha256 "785bddd5650694d9b4d051869a175392f9faac327687ee8a81af0305083072df"
+  url "https://github.com/bobthecow/psysh/releases/download/v0.12.6/psysh-v0.12.6.tar.gz"
+  sha256 "f5aeaf905ca7721bac1b710d9554b67ef48d10dc11156b218042b0200ce6be33"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "e29133c37afee0eb7bb82e3ec24de92452ce1a4972aa87b2762d482ffad1f91c"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "2a9ad18d62be203e22c1ada2988285cd9818e56e3e733b6fe55885b131055867"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "2a9ad18d62be203e22c1ada2988285cd9818e56e3e733b6fe55885b131055867"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "2a9ad18d62be203e22c1ada2988285cd9818e56e3e733b6fe55885b131055867"
-    sha256 cellar: :any_skip_relocation, sonoma:         "68803a0946a7f26f35dc444401d13686a399842cd6e5aac0ac8270283ee9780f"
-    sha256 cellar: :any_skip_relocation, ventura:        "68803a0946a7f26f35dc444401d13686a399842cd6e5aac0ac8270283ee9780f"
-    sha256 cellar: :any_skip_relocation, monterey:       "68803a0946a7f26f35dc444401d13686a399842cd6e5aac0ac8270283ee9780f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e711d7a1c572b92355f0279e0e9970e37e296defe7719ad232bb8023cca322f5"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "7c254452a12e9d64144b068005ef9efe5e98f7dc6dcae61a55ef440958f56c0a"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "7c254452a12e9d64144b068005ef9efe5e98f7dc6dcae61a55ef440958f56c0a"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "7c254452a12e9d64144b068005ef9efe5e98f7dc6dcae61a55ef440958f56c0a"
+    sha256 cellar: :any_skip_relocation, sonoma:        "de3c0d50310a3b3c2578fec7c93fafad910d7dbadb5ae308c748e771bad4c6b0"
+    sha256 cellar: :any_skip_relocation, ventura:       "de3c0d50310a3b3c2578fec7c93fafad910d7dbadb5ae308c748e771bad4c6b0"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7c254452a12e9d64144b068005ef9efe5e98f7dc6dcae61a55ef440958f56c0a"
   end
 
   depends_on "php"

@@ -3,17 +3,17 @@ class Dolphie < Formula
 
   desc "Feature-rich top tool for monitoring MySQL"
   homepage "https://github.com/charles-001/dolphie"
-  url "https://files.pythonhosted.org/packages/35/b1/83adb86de8f74bcd4ae664a503613242157c38f6e8df11a32a0e465b73a9/dolphie-6.5.4.tar.gz"
-  sha256 "776e8ceeb8c4b2a4b70b3e9037d46512052f5da5073c27add14f53732bc8d28a"
+  url "https://files.pythonhosted.org/packages/d1/2b/264c7e000cfaa75f2209a1d397c1213b5fff8e8f2aec5256d0733e4e827c/dolphie-6.6.3.tar.gz"
+  sha256 "1b1b5a96cedc452f5156b37b89fc5aad8af0552c8f6b392086c257ed65d5d8a4"
   license "GPL-3.0-or-later"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "8f830e6d2f7031b2a0f0c9eecc98e76b36440fd7a54ceefcfa65b2170a5653fd"
-    sha256 cellar: :any,                 arm64_sonoma:  "469a54ee25c4205df7c129209577e512013c9d595c17ce0f21027f9902a23506"
-    sha256 cellar: :any,                 arm64_ventura: "44416e8237f80e8b96c07e1cd99bb360e0f6ad40167f862aa196c3d793d77799"
-    sha256 cellar: :any,                 sonoma:        "2105bdbbd57baa4c64b9d61a2982cbae63404ccb748b734d386bb9c70fc486c8"
-    sha256 cellar: :any,                 ventura:       "ebbcbe4fac42d96faf4720bd96a6c657f27c53bfa63d8a161c585cd41df26646"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3bcd90912c161916b4235d3b513f9800558466b643e642c92cfea1d9273e4b79"
+    sha256 cellar: :any,                 arm64_sequoia: "750399e6cb78ff483d484fef15bc90407bd5d5c338a81e31bcea518012dde651"
+    sha256 cellar: :any,                 arm64_sonoma:  "00ee223990acbb3d0b0d07f8b7c6dd19e561e6db37ea1e22327ef9bbc85d66c3"
+    sha256 cellar: :any,                 arm64_ventura: "3fc9b28fe5a0e9994bc52acfad3701302e19c02575021ac3c120ef1cb0de11cd"
+    sha256 cellar: :any,                 sonoma:        "a2312a45462f5cd656386693b6ad790638edb98fece8e2ec59a047eae89b44d6"
+    sha256 cellar: :any,                 ventura:       "553160f9ad229022c5cade9f230aaf1294608a6104c3d9d48daadc88453ccf45"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0a2b281470889927a1444c9502ae6c3000e17a224cab9564b6c4a8c4b6e887b8"
   end
 
   depends_on "rust" => :build # for orjson
@@ -67,8 +67,8 @@ class Dolphie < Formula
   end
 
   resource "orjson" do
-    url "https://files.pythonhosted.org/packages/80/44/d36e86b33fc84f224b5f2cdf525adf3b8f9f475753e721c402b1ddef731e/orjson-3.10.10.tar.gz"
-    sha256 "37949383c4df7b4337ce82ee35b6d7471e55195efa7dcb45ab8226ceadb0fe3b"
+    url "https://files.pythonhosted.org/packages/e0/04/bb9f72987e7f62fb591d6c880c0caaa16238e4e530cbc3bdc84a7372d75f/orjson-3.10.12.tar.gz"
+    sha256 "0a78bbda3aea0f9f079057ee1ee8a1ecf790d4f1af88dd67493c6b8ee52506ff"
   end
 
   resource "packaging" do
@@ -122,18 +122,18 @@ class Dolphie < Formula
   end
 
   resource "textual" do
-    url "https://files.pythonhosted.org/packages/d6/86/525031f6bbfa4671fa66a4a5c088c3e9aa53f32d1b51a9bf2b900b3b1f32/textual-0.84.0.tar.gz"
-    sha256 "fb89717960fea7a539823fa264252f7be1c84844e4b8d27360e6d4edb36846a8"
+    url "https://files.pythonhosted.org/packages/a4/e8/76b3aa49dd2f83410ab78b5ab04d65fee095e4720d2811f9ef72f073d11f/textual-0.88.1.tar.gz"
+    sha256 "9c56d953dc7d1a8ddf06acc910d9224027e02416551f92920e70f435bd28e062"
   end
 
   resource "textual-autocomplete" do
-    url "https://files.pythonhosted.org/packages/49/e6/5a743d325e871f813a23377bf776b96a540705aa83b5e9afc5580b28e67e/textual_autocomplete-3.0.0a12.tar.gz"
-    sha256 "1d2c9e4d24c7f575abc8c612cb6abfff4706f6aaab9b939506b95dae84549309"
+    url "https://files.pythonhosted.org/packages/bd/d3/7837e2ee1807c72e2a8a185c6e5e729dbe68161d8476055d989f3a2db348/textual_autocomplete-3.0.0a13.tar.gz"
+    sha256 "db5a4ae956dd7d6dece53f7f695e97f2ab75819dd96b8a1c064ec5966b3ab113"
   end
 
   resource "tree-sitter" do
-    url "https://files.pythonhosted.org/packages/01/23/e001538062ece748d7ab1fcfbcd9fa766d85f60f0d5ae014a7caf4f07c70/tree-sitter-0.23.1.tar.gz"
-    sha256 "28fe02aff6676b203cbe4213ca7116db0aaac08d6ca4c0b1f1af038991631838"
+    url "https://files.pythonhosted.org/packages/0f/50/fd5fafa42b884f741b28d9e6fd366c3f34e15d2ed3aa9633b34e388379e2/tree-sitter-0.23.2.tar.gz"
+    sha256 "66bae8dd47f1fed7bdef816115146d3a41c39b5c482d7bad36d9ba1def088450"
   end
 
   # sdist issue report, https://github.com/grantjenks/py-tree-sitter-languages/issues/63

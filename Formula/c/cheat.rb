@@ -6,14 +6,13 @@ class Cheat < Formula
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "d5668b7aff791cb9ca9da071b579af1f0856b9e073fb9bd1cbf5baa2a5506794"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "6dd5285d4e42b1976c4f0f334801393e2e4773162923cd55452f802321e2f711"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "9e21ab004b1cb5980cc44bca0f53b15c2faa6eafce6ddc9eca8111686fd1cd7f"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "1474e66acfad304ccfaac31485a8d157f9f46715abee290f762101012b75edfd"
-    sha256 cellar: :any_skip_relocation, sonoma:         "5ba6469c2d181e3d0003a62b82013a1e062e83fcede817b03c3b0fe396b296fa"
-    sha256 cellar: :any_skip_relocation, ventura:        "bf46ed2b17ac40f8c9fbadb38654b9ed601f825e9256975e0903fbecce3f432f"
-    sha256 cellar: :any_skip_relocation, monterey:       "72b7aad552bca469ac25da221432e8cf1fdb066082d3b9772f831faf6b7e566d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "029acbb363f0d93fa5560e631262cff46147940c960283aecb0256ca7919e163"
+    rebuild 2
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "892bbbee98b8e75d5368a898b7f5c3a2968f5f85a7792a4cfbe7d47ba48b811b"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "892bbbee98b8e75d5368a898b7f5c3a2968f5f85a7792a4cfbe7d47ba48b811b"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "892bbbee98b8e75d5368a898b7f5c3a2968f5f85a7792a4cfbe7d47ba48b811b"
+    sha256 cellar: :any_skip_relocation, sonoma:        "4ce8ddab97ab046dbed22b3a584a66bf97e55246c51e1324d18c6959d32170a9"
+    sha256 cellar: :any_skip_relocation, ventura:       "4ce8ddab97ab046dbed22b3a584a66bf97e55246c51e1324d18c6959d32170a9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "056c862aa6f3f46ba541558de9ae41a0e0c81424934830c0f1e12b4530d2692b"
   end
 
   depends_on "go" => :build
@@ -21,11 +20,12 @@ class Cheat < Formula
   conflicts_with "bash-snippets", because: "both install a `cheat` executable"
 
   def install
-    system "go", "build", "-mod", "vendor", "-o", bin/"cheat", "./cmd/cheat"
+    system "go", "build", *std_go_args(ldflags: "-s -w"), "./cmd/cheat"
 
-    bash_completion.install "scripts/cheat.bash"
+    bash_completion.install "scripts/cheat.bash" => "cheat"
     fish_completion.install "scripts/cheat.fish"
-    zsh_completion.install "scripts/cheat.zsh"
+    zsh_completion.install "scripts/cheat.zsh" => "_cheat"
+    man1.install "doc/cheat.1"
   end
 
   test do

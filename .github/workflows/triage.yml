@@ -91,7 +91,7 @@ jobs:
           close: true
 
   triage:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       issues: write
@@ -301,6 +301,7 @@ jobs:
                 imath|\
                 jasper|\
                 jpeg-turbo|\
+                jpeg-xl|\
                 libcap|\
                 libgcrypt|\
                 libgpg-error|\
@@ -347,7 +348,13 @@ jobs:
               keep_if_no_match: true
 
             - label: CI-linux-self-hosted
-              path: Formula/.+/(dart-sdk|envoy|qt(@5)?|texlive).rb
+              path: "Formula/.+/(\
+                dart-sdk|\
+                envoy|\
+                qt(@5)?|\
+                teleport|\
+                texlive\
+                ).rb"
               keep_if_no_match: true
               allow_any_match: true
 
@@ -355,6 +362,7 @@ jobs:
               path: "Formula/.+/(\
                 alsa-lib|\
                 glib|\
+                libcap|\
                 libva|\
                 libxml2|\
                 python@3.12|\

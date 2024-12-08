@@ -27,12 +27,12 @@ class Libdivecomputer < Formula
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "libusb"
 
   def install
-    system "autoreconf", "--install" if build.head?
-    system "./configure", "--prefix=#{prefix}"
+    system "autoreconf", "--force", "--install", "--verbose" if build.head?
+    system "./configure", *std_configure_args
     system "make", "install"
   end
 

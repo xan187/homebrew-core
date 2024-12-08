@@ -55,9 +55,7 @@ jobs:
           rmdir "$HOMEBREW_TAP_REPOSITORY"
           ln -vs "$GITHUB_WORKSPACE" "$HOMEBREW_TAP_REPOSITORY"
 
-      - run: |
-          # NOTE: exit code intentionally suppressed here
-          zizmor --format sarif . > results.sarif || true
+      - run: zizmor --format sarif . > results.sarif
 
       - name: Upload SARIF file
         uses: actions/upload-artifact@v4

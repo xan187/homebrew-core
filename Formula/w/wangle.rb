@@ -1,18 +1,18 @@
 class Wangle < Formula
   desc "Modular, composable client/server abstractions framework"
   homepage "https://github.com/facebook/wangle"
-  url "https://github.com/facebook/wangle/archive/refs/tags/v2024.11.18.00.tar.gz"
-  sha256 "7ff1886f1c8bbe2a0f972fc09de909e30d764f28f31f04c0c873eab8be72484e"
+  url "https://github.com/facebook/wangle/archive/refs/tags/v2024.12.02.00.tar.gz"
+  sha256 "7ceef343e8cec54da0b054ddd6fa5e50cc96bfe897011ff094a5ca207ed7e672"
   license "Apache-2.0"
   head "https://github.com/facebook/wangle.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "4948bbfac4a3a0a2665d99abc5d211009efac322afb0d1d694356e676214c9f6"
-    sha256 cellar: :any,                 arm64_sonoma:  "fb058c0ddee5fe528ebed3403e3d812569e62ac8e6eaec9f54dcc12909d206b1"
-    sha256 cellar: :any,                 arm64_ventura: "c8345461266d5d163d6629625805e28cc1cecbde69e5de91530ffa3fccf44d2f"
-    sha256 cellar: :any,                 sonoma:        "9cd49a853cbad960d01f4666a8d1650085b048ab8cfc2436895bd27bd78e9dd0"
-    sha256 cellar: :any,                 ventura:       "737a6f775dcf574e03354915a6927cea9e8d5314fc3bfd001ef12f5c8f9be5c1"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c1567230d08a2658ef799e7dcaeb121701c73ef053e82fe8f6e8217f9159d00b"
+    sha256 cellar: :any,                 arm64_sequoia: "eec5e7efcdf8f18f4e1ccda78bb307db8226b135a2e6cd8fef8afa44a2d1b6db"
+    sha256 cellar: :any,                 arm64_sonoma:  "76655e9bfbd6d74021839f7dee53ec250544ae98199e4244f02a574135251ea2"
+    sha256 cellar: :any,                 arm64_ventura: "31b90fc997684834b2ddc1c040034d14afc2b0937c4d387ca4a11d1efc5ea1a0"
+    sha256 cellar: :any,                 sonoma:        "c4d95fd81411d4741cf8e85a31c69370654fb8a5b8379925978a95ef9fa04bad"
+    sha256 cellar: :any,                 ventura:       "77674ad33515e74141a407bcf6198bb3b0cef05cc6b10a0bc7ca32ea5324cc62"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "845b8afc4da44990a0113f714edff4a735e5fc09b4ffccc11885214a13d0b1e2"
   end
 
   depends_on "cmake" => [:build, :test]
@@ -27,8 +27,6 @@ class Wangle < Formula
   depends_on "openssl@3"
   depends_on "zstd"
   uses_from_macos "bzip2"
-
-  fails_with gcc: "5"
 
   def install
     args = ["-DBUILD_TESTS=OFF"]

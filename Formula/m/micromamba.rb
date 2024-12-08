@@ -1,9 +1,10 @@
 class Micromamba < Formula
   desc "Fast Cross-Platform Package Manager"
   homepage "https://github.com/mamba-org/mamba"
-  url "https://github.com/mamba-org/mamba/archive/refs/tags/micromamba-1.5.10.tar.gz"
-  sha256 "38ee4658f66c5e4bf2c33cd3c9c0ebd01fe2e3a6da6ac619cc4702a9072dcc3c"
+  url "https://github.com/mamba-org/mamba/archive/refs/tags/micromamba-2.0.4.tar.gz"
+  sha256 "29281fe9b8fa99ecaa01d791b00889fb953fdafa154bbdf877a0858044334439"
   license "BSD-3-Clause"
+  revision 1
   head "https://github.com/mamba-org/mamba.git", branch: "main"
 
   livecheck do
@@ -14,17 +15,18 @@ class Micromamba < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "3bf5ba3e4fa863d6072c78c4229e533efaeda27137e78191c3c5d852470f46b2"
-    sha256 cellar: :any,                 arm64_sonoma:  "01eed43203215173119a8280a7ed2f97417f09c236ac279d95ad94fe57af8fd1"
-    sha256 cellar: :any,                 arm64_ventura: "273313c71f6212077cff10f6ee2ba00fe2d50056d356088935d38204bcf3ab71"
-    sha256 cellar: :any,                 sonoma:        "e0d5863f983f062ea6e108d8258d755ad0fd28d9d5fd764d559b8ec46199aa57"
-    sha256 cellar: :any,                 ventura:       "45a20d1caddf34134b10cd45b6af40a5db46787b44a5a358ba0cf306871a2076"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e3af94e30de7979583d176e00f31195eaebeb24fef85f3919923c7de5ead80fc"
+    sha256 cellar: :any,                 arm64_sequoia: "6498d862b65c8f8ef8c5b4710ca94821ae6f81a2963309b91124aef7a298a536"
+    sha256 cellar: :any,                 arm64_sonoma:  "c13ac5bfdd98a891827ffc4c7ad9727a937fdfb293c5876045409e16941891bc"
+    sha256 cellar: :any,                 arm64_ventura: "ea15e6ca847fd91fb3121db01cb33102cf43d5f8ebd3249ba5a12dbf3529c11b"
+    sha256 cellar: :any,                 sonoma:        "1657ccea00701c78158946e3190790fa34619c9031659a23e1a5c431ccaf2f8c"
+    sha256 cellar: :any,                 ventura:       "b04dfe232a8dcc21d9bb50ef66563c0b743c8b6ad15d6504ff5d3cc2fd5e238c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "61714f97ff327ab0e3431bea99879a40ca58bc181109fbdba7dcaa384ddab82f"
   end
 
   depends_on "cli11" => :build
   depends_on "cmake" => :build
   depends_on "nlohmann-json" => :build
+  depends_on "pkgconf" => :build
   depends_on "spdlog" => :build
   depends_on "tl-expected" => :build
 
@@ -34,6 +36,7 @@ class Micromamba < Formula
   depends_on "lz4"
   depends_on "openssl@3"
   depends_on "reproc"
+  depends_on "simdjson"
   depends_on "xz"
   depends_on "yaml-cpp"
   depends_on "zstd"
@@ -48,29 +51,34 @@ class Micromamba < Formula
     args = %W[
       -DBUILD_LIBMAMBA=ON
       -DBUILD_SHARED=ON
-      -DBUILD_MICROMAMBA=ON
-      -DMICROMAMBA_LINKAGE=DYNAMIC
+      -DBUILD_STATIC=OFF
+      -DBUILD_MAMBA=ON
       -DCMAKE_INSTALL_RPATH=#{rpath}
     ]
 
     system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
+    # Upstream chooses names based on static or dynamic linking,
+    # but as of 2.0 they provide identical interfaces.
+    bin.install_symlink "mamba" => "micromamba"
   end
 
   def caveats
     <<~EOS
       Please run the following to setup your shell:
-        #{opt_bin}/micromamba shell init -s <your-shell> -p ~/micromamba
+        #{opt_bin}/mamba shell init --shell <your-shell> --root-prefix ~/mamba
       and restart your terminal.
     EOS
   end
 
   test do
+    ENV["MAMBA_ROOT_PREFIX"] = testpath.to_s
+    assert_match version.to_s, shell_output("#{bin}/mamba --version").strip
     assert_match version.to_s, shell_output("#{bin}/micromamba --version").strip
 
     python_version = "3.9.13"
-    system bin/"micromamba", "create", "-n", "test", "python=#{python_version}", "-y", "-c", "conda-forge"
-    assert_match "Python #{python_version}", shell_output("#{bin}/micromamba run -n test python --version").strip
+    system bin/"mamba", "create", "-n", "test", "python=#{python_version}", "-y", "-c", "conda-forge"
+    assert_match "Python #{python_version}", shell_output("#{bin}/mamba run -n test python --version").strip
   end
 end

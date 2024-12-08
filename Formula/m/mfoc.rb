@@ -22,12 +22,12 @@ class Mfoc < Formula
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "libnfc"
   depends_on "libusb"
 
   def install
-    system "autoreconf", "-is"
+    system "autoreconf", "--force", "--install", "--verbose"
     system "./configure", *std_configure_args
     system "make"
     system "make", "install"

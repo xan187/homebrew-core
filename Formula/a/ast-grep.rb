@@ -1,18 +1,18 @@
 class AstGrep < Formula
   desc "Code searching, linting, rewriting"
   homepage "https://github.com/ast-grep/ast-grep"
-  url "https://github.com/ast-grep/ast-grep/archive/refs/tags/0.30.0.tar.gz"
-  sha256 "e8248c2f4a3ed8e9a7386dc0ad953f6245166c3939b1bc1be5a8aa42eaa0132e"
+  url "https://github.com/ast-grep/ast-grep/archive/refs/tags/0.31.0.tar.gz"
+  sha256 "a1b465dcba420b6b150fa2a8d5f6322cfc583096ebcd7a028390ce60e9d41720"
   license "MIT"
   head "https://github.com/ast-grep/ast-grep.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e703a8263472bf0e229dd8931987358fdd9ca15799db92e8c9dcee14ed172cab"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "7414c1e6b2f52a900c4f0addb143285cad7a84ff57c21aaf128fe94e72832211"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "153cd3cca19951b30be0b91ddc15c698c45abc0f4f92e1abe1c6d1d7da7758d3"
-    sha256 cellar: :any_skip_relocation, sonoma:        "d0c96886f777c489be72519429942e9d3f097f265deecf3c487571eb40f4cbec"
-    sha256 cellar: :any_skip_relocation, ventura:       "7755fdc7ecf936c0d533b9ef98b2f205e0eda2a083aa21b390c5429d67c901f7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e978974c722a35885efb1141911ebaab0b84e8a35fbe44e399da3e3b3e6e2854"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6dd40e7c1fb660df4450b2568fdc8b1903871e55b9d9228394dbc1caecb81e30"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "21021bc99f67c9e499792eb23eb90c452a4ac6878121da3d738ee9926c891efb"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "a1d7482320b399d9bef44c35af1d7a79d7c8f76e6ba49760ea20a00ddb4c1cf1"
+    sha256 cellar: :any_skip_relocation, sonoma:        "5b256e0a58dccf3e6bb84847cb5a9d6a9e00c6865f4487d0c741f4f99e88eed6"
+    sha256 cellar: :any_skip_relocation, ventura:       "a129a841e0a763ef569c5103bab89ae5065e1ab808a9793bb86803003a9b127e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5521452b4adaf63d174aba386556f3b4f12b462572bd556fb08ffc4d25c57322"
   end
 
   depends_on "rust" => :build

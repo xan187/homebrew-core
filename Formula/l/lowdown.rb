@@ -1,17 +1,17 @@
 class Lowdown < Formula
   desc "Simple markdown translator"
   homepage "https://kristaps.bsd.lv/lowdown"
-  url "https://github.com/kristapsdz/lowdown/archive/refs/tags/VERSION_1_2_0.tar.gz"
-  sha256 "a4a7eab951b85a8b25c806a4e399ef3e06458a3f6811ac1201a5fb765ccde3d2"
+  url "https://github.com/kristapsdz/lowdown/archive/refs/tags/VERSION_1_3_1.tar.gz"
+  sha256 "028b77171cfa03d8360aaaaab81ef3ab1e99f9623cd39e62c5dae82ebad7c5db"
   license "ISC"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "4bd6fdbbe532d6d433c7b15771a3175708f4e9652491cedba222d03e67b5ff5f"
-    sha256 cellar: :any,                 arm64_sonoma:  "9fd15db78f4fb5365369713c732a31d674be049f211dd494b775087702a3a478"
-    sha256 cellar: :any,                 arm64_ventura: "5260cbdf7b10460160cb39beda9f124a2769d54f17d13c449e59db9cd78e129d"
-    sha256 cellar: :any,                 sonoma:        "2f3f2cb3dcb4706b5c91d6039fc732e3923cce0fecc14719d2f80c573a5ded33"
-    sha256 cellar: :any,                 ventura:       "5c324d03e446de5591fe02650d21149c887d388f9e18ef96563076616a6bec37"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3c77eaf34c970ddbea7326e672099cd9208b9bb0f1e0b6b72192a595f4e9aedf"
+    sha256 cellar: :any,                 arm64_sequoia: "a608d381364963ab721a75f2d02e5a2c987ebc22b6069020d990c9755282afa1"
+    sha256 cellar: :any,                 arm64_sonoma:  "7186f60365e88d2f8f83ce81dbc35c6a32b5947da68a18e031aa17267715f08d"
+    sha256 cellar: :any,                 arm64_ventura: "a4d9c6568df45a79df945cd58552af85a52b01ae5b0dce50620d81fc2d61cf2f"
+    sha256 cellar: :any,                 sonoma:        "d500f7c023996f93f75b96d09a1e12d85a8b70a08fbcfe22d73a884fb1f94468"
+    sha256 cellar: :any,                 ventura:       "0f420224179cd4969433cfdd1d017c3f24666db599b6a7713c65ac1246b1da17"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "fba34df1d8206032d8bacb33d6226d6d50a184eb27591e27f76b10a6ea994c70"
   end
 
   def install
@@ -29,7 +29,7 @@ class Lowdown < Formula
   end
 
   test do
-    expected_html = <<~EOS
+    expected_html = <<~HTML
       <!DOCTYPE html>
       <html>
       <head>
@@ -42,12 +42,12 @@ class Lowdown < Formula
       <p>Hello, World</p>
       </body>
       </html>
-    EOS
-    markdown = <<~EOS
+    HTML
+    markdown = <<~MARKDOWN
       # Title
 
       Hello, World
-    EOS
+    MARKDOWN
     html = pipe_output("#{bin}/lowdown -s", markdown)
     assert_equal expected_html, html
   end

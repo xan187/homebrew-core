@@ -29,7 +29,7 @@ class PamU2f < Formula
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "libfido2"
   depends_on "openssl@3"
 
@@ -38,7 +38,7 @@ class PamU2f < Formula
   end
 
   def install
-    system "autoreconf", "--install"
+    system "autoreconf", "--force", "--install", "--verbose"
 
     ENV["A2X"] = "#{Formula["asciidoc"].opt_bin}/a2x --no-xmllint"
     system "./configure", "--prefix=#{prefix}", "--with-pam-dir=#{lib}/pam"

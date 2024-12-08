@@ -1,6 +1,6 @@
 class Btparse < Formula
   desc "BibTeX utility libraries"
-  homepage "https://metacpan.org/pod/distribution/Text-BibTeX/btparse/doc/btparse.pod"
+  homepage "https://metacpan.org/dist/Text-BibTeX/view/btparse/doc/btparse.pod"
   url "https://cpan.metacpan.org/authors/id/A/AM/AMBS/btparse/btparse-0.35.tar.gz"
   sha256 "631bf1b79dfd4c83377b416a12c349fe88ee37448dc82e41424b2f364a99477b"
   license "GPL-2.0-or-later"
@@ -34,7 +34,7 @@ class Btparse < Formula
   end
 
   test do
-    (testpath/"test.bib").write <<~EOS
+    (testpath/"test.bib").write <<~BIBTEX
       @article{mxcl09,
         title={{H}omebrew},
         author={{H}owell, {M}ax},
@@ -43,7 +43,7 @@ class Btparse < Formula
         page={42},
         year={2009}
       }
-    EOS
+    BIBTEX
 
     system bin/"bibparse", "-check", "test.bib"
   end

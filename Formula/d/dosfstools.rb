@@ -1,10 +1,20 @@
 class Dosfstools < Formula
   desc "Tools to create, check and label file systems of the FAT family"
   homepage "https://github.com/dosfstools"
-  url "https://github.com/dosfstools/dosfstools/releases/download/v4.2/dosfstools-4.2.tar.gz"
-  sha256 "64926eebf90092dca21b14259a5301b7b98e7b1943e8a201c7d726084809b527"
   license "GPL-3.0-or-later"
   head "https://github.com/dosfstools/dosfstools.git", branch: "master"
+
+  stable do
+    url "https://github.com/dosfstools/dosfstools/releases/download/v4.2/dosfstools-4.2.tar.gz"
+    sha256 "64926eebf90092dca21b14259a5301b7b98e7b1943e8a201c7d726084809b527"
+
+    # remove in next release
+    # https://github.com/dosfstools/dosfstools/pull/166
+    patch do
+      url "https://github.com/dosfstools/dosfstools/commit/77ffb87e8272760b3bb2dec8f722103b0effb801.patch?full_index=1"
+      sha256 "ecbd911eae51ed382729cd1fb84d4841b3e1e842d08e45b05d61f41fbd0a88ff"
+    end
+  end
 
   bottle do
     sha256 cellar: :any_skip_relocation, arm64_sequoia:  "a865f34d1361ac215e3ec359fd524e4ee92ea63cac75ccaac99298c871aa4b28"
@@ -25,13 +35,6 @@ class Dosfstools < Formula
   depends_on "automake" => :build
   depends_on "gettext" => :build
   depends_on "pkgconf" => :build
-
-  # remove in next release
-  # https://github.com/dosfstools/dosfstools/pull/158
-  patch do
-    url "https://github.com/dosfstools/dosfstools/commit/8a917ed2afb2dd2a165a93812b6f52b9060eec5f.patch?full_index=1"
-    sha256 "73019e3f7852158bfe47a0105eb605b4df4a10ca50befc02adf50aed11bd4445"
-  end
 
   def install
     system "autoreconf", "--force", "--install", "--verbose"
