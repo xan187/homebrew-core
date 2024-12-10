@@ -43,8 +43,6 @@ class MariadbAT109 < Formula
     depends_on "readline" # uses libedit on macOS
   end
 
-  fails_with gcc: "5"
-
   # Fix libfmt usage.
   # https://github.com/MariaDB/server/pull/2732
   patch do
@@ -138,12 +136,12 @@ class MariadbAT109 < Formula
     end
 
     # Install my.cnf that binds to 127.0.0.1 by default
-    (buildpath/"my.cnf").write <<~EOS
+    (buildpath/"my.cnf").write <<~INI
       # Default Homebrew MySQL server config
       [mysqld]
       # Only allow connections from localhost
       bind-address = 127.0.0.1
-    EOS
+    INI
     etc.install "my.cnf"
   end
 

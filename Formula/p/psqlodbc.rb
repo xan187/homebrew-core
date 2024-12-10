@@ -1,8 +1,8 @@
 class Psqlodbc < Formula
   desc "Official PostgreSQL ODBC driver"
   homepage "https://odbc.postgresql.org"
-  url "https://github.com/postgresql-interfaces/psqlodbc/archive/refs/tags/REL-17_00_0002.tar.gz"
-  sha256 "fc89244b4a57e325a4687a89a909934d19f17938fd5dd7f274703e74c950bed9"
+  url "https://github.com/postgresql-interfaces/psqlodbc/archive/refs/tags/REL-17_00_0004.tar.gz"
+  sha256 "6d15bc4f49a0c9e0d263ff30b042d4d49ef4ead745c2dd1f0d0d9c3d2a98b4fc"
   license "LGPL-2.0-or-later"
   head "https://github.com/postgresql-interfaces/psqlodbc.git", branch: "main"
 
@@ -15,12 +15,12 @@ class Psqlodbc < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "66bdefe8888c3b21d3367b20f67f1c70df8c0010316ac962de35f526ed9c69f3"
-    sha256 cellar: :any,                 arm64_sonoma:  "a15cf041cf278dc277ed9c92b6e9c4d0c6b9e51da2325d7fe6d5d0d01e932abb"
-    sha256 cellar: :any,                 arm64_ventura: "1720b7a92e2b3dd220b2b774a8a9a2059bb163ae285ccf4722a4097aaacc83d8"
-    sha256 cellar: :any,                 sonoma:        "e939ca501c7086b5f4e9e97b650e57c9fbbdaac67863a347397be9feda7f3899"
-    sha256 cellar: :any,                 ventura:       "78b3a75149c0d3aed3b3a4e28d8163619bd04c6875d05b7496063b213414dacb"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e4cc06fbf46ee154170d14a3d4ae5850a731e70d8af9e58ff216a9283f249b47"
+    sha256 cellar: :any,                 arm64_sequoia: "9e49dfa5be7d586220140bb26762cf8c05a65dba887e3a09c1500bd7fb5b186b"
+    sha256 cellar: :any,                 arm64_sonoma:  "bed65e967f687e24a56f233b8def6503ba7a6edcae118b978e429e515a466ccb"
+    sha256 cellar: :any,                 arm64_ventura: "5476eb923b4ebdd7377596ee553139a6f059730b2f0e1917cea60e3bc62ecb1d"
+    sha256 cellar: :any,                 sonoma:        "b34391bdbb4a636e9837e209ba178d1660de9ced2d63d033de3f57f39808ebda"
+    sha256 cellar: :any,                 ventura:       "b57bbc3a6e580f83e695067836a9eff58fd033ef55b6970cb8c31672429e81b1"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "15dfa1958197323d476238ea26efa630f85955c78eca68eb7b0a54a682660034"
   end
 
   depends_on "autoconf" => :build

@@ -24,7 +24,7 @@ class Gping < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:  "7b3d71c0896cb93022a289d740ed310160ea4e92b5da84d60a1bb15fb40940a6"
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "rust" => :build
 
   on_linux do
@@ -41,13 +41,12 @@ class Gping < Formula
     require "pty"
     require "io/console"
 
-    r, w, = PTY.spawn("#{bin}/gping google.com")
-    r.winsize = [80, 130]
-    sleep 10
-    w.write "q"
+    PTY.spawn(bin/"gping", "google.com") do |r, w, _pid|
+      r.winsize = [80, 130]
+      sleep 10
+      w.write "q"
 
-    begin
-      screenlog = r.read
+      screenlog = r.read_nonblock(1024)
       # remove ANSI colors
       screenlog.encode!("UTF-8", "binary",
         invalid: :replace,
@@ -56,8 +55,6 @@ class Gping < Formula
       screenlog.gsub!(/\e\[([;\d]+)?m/, "")
 
       assert_match "google.com (", screenlog
-    rescue Errno::EIO
-      # GNU/Linux raises EIO when read is done on closed pty
     end
   end
 end

@@ -39,10 +39,12 @@ class Dartsim < Formula
     depends_on "mesa"
   end
 
-  fails_with gcc: "5"
-
   def install
-    args = std_cmake_args
+    args = %W[
+      -DCMAKE_INSTALL_RPATH=#{rpath}
+      -DDART_BUILD_DARTPY=OFF
+      -DDART_ENABLE_SIMD=OFF
+    ]
 
     if OS.mac?
       # Force to link to system GLUT (see: https://cmake.org/Bug/view.php?id=16045)
@@ -50,11 +52,7 @@ class Dartsim < Formula
       args << "-DGLUT_glut_LIBRARY=#{glut_lib}"
     end
 
-    args << "-DBUILD_TESTING=OFF"
-    args << "-DDART_BUILD_DARTPY=OFF"
-    args << "-DDART_ENABLE_SIMD=OFF"
-
-    system "cmake", "-S", ".", "-B", "build", "-DCMAKE_INSTALL_RPATH=#{rpath}", *args
+    system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
 

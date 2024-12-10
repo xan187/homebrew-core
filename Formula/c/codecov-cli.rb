@@ -3,18 +3,18 @@ class CodecovCli < Formula
 
   desc "Codecov's command-line interface"
   homepage "https://cli.codecov.io/"
-  url "https://files.pythonhosted.org/packages/c4/9e/50af9e41e63a74290a447473a7f7f88af931e3e2b7959486bd30e7e16d80/codecov-cli-9.0.4.tar.gz"
-  sha256 "47070f2662c66ad0e506d08712322f16878bb8f98c072525fd4a47f7c30b55fc"
+  url "https://files.pythonhosted.org/packages/1d/91/f173918549f01f0feb2d24fc799e19d4d4168a2e020076e58a6b33dc0899/codecov-cli-9.1.1.tar.gz"
+  sha256 "8da963600db1da76543a7f6fcbf09db717c68d0287b6bb58d775a605db080930"
   license "Apache-2.0"
   head "https://github.com/codecov/codecov-cli.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "d571ed21ecb2b80154891810044835a9e070ca72fdfbbaf7eff1469c39dc626c"
-    sha256 cellar: :any,                 arm64_sonoma:  "8fc9a2d3fadd291867e94af963222e77e6ce2e06d9a1f56de177ce9281fdc770"
-    sha256 cellar: :any,                 arm64_ventura: "51ba2b4cf2cfd394c7149efb8197bf910dc869bce60002d0254c99d1a7e602d6"
-    sha256 cellar: :any,                 sonoma:        "5fa358345914145f2847d3ee4c15de878b4ccf5b11b5dc8c7df295d6ed533bdc"
-    sha256 cellar: :any,                 ventura:       "f30f1227915b657dd88957d1706282104c84e369f2b35ec338185f7fb34524d8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c5a5415b437945e8ff21f873c7d0c404944d643338713567e4c9b14cc5694096"
+    sha256 cellar: :any,                 arm64_sequoia: "fa15506552cf2ac38410281bda8a21344813209d2f5e5cf8210f682ce1b7f756"
+    sha256 cellar: :any,                 arm64_sonoma:  "8454245e95147e0a4d47b89381c377780e086651c1c30ffbb5cea1a69a98f22f"
+    sha256 cellar: :any,                 arm64_ventura: "e775a72a976b2787d73f8a143c290333b9327b7a20c6d95b31ef84ac3d88b5c9"
+    sha256 cellar: :any,                 sonoma:        "53cec5f3ab28b45f933982f2b3e14ee30e4bf76bd314985051d28006442218d8"
+    sha256 cellar: :any,                 ventura:       "b44ec050ba7c15c30404a963cfea25cdeec4cc1da603fa565a6719b3a134f381"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3792cdb12499d6d7f47a568d142edd1d72ac9b7e751a28673bd81414fd5a9889"
   end
 
   depends_on "rust" => :build
@@ -22,8 +22,8 @@ class CodecovCli < Formula
   depends_on "python@3.13"
 
   resource "anyio" do
-    url "https://files.pythonhosted.org/packages/9f/09/45b9b7a6d4e45c6bcb5bf61d19e3ab87df68e0601fa8c5293de3542546cc/anyio-4.6.2.post1.tar.gz"
-    sha256 "4c8bc31ccdb51c7f7bd251f51c609e038d63e34219b44aa86e47576389880b4c"
+    url "https://files.pythonhosted.org/packages/f6/40/318e58f669b1a9e00f5c4453910682e2d9dd594334539c7b7817dabb765f/anyio-4.7.0.tar.gz"
+    sha256 "2f834749c602966b7d456a7567cafcb309f96482b5081d14ac93ccd457f9dd48"
   end
 
   resource "certifi" do
@@ -47,13 +47,13 @@ class CodecovCli < Formula
   end
 
   resource "httpcore" do
-    url "https://files.pythonhosted.org/packages/61/42/5c456b02816845d163fab0f32936b6a5b649f3f915beff6f819f4f6c90b2/httpcore-0.16.3.tar.gz"
-    sha256 "c5d6f04e2fc530f39e0c077e6a30caa53f1451096120f1f38b954afd0b17c0cb"
+    url "https://files.pythonhosted.org/packages/6a/41/d7d0a89eb493922c37d343b607bc1b5da7f5be7e383740b4753ad8943e90/httpcore-1.0.7.tar.gz"
+    sha256 "8551cb62a169ec7162ac7be8d4817d561f60e08eaa485234898414bb5a8a0b4c"
   end
 
   resource "httpx" do
-    url "https://files.pythonhosted.org/packages/f5/50/04d5e8ee398a10c767a341a25f59ff8711ae3adf0143c7f8b45fc560d72d/httpx-0.23.3.tar.gz"
-    sha256 "9818458eb565bb54898ccb9b8b251a28785dd4a55afbc23d0eb410754fe7d0f9"
+    url "https://files.pythonhosted.org/packages/78/82/08f8c936781f67d9e6b9eeb8a0c8b4e406136ea4c3d1f89a5db71d42e0e6/httpx-0.27.2.tar.gz"
+    sha256 "f7c2be1d2f3c3c3160d441802406b206c2b76f5947b11115e6df10c6c65e66c2"
   end
 
   resource "idna" do
@@ -86,14 +86,9 @@ class CodecovCli < Formula
     sha256 "b82502eb5f09a0289d8e209e7bad71ef3978334f56d09b444253d5ad67bf5253"
   end
 
-  resource "rfc3986" do
-    url "https://files.pythonhosted.org/packages/79/30/5b1b6c28c105629cc12b33bdcbb0b11b5bb1880c6cfbd955f9e792921aa8/rfc3986-1.5.0.tar.gz"
-    sha256 "270aaf10d87d0d4e095063c65bf3ddbc6ee3d0b226328ce21e036f946e421835"
-  end
-
   resource "setuptools" do
-    url "https://files.pythonhosted.org/packages/c8/db/722a42ffdc226e950c4757b3da7b56ff5c090bb265dccd707f7b8a3c6fee/setuptools-75.5.0.tar.gz"
-    sha256 "5c4ccb41111392671f02bb5f8436dfc5a9a7185e80500531b133f5775c4163ef"
+    url "https://files.pythonhosted.org/packages/43/54/292f26c208734e9a7f067aea4a7e282c080750c4546559b58e2e45413ca0/setuptools-75.6.0.tar.gz"
+    sha256 "8199222558df7c86216af4f84c30e9b34a61d8ba19366cc914424cdbd28252f6"
   end
 
   resource "sniffio" do

@@ -1,11 +1,10 @@
 class Spidermonkey < Formula
   desc "JavaScript-C Engine"
   homepage "https://spidermonkey.dev"
-  url "https://archive.mozilla.org/pub/firefox/releases/128.4.0esr/source/firefox-128.4.0esr.source.tar.xz"
-  version "128.4.0"
-  sha256 "074014e1c26144e10707b12a271176a4b6b67021e91444b613edae38d188febc"
+  url "https://archive.mozilla.org/pub/firefox/releases/128.5.1esr/source/firefox-128.5.1esr.source.tar.xz"
+  version "128.5.1"
+  sha256 "5fc6ac442b8817aab109a6afa9aeb997c50708cf897f7387c02399cda00794ab"
   license "MPL-2.0"
-  revision 1
   head "https://hg.mozilla.org/mozilla-central", using: :hg
 
   # Spidermonkey versions use the same versions as Firefox, so we simply check
@@ -16,16 +15,16 @@ class Spidermonkey < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_sequoia: "61b7051e96d04b5b6ddacc8ee0800b243b4ea2453bd795c07980958f93f4d174"
-    sha256 cellar: :any, arm64_sonoma:  "88ab4784c34102c8fb93c8915cdcbd1ac7496460ffe84b5a30bea713d29be343"
-    sha256 cellar: :any, arm64_ventura: "ec7e958ab256a5962f4ba60c12b368dc8609d0f156ddf23657bb54612db09287"
-    sha256 cellar: :any, sonoma:        "88c0d75a9e74c2979b9e7afe93d4e615032508fa92c4ebd3b0ca26e2436b9f69"
-    sha256 cellar: :any, ventura:       "be20966c58859beea2f86f730aed999e4adb9222a2ff4350b94952e0adcd8c0e"
-    sha256               x86_64_linux:  "d0664eeb42fb30dceab87318b21513762cc47dda62a91b21e1870421fc08ad81"
+    sha256 cellar: :any, arm64_sequoia: "06f10174933c98dc57a3969b9f2ca59d440b2e4fc935991186fdae8b5951c3d2"
+    sha256 cellar: :any, arm64_sonoma:  "fcefffda004af26ffae4954fae7e0184e5eb192ddd8ae649dcec72e30d0c89c3"
+    sha256 cellar: :any, arm64_ventura: "d417128f8fa2e8eef1a7764dd0e2e342443ab44ff3ade0625eeba243b3ad95f1"
+    sha256 cellar: :any, sonoma:        "8b637adb3eef2aac88720bda5b8a705b74230770f3ed12c4402b3d1a843242b9"
+    sha256 cellar: :any, ventura:       "c74bb90928c43e85ebc460ad460eba90b229bf8dafa98c64c958f7b5217c5acf"
+    sha256               x86_64_linux:  "4a67a67714171e8798d5526bf121634540acd1dcb47d460e2b82e71d980461ab"
   end
 
   depends_on "cbindgen" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "python@3.13" => :build
   depends_on "rust" => :build
   depends_on "icu4c@76"

@@ -1,8 +1,8 @@
 class Kubehound < Formula
   desc "Tool for building Kubernetes attack paths"
   homepage "https://kubehound.io"
-  url "https://github.com/DataDog/KubeHound/archive/refs/tags/v1.6.1.tar.gz"
-  sha256 "bdeb1c24f1f71b881ad722923e618178add1840ee66d9ca11ec3b78deca77911"
+  url "https://github.com/DataDog/KubeHound/archive/refs/tags/v1.6.2.tar.gz"
+  sha256 "c7ee1b88dd6103f892876b5d19faeb2a099c1856ca3105e7536cdfbd0f0500de"
   license "Apache-2.0"
 
   livecheck do
@@ -11,12 +11,12 @@ class Kubehound < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d5bbbe5135135e90947df4aa03a8fd3263759dd15034b28aa839216362cc0964"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c331ecebdd92fb2e0c451c2ec70867e8639dad5b3c116669869f57e60db4f3dc"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "de5099022f3bb38429a4de60573a405111273d65e0265c5f10c86e6f3dbae099"
-    sha256 cellar: :any_skip_relocation, sonoma:        "567bc3440e0d34ad24ef0a639c57c03e657c31c61d2d2c18799b9a80a18f6d6d"
-    sha256 cellar: :any_skip_relocation, ventura:       "533f96f0951321a2cff3cab88f0599022ce50feca9fd03c88e4ba847660c54e7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3c2aeff4fc25c2e704ce5088f401bc726956a85d11ff79a033f53ca2543c55fd"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "f1d44cea2199bf6af2fdeb2c583ffd8d34b41e5760155810582f871610bda0e8"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "783f6de6f634031ebd1517e2ac82bd0ea4524ab86c78abdb66c5aa909065ba85"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "1ee61d8c04bea42f1ed748cda411b47805a258954bc2bb0eb348682c45ff6cd5"
+    sha256 cellar: :any_skip_relocation, sonoma:        "ff3ef59374a4de379a10e2f50f58895bfb2371bbe26604c350a59742726042de"
+    sha256 cellar: :any_skip_relocation, ventura:       "cb06c8f53ac0d17d70e4614b868a0bd9b7369342617d44af32e430a4c2aba311"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "cb3d0852067153524451c28ba34c0de4a454c8b4c75ce01e657bf80631068a5d"
   end
 
   depends_on "go" => [:build, :test]
@@ -33,6 +33,8 @@ class Kubehound < Formula
       -X github.com/DataDog/KubeHound/pkg/config.BuildArch=#{goarch}
     ]
     system "go", "build", *std_go_args(ldflags:), "./cmd/kubehound/"
+
+    generate_completions_from_executable(bin/"kubehound", "completion")
   end
 
   test do

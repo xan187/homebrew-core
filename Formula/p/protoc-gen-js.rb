@@ -4,19 +4,19 @@ class ProtocGenJs < Formula
   url "https://github.com/protocolbuffers/protobuf-javascript/archive/refs/tags/v3.21.4.tar.gz"
   sha256 "8cef92b4c803429af0c11c4090a76b6a931f82d21e0830760a17f9c6cb358150"
   license "BSD-3-Clause"
-  revision 3
+  revision 5
   head "https://github.com/protocolbuffers/protobuf-javascript.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "bd89f9b6d231eb57ffcd49b09d182fd4fb5e7186d2451de5e41b2a2013b418c2"
-    sha256 cellar: :any,                 arm64_sonoma:  "4e882799851d03b2ac7d8d82e9b81b37896b536621c20dec95a0fba7801716b6"
-    sha256 cellar: :any,                 arm64_ventura: "5b1c764d7c3d37d8a7fc79b788719edc7406470bcc7340aa14a5ff96055b749a"
-    sha256 cellar: :any,                 sonoma:        "fe87760388900aa3f262d58f694552b112500e762b20c0b7ad337f36a7228987"
-    sha256 cellar: :any,                 ventura:       "a08e4c47128afd5e4980dedae4b6d01f5fc00bb975b0bb8099dc0664fec7b8e6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9ad8b956a8cfba26fcaf489dd823b607a2a14dc41496be76244425b09143f334"
+    sha256 cellar: :any,                 arm64_sequoia: "0b2b125602351e2ed61b909ef6669806e9acb81c2296013269ff30683ce6fd4c"
+    sha256 cellar: :any,                 arm64_sonoma:  "ca2915808a19b35f82a2132a63a1a4120ed664c2b78bc9a473e53d7a9352cbe8"
+    sha256 cellar: :any,                 arm64_ventura: "94938024670889425e681c0b7ef2938a3db81cc09d396160c0509c7321e860be"
+    sha256 cellar: :any,                 sonoma:        "4cd0033b53dd404caa04edbface7f7e70b488eaf25e7eb12eda3cb120ea93543"
+    sha256 cellar: :any,                 ventura:       "d7fbc7a2e8b626aa70f27ecbc0f06d9820f36870e37e15863eb47bbcd022302c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8330a356f555b2cb747cb5f6ffd6eb142f4c937e171e24480bac698c08244d54"
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "abseil"
   depends_on "protobuf"
 
@@ -24,22 +24,22 @@ class ProtocGenJs < Formula
   # and Protobuf that get statically linked into binary. Check for any upstream changes at
   # https://github.com/protocolbuffers/protobuf-javascript/blob/main/generator/BUILD.bazel
   def install
-    protobuf_flags = Utils.safe_popen_read("pkg-config", "--cflags", "--libs", "protobuf").chomp.split.uniq
+    protobuf_flags = Utils.safe_popen_read("pkgconf", "--cflags", "--libs", "protobuf").chomp.split.uniq
     system ENV.cxx, "-std=c++17", *Dir["generator/*.cc"], "-o", "protoc-gen-js", "-I.", *protobuf_flags, "-lprotoc"
     bin.install "protoc-gen-js"
   end
 
   test do
-    (testpath/"person.proto").write <<~EOS
+    (testpath/"person.proto").write <<~PROTO
       syntax = "proto3";
 
       message Person {
         int64 id = 1;
         string name = 2;
       }
-    EOS
+    PROTO
     system Formula["protobuf"].bin/"protoc", "--js_out=import_style=commonjs:.", "person.proto"
-    assert_predicate testpath/"person_pb.js", :exist?
+    assert_path_exists testpath/"person_pb.js"
     refute_predicate (testpath/"person_pb.js").size, :zero?
   end
 end

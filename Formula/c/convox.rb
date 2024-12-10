@@ -1,8 +1,8 @@
 class Convox < Formula
   desc "Command-line interface for the Convox PaaS"
   homepage "https://convox.com/"
-  url "https://github.com/convox/convox/archive/refs/tags/3.19.4.tar.gz"
-  sha256 "b3fbd8783069994e6b5bc974c6c8c35d3506602abe71cb21b29facaa52deaf94"
+  url "https://github.com/convox/convox/archive/refs/tags/3.19.6.tar.gz"
+  sha256 "2d0dcd29065f73480698eb3ceded8089d652bd1531a17b172419faeb4dbef410"
   license "Apache-2.0"
   version_scheme 1
 
@@ -12,12 +12,12 @@ class Convox < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "07b12fa8c11e8e1b5103d7bce759cc25b5374a6824e94d43c0eadf9d0cee1def"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d5ec8fead3f246f9a1ce1aff421400a57cc1ad987327320eb7fe0f4f4c18255b"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "6776f8c66ae7ec56e95afef9e962cfd2e24a07dcb86004f533658456e56aa0ff"
-    sha256 cellar: :any_skip_relocation, sonoma:        "484c72e113933ec88df7c6dc32dd9d6c3e1fdaeaf6a3746cd6affcf46c0ac554"
-    sha256 cellar: :any_skip_relocation, ventura:       "03a52af2d65f2943c4664f7cb76e77a7082c4b67354e52e09ca9ba39cf604507"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e4db376aa1b4d269c939ff544f4c158cb961f1ea38c9760a6dd02fa1ca74bd00"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "bddbeaee8ffc3d6fc21c7ace83396e4df6a2aaafb4c6253b9ceb1c726c27053a"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "83460fe7e661a37e6c0ce230e22c78445b84a6654ee2ef0129f2495b49ce7d55"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "01a478cb6876ba848fcb141b5388755adb1e8ab1347e16aff315995f69305375"
+    sha256 cellar: :any_skip_relocation, sonoma:        "e2dc5233ba7268f8033a611042c24d6aa22533d0e9a94dfb5a978693c3d16594"
+    sha256 cellar: :any_skip_relocation, ventura:       "ffbfaf14f7fb77f3f6460ce90a5d0313e8927029ad776e1b1eaae26945136c0a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "52a238d85b8f9b017abe96597aaf55241391b2a539316e69df7aaf8ce0319ff6"
   end
 
   depends_on "go" => :build

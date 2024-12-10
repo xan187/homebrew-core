@@ -1,6 +1,6 @@
 class Xdelta < Formula
   desc "Binary diff, differential compression tools"
-  homepage "http://xdelta.org"
+  homepage "https://github.com/jmacd/xdelta"
   url "https://github.com/jmacd/xdelta/archive/refs/tags/v3.1.0.tar.gz"
   sha256 "7515cf5378fca287a57f4e2fee1094aabc79569cfe60d91e06021a8fd7bae29d"
   license "GPL-2.0-or-later"
@@ -30,10 +30,8 @@ class Xdelta < Formula
 
   def install
     cd "xdelta3" do
-      system "autoreconf", "--install"
-      system "./configure", "--disable-dependency-tracking",
-                            "--prefix=#{prefix}",
-                            "--with-liblzma"
+      system "autoreconf", "--force", "--install", "--verbose"
+      system "./configure", "--with-liblzma", *std_configure_args
       system "make", "install"
     end
   end

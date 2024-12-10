@@ -7,20 +7,20 @@ class HelmLs < Formula
   head "https://github.com/mrjosh/helm-ls.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "8036353a79e05dbf8cf9575683e8ebfe01f061c03d47494d9a8843c949ca297b"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "fedd5ab71b9056b1e72dea7cf14793a3f031749abac67ceb8ea82562a14316ef"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "6b97bb39daac8453d8f743d3d2157788c2a98d975c0eaa4f8d4bee296583b436"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "cff77a1eb4bfba6811d7c0874a48a12282f22ae041ae45030654b1b36dd1b2b9"
-    sha256 cellar: :any_skip_relocation, sonoma:         "18ec922131749e79ead6a293f7f24e46c40381843a6569bba092ccb392176652"
-    sha256 cellar: :any_skip_relocation, ventura:        "0a7c8137569c772d25e34d98f723519db292329706a8cb9042893a9888c6b8d9"
-    sha256 cellar: :any_skip_relocation, monterey:       "db62edea9ffe0fcfb5572030a136d163d3b8b8c2233da4bb1b8b9eb1a7c800f7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f4b8c65835838e2509815cba6b3895e940354df97ac376516b809d7dc1d01710"
+    rebuild 2
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "5b2c5d5cb4490cb05371e63bc74d127d597f50bdb359a6f1e2fd1468f5151a3a"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6d771e541a5c38fafbcd659018d8f5759b25b6d66a3de32a94f379766c27ebe5"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "db311950e0c37fc990a9ea24e95d5a1f9dbe6f78790878bf0cf33a349336da79"
+    sha256 cellar: :any_skip_relocation, sonoma:        "666e15a046477ac540c2e1c211e91ba5183f12c7b2a70d823faeba7c91c83592"
+    sha256 cellar: :any_skip_relocation, ventura:       "d81557c7fefd57b65b604413bea2ce2648e160b720358b4e60c2cd27042443c6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "001b6074a8c532281fed3d992bb5dd4629e4ba64aea0e4a9e7672a3547ceae8b"
   end
 
   depends_on "go" => :build
 
   def install
     ldflags = %W[
+      -s -w
       -X main.Version=#{version}
       -X main.CompiledBy=#{tap.user}
       -X main.GitCommit=#{tap.user}
@@ -28,7 +28,7 @@ class HelmLs < Formula
     ]
     system "go", "build", *std_go_args(ldflags:, output: bin/"helm_ls")
 
-    generate_completions_from_executable(bin/"helm_ls", "completion")
+    generate_completions_from_executable(bin/"helm_ls", "completion", base_name: "helm_ls")
   end
 
   test do

@@ -1,25 +1,25 @@
 class LibgeditTepl < Formula
   desc "Gedit Technology - Text editor product line"
   homepage "https://gitlab.gnome.org/World/gedit/libgedit-tepl"
-  url "https://gitlab.gnome.org/World/gedit/libgedit-tepl/-/archive/6.11.0/libgedit-tepl-6.11.0.tar.bz2"
-  sha256 "3b46bae85ae59adbfa63570a6e3818ce27643f1c36e7a8ea866bc141d74727fd"
+  url "https://gitlab.gnome.org/World/gedit/libgedit-tepl/-/archive/6.12.0/libgedit-tepl-6.12.0.tar.bz2"
+  sha256 "2170a6db99803b08fe7437bd8382ed2938baf4f5838349ba90dee1308a7dc08d"
   license "LGPL-2.1-or-later"
   head "https://gitlab.gnome.org/World/gedit/libgedit-tepl.git", branch: "main"
 
   bottle do
-    sha256 arm64_sequoia: "0d2578e0d31bbfae6655aaaceef057d1589406206fa7cc079a0e026a9a7248e0"
-    sha256 arm64_sonoma:  "ac5d34deeeb878f76f45e1446c7f88aaabcd965c111e9d48192f14598cb7659a"
-    sha256 arm64_ventura: "34ad76b173ef89688270bfae41e7818765690ef4f64361205c7b24c60fd42289"
-    sha256 sonoma:        "39ca15d71c3477a28ed02cbed40307e8739d472fd0ddc370d98a1a61ed7efedc"
-    sha256 ventura:       "9e158eb01c337a3d3640f095cf2c383bdf7e223c92942e3de9a81645f7082c1e"
-    sha256 x86_64_linux:  "f6e1d3a6e8b52f2cf3712173ad9a0ef8359a754698e4b762a388af22aaa326d8"
+    sha256 arm64_sequoia: "3bd2190b0dc85fa95f6f54efb237fae81c8f8b85c536d963c8d908921be66982"
+    sha256 arm64_sonoma:  "b274c179ab02621eaa256e26e6fcb41ccfa8eb0802ff02fbc4d28be925d7fa30"
+    sha256 arm64_ventura: "9c072da54b10399e2419a09f0a77c379ad078b99cb3bc469b4b436d82cd5140e"
+    sha256 sonoma:        "5adc56a4593f5a01a32579662820fe48d5304beae43071c72c93d33131ecfb7c"
+    sha256 ventura:       "df23620dda9571a0de98491dd967fd3e7b70a506df45037f2e9804a78c344918"
+    sha256 x86_64_linux:  "ad6912a898e0df486baf1927c24db4092293a826f951c38724435d0340ea458e"
   end
 
   depends_on "gettext" => :build
   depends_on "gobject-introspection" => :build
   depends_on "meson" => :build
   depends_on "ninja" => :build
-  depends_on "pkg-config" => [:build, :test]
+  depends_on "pkgconf" => [:build, :test]
   depends_on "cairo"
   depends_on "glib"
   depends_on "gtk+3"
@@ -59,7 +59,7 @@ class LibgeditTepl < Formula
       }
     C
 
-    flags = shell_output("pkg-config --cflags --libs libgedit-tepl-6").chomp.split
+    flags = shell_output("pkgconf --cflags --libs libgedit-tepl-6").chomp.split
     system ENV.cc, "test.c", "-o", "test", *flags
     system "./test"
   end

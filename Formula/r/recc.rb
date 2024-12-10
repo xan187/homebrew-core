@@ -1,19 +1,18 @@
 class Recc < Formula
   desc "Remote Execution Caching Compiler"
   homepage "https://buildgrid.gitlab.io/recc"
-  url "https://gitlab.com/BuildGrid/buildbox/buildbox/-/archive/1.2.33/buildbox-1.2.33.tar.gz"
-  sha256 "26a06dd0e591e1b98d0c15763084872ff05a8c7a28e7c2a1824e31cb91312901"
+  url "https://gitlab.com/BuildGrid/buildbox/buildbox/-/archive/1.2.34/buildbox-1.2.34.tar.gz"
+  sha256 "0e6f80a14d65d43c85062f2d393286ee06f3bc73fd9ffde8c7ef5500d2bf12e6"
   license "Apache-2.0"
-  revision 1
   head "https://gitlab.com/BuildGrid/buildbox/buildbox.git", branch: "master"
 
   bottle do
-    sha256 arm64_sequoia: "954bf708a2494949d8c0445bcbeb7f7820aa6623636e2160715497c1cb2f15dd"
-    sha256 arm64_sonoma:  "e68d323c60be7b310467e3ae3bda059348051ac952dd36634bdee00bf844ca42"
-    sha256 arm64_ventura: "023046bf86fc593df51882d30e519dfddd5ec6cae2c1d24ff801e34215ff8525"
-    sha256 sonoma:        "ba02c3b73bcb4746b9708f0a5947c91ecdb3127cc95dc2665c40a34088572ba1"
-    sha256 ventura:       "cc22decfab077a21a9945eb6c82a6024646302445c68ae3b7b193eebed53b90f"
-    sha256 x86_64_linux:  "5bdcc658eea605a81b66d38d06c4f57c8f66bfcd6ef1c7c7ad8cf9abcfc846ea"
+    sha256 arm64_sequoia: "3c531aae5e2324bb25cb7f016819c5075997a498a65f752c170cf37ed7f88ad2"
+    sha256 arm64_sonoma:  "a6e6285ea3f273b1e1e8dbf1ff6e11d6ef02bcfa98349d35bd8e73e915009737"
+    sha256 arm64_ventura: "1c1281d9f5b7b1fdb57f1ff120a9c223c889321d711569238d28a53055b4eedd"
+    sha256 sonoma:        "4ca9ceb49432e5d35de1d33afebb709a0414a062231fcb842a8d9f35e7b8b907"
+    sha256 ventura:       "c82e870ab16b9e56dc6422e247ab8bcb5d4a3a875f6660134241b036240756d1"
+    sha256 x86_64_linux:  "43b4186f2d27b25cbbdc6fc1c310cea4561419ebb2aadee6fe38f091bbbb20a0"
   end
 
   depends_on "cmake" => :build
@@ -104,9 +103,9 @@ class Recc < Formula
 
     # Create a source file to test caching
     test_file = testpath/"test.c"
-    test_file.write <<~EOS
+    test_file.write <<~C
       int main() {}
-    EOS
+    C
 
     # Wait for the server to start
     sleep 2 unless (recc_cache_dir/"casd.sock").exist?

@@ -4,16 +4,16 @@ class Bear < Formula
   url "https://github.com/rizsotto/Bear/archive/refs/tags/3.1.5.tar.gz"
   sha256 "4ac7b041222dcfc7231c6570d5bd76c39eaeda7a075ee2385b84256e7d659733"
   license "GPL-3.0-or-later"
-  revision 5
+  revision 7
   head "https://github.com/rizsotto/Bear.git", branch: "master"
 
   bottle do
-    sha256 arm64_sequoia: "f648b4c8202aee98d0367a7ce3bb371b4113528ffd626b84753f709099386c3b"
-    sha256 arm64_sonoma:  "a44838f0e8a760b1dc45866dab23d815f5c7b9842abf86cb4f8fe113890662b7"
-    sha256 arm64_ventura: "964dc3f462f62a23ca4209e5e1f09f34dd32ca370d43f2471cd5bcb80c826663"
-    sha256 sonoma:        "fd6b815e468c985f7d356f3657e9904bc8c9528157387ae2bfbc661f290d0213"
-    sha256 ventura:       "e859fa298d384c43f674cde683e573bf6b0fec8df8379f2c18fc2d0c00946db6"
-    sha256 x86_64_linux:  "0414f6eed5fee14d856379af50a65f0b1cbd3de6a36673f38ee46e463a3f646b"
+    sha256 arm64_sequoia: "fc83be75f4c5ebfc4cc686a171e6b8842249d184aa1b72000f215f5bc906ae86"
+    sha256 arm64_sonoma:  "a82d0bf2a8031776ca30daae21dc62cfc6244fd1234c2fec35bc3724fcfa449a"
+    sha256 arm64_ventura: "33f3002ae81736ba0b951eeea73c011b6910f8c9cc10c09de989ccc43541a16d"
+    sha256 sonoma:        "29a4f02339d5ed171ab9636f3e28e5eb89b456386f843e812d348e4a9e609a5f"
+    sha256 ventura:       "d73eaf5eb1610ce116ecb0eafa54a78fd369cee7c1016b03ad778297d9ae5f06"
+    sha256 x86_64_linux:  "4c65e36e547b6cd48afea84e86ff8b0243227609d66f2e3c42c7dfffd9f9190c"
   end
 
   depends_on "cmake" => :build
@@ -33,7 +33,7 @@ class Bear < Formula
 
   fails_with :clang do
     build 1100
-    cause <<-EOS
+    cause <<~EOS
       Undefined symbols for architecture x86_64:
         "std::__1::__fs::filesystem::__current_path(std::__1::error_code*)"
     EOS

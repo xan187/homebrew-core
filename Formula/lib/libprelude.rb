@@ -23,7 +23,7 @@ class Libprelude < Formula
   # Last release on 2020-09-11
   deprecate! date: "2024-11-04", because: :unmaintained
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "python@3.12" => [:build, :test]
   depends_on "gnutls"
   depends_on "libgpg-error"
@@ -85,12 +85,12 @@ class Libprelude < Formula
     system ENV.cc, "test.c", "-L#{lib}", "-lprelude", "-o", "test"
     system "./test"
 
-    (testpath/"test.py").write <<~C
+    (testpath/"test.py").write <<~PYTHON
       import prelude
       idmef = prelude.IDMEF()
       idmef.set("alert.classification.text", "Hello world!")
       print(idmef)
-    C
+    PYTHON
     assert_match(/classification:\s*text: Hello world!/, shell_output("#{python3} test.py"))
   end
 end

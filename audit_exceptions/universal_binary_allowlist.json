@@ -1,9 +1,5 @@
 [
-  "babel",
   "cdktf",
-  "code-server",
-  "contentful-cli",
-  "firebase-cli",
   "llvm",
   "llvm@11",
   "llvm@12",
@@ -14,9 +10,6 @@
   "llvm@17",
   "llvm@18",
   "logstash",
-  "marp-cli",
-  "netlify-cli",
-  "node-sass",
   "openjdk@11",
   "sourcery",
   "swift"

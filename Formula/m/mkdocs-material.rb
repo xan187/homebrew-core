@@ -2,17 +2,17 @@ class MkdocsMaterial < Formula
   include Language::Python::Virtualenv
   desc "Material Design theme for MkDocs"
   homepage "https://squidfunk.github.io/mkdocs-material/"
-  url "https://files.pythonhosted.org/packages/02/02/38f1f76252462b8e9652eb3778905206c1f3b9b4c25bf60aafc029675a2b/mkdocs_material-9.5.45.tar.gz"
-  sha256 "286489cf0beca4a129d91d59d6417419c63bceed1ce5cd0ec1fc7e1ebffb8189"
+  url "https://files.pythonhosted.org/packages/73/e3/925e4c619c03cd538b77d329479f64d75ed9ae35f5d936a19023204de6eb/mkdocs_material-9.5.48.tar.gz"
+  sha256 "a582531e8b34f4c7ed38c29d5c44763053832cf2a32f7409567e0c74749a47db"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "4096eb04e6ac9f0205b7c500edf99fbcd3d53a62f48ae4d5118a3f0a768131a3"
-    sha256 cellar: :any,                 arm64_sonoma:  "1db01ef02fa63b0c762971b3a6713d6b04974f6c23cc8e0b02e0d2ae2ddc3ada"
-    sha256 cellar: :any,                 arm64_ventura: "d66af703c29901af39f2a1ca1f38aea671dd1ee156322e0a187df702f5b2f7fa"
-    sha256 cellar: :any,                 sonoma:        "4079617d57be70b1fc9fbf10a2706326579bb2398aa6cbcab5867d3603018cdc"
-    sha256 cellar: :any,                 ventura:       "5b0dd383da5b095f12a20072faa37f6b68b39a9b7b8a98428a8cc607a4adc1d9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3ee77ade9d6f7ddc6ce7b07128b2ec9046902453cd38bc1c223ca4141ae2e62b"
+    sha256 cellar: :any,                 arm64_sequoia: "76abcc69f3b957acf94c5a80b9d534eb00b4fccf73b81ed88582db620a95d225"
+    sha256 cellar: :any,                 arm64_sonoma:  "a87bcc454d84f67e5b91d1e9731f16c0918c3b127010927dadd72fadb0ae6252"
+    sha256 cellar: :any,                 arm64_ventura: "4cffe3295186adafe2214e61b97adf94f55749ab94aa14a5d5c11df0597f34ea"
+    sha256 cellar: :any,                 sonoma:        "fcc94e9a0852fd68a10b145c453cf340dfe814b7f42d6e262fb4d38facfe6a3f"
+    sha256 cellar: :any,                 ventura:       "2656207e448e108ae97fc5ed1e15f5086ba9f901c61054522866e9d3ef9563f3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "30de1933daae7cb3b8af63ab43fb18dc92fb577c47b06d6ecafbd9058b9f84f3"
   end
 
   depends_on "libyaml"
@@ -146,8 +146,8 @@ class MkdocsMaterial < Formula
   end
 
   resource "six" do
-    url "https://files.pythonhosted.org/packages/71/39/171f1c67cd00715f190ba0b100d606d440a28c93c7714febeca8b79af85e/six-1.16.0.tar.gz"
-    sha256 "1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"
+    url "https://files.pythonhosted.org/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz"
+    sha256 "ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81"
   end
 
   resource "urllib3" do

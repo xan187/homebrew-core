@@ -4,6 +4,7 @@ class Kanata < Formula
   url "https://github.com/jtroo/kanata/archive/refs/tags/v1.7.0.tar.gz"
   sha256 "eb7e11511f77558d72b5b3b0c9defb04b269637e5c8a4ad9b45d21382e9247d2"
   license "LGPL-3.0-only"
+  head "https://github.com/jtroo/kanata.git", branch: "main"
 
   bottle do
     sha256 cellar: :any_skip_relocation, arm64_sequoia: "e4f7a14dcaf0958380d869568c7e2080f81fa3f04596fb0401185ccfdd2e8b79"
@@ -21,7 +22,7 @@ class Kanata < Formula
   end
 
   test do
-    minimal_config = <<-CFG
+    (testpath/"kanata.kbd").write <<~LISP
       (defsrc
         caps grv         i
                     j    k    l
@@ -44,9 +45,8 @@ class Kanata < Formula
         cap (tap-hold-press 200 200 caps lctl)
         grv (tap-hold-press 200 200 grv (layer-toggle arrows))
       )
-    CFG
+    LISP
 
-    (testpath/"kanata.kbd").write(minimal_config)
     system bin/"kanata", "--check"
   end
 end

@@ -56,8 +56,6 @@ class Rtags < Formula
 
   uses_from_macos "zlib"
 
-  fails_with gcc: "5"
-
   def install
     system "cmake", "-S", ".", "-B", "build", "-DRTAGS_NO_BUILD_CLANG=ON", *std_cmake_args
     system "cmake", "--build", "build"
@@ -86,8 +84,8 @@ class Rtags < Formula
     EOS
 
     rdm = fork do
-      $stdout.reopen("/dev/null")
-      $stderr.reopen("/dev/null")
+      $stdout.reopen(File::NULL)
+      $stderr.reopen(File::NULL)
       exec "#{bin}/rdm", "--exclude-filter=\"\"", "-L", "log"
     end
 

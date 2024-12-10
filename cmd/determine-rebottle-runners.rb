@@ -27,7 +27,7 @@ module Homebrew
         linux_runner = if timeout > 360
           "linux-self-hosted-1"
         else
-          "ubuntu-22.04"
+          "ubuntu-latest"
         end
         linux_runner_spec = {
           runner:    linux_runner,

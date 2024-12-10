@@ -1,8 +1,8 @@
 class Massdriver < Formula
   desc "Manage applications and infrastructure on Massdriver Cloud"
   homepage "https://www.massdriver.cloud/"
-  url "https://github.com/massdriver-cloud/mass/archive/refs/tags/1.10.5.tar.gz"
-  sha256 "dfcf0634b83eb08d5954767bb3e9531bea0278a6110239c03265c4595af7d497"
+  url "https://github.com/massdriver-cloud/mass/archive/refs/tags/1.10.6.tar.gz"
+  sha256 "ff1cecbaba75ed75fb5f55b14c4d3a8c4ca4301b1592cec0658da4d0c98dc866"
   license "Apache-2.0"
   head "https://github.com/massdriver-cloud/mass.git", branch: "main"
 
@@ -15,12 +15,13 @@ class Massdriver < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "61fad08329d51a25470f5ae929aafc448a79ae3e4554390acbda0b927c995510"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "61fad08329d51a25470f5ae929aafc448a79ae3e4554390acbda0b927c995510"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "61fad08329d51a25470f5ae929aafc448a79ae3e4554390acbda0b927c995510"
-    sha256 cellar: :any_skip_relocation, sonoma:        "47daba8e4977b4a0180bad067095d60cd0b05764209e484ac69fc2f463116896"
-    sha256 cellar: :any_skip_relocation, ventura:       "47daba8e4977b4a0180bad067095d60cd0b05764209e484ac69fc2f463116896"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ed7222d5103f7e7055c91edfd2a6f334327b82cbc8da89ef1b8fa09a5e5c8a1d"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a2cfdafb9619fefcb66235f7a9485c6712b4bf5f4b4d8282994becf739553e65"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "a2cfdafb9619fefcb66235f7a9485c6712b4bf5f4b4d8282994becf739553e65"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "a2cfdafb9619fefcb66235f7a9485c6712b4bf5f4b4d8282994becf739553e65"
+    sha256 cellar: :any_skip_relocation, sonoma:        "4b727bdd1b01c44917e97f1912e43fb8162f86f5fdfc52c3bcdcf28b9626c1c5"
+    sha256 cellar: :any_skip_relocation, ventura:       "4b727bdd1b01c44917e97f1912e43fb8162f86f5fdfc52c3bcdcf28b9626c1c5"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "358296ed0e7e0cdbe2b048aefe53e5a7cf0c8b96dc8f19233b59568798701e75"
   end
 
   depends_on "go" => :build
@@ -32,7 +33,8 @@ class Massdriver < Formula
       -X github.com/massdriver-cloud/mass/pkg/version.gitSHA=#{tap.user}
     ]
     system "go", "build", *std_go_args(ldflags:, output: bin/"mass")
-    generate_completions_from_executable(bin/"mass", "completion")
+
+    generate_completions_from_executable(bin/"mass", "completion", base_name: "mass")
   end
 
   test do

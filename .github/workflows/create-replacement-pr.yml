@@ -182,7 +182,7 @@ jobs:
             "$PR"
 
       - name: Generate build provenance
-        uses: actions/attest-build-provenance@v1
+        uses: actions/attest-build-provenance@v2
         with:
           subject-path: '${{steps.pr-pull.outputs.bottle_path}}/*.tar.gz'
         if: inputs.upload

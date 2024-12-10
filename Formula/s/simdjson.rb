@@ -1,25 +1,21 @@
 class Simdjson < Formula
   desc "SIMD-accelerated C++ JSON parser"
   homepage "https://simdjson.org"
-  url "https://github.com/simdjson/simdjson/archive/refs/tags/v3.10.1.tar.gz"
-  sha256 "1e8f881cb2c0f626c56cd3665832f1e97b9d4ffc648ad9e1067c134862bba060"
+  url "https://github.com/simdjson/simdjson/archive/refs/tags/v3.11.2.tar.gz"
+  sha256 "47a6d78a70c25764386a01b55819af386b98fc421da79ae8de3ae0242cf66d93"
   license "Apache-2.0"
   head "https://github.com/simdjson/simdjson.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia:  "6caaeb2dccf5953efd630bfa19d5f6d12ec229bb29b4f10a405a8c9513b4ba25"
-    sha256 cellar: :any,                 arm64_sonoma:   "c10d30c3b052deb786fba4e0b2e1e14dbb0640826b82e7c6482e7191774c0402"
-    sha256 cellar: :any,                 arm64_ventura:  "3e206709db5ef6cb0839376e0deff999587311b60204c9390c6de152ab7db360"
-    sha256 cellar: :any,                 arm64_monterey: "543289d72912bf50c40ca393e4f87065be1472d1c19e4b1ab6bed02093343f3a"
-    sha256 cellar: :any,                 sonoma:         "6bc43fd1d128554706c37b37d800a6995dbc80e7d26b86786a477fb5d7225397"
-    sha256 cellar: :any,                 ventura:        "17204785c149399ce66c1f03d3ffc275f7032b3a342f54811ccc56c861c48928"
-    sha256 cellar: :any,                 monterey:       "3141a0a0a6aaa0ad3af1d144360a315a3d4fef7cb50d1480db9f0687c999f936"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f97e203d980764ece55c69cebb8ebf750432bd0b1918410f08b83bd252805ee2"
+    sha256 cellar: :any,                 arm64_sequoia: "09455b1073db304f87b26d44bec887eeb0307f03f7910ffc334ac20bdb5910ce"
+    sha256 cellar: :any,                 arm64_sonoma:  "45cf413ed0a2afd5a814d76b8704cdc56e61c021319b4c6ed8a5a7f24966f70d"
+    sha256 cellar: :any,                 arm64_ventura: "66a6e4d943e881dab72a3b0b914bc3876347dde9e734f75344c8f51353a4a8ce"
+    sha256 cellar: :any,                 sonoma:        "c3c812557e6b3a8ae8e90cf874316fab8a4e0c25ae27d4b917ceac7b5ebb428c"
+    sha256 cellar: :any,                 ventura:       "d1f6ac3de478178e4669063af19cf8cbf7f138120ad18faa604ed7eaade57015"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9ecda3bc3b21a11cfc34fc266428e453bd0f4e747c534051b8e14fb36e9b666e"
   end
 
   depends_on "cmake" => :build
-
-  fails_with gcc: "5"
 
   def install
     system "cmake", "-S", ".", "-B", "build", *std_cmake_args, "-DBUILD_SHARED_LIBS=ON"

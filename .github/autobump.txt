@@ -18,6 +18,7 @@ adwaita-icon-theme
 aerleon
 aespipe
 afflib
+afl++
 aftman
 agda
 age
@@ -33,10 +34,12 @@ akamai
 alda
 alembic
 algol68g
+aliae
 aliddns
 aliyun-cli
 aliyunpan
 all-repos
+allegro
 allure
 alluxio
 alp
@@ -70,6 +73,7 @@ apache-flink
 apache-flink-cdc
 apache-geode
 apache-opennlp
+apache-pulsar
 apache-spark
 apachetop
 apibuilder-cli
@@ -113,6 +117,7 @@ asciidoctorj
 asdf
 asio
 ask-cli
+asm6809
 asn
 asnmap
 aspell
@@ -128,6 +133,7 @@ asymptote
 asyncapi
 asyncplusplus
 at-spi2-core
+atf
 atlantis
 atlas
 atomicparsley
@@ -148,7 +154,19 @@ avrdude
 awk
 aws-amplify
 aws-auth
+aws-c-auth
+aws-c-cal
+aws-c-common
+aws-c-compression
+aws-c-event-stream
+aws-c-http
+aws-c-io
+aws-c-mqtt
+aws-c-s3
+aws-c-sdkutils
 aws-cdk
+aws-checksums
+aws-crt-cpp
 aws-elasticbeanstalk
 aws-es-proxy
 aws-iam-authenticator
@@ -165,6 +183,7 @@ awsdac
 awslogs
 axel
 azcopy
+azure-core-cpp
 b2-tools
 babel
 babl
@@ -308,6 +327,7 @@ c3c
 c4core
 c7n
 ca-certificates
+cadaver
 caddy
 cadence
 cadence-workflow
@@ -324,6 +344,7 @@ camlp5
 canfigger
 capnp
 capstone
+carapace
 cargo-about
 cargo-audit
 cargo-auditable
@@ -331,6 +352,7 @@ cargo-binstall
 cargo-bloat
 cargo-bundle
 cargo-c
+cargo-chef
 cargo-crev
 cargo-deny
 cargo-depgraph
@@ -342,6 +364,7 @@ cargo-make
 cargo-nextest
 cargo-outdated
 cargo-release
+cargo-run-bin
 cargo-udeps
 cargo-watch
 cargo-zigbuild
@@ -448,6 +471,7 @@ cli11
 cli53
 clib
 clickhouse-cpp
+clickhouse-sql-parser
 cliclick
 clifm
 cling
@@ -469,6 +493,7 @@ cloudformation-guard
 cloudfox
 cloudlist
 cloudprober
+cloudquery
 clozure-cl
 clp
 clusterawsadm
@@ -485,6 +510,7 @@ cnats
 cntb
 coal
 cobalt
+cobo-cli
 coccinelle
 cocoapods
 cocogitto
@@ -493,7 +519,6 @@ code-cli
 code-minimap
 code-server
 codec2
-codecov-cli
 codelimit
 coder
 codespell
@@ -545,6 +570,7 @@ cpi
 cpm
 cpp-gsl
 cpp-httplib
+cpp-peglib
 cppad
 cppcheck
 cppinsights
@@ -603,7 +629,6 @@ czg
 czkawka
 d2
 daemon
-dafny
 dagger
 daktilo
 daq
@@ -667,6 +692,7 @@ diffstat
 difftastic
 digdag
 dillo
+directx-headers
 direnv
 direvent
 dislocker
@@ -713,6 +739,7 @@ dooit
 doppler
 dosbox-staging
 dosbox-x
+dotbot
 dotenv-linter
 dotnet
 dotslash
@@ -725,6 +752,7 @@ dpp
 dprint
 dra
 draco
+draft
 drafter
 dragonbox
 driftctl
@@ -745,9 +773,11 @@ dua-cli
 dub
 duck
 duckdb
+ducker
 duckscript
 dufs
 dug
+dum
 dumpling
 dunamai
 dune
@@ -756,6 +786,7 @@ duplicity
 duply
 dust
 dvc
+dwarfs
 dwarfutils
 dwm
 dxpy
@@ -985,6 +1016,7 @@ fuc
 fuego-firestore
 func-e
 functionalplus
+funzzy
 fuse-overlayfs
 fuseki
 futhark
@@ -993,6 +1025,7 @@ fwup
 fwupd
 fx
 fzf
+fzf-make
 g-ls
 gabo
 gallery-dl
@@ -1079,6 +1112,7 @@ gitql
 gitsign
 gittuf
 gitu
+giza
 gjs
 glances
 glassfish
@@ -1174,6 +1208,7 @@ gradle
 gradle-completion
 gradle-profiler
 grafana
+grafana-agent
 grails
 grap
 graph-tool
@@ -1205,6 +1240,7 @@ gspell
 gstreamer
 gtk+3
 gtk-gnutella
+gtk-mac-integration
 gtk4
 gtkmm4
 gtksourceview5
@@ -1221,6 +1257,7 @@ gwyddion
 gxml
 gyb
 h26forge
+h3
 hackrf
 hadoop
 halide
@@ -1313,6 +1350,7 @@ imapsync
 imath
 imessage-exporter
 imgdiet
+imgp
 imgproxy
 immich-cli
 immortal
@@ -1473,6 +1511,7 @@ kor
 kotlin
 kotlin-language-server
 kpcli
+kraftkit
 krakend
 krb5
 krew
@@ -1571,6 +1610,7 @@ libbpf
 libbsd
 libcap
 libcap-ng
+libcdr
 libchewing
 libclc
 libcoap
@@ -1601,6 +1641,7 @@ libfs
 libgedit-amtk
 libgedit-gfls
 libgedit-gtksourceview
+libgedit-tepl
 libgeotiff
 libgetdata
 libgit2
@@ -1637,6 +1678,7 @@ libmicrohttpd
 libmobi
 libmodbus
 libmonome
+libmsquic
 libmtp
 libmxml
 libnetfilter_conntrack
@@ -1703,6 +1745,7 @@ libtrng
 libucl
 libultrahdr
 libunibreak
+libunicode
 libuninameslist
 libunistring
 libunwind
@@ -1759,6 +1802,7 @@ litmusctl
 little-cms2
 livekit
 livekit-cli
+lla
 llama.cpp
 llgo
 llm
@@ -1788,10 +1832,12 @@ lucky-commit
 luit
 lune
 lunzip
+lutok
 luv
 lux
 lwtools
 lxc
+lxi-tools
 lychee
 lynis
 lz4
@@ -1827,12 +1873,14 @@ mariadb@10.5
 mariadb@10.6
 mariadb@11.2
 mariadb@11.4
+markdown-oxide
 markdownlint-cli
 markdownlint-cli2
 marked
 marksman
 marp-cli
 massdriver
+massren
 matplotplusplus
 matterbridge
 maturin
@@ -1858,9 +1906,11 @@ medusa
 megatools
 meilisearch
 melange
+meli
 melody
 memcached
 memray
+memtester
 menhir
 mercurial
 mergiraf
@@ -1870,6 +1920,7 @@ metabase
 metals
 metricbeat
 mfem
+mgba
 micro
 micromamba
 micronaut
@@ -1890,6 +1941,7 @@ minigraph
 minijinja-cli
 minikube
 minimal-racket
+minio-warp
 minipro
 miniserve
 miniupnpc
@@ -1908,6 +1960,7 @@ mlpack
 mlt
 mlx
 mmark
+mmseqs2
 mmv
 mockery
 mockolo
@@ -2053,6 +2106,7 @@ nox
 npm-check-updates
 npth
 nq
+nrm
 nrpe
 ns-3
 nsd
@@ -2080,6 +2134,7 @@ oasdiff
 oath-toolkit
 oauth2_proxy
 oauth2c
+oauth2l
 objfw
 ocaml-findlib
 ocaml-zarith
@@ -2106,6 +2161,7 @@ okta-awscli
 okteto
 ol
 ollama
+omake
 omega
 omniorb
 onednn
@@ -2268,13 +2324,14 @@ php-cs-fixer
 php@8.1
 php@8.2
 php@8.3
-phpmd
 phpmyadmin
 phpunit
 phylum-cli
 pianod
 picard-tools
+picotool
 pidgin
+pie
 pig
 pillow
 pinentry
@@ -2292,6 +2349,8 @@ pivit
 pixi
 pixie
 pixman
+pjproject
+pkg-config-wrapper
 pkgconf
 pkl
 plantuml
@@ -2323,14 +2382,16 @@ ponyc
 popeye
 portablegl
 porter
+poselib
 postgis
-postgresql@12
 postgresql@13
 postgresql@14
 postgresql@15
 postgresql@16
+postgresql@17
 postgrest
 poutine
+powerline-go
 powerman
 powerman-dockerize
 pqiv
@@ -2390,7 +2451,6 @@ pycodestyle
 pycparser
 pyenv
 pyenv-virtualenv
-pyflow
 pygit2
 pygments
 pygobject3
@@ -2407,6 +2467,7 @@ pyqt-builder
 pyright
 pyside
 pyside@2
+pytest
 python-argcomplete
 python-build
 python-launcher
@@ -2418,6 +2479,7 @@ python-yq
 pythran
 pyupgrade
 qbe
+qbittorrent-cli
 qbs
 qca
 qcachegrind
@@ -2460,12 +2522,12 @@ rancher-cli
 ranger
 rapidfuzz-cpp
 ratchet
+ratfor
 rattler-build
 rav1e
 raven
 raxml-ng
 raylib
-rbtools
 rbw
 rclone
 rcs
@@ -2481,6 +2543,7 @@ redict
 redka
 redress
 redwax-tool
+regal
 regclient
 regina-rexx
 regipy
@@ -2517,6 +2580,7 @@ robin-map
 roblox-ts
 robot-framework
 rocksdb
+rogcat
 rojo
 rollup
 ronn-ng
@@ -2533,6 +2597,7 @@ rpmspectool
 rqlite
 rrdtool
 rsgain
+rshijack
 rswift
 rsyncy
 rsyslog
@@ -2596,11 +2661,13 @@ scipy
 scm-manager
 scnlib
 scons
+scooter
 scorecard
 scotch
 scrapy
 scrcpy
 screen
+screenfetch
 scriptisto
 scs
 scummvm
@@ -2619,12 +2686,14 @@ selenium-server
 semgrep
 sentencepiece
 seqkit
+sequin
 sequoia-sq
 ser2net
 serialosc
 serpl
 serverless
 service-weaver
+sesh
 sf
 sfcgal
 sfml
@@ -2667,6 +2736,7 @@ sip
 sipp
 siril
 sispmctl
+six
 sjk
 sk
 skaffold
@@ -2790,6 +2860,7 @@ stow
 stp
 strace
 streamlink
+streamvbyte
 stress-ng
 stripe-cli
 stripe-mock
@@ -2843,6 +2914,7 @@ talisman
 tanka
 taplo
 tarantool
+tarlz
 tartufo
 task
 taskopen
@@ -2864,6 +2936,7 @@ tektoncd-cli
 teku
 telegraf
 teleport
+television
 teller
 telnet
 telnetd
@@ -2946,6 +3019,7 @@ toml11
 toot
 topfew
 topgrade
+topiary
 tor
 tox
 toxcore
@@ -2987,6 +3061,7 @@ typescript-language-server
 typewritten
 typical
 typos-cli
+typos-lsp
 typst
 typstyle
 tz
@@ -3060,6 +3135,7 @@ vfox
 vgmstream
 vgrep
 vhs
+victorialogs
 victoriametrics
 viddy
 video-compare
@@ -3107,6 +3183,7 @@ wakatime-cli
 walk
 wallpaper
 wartremover
+wasm-component-ld
 wasm-micro-runtime
 wasm-pack
 wasm-tools
@@ -3121,6 +3198,8 @@ wazero
 wcslib
 wcurl
 weasyprint
+weaviate
+weaviate-cli
 web-ext
 webdis
 webhook
@@ -3240,6 +3319,7 @@ zellij
 zenith
 zenity
 zeromq
+zet
 zf
 zfind
 zig

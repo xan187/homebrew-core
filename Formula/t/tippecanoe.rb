@@ -1,8 +1,8 @@
 class Tippecanoe < Formula
   desc "Build vector tilesets from collections of GeoJSON features"
   homepage "https://github.com/felt/tippecanoe"
-  url "https://github.com/felt/tippecanoe/archive/refs/tags/2.70.1.tar.gz"
-  sha256 "c4fe2ecf6bdd31371f1572fd42ec9c2d23da2701e5fbfe5986bb2f4644992a57"
+  url "https://github.com/felt/tippecanoe/archive/refs/tags/2.72.0.tar.gz"
+  sha256 "e4be2a4ecc38ebdff25f7f292f259e1907684829a7f25dc8d19db25225c0c73c"
   license "BSD-2-Clause"
 
   livecheck do
@@ -11,12 +11,12 @@ class Tippecanoe < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "7d4c02c0b0f3f011650f3f49c0cb04281743aa139b1c6acd3da37218dcc316d5"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c318e2076a062c752f521fb7019e7aeb376c2d315f282dc38a8fdfbc968f5ac2"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "a4c201d5e742df1a98119e0ee12fc8502dcb5b1af5e7eae20333a19d168944f6"
-    sha256 cellar: :any_skip_relocation, sonoma:        "289c638c8976962f90ee80458878da13118bba9f6fdbf4f0ad6c379910794569"
-    sha256 cellar: :any_skip_relocation, ventura:       "229cac9741691e1a22e16bba1078555e6efb8f86afadf52006e8cf31432db61b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "db78842a89c6b623476eacb49dca75742321733fff83b55051772006eb07a5a4"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6a28130b2930415b71cf1871a133655edb47fcdbd85b69757395069bb556dca7"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "4062556d90260f59919b6ba7496afa944a9baa9b28cf82d044ba87267db935d3"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "d5d9336783020e3bad43128eca7041558d21a8378049d2c26a53c9823a3b9fae"
+    sha256 cellar: :any_skip_relocation, sonoma:        "e9f4e948acb94fe5c4ed1e08a2a58b13658d92461c47a03c99061ab7c9e9a394"
+    sha256 cellar: :any_skip_relocation, ventura:       "62f521c809c10167fd725a62341433560e26e612dcdeac04672ef55685f1d765"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0a4d1ac15e54da461850e9ef9221cf9a8d041066de2b45d9bb52ba7bbf4c1b4e"
   end
 
   uses_from_macos "sqlite"

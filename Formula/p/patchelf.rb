@@ -30,8 +30,6 @@ class Patchelf < Formula
     depends_on "automake" => :build
   end
 
-  fails_with gcc: "5" # Needs std::optional
-
   resource "homebrew-helloworld" do
     url "http://timelessname.com/elfbin/helloworld.tar.gz"
     sha256 "d8c1e93f13e0b7d8fc13ce75d5b089f4d4cec15dad91d08d94a166822d749459"
@@ -57,7 +55,7 @@ class Patchelf < Formula
       assert_equal "/lib/ld-linux.so.2\n", shell_output("#{bin}/patchelf --print-interpreter chello")
       assert_equal "libc.so.6\n", shell_output("#{bin}/patchelf --print-needed chello")
       assert_equal "\n", shell_output("#{bin}/patchelf --print-rpath chello")
-      assert_equal "", shell_output("#{bin}/patchelf --set-rpath /usr/local/lib chello")
+      assert_empty shell_output("#{bin}/patchelf --set-rpath /usr/local/lib chello")
       assert_equal "/usr/local/lib\n", shell_output("#{bin}/patchelf --print-rpath chello")
     end
   end

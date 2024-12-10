@@ -3,26 +3,26 @@ class Pdm < Formula
 
   desc "Modern Python package and dependency manager supporting the latest PEP standards"
   homepage "https://pdm.fming.dev"
-  url "https://files.pythonhosted.org/packages/91/68/28a6e7e075f808e1ed751f822e074573c71ebe42b32b63efb4b8a3a0a2eb/pdm-2.20.1.tar.gz"
-  sha256 "5348e9d33de381f998904a63ab18efdd6d1cf6377d45572e8b996d58dfc5b996"
+  url "https://files.pythonhosted.org/packages/bc/93/4b315c891cd51e818d73ae4b8a28afaddd4a57714bbe6e47a8f7f8fde687/pdm-2.22.0.tar.gz"
+  sha256 "61b4f0f8238bf99ba59ffae3db524604417379df917e081d61b1e257bfc20e43"
   license "MIT"
   head "https://github.com/pdm-project/pdm.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8a07150b6bc46c35bcd88ea3d5ebea1b834c19e15b14618b2728412b207ca389"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "7fbbad3e2e17d2fac5f1fab50bf94fabb99ef25ec6ec50c9c769645d3f1182e7"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "129b8115a4fcdb157bca2f6ca8eab758726234f0d95d9051ae3cca4ae015c987"
-    sha256 cellar: :any_skip_relocation, sonoma:        "9f77703a09385648b1dc83e630b692dde2ed4886f85bb707c01f0ac787ee5ea6"
-    sha256 cellar: :any_skip_relocation, ventura:       "1f63fccd0426a94ad6b2a5b25e163213a92a2ffaeef3686358db240bdfdb8b8f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4a10be0708722d8a0b4878b74c647d3266c3d31b96cb65cb2682496d82a9fa37"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c4945f1ba7427f9663f27a35b83a51fdc8f4f80235e4a99ed9e241c31b85693c"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "61050ff967c8be6efa65d754e12c3777a51f5f6c4fd1ac237c20a4be1b3a82b2"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "07bf24493ac2caea9c5dbc665c49d30e5c1e6bc3005f858120143b2415191a77"
+    sha256 cellar: :any_skip_relocation, sonoma:        "c5783efbacd306c115d26a1cfc2bdd6bbf7dfa5776355fd32533a581e2e55471"
+    sha256 cellar: :any_skip_relocation, ventura:       "b0d5da1480f0d3923f853f259cf89af8d7afc08a7f774e3582d77fb73be91785"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7849769be48a313f3bf4d6f577fe74073b234341d31d0c9ca7c019757d449b72"
   end
 
   depends_on "certifi"
   depends_on "python@3.13"
 
   resource "anyio" do
-    url "https://files.pythonhosted.org/packages/9f/09/45b9b7a6d4e45c6bcb5bf61d19e3ab87df68e0601fa8c5293de3542546cc/anyio-4.6.2.post1.tar.gz"
-    sha256 "4c8bc31ccdb51c7f7bd251f51c609e038d63e34219b44aa86e47576389880b4c"
+    url "https://files.pythonhosted.org/packages/f6/40/318e58f669b1a9e00f5c4453910682e2d9dd594334539c7b7817dabb765f/anyio-4.7.0.tar.gz"
+    sha256 "2f834749c602966b7d456a7567cafcb309f96482b5081d14ac93ccd457f9dd48"
   end
 
   resource "blinker" do
@@ -56,18 +56,18 @@ class Pdm < Formula
   end
 
   resource "hishel" do
-    url "https://files.pythonhosted.org/packages/ce/cf/d4414a62b77d1f3f58a0d812be20efe4a647fc1e103cec7c9ac559efe576/hishel-0.0.33.tar.gz"
-    sha256 "ab5b2661d5e2252f305fd0fb20e8c76bfab3ea73458f20f2591c53c37b270089"
+    url "https://files.pythonhosted.org/packages/10/b9/d7328c8507e45e27784e9c1f440c2b900ae1e60a980480d869b6c0b2553c/hishel-0.1.1.tar.gz"
+    sha256 "1f6421b78cc23fc43c610f651b7848c9b8eee2d29551d64a2ab0d45b319b6559"
   end
 
   resource "httpcore" do
-    url "https://files.pythonhosted.org/packages/b6/44/ed0fa6a17845fb033bd885c03e842f08c1b9406c86a2e60ac1ae1b9206a6/httpcore-1.0.6.tar.gz"
-    sha256 "73f6dbd6eb8c21bbf7ef8efad555481853f5f6acdeaff1edb0694289269ee17f"
+    url "https://files.pythonhosted.org/packages/6a/41/d7d0a89eb493922c37d343b607bc1b5da7f5be7e383740b4753ad8943e90/httpcore-1.0.7.tar.gz"
+    sha256 "8551cb62a169ec7162ac7be8d4817d561f60e08eaa485234898414bb5a8a0b4c"
   end
 
   resource "httpx" do
-    url "https://files.pythonhosted.org/packages/78/82/08f8c936781f67d9e6b9eeb8a0c8b4e406136ea4c3d1f89a5db71d42e0e6/httpx-0.27.2.tar.gz"
-    sha256 "f7c2be1d2f3c3c3160d441802406b206c2b76f5947b11115e6df10c6c65e66c2"
+    url "https://files.pythonhosted.org/packages/b1/df/48c586a5fe32a0f01324ee087459e112ebb7224f646c0b5023f5e79e9956/httpx-0.28.1.tar.gz"
+    sha256 "75e98c5f16b0f35b567856f597f06ff2270a374470a5c2392242528e3e3e42fc"
   end
 
   resource "idna" do
@@ -160,19 +160,14 @@ class Pdm < Formula
     sha256 "5da347c665714fdfbd46f738c823fe9f0d8775e41ac5fb94f325749091187896"
   end
 
-  resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/df/db/f35a00659bc03fec321ba8bce9420de607a1d37f8342eee1863174c69557/typing_extensions-4.12.2.tar.gz"
-    sha256 "1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"
-  end
-
   resource "unearth" do
     url "https://files.pythonhosted.org/packages/de/1f/5664f19db1352460e42f32e39976d8498a0fe056f0495221f53a43599154/unearth-0.17.2.tar.gz"
     sha256 "0b8a2afd3476f1ab6155fc579501ac47fffe43547d88a70e5a5b76a7fe6caa2c"
   end
 
   resource "virtualenv" do
-    url "https://files.pythonhosted.org/packages/8c/b3/7b6a79c5c8cf6d90ea681310e169cf2db2884f4d583d16c6e1d5a75a4e04/virtualenv-20.27.1.tar.gz"
-    sha256 "142c6be10212543b32c6c45d3d3893dff89112cc588b7d0879ae5a1ec03a47ba"
+    url "https://files.pythonhosted.org/packages/bf/75/53316a5a8050069228a2f6d11f32046cfa94fbb6cc3f08703f59b873de2e/virtualenv-20.28.0.tar.gz"
+    sha256 "2c9c3262bb8e7b87ea801d715fae4495e6032450c71d2309be9550e7364049aa"
   end
 
   def install

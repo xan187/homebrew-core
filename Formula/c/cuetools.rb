@@ -35,17 +35,17 @@ class Cuetools < Formula
   patch :DATA
 
   def install
-    system "autoreconf", "-i"
-    system "./configure", "--prefix=#{prefix}", "--mandir=#{man}"
+    system "autoreconf", "--force", "--install", "--verbose"
+    system "./configure", "--mandir=#{man}", *std_configure_args
     system "make", "install"
   end
 
   test do
-    (testpath/"test.cue").write <<~EOS
+    (testpath/"test.cue").write <<~CUE
       FILE "sampleimage.bin" BINARY
         TRACK 01 MODE1/2352
           INDEX 01 00:00:00
-    EOS
+    CUE
     system bin/"cueconvert", testpath/"test.cue", testpath/"test.toc"
     assert_predicate testpath/"test.toc", :exist?
   end

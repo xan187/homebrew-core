@@ -34,6 +34,9 @@ class ExactImage < Formula
   uses_from_macos "zlib"
 
   def install
+    # Workaround to fix build on Linux
+    inreplace "Makefile", /^CFLAGS := /, "\\0-fpermissive " if OS.linux?
+
     system "./configure", "--prefix=#{prefix}"
     system "make", "install"
   end

@@ -1,30 +1,32 @@
 class Screenpipe < Formula
   desc "Library to build personalized AI powered by what you've seen, said, or heard"
   homepage "https://github.com/mediar-ai/screenpipe"
-  url "https://github.com/mediar-ai/screenpipe/archive/refs/tags/v0.1.98.tar.gz"
-  sha256 "cb3c8039ecb60d35bacd2b9673db112f907b4a1d3d7c32f49a5e77c0274268ad"
+  url "https://github.com/mediar-ai/screenpipe/archive/refs/tags/v0.2.13.tar.gz"
+  sha256 "eb3599daabc1312b5c1a7799c1ec8ab715aa02d9216a6aa42d930039c84a70c9"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "0ab3cdb0a6676c440a02eebc342341017f95c0295073bf507cef513a61a704af"
-    sha256 cellar: :any,                 arm64_sonoma:  "441c211f4af82c9a34053905d7f1055e24e417d715b85aba03b4b82aa8a38262"
-    sha256 cellar: :any,                 arm64_ventura: "de4e7286e9a19ad32fc47aeefb60b424870171898bc9cd39bf70ef383ca0eb11"
-    sha256 cellar: :any,                 sonoma:        "474e316a3d35adb731bd5d053583ad74f11735e27b11cdc8d1d69ace46631c5d"
-    sha256 cellar: :any,                 ventura:       "0798f9f36e491aed26d598d744a06487d039eae71f91cb5113d6bdbe41272823"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0b45dcfd02154031f502f7824477a6127e6e5730bb9db7cc918bbf75539e0dd2"
+    sha256 cellar: :any,                 arm64_sequoia: "e19fe81711f2b581441d5ef4e4894229ff0b40bcb7ec97620649b41ccfac3784"
+    sha256 cellar: :any,                 arm64_sonoma:  "b029a73f249a978552cc4d6e7fcd35655bfc466f0f343a8dc7ef3e47feeb6f07"
+    sha256 cellar: :any,                 sonoma:        "fedcdd0173129e061e5dec07b3ee9f178cabb5af29e775038a29de39eec50a63"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c05236a8906e59fcb9a3dd1a8fbe3d0962717af731b1d8894f70235b5b6b6cc6"
   end
 
   depends_on "cmake" => :build
+  depends_on "pkgconf" => :build
   depends_on "rust" => :build
   depends_on "ffmpeg"
+  depends_on macos: :sonoma
+
+  uses_from_macos "llvm" # for libclang
 
   on_linux do
-    depends_on "pkgconf" => :build
     depends_on "alsa-lib"
     depends_on "dbus"
     depends_on "libxcb"
     depends_on "openssl@3"
     depends_on "tesseract"
+    depends_on "xz"
   end
 
   def install
@@ -34,14 +36,14 @@ class Screenpipe < Formula
   end
 
   test do
-    assert_match "Usage", shell_output("#{bin}/screenpipe -h")
+    assert_match version.to_s, shell_output("#{bin}/screenpipe -V")
 
-    log_file = testpath/".screenpipe/screenpipe.#{Time.now.strftime("%Y-%m-%d")}.log"
-    pid = spawn bin/"screenpipe --debug setup"
+    log_file = testpath/".screenpipe/screenpipe.#{time.strftime("%Y-%m-%d")}.log"
+    pid = spawn bin/"screenpipe", "--disable-vision", "--disable-audio", "--disable-telemetry"
     sleep 200
 
     assert_path_exists log_file
-    assert_match "screenpipe setup complete", File.read(log_file)
+    assert_match(/INFO.*screenpipe/, File.read(log_file))
   ensure
     Process.kill("TERM", pid)
     Process.wait(pid)

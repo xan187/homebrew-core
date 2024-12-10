@@ -18,17 +18,14 @@ class Spdlog < Formula
   depends_on "cmake" => :build
   depends_on "fmt"
 
-  # error: specialization of 'template<class T, ...> struct fmt::v8::formatter' in different namespace
-  fails_with gcc: "5"
-
   def install
     ENV.cxx11
 
-    inreplace "include/spdlog/tweakme.h", "// #define SPDLOG_FMT_EXTERNAL", <<~EOS
+    inreplace "include/spdlog/tweakme.h", "// #define SPDLOG_FMT_EXTERNAL", <<~C
       #ifndef SPDLOG_FMT_EXTERNAL
       #define SPDLOG_FMT_EXTERNAL
       #endif
-    EOS
+    C
 
     args = std_cmake_args + %W[
       -Dpkg_config_libdir=#{lib}

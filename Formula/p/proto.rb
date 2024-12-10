@@ -1,8 +1,8 @@
 class Proto < Formula
   desc "Pluggable multi-language version manager"
   homepage "https://moonrepo.dev/proto"
-  url "https://github.com/moonrepo/proto/archive/refs/tags/v0.42.2.tar.gz"
-  sha256 "ad8ae9aa82d3edfef858558607b2771d2b0866314eaa66768a10228721f9be47"
+  url "https://github.com/moonrepo/proto/archive/refs/tags/v0.43.1.tar.gz"
+  sha256 "6ceec413cd2df8d0eda7f5febcca8bd1f3bf6150b7f85832e77331fc668c5682"
   license "MIT"
   head "https://github.com/moonrepo/proto.git", branch: "master"
 
@@ -12,15 +12,15 @@ class Proto < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "17978fe061201e9e076e422e2e86c7962e9ed02252a7a696b1e8c339aaa001f8"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "eb4d7ed12b255cc58c47449b941264449d49c52bcf57d4b25e0694709f13282a"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "f9e959a3199233e6539f7f0ab6359a2385c4ad45c3df356ce330f20ccda567df"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ca577e5940200c1e9a3820421da34caff05f7c2e538f2f56dd55760e533c3402"
-    sha256 cellar: :any_skip_relocation, ventura:       "ac3cd3c4f2d482d5611f3b2f21ff87de7991354c15a9d2650b2e439ef294840c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6c26477da23c2682e5febda0d176853bcc2544e5000d7002bcca9391b7a13db2"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "df506b5900f05fb31c1d14ea21a202f43adb5e9c2a2a938b4ec9952b689aefcb"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "90c47fbf34503db88f4b5c3bf2d4d09f2bf79b040947faba3fe33c355ce7c93d"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "01f3b9318bf2ead4554514af9f15e2b3a3a3e52ca464deb441fc9683300ce77a"
+    sha256 cellar: :any_skip_relocation, sonoma:        "d7e8db8b8d0a371e75bd26dbf392367e69f6e460d61eefffb04254e56d0123dd"
+    sha256 cellar: :any_skip_relocation, ventura:       "bf31d898c0b9ed5701f2fc9e005e4c5cdacbc8af704479ab9d761f27173c6283"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "14aff384bfe9f91f719049ad83776728913f68fafaf9f4f47b1f4b117308b01c"
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "rust" => :build
 
   uses_from_macos "bzip2"

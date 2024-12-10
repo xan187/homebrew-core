@@ -3,18 +3,18 @@ class Awscli < Formula
 
   desc "Official Amazon AWS command-line interface"
   homepage "https://aws.amazon.com/cli/"
-  url "https://github.com/aws/aws-cli/archive/refs/tags/2.22.4.tar.gz"
-  sha256 "56c6170f3be830afef2dea60fc3fd7ed14cf2ca2efba055c085fe6a7c4de358e"
+  url "https://github.com/aws/aws-cli/archive/refs/tags/2.22.13.tar.gz"
+  sha256 "e8b9d6449b4aafc445ab1caf036d4004b0fef39b109da9434cde7fc62988e6c6"
   license "Apache-2.0"
   head "https://github.com/aws/aws-cli.git", branch: "v2"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "cdedba0d961fe4fff4dbba197b49f5e3024461d2acb6483c543a180d7a740ea6"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1d411b46734abea11996b23955f75e8b4df2c59cbe7d3e30f9abe79142bbfe53"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "449da63b15c051defb42679c1883e308718c7805905dd3d850ff5fe656ba539c"
-    sha256 cellar: :any_skip_relocation, sonoma:        "4946233b99600f69187fde634f723707556eb03a3fa1575f00e3f8da4755301d"
-    sha256 cellar: :any_skip_relocation, ventura:       "687bd0e48285d30c5ff3482f389e113670512922fba8241b4a5e054cd9d13d6e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1e3f94da9d4daee4fb114358e01e3c49cbdbe8f27f8664fff25fb3ca1a3886b5"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c71651f2685495fea76e1fb0d9a63ea9a49a449535d79aafb0d7063d503a56ac"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "fb46a9120e765e438b2c998f9fed3c9bbd34db71b0edf02bf52a0adc47a5bc07"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "e8ec3729b9481304bfa0b2b217d7ea6b553e3df4fd9c9ce552dbabed9bd9dfdd"
+    sha256 cellar: :any_skip_relocation, sonoma:        "9e6484b39e957b819984f9def6255ad8a3bdb71c30cac1c8015d4ba9367dd612"
+    sha256 cellar: :any_skip_relocation, ventura:       "4f5fac6f3acdd15d2ae5dd50d178c422c73fb753bbeb67c4c6854473b9505ccc"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b3c368ecd00e7d0bd0a5dd781772dfbd63c6cd227482445e7cddb7fa52a8de90"
   end
 
   depends_on "cmake" => :build
@@ -23,6 +23,10 @@ class Awscli < Formula
 
   uses_from_macos "libffi"
   uses_from_macos "mandoc"
+
+  on_linux do
+    depends_on "openssl@3"
+  end
 
   resource "awscrt" do
     url "https://files.pythonhosted.org/packages/e2/e5/82646e045902c237df1e59c2430ed392377d4dff0755eb30f9ea2c47d15f/awscrt-0.22.0.tar.gz"
@@ -75,8 +79,8 @@ class Awscli < Formula
   end
 
   resource "six" do
-    url "https://files.pythonhosted.org/packages/71/39/171f1c67cd00715f190ba0b100d606d440a28c93c7714febeca8b79af85e/six-1.16.0.tar.gz"
-    sha256 "1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"
+    url "https://files.pythonhosted.org/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz"
+    sha256 "ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81"
   end
 
   resource "urllib3" do
@@ -94,16 +98,7 @@ class Awscli < Formula
   end
 
   def install
-    # The `awscrt` package uses its own libcrypto.a on Linux. When building _awscrt.*.so,
-    # Homebrew's default environment causes issues, which may be due to `openssl` flags.
-    # This causes installation to fail while running `scripts/gen-ac-index` with error:
-    # ImportError: _awscrt.cpython-39-x86_64-linux-gnu.so: undefined symbol: EVP_CIPHER_CTX_init
-    # As workaround, add relative path to local libcrypto.a before openssl's so it gets picked.
-    if OS.linux?
-      python_version = Language::Python.major_minor_version(python3)
-      ENV.prepend "CFLAGS", "-I./build/temp.linux-x86_64-#{python_version}/deps/install/include"
-      ENV.prepend "LDFLAGS", "-L./build/temp.linux-x86_64-#{python_version}/deps/install/lib"
-    end
+    ENV["AWS_CRT_BUILD_USE_SYSTEM_LIBCRYPTO"] = "1"
 
     # Work around ruamel.yaml.clib not building on Xcode 15.3, remove after a new release
     # has resolved: https://sourceforge.net/p/ruamel-yaml-clib/tickets/32/

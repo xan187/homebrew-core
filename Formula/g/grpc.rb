@@ -2,9 +2,10 @@ class Grpc < Formula
   desc "Next generation open source RPC library and framework"
   homepage "https://grpc.io/"
   url "https://github.com/grpc/grpc.git",
-      tag:      "v1.68.0",
-      revision: "6b49ae626bc9cd7033e062f89dbe0e0576b1110e"
+      tag:      "v1.68.2",
+      revision: "859bc5216ba3955fb8925326bdec391fd93c8730"
   license "Apache-2.0"
+  revision 1
   head "https://github.com/grpc/grpc.git", branch: "master"
 
   # There can be a notable gap between when a version is tagged and a
@@ -19,19 +20,19 @@ class Grpc < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "9e47a4ac6d76db5c0deeba82d2d3c25194d606b489fec24c3c1bd4afe7750f51"
-    sha256 cellar: :any,                 arm64_sonoma:  "00d9c617d1af81fef0679ca87755bc9be1f2f338e951642e7d74983eaeae3f56"
-    sha256 cellar: :any,                 arm64_ventura: "86d6d8123aa9c37e10299d23a8e40ec4a56b69d92f406372b4a28424f8ce0c21"
-    sha256 cellar: :any,                 sonoma:        "9327468f106acedb350b27603b92d70a4a3b45a0c2c54087ac7a0a353e5aef97"
-    sha256 cellar: :any,                 ventura:       "edad26928bd56750a585ca69a7215577250770927fa05fe5872a67ac357e5f6c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "96a0740f9e6f4d4fc31458d04ee760daba90eb28be4aebddf4b793a16903097c"
+    sha256 cellar: :any,                 arm64_sequoia: "97b6ec4d542f2ddd221c4f8b50b25c8c99ac5262b41fad3e78e787a3fae1d9e8"
+    sha256 cellar: :any,                 arm64_sonoma:  "b4b75072cc7b32dcbf14ba3700bdc183173368888565ee431cc59077d51f93c0"
+    sha256 cellar: :any,                 arm64_ventura: "94005be610e93b03b12fcd8f03cf4d8547888a1a1060ad2a70724e8b7558e83e"
+    sha256 cellar: :any,                 sonoma:        "11900d278ee6797b9155c6cb3efdfb47a7eedd124d736981d7ff04aa72342d22"
+    sha256 cellar: :any,                 ventura:       "061a1b5d0cfef9ad43c196b8379952fa7586011991c5b21a443dd6d421e52146"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4741da365a0d8e2296eda9a1cec50b99e250d07c3c076e225c8edcde95d972bf"
   end
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "cmake" => :build
   depends_on "libtool" => :build
-  depends_on "pkg-config" => :test
+  depends_on "pkgconf" => :test
   depends_on "abseil"
   depends_on "c-ares"
   depends_on "openssl@3"
@@ -48,8 +49,6 @@ class Grpc < Formula
     build 1100
     cause "Requires C++17 features not yet implemented"
   end
-
-  fails_with gcc: "5" # C++17
 
   def install
     ENV.llvm_clang if OS.mac? && (DevelopmentTools.clang_build_version <= 1100)
@@ -105,8 +104,8 @@ class Grpc < Formula
       }
     CPP
     ENV.prepend_path "PKG_CONFIG_PATH", Formula["openssl@3"].opt_lib/"pkgconfig"
-    pkg_config_flags = shell_output("pkg-config --cflags --libs libcares protobuf re2 grpc++").chomp.split
-    system ENV.cc, "test.cpp", "-L#{Formula["abseil"].opt_lib}", *pkg_config_flags, "-o", "test"
+    flags = shell_output("pkgconf --cflags --libs libcares protobuf re2 grpc++").chomp.split
+    system ENV.cc, "test.cpp", "-L#{Formula["abseil"].opt_lib}", *flags, "-o", "test"
     system "./test"
 
     output = shell_output("#{bin}/grpc_cli ls localhost:#{free_port} 2>&1", 1)

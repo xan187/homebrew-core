@@ -261,7 +261,7 @@ jobs:
       fromJson(needs.check.outputs.requires_merge) &&
       fromJson(needs.check.outputs.bottles) &&
       !fromJson(needs.check.outputs.replace)
-    runs-on: ${{inputs.large_runner && 'homebrew-large-bottle-upload' || 'ubuntu-22.04'}}
+    runs-on: ${{inputs.large_runner && 'homebrew-large-bottle-upload' || 'ubuntu-latest'}}
     container:
       image: ghcr.io/homebrew/ubuntu22.04:master
       volumes:
@@ -354,7 +354,7 @@ jobs:
             "$PR"
 
       - name: Generate build provenance
-        uses: actions/attest-build-provenance@v1
+        uses: actions/attest-build-provenance@v2
         with:
           subject-path: '${{steps.pr-pull.outputs.bottle_path}}/*.tar.gz'
 

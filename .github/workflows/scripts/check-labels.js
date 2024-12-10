@@ -24,7 +24,7 @@ module.exports = async ({github, context, core}, formulae_detect, dependent_test
       return
     }
 
-    var linux_runner = 'ubuntu-22.04'
+    var linux_runner = 'ubuntu-latest'
     if (label_names.includes(`CI-linux-self-hosted${deps_suffix}`)) {
       linux_runner = 'linux-self-hosted-1'
     } else if (label_names.includes(`CI-linux-large-runner${deps_suffix}`)) {

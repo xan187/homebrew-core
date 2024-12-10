@@ -17,12 +17,13 @@ class MinioMc < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "f5c2392867f48de6e53a29035d6a25a258241ea85ffa9a676508a6ed27ab98be"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "7b72ae64437500b7b8bbbe053c03b65810a0f68f6f91372b47f37348dbe2f9a9"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "f93fbabf340d6750e347a9991c51f53f06c5b20b01e2fa6c04e8702f1e896f07"
-    sha256 cellar: :any_skip_relocation, sonoma:        "5931dc8819bf54db796d14a184a9a55cd16a71cb84230b22d86d63b2fcbf28b6"
-    sha256 cellar: :any_skip_relocation, ventura:       "7f002d857dc48cc291d14c4431a4cb420000c2ac67cd3318c778d50c6477acbb"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d301447397950c2030438e4dfda667e02dacde13667d386cab788a8c1a0b1472"
+    rebuild 3
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "146713947a5bf92282f167729746e66f379d085120fa1177a9e6714a31de31e9"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d44abce960eaa9004ebcdc381350c38e29deef045c67d852386a620aa8d683d0"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "b2ec5d8ce21a6c90006317f93fb3d5cee82c23eaa3155d99331774a79bcb9156"
+    sha256 cellar: :any_skip_relocation, sonoma:        "4b37b568b8ba77eab88f752dd713fa0babd5e01c86c5cb35565fcbe72ada8bff"
+    sha256 cellar: :any_skip_relocation, ventura:       "c232fa0b0e151c7c2b43f9a297d4b6a5328a65d8f5b011a83f72d6c952efef8e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6205ac291ec6fa1f20d3de333c6f820cfefeca924c52cf4f6ede4bc6489623bd"
   end
 
   depends_on "go" => :build
@@ -31,17 +32,19 @@ class MinioMc < Formula
 
   def install
     if build.head?
-      system "go", "build", *std_go_args(output: bin/"mc")
+      system "go", "build", *std_go_args(ldflags: "-s -w", output: bin/"mc")
     else
       minio_release = stable.specs[:tag]
       minio_version = minio_release.gsub("RELEASE.", "").chomp.gsub(/T(\d+)-(\d+)-(\d+)Z/, 'T\1:\2:\3Z')
       proj = "github.com/minio/mc"
+
       ldflags = %W[
+        -s -w
         -X #{proj}/cmd.Version=#{minio_version}
         -X #{proj}/cmd.ReleaseTag=#{minio_release}
         -X #{proj}/cmd.CommitID=#{Utils.git_head}
       ]
-      system "go", "build", *std_go_args(output: bin/"mc", ldflags:)
+      system "go", "build", *std_go_args(ldflags:, output: bin/"mc")
     end
   end
 

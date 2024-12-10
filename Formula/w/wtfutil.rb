@@ -23,17 +23,13 @@ class Wtfutil < Formula
   depends_on "go" => :build
 
   def install
-    ldflags = %W[
-      -s -w
-      -X main.version=#{version}
-      -X main.date=#{time.iso8601}
-    ].join(" ")
+    ldflags = "-s -w -X main.version=#{version} -X main.date=#{time.iso8601}"
     system "go", "build", *std_go_args(ldflags:)
   end
 
   test do
     testconfig = testpath/"config.yml"
-    testconfig.write <<~EOS
+    testconfig.write <<~YAML
       wtf:
         colors:
           background: "red"
@@ -66,7 +62,7 @@ class Wtfutil < Formula
             normal: "*"
             selected: "_"
         term: "xterm-256color"
-    EOS
+    YAML
 
     begin
       pid = fork do

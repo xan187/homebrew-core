@@ -4,7 +4,7 @@ class ProtocGenGrpcWeb < Formula
   url "https://github.com/grpc/grpc-web/archive/refs/tags/1.5.0.tar.gz"
   sha256 "d3043633f1c284288e98e44c802860ca7203c7376b89572b5f5a9e376c2392d5"
   license "Apache-2.0"
-  revision 4
+  revision 6
 
   livecheck do
     url :stable
@@ -12,16 +12,16 @@ class ProtocGenGrpcWeb < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "a4f85c1ccce6031b8feaf732dd20abd5a206bfce8c675516b9de2af7a7576ce4"
-    sha256 cellar: :any,                 arm64_sonoma:  "b37092b2149c0b051eae27d61fb1e84453d6ee4f6df33b32ebf280e6ff0a5e15"
-    sha256 cellar: :any,                 arm64_ventura: "78fc9b91c8f9dc7f982f8d79bd0ad73fd7c5317f711370796d2eb1dc93a50b0c"
-    sha256 cellar: :any,                 sonoma:        "35bf03d35f48fbe38dc3382ef0ffb7b99eb73f485839457e7d9780881d5b1a47"
-    sha256 cellar: :any,                 ventura:       "e5ca115e787006f8dcd8e656c4be77036881b08e239eddaa10d1ef47ab41a797"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bab988382a520ff8b0d05dff610be8275f3c40083c953347f092b1d46829a16d"
+    sha256 cellar: :any,                 arm64_sequoia: "51b9c96bc1fa385646c02a0d07a1d250dd1f249b339ec3165c1ed3b29243f787"
+    sha256 cellar: :any,                 arm64_sonoma:  "735c1ac992a665f78307cb1d817e909f98a294f209fc7a5366abc900a8746164"
+    sha256 cellar: :any,                 arm64_ventura: "7cdad547646cf70f2af2fb4118830a17703b919682e765ad9c14254c713f45ff"
+    sha256 cellar: :any,                 sonoma:        "c689421e0a5e883e714c012275c19194caf5d027b1549ccdd01f8a38e3f0ae21"
+    sha256 cellar: :any,                 ventura:       "d632dddd5b1fa74aba043e88ac9318fea8caac621831abeaf3f30e0fea2dabbc"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1875af5da808052facd14733e4ee92d20c086302f1bec85c6ef364471a8b452a"
   end
 
   depends_on "cmake" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "node" => :test
   depends_on "typescript" => :test
   depends_on "abseil"
@@ -33,7 +33,7 @@ class ProtocGenGrpcWeb < Formula
 
   def install
     # Workarounds to build with latest `protobuf` which needs Abseil link flags and C++17
-    ENV.append "LDFLAGS", Utils.safe_popen_read("pkg-config", "--libs", "protobuf").chomp
+    ENV.append "LDFLAGS", Utils.safe_popen_read("pkgconf", "--libs", "protobuf").chomp
     inreplace "javascript/net/grpc/web/generator/Makefile", "-std=c++11", "-std=c++17"
 
     args = ["PREFIX=#{prefix}", "STATIC=no"]
@@ -44,7 +44,7 @@ class ProtocGenGrpcWeb < Formula
 
   test do
     # First use the plugin to generate the files.
-    testdata = <<~EOS
+    testdata = <<~PROTO
       syntax = "proto3";
       package test;
       message TestCase {
@@ -59,19 +59,18 @@ class ProtocGenGrpcWeb < Formula
       service TestService {
         rpc RunTest(Test) returns (TestResult);
       }
-    EOS
+    PROTO
     (testpath/"test.proto").write testdata
     system "protoc", "test.proto", "--plugin=#{bin}/protoc-gen-grpc-web",
                      "--js_out=import_style=commonjs:.",
                      "--grpc-web_out=import_style=typescript,mode=grpcwebtext:."
 
     # Now see if we can import them.
-    testts = <<~EOS
+    (testpath/"test.ts").write <<~TYPESCRIPT
       import * as grpcWeb from 'grpc-web';
       import {TestServiceClient} from './TestServiceClientPb';
       import {Test, TestResult} from './test_pb';
-    EOS
-    (testpath/"test.ts").write testts
+    TYPESCRIPT
     system "npm", "install", *std_npm_args(prefix: false), "grpc-web", "@types/google-protobuf"
     # Specify including lib for `tsc` since `es6` is required for `@types/google-protobuf`.
     system "tsc", "--lib", "es6", "test.ts"

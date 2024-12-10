@@ -22,32 +22,27 @@ class Healpix < Formula
   depends_on "cfitsio"
 
   def install
-    configure_args = %w[
-      --disable-dependency-tracking
-      --disable-silent-rules
-    ]
-
     cd "src/C/autotools" do
-      system "autoreconf", "--install"
-      system "./configure", "--prefix=#{prefix}", *configure_args
+      system "autoreconf", "--force", "--install", "--verbose"
+      system "./configure", "--disable-silent-rules", *std_configure_args
       system "make", "install"
     end
 
     cd "src/common_libraries/libsharp" do
-      system "./configure", "--prefix=#{prefix}", *configure_args
+      system "./configure", "--disable-silent-rules", *std_configure_args
       system "make", "install"
     end
 
     cd "src/cxx" do
       ENV["SHARP_CFLAGS"] = "-I#{include}"
       ENV["SHARP_LIBS"] = "-L#{lib} -lsharp"
-      system "./configure", "--prefix=#{prefix}", *configure_args
+      system "./configure", "--disable-silent-rules", *std_configure_args
       system "make", "install"
     end
   end
 
   test do
-    (testpath/"test.cxx").write <<-EOS
+    (testpath/"test.cxx").write <<~CPP
       #include <math.h>
       #include <stdio.h>
       #include "chealpix.h"
@@ -60,7 +55,7 @@ class Healpix < Formula
           ns1  = npix2nside(npix);
         }
       };
-    EOS
+    CPP
 
     system ENV.cxx, "-o", "test", "test.cxx", "-L#{lib}", "-lchealpix"
     system "./test"

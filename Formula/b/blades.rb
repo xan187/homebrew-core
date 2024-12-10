@@ -1,6 +1,6 @@
 class Blades < Formula
   desc "Blazing fast dead simple static site generator"
-  homepage "https://getblades.org/"
+  homepage "https://www.getblades.org/"
   url "https://github.com/grego/blades/archive/refs/tags/v0.5.0.tar.gz"
   sha256 "e9ee64ead54e1942397ea5d6fcfd6ba928a888c1f4c127b11dec9fbadd283cc2"
   license "GPL-3.0-or-later"
@@ -28,7 +28,7 @@ class Blades < Formula
 
   test do
     script = (testpath/"script.exp")
-    script.write <<~EOS
+    script.write <<~EXPECT
       #!/usr/bin/expect -f
       set timeout 2
       spawn #{bin}/blades init
@@ -40,7 +40,7 @@ class Blades < Formula
       send -- "test\r"
 
       expect eof
-    EOS
+    EXPECT
 
     system "expect", "-f", "script.exp"
     assert_predicate testpath/"content", :exist?

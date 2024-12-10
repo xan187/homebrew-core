@@ -19,7 +19,7 @@ class M68kElfBinutils < Formula
     sha256 x86_64_linux:  "1bf1b448a1db6fd2784405902d6598d485bb713b1016d9ca68f56e5531ca158e"
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "zstd"
 
   uses_from_macos "zlib"
@@ -31,24 +31,24 @@ class M68kElfBinutils < Formula
   def install
     target = "m68k-elf"
     system "./configure", "--target=#{target}",
-           "--prefix=#{prefix}",
-           "--libdir=#{lib}/#{target}",
-           "--infodir=#{info}/#{target}",
-           "--with-system-zlib",
-           "--with-zstd",
-           "--disable-nls"
+                          "--prefix=#{prefix}",
+                          "--libdir=#{lib}/#{target}",
+                          "--infodir=#{info}/#{target}",
+                          "--with-system-zlib",
+                          "--with-zstd",
+                          "--disable-nls"
     system "make"
     system "make", "install"
   end
 
   test do
-    (testpath/"test-s.s").write <<~EOS
+    (testpath/"test-s.s").write <<~M68K
       .section .text
       .globl _start
       _start:
           move.b #42, d0
           move.b #42, d1
-    EOS
+    M68K
 
     system bin/"m68k-elf-as", "-o", "test-s.o", "test-s.s"
     assert_match "file format elf32-m68k",

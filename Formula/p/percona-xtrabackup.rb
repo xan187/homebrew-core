@@ -4,7 +4,7 @@ class PerconaXtrabackup < Formula
   url "https://downloads.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.35-31/source/tarball/percona-xtrabackup-8.0.35-31.tar.gz"
   sha256 "c6bda1e7f983e5a667bff22d1d67d33404db4e741676d03c9c60bbd4b263cabf"
   license "GPL-2.0-only"
-  revision 6
+  revision 8
 
   livecheck do
     url "https://docs.percona.com/percona-xtrabackup/latest/"
@@ -19,18 +19,18 @@ class PerconaXtrabackup < Formula
   end
 
   bottle do
-    sha256 arm64_sequoia: "e3b466d69ebad7a8020995326e37d19c905a0d9c0c8c9ab2aab6ff7dad131b17"
-    sha256 arm64_sonoma:  "1db2f3083327007dec6b5783eaddeb65f81faddfe06ec9bcbe489460af3bebbe"
-    sha256 arm64_ventura: "84d15e9881b7782825fed6b7fec70d99b82f2935e6834c36b13536f192293bda"
-    sha256 sonoma:        "7889406b4ccb32dab2cfd96356bdacf12e407ebe3fb7c18b3089ca1923048f34"
-    sha256 ventura:       "3312598e4919ebaf8067a9c60ca76e0c35c035bb6ce814922dbdf91b4461359e"
-    sha256 x86_64_linux:  "ab4f71ab25f0f3fb5675743d4906380299612c029ab1b3540039c91ed8b0f316"
+    sha256 arm64_sequoia: "82a1a05d238af83182f71fa29c20d53d156bfaac1e6a43a74ee8039306b544a7"
+    sha256 arm64_sonoma:  "7913bae3dc84bb8a5c1bf201f1dbbb44d07eeb2dbe9253a5f35e4221eec36225"
+    sha256 arm64_ventura: "45525ae70e76759af289787cd030f8c76e6d3475ec461fda418d30f9828d2258"
+    sha256 sonoma:        "bc7ca68d334f7d55703f3fbfad70a91d8b2c342271256a45088a98c330257a53"
+    sha256 ventura:       "90a68c573e266741d13d1b9bcb9d45a35461ed5d57284debdac88109e10d475b"
+    sha256 x86_64_linux:  "5ac5ec83e261d91bd7a3966563f3db5d2db05c0160c4e583c7d1a2b48da1984e"
   end
 
   depends_on "bison" => :build # needs bison >= 3.0.4
   depends_on "cmake" => :build
   depends_on "libevent" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "sphinx-doc" => :build
   depends_on "abseil"
   depends_on "icu4c@76"
@@ -57,11 +57,6 @@ class PerconaXtrabackup < Formula
     depends_on "patchelf" => :build
     depends_on "libaio"
     depends_on "procps"
-  end
-
-  fails_with :gcc do
-    version "6"
-    cause "The build requires GCC 7.1 or later."
   end
 
   # Should be installed before DBD::mysql

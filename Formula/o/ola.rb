@@ -5,7 +5,7 @@ class Ola < Formula
   desc "Open Lighting Architecture for lighting control information"
   homepage "https://www.openlighting.org/ola/"
   license all_of: ["GPL-2.0-or-later", "LGPL-2.1-or-later"]
-  revision 1
+  revision 3
 
   stable do
     # TODO: Check if we can use unversioned `protobuf` at version bump
@@ -27,13 +27,12 @@ class Ola < Formula
   end
 
   bottle do
-    rebuild 3
-    sha256                               arm64_sequoia: "98f3e8310711c1cf34244ef086e5a5c3650729c575ed5166d5412c4e72eb9605"
-    sha256                               arm64_sonoma:  "51c765b976627293c8892f0d8235d76da15042e478d49d89a1777643782b8bd3"
-    sha256                               arm64_ventura: "493dea963462b70d6e271702dd30a4398d3d70ce56f1a1e0f43dbb24a4931b40"
-    sha256                               sonoma:        "9def76b62762c9978d56bef0652e3571256ff07e2849082b34d437b09481cb41"
-    sha256                               ventura:       "1391ab8b7a5e462d8cbdcc273252dd37316a80539d19bdced603b02df9168188"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4879feff6a807b6340501b1dd117ced1a43dad368342e76172846c13beb7dfdf"
+    sha256                               arm64_sequoia: "e1f9c63cc95850939944b13db642edf0b739537a27fc938c4aedf1f172a261d0"
+    sha256                               arm64_sonoma:  "a682abb7185bc20aef2d30b30f152222ea9c5257aab744cde03aaa5583e88208"
+    sha256                               arm64_ventura: "7c0dc6b427c6776c3344e26f4845a522300effb6667407db2710675e6868a668"
+    sha256                               sonoma:        "d0c3934c5b288ed18add3ae23e7f015f34ea710cc4648fdecdc1b0bf619f63e5"
+    sha256                               ventura:       "3de55dadd98b13f77a540dec1504b6a65fe988054aa78bc1959515f00a9c8b26"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "caccfa95c7cb88c18365e22ec8882bc2a5152b772e386b93f5cd61396b897f0b"
   end
 
   head do
@@ -51,7 +50,7 @@ class Ola < Formula
   depends_on "automake" => :build
   depends_on "cppunit" => :build # TODO: remove once we no longer need to run tests
   depends_on "libtool" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
 
   depends_on "abseil"
   depends_on "liblo"
@@ -70,8 +69,8 @@ class Ola < Formula
   end
 
   resource "protobuf" do
-    url "https://files.pythonhosted.org/packages/74/6e/e69eb906fddcb38f8530a12f4b410699972ab7ced4e21524ece9d546ac27/protobuf-5.28.3.tar.gz"
-    sha256 "64badbc49180a5e401f373f9ce7ab1d18b63f7dd4a9cdc43c92b9f0b481cef7b"
+    url "https://files.pythonhosted.org/packages/d2/4f/1639b7b1633d8fd55f216ba01e21bf2c43384ab25ef3ddb35d85a52033e8/protobuf-5.29.1.tar.gz"
+    sha256 "683be02ca21a6ffe80db6dd02c0b5b2892322c59ca57fd6c872d652cb80549cb"
   end
 
   # Apply open PR to support Protobuf 22+ API

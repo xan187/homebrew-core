@@ -1,8 +1,8 @@
 class Kops < Formula
   desc "Production Grade K8s Installation, Upgrades, and Management"
   homepage "https://kops.sigs.k8s.io/"
-  url "https://github.com/kubernetes/kops/archive/refs/tags/v1.30.1.tar.gz"
-  sha256 "b454979d042e5f55704ce544ff79e52c236534a031851818f73a8744d0851b1f"
+  url "https://github.com/kubernetes/kops/archive/refs/tags/v1.30.3.tar.gz"
+  sha256 "35aed72e9c693d30ecc6a3d4dad054b5c1bbf616dafecb66f4cdb22db6d7b11e"
   license "Apache-2.0"
   head "https://github.com/kubernetes/kops.git", branch: "master"
 
@@ -12,12 +12,12 @@ class Kops < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "96085c1b1a144244b4b887f7968c829de3a3e3b48a79f76f205d8f99ed125cd1"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "3aa2bbaebd619fe57c82b185e20e518a186837f60c82b73b5c9e2fc829e020de"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "54eee998d292d5db46cf998c96a3fe549ac1bcb61f4e8a3718aec649f3fe6228"
-    sha256 cellar: :any_skip_relocation, sonoma:        "d17f738f8b9968511143576d060a7a02f52cf6f01a6c6ba6d5c81ab710a1f40b"
-    sha256 cellar: :any_skip_relocation, ventura:       "7dfb31e36759f06e499204d8128815cca0073d96a8dc0de7c1e55cada74bfacb"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c610c525faa1cc85125201e40fbc924b998448194c150af68b078fb9215a37e3"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "5a71f602bb1d5e7e13e2c97ca26693fe960f0a6dd450a7adf2dd67fa4f6e07b6"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "b4277ee6fef2229ca72196f9a38516b2b2e78e967d2808ba23a32e9e98e37717"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "d1d1759b18600af1e327bc259786ea3442c6be55db636294d00fdcd719c1afbf"
+    sha256 cellar: :any_skip_relocation, sonoma:        "daddba192751396a73512ecb8bea73b9f4dfad4f17a2b42b1523a2ef5aa54217"
+    sha256 cellar: :any_skip_relocation, ventura:       "d5636bbaa077576b67a18c2f8773aeddd0da7ed3fc5951838ade124ebaf95e5b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c1290ef930ae52110b53a4205492cc37a18e6b9533ce21b36509d871b971763b"
   end
 
   depends_on "go" => :build

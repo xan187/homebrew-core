@@ -30,7 +30,7 @@ env:
 jobs:
   create_matrix:
     if: startsWith( github.repository, 'Homebrew/' )
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/homebrew/ubuntu22.04:master
     outputs:

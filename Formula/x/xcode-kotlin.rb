@@ -1,20 +1,17 @@
 class XcodeKotlin < Formula
   desc "Kotlin Native Xcode Plugin"
   homepage "https://github.com/touchlab/xcode-kotlin"
-  url "https://github.com/touchlab/xcode-kotlin.git",
-    tag:      "2.0.0",
-    revision: "8c775c45071beb96baa86dcafc11c5fe44987750"
+  url "https://github.com/touchlab/xcode-kotlin/archive/refs/tags/2.1.0.tar.gz"
+  sha256 "840fb10e05e0f5e9a75620bc3f05a1a6fc16025db8da58c34a053f4d97c3b14f"
   license "Apache-2.0"
   head "https://github.com/touchlab/xcode-kotlin.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "ef75f3102ac004ff31ac564b25d29d8c42f900b7879af9ec89389f5de07bf42d"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "cd8a6748627084b0beeef05aaeb7776adba872990e8a7bdba89d763638db96f3"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "2c1ee6826b0c5c38bbe8cbd90473c7fdf8d667213cacc1ddcf892a55e5e6ec31"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "802f0d2b7827e4234dd8088bae91598794cc7c0059f496a309d57f696089097b"
-    sha256 cellar: :any_skip_relocation, sonoma:         "380cc1c8851372658c2e73e2b5d2c64544c47ed9ed6e192313b3d57c3b904d01"
-    sha256 cellar: :any_skip_relocation, ventura:        "b44b3a7ff866d6b6914395241810c12a4616e463173ac8bf5247ade71f5d1daa"
-    sha256 cellar: :any_skip_relocation, monterey:       "b5a51fbb58816599e22e9efb6b2a11172ce28457e13b6c20601398d175d33254"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "258566d0b50dc04657c8a9c737f4adf331a450e9a87fbc49343a2f045a11a431"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "ac0118eb40f7b30e8c5b38964a867239923c91da3e2f972577dd82358fc9fe3a"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "4b6d91ba83529e71b3f1904e3c7bbc111e620b35bba3c2a1f3b08d1779293f2d"
+    sha256 cellar: :any_skip_relocation, sonoma:        "f45df4b3e80f1c8336cd9839fe608668d46c38f6abe6efeac1ea0820ac4ea838"
+    sha256 cellar: :any_skip_relocation, ventura:       "33a3da5c279a5d0e17d6911bbebdcbdefcd882e2e07c960f736b58233735f80b"
   end
 
   depends_on "gradle" => :build
@@ -22,7 +19,7 @@ class XcodeKotlin < Formula
   depends_on :macos
 
   def install
-    suffix = (Hardware::CPU.arch == :x86_64) ? "X64" : "Arm64"
+    suffix = Hardware::CPU.intel? ? "X64" : "Arm64"
     system "gradle", "--no-daemon", "linkReleaseExecutableMacos#{suffix}", "preparePlugin"
     bin.install "build/bin/macos#{suffix}/releaseExecutable/xcode-kotlin.kexe" => "xcode-kotlin"
     share.install Dir["build/share/*"]
