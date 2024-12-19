@@ -239,6 +239,7 @@ beautysh
 bed
 bee
 bench
+bender
 benthos
 berglas
 bettercap
@@ -1126,6 +1127,7 @@ gjs
 glances
 glassfish
 glasskube
+glaze
 gleam
 glfw
 glib-networking
@@ -1430,6 +1432,7 @@ jena
 jenkins
 jenkins-job-builder
 jenkins-lts
+jerryscript
 jet
 jetty
 jetty-runner
@@ -1475,6 +1478,7 @@ juju
 julia
 jupyterlab
 just
+jwt-cli
 jxl-oxide
 jython
 k2tf
@@ -1582,6 +1586,7 @@ langgraph-cli
 languagetool
 lanraragi
 lastpass-cli
+lastz
 laszip
 latex2html
 latexdiff
@@ -1928,6 +1933,7 @@ mdbook
 mdcat
 mdless
 mdsh
+mdz
 mdzk
 mediaconch
 mediamtx
@@ -1951,6 +1957,7 @@ metals
 metricbeat
 mfem
 mgba
+mgis
 micro
 micromamba
 micronaut
@@ -2467,6 +2474,7 @@ prqlc
 prr
 prs
 psalm
+pscale
 pspg
 psutils
 psysh
@@ -2719,6 +2727,7 @@ scummvm-tools
 scw
 sdb
 sdl2
+sdl2_image
 seal
 seam
 seaweedfs
