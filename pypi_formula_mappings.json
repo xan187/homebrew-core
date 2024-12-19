@@ -280,7 +280,7 @@
     "exclude_packages": ["certifi", "cryptography"]
   },
   "duplicity": {
-    "exclude_packages": ["certifi", "cryptography"],
+    "exclude_packages": ["certifi"],
     "extra_packages": ["python-novaclient>18", "stone==3.2.1"]
   },
   "dvc": {
@@ -798,7 +798,7 @@
     "extra_packages": ["pysigma-backend-sqlite"]
   },
   "sigstore": {
-    "exclude_packages": ["certifi"]
+    "exclude_packages": ["certifi", "cryptography"]
   },
   "slither-analyzer": {
     "exclude_packages": ["certifi"]

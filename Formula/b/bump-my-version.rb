@@ -3,18 +3,18 @@ class BumpMyVersion < Formula
 
   desc "Version bump your Python project"
   homepage "https://callowayproject.github.io/bump-my-version/"
-  url "https://files.pythonhosted.org/packages/45/22/70378e3ab8634633ee37991eac86f072870be4fd9c59603ba6353c54d668/bump_my_version-0.28.2.tar.gz"
-  sha256 "65f555b3d279962b100c1f88ad105ae6c6274def73868141f9550a100ca7b87f"
+  url "https://files.pythonhosted.org/packages/a1/53/277e3748f0e45758210e971ed2c54c93f1f768a5bc9c66f8cb58a604a415/bump_my_version-0.29.0.tar.gz"
+  sha256 "e4149ed63b4772f5868b3fcabb8fa5e1191b8abae6d35effd0be980d4b0f55e3"
   license "MIT"
   head "https://github.com/callowayproject/bump-my-version.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "5b82b497870af237d106c2e3680a99ca78a8b49e816e2b9e52439412880922b3"
-    sha256 cellar: :any,                 arm64_sonoma:  "05e6cf1910f1bd7239f64107495a90cc300b3271017b24c18272564142a79aea"
-    sha256 cellar: :any,                 arm64_ventura: "5dcd1cd25bd38082be83f53f6331a2ab675c71fc0b9e3cf717e068b7ac1a3062"
-    sha256 cellar: :any,                 sonoma:        "7773a80a8ad295b81ab1a874d7483f5bfbb4fa9eae40af22339a02a451cf07b4"
-    sha256 cellar: :any,                 ventura:       "858de516f1341b419e0506dc5603ad81e7a79bd6b5c1a915787470371563609f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c64df7f5d3f5559976b366f3cceeeaa9a023b94e8a92135981568d7fb47f69b4"
+    sha256 cellar: :any,                 arm64_sequoia: "ffefdfc7f943d57f70e21cece284a760b7d23d2e4193c423d7dc7d357aa30c52"
+    sha256 cellar: :any,                 arm64_sonoma:  "c96e91c8266ac477e6a00712e0bf0cffd4af7caaac9b82ae6c6368f6320fb5eb"
+    sha256 cellar: :any,                 arm64_ventura: "09e6a52b9c079f2bef04fdcc63a5023c6d788fbe2c90937ee5928f0dac86e10a"
+    sha256 cellar: :any,                 sonoma:        "c5534d68e88abe40c05e383ebc33373e6118a645a0cf66c5e92b0c804efea029"
+    sha256 cellar: :any,                 ventura:       "5dbc5094fbbe5894f0675080fd7d0debd86702508032c47a165fb705a7875ebd"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5a73c2f3a823a056b29abab0f572fefa6d9b1103e4337567dc2fd7d9ee9dcc31"
   end
 
   depends_on "rust" => :build # for pydantic_core
@@ -51,13 +51,13 @@ class BumpMyVersion < Formula
   end
 
   resource "pydantic" do
-    url "https://files.pythonhosted.org/packages/45/0f/27908242621b14e649a84e62b133de45f84c255eecb350ab02979844a788/pydantic-2.10.3.tar.gz"
-    sha256 "cb5ac360ce894ceacd69c403187900a02c4b20b693a9dd1d643e1effab9eadf9"
+    url "https://files.pythonhosted.org/packages/70/7e/fb60e6fee04d0ef8f15e4e01ff187a196fa976eb0f0ab524af4599e5754c/pydantic-2.10.4.tar.gz"
+    sha256 "82f12e9723da6de4fe2ba888b5971157b3be7ad914267dea8f05f82b28254f06"
   end
 
   resource "pydantic-core" do
-    url "https://files.pythonhosted.org/packages/a6/9f/7de1f19b6aea45aeb441838782d68352e71bfa98ee6fa048d5041991b33e/pydantic_core-2.27.1.tar.gz"
-    sha256 "62a763352879b84aa31058fc931884055fd75089cccbd9d58bb6afd01141b235"
+    url "https://files.pythonhosted.org/packages/fc/01/f3e5ac5e7c25833db5eb555f7b7ab24cd6f8c322d3a3ad2d67a952dc0abc/pydantic_core-2.27.2.tar.gz"
+    sha256 "eb026e5a4c1fee05726072337ff51d1efb6f59090b7da90d30ea58625b1ffb39"
   end
 
   resource "pydantic-settings" do
