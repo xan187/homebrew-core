@@ -365,11 +365,13 @@ cargo-crev
 cargo-deny
 cargo-depgraph
 cargo-dist
+cargo-flamegraph
 cargo-generate
 cargo-instruments
 cargo-llvm-cov
 cargo-llvm-lines
 cargo-make
+cargo-msrv
 cargo-nextest
 cargo-outdated
 cargo-public-api
@@ -544,6 +546,7 @@ commandbox
 commitizen
 commitlint
 composer
+comtrya
 conan
 conan@1
 concurrencykit
@@ -669,6 +672,7 @@ ddrescue
 deadfinder
 deark
 debianutils
+decasify
 define
 dehydrated
 delve
@@ -870,6 +874,7 @@ epic5
 epoll-shim
 epr
 eprover
+epubcheck
 eralchemy
 erdtree
 erg
@@ -1047,6 +1052,7 @@ fx
 fzf
 fzf-make
 g-ls
+g2o
 gabo
 gallery-dl
 gammaray
@@ -1084,6 +1090,7 @@ gexiv2
 gf
 gfold
 ggshield
+gh-ost
 ghcup
 ghex
 ghorg
@@ -1295,6 +1302,7 @@ hapi-fhir-cli
 haproxy
 haproxy@2.8
 harfbuzz
+harper
 haskell-language-server
 haskell-stack
 hasura-cli
@@ -1456,6 +1464,7 @@ jfrog-cli
 jhipster
 jikken
 jimtcl
+jing-trang
 jj
 jlog
 jmeter
@@ -1720,6 +1729,7 @@ libmapper
 libmatio
 libmaxminddb
 libmicrohttpd
+libmikmod
 libmobi
 libmodbus
 libmonome
@@ -1812,6 +1822,7 @@ libx11
 libxau
 libxaw3d
 libxc
+libxcrypt
 libxcursor
 libxcvt
 libxdmcp
@@ -1875,6 +1886,7 @@ log4cxx
 logdy
 logrotate
 logstash
+lol-html
 lout
 lsd
 lsix
@@ -1991,6 +2003,7 @@ micropython
 microsocks
 mighttpd2
 mihomo
+mikmod
 mill
 miller
 millet
@@ -2020,6 +2033,7 @@ mkvtoolnix
 mlkit
 mlpack
 mlt
+mlton
 mlx
 mmark
 mmdbctl
@@ -2413,6 +2427,7 @@ pie
 pig
 piknik
 pillow
+pinact
 pinentry
 pinocchio
 pinot
@@ -2609,6 +2624,7 @@ ranger
 rapidfuzz-cpp
 ratchet
 ratfor
+ratify
 rattler-build
 rav1e
 raven
@@ -2641,6 +2657,7 @@ remind
 renovate
 replxx
 repo
+repomix
 reposurgeon
 repren
 reproc
@@ -2701,6 +2718,7 @@ ruff
 ruff-lsp
 rune
 runit
+runitor
 rure
 rush
 rush-parallel
@@ -2783,6 +2801,7 @@ sequin
 sequoia-sq
 ser2net
 serialosc
+serie
 serpl
 serverless
 service-weaver
@@ -2804,6 +2823,7 @@ shellharden
 shellz
 sherlock
 shfmt
+showcert
 showkey
 shtools
 shub
@@ -2985,6 +3005,7 @@ svtplay-dl
 swagger-codegen
 swagger-codegen@2
 swagger2markup-cli
+swc
 swctl
 swi-prolog
 swift-protobuf
@@ -3006,6 +3027,7 @@ systemc
 systemd
 t-completion
 ta-lib
+tabiew
 tailscale
 tailspin
 tailwindcss
@@ -3096,6 +3118,7 @@ tile38
 timg
 tin
 tintin
+tiny
 tinymist
 tinyproxy
 tio
@@ -3206,6 +3229,7 @@ usbredir
 usbutils
 userspace-rcu
 utf8cpp
+utf8proc
 util-linux
 util-macros
 uutils-coreutils
@@ -3282,6 +3306,7 @@ vtclock
 vte3
 vtk
 vue-cli
+vue-language-server
 vulkan-extensionlayer
 vulkan-validationlayers
 vulkan-volk
@@ -3362,6 +3387,7 @@ xa
 xapian
 xauth
 xbyak
+xc
 xcb-util-cursor
 xcbeautify
 xcdiff
@@ -3373,6 +3399,7 @@ xdg-ninja
 xdpyinfo
 xeol
 xerces-c
+xfig
 xgboost
 xh
 xkbcomp
@@ -3381,6 +3408,7 @@ xlsxio
 xmake
 xmlrpc-c
 xmount
+xmq
 xmrig
 xnvme
 xonsh
@@ -3440,6 +3468,7 @@ zf
 zfind
 zig
 zigmod
+zim
 zipkin
 zizmor
 zk

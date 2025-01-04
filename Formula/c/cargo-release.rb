@@ -1,24 +1,25 @@
 class CargoRelease < Formula
   desc "Cargo subcommand `release`: everything about releasing a rust crate"
   homepage "https://github.com/crate-ci/cargo-release"
-  url "https://github.com/crate-ci/cargo-release/archive/refs/tags/v0.25.14.tar.gz"
-  sha256 "a53841db3ecff6eb9e290fab13ce2c782eaddc59e2783b730e46b0bd944378c8"
+  url "https://github.com/crate-ci/cargo-release/archive/refs/tags/v0.25.15.tar.gz"
+  sha256 "dee97fbcb6124f7d159cfc0ea8fb3977da1513da2135b179bd48dbcd0abde616"
   license any_of: ["Apache-2.0", "MIT"]
+  revision 1
   head "https://github.com/crate-ci/cargo-release.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "48f1bdc0d51ffdfc33f2805e2ad45a97cab4b11dc59ff90de95cf66797aa91f4"
-    sha256 cellar: :any,                 arm64_sonoma:  "e7cc9ae4a69330137281390bce8760a0282fa536cebdb8d910988cff7c95781e"
-    sha256 cellar: :any,                 arm64_ventura: "2bf15ee52f15502b26da64d1c238c9f6f177d9e415c0a3be6d4af806ba21e3e9"
-    sha256 cellar: :any,                 sonoma:        "546317c62256b673ff1e84ca654de5744a6a7a35741cb373cf43edbe62ea35f4"
-    sha256 cellar: :any,                 ventura:       "b70299068fa7e9dfe1376a63c369b15ddda21b05432214c484e6ce7f3a5caa2c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3fd5a21d3258a17db345b7c2807a5328cf41d4dc143d2b4bfd10d53c2ef1c29b"
+    sha256 cellar: :any,                 arm64_sequoia: "2574c100ae1015f8400a41596e75d55a42b9685b1409711f20ee9a6699b933f7"
+    sha256 cellar: :any,                 arm64_sonoma:  "0f6d3557c3ad479fb4360c77db610c57ed9c878b2e7bba9569c5d0d47d4965df"
+    sha256 cellar: :any,                 arm64_ventura: "17dc706dc7989bb6ff4f71fa805fa919e3a2d49a568a631445eed34c3233439d"
+    sha256 cellar: :any,                 sonoma:        "755d6c97605883787a5c3e41f1d95af5dd06c811355af98ae6c6f1ff650d1e80"
+    sha256 cellar: :any,                 ventura:       "f6fc62d039fac5fdce20dea2b9f1061f96f316dbe117fb0577041b829dc3212a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5e63024709978df9416b5c9f399d37aea926e3005fdb35c8cf8d47dbb4693eb4"
   end
 
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
   depends_on "rustup" => :test
-  depends_on "libgit2"
+  depends_on "libgit2@1.8" # needs https://github.com/rust-lang/git2-rs/issues/1109 to support libgit2 1.9
 
   def install
     ENV["LIBGIT2_NO_VENDOR"] = "1"
@@ -47,7 +48,7 @@ class CargoRelease < Formula
     end
 
     [
-      Formula["libgit2"].opt_lib/shared_library("libgit2"),
+      Formula["libgit2@1.8"].opt_lib/shared_library("libgit2"),
     ].each do |library|
       assert check_binary_linkage(bin/"cargo-release", library),
              "No linkage with #{library.basename}! Cargo is likely using a vendored version."

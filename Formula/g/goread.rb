@@ -1,18 +1,18 @@
 class Goread < Formula
   desc "RSS/Atom feeds in the terminal"
   homepage "https://github.com/TypicalAM/goread"
-  url "https://github.com/TypicalAM/goread/archive/refs/tags/v1.7.1.tar.gz"
-  sha256 "29e15a110ad1844adf6990033d118df4ec3ff6ccbe68b36eb6729867db8ec375"
+  url "https://github.com/TypicalAM/goread/archive/refs/tags/v1.7.3.tar.gz"
+  sha256 "9b08cae05593034711c599b6b17605194a11bbfae769b4e7e0076a01ec197c37"
   license "GPL-3.0-or-later"
   head "https://github.com/TypicalAM/goread.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "370e06cee7a0e012e29192aad1510c13148c516d5518f04ece53d45c894977f5"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "370e06cee7a0e012e29192aad1510c13148c516d5518f04ece53d45c894977f5"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "370e06cee7a0e012e29192aad1510c13148c516d5518f04ece53d45c894977f5"
-    sha256 cellar: :any_skip_relocation, sonoma:        "62fddcb4abfa9ca7c7e1b246e1a6c4d8f36160adc4c1f351a7f41b7500ce6eb5"
-    sha256 cellar: :any_skip_relocation, ventura:       "62fddcb4abfa9ca7c7e1b246e1a6c4d8f36160adc4c1f351a7f41b7500ce6eb5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "50aada6c4ed52d0d7385b0e3667b1981af8338df896c00dbf81fd40e2aca8107"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "f54a965d898329bdd7071bcb6b5d3d3fa76e21ec181c48209943ad9a4e424ab3"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "f54a965d898329bdd7071bcb6b5d3d3fa76e21ec181c48209943ad9a4e424ab3"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "f54a965d898329bdd7071bcb6b5d3d3fa76e21ec181c48209943ad9a4e424ab3"
+    sha256 cellar: :any_skip_relocation, sonoma:        "28c65443c15b23ca7042ac03c8ba09deb9117e4c931e5423e4367403d5b36553"
+    sha256 cellar: :any_skip_relocation, ventura:       "28c65443c15b23ca7042ac03c8ba09deb9117e4c931e5423e4367403d5b36553"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8bc61108955a4fc3f22de1900278227627b2f5fc44547a92513a751da780e1a1"
   end
 
   depends_on "go" => :build

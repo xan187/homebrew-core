@@ -1,17 +1,17 @@
 class PgPartman < Formula
   desc "Partition management extension for PostgreSQL"
   homepage "https://github.com/pgpartman/pg_partman"
-  url "https://github.com/pgpartman/pg_partman/archive/refs/tags/v5.2.2.tar.gz"
-  sha256 "c67898c7b131d66b835b44d92013e9e07f0834b253505ef2808de6826e3e558d"
+  url "https://github.com/pgpartman/pg_partman/archive/refs/tags/v5.2.4.tar.gz"
+  sha256 "462464d83389ef20256b982960646a1572341c0beb09eeff32b4a69f04e31b76"
   license "PostgreSQL"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a8a2d74617d5cd8a5ad3551405e33804c14c1e568e2a32a9681be48c4350683f"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "a01b6b2b975c1a385bfb04bb939184c836d66ae5af851d0d63dccd42184de552"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "e81653ea3a8982418dc0c52d9d5c90d221b99a36ee32de40786e2f9314d84dc4"
-    sha256 cellar: :any_skip_relocation, sonoma:        "6996a3477d03ee5a6d907789d4a75a9da60d4eaf9717e8f98d2054208f354aab"
-    sha256 cellar: :any_skip_relocation, ventura:       "c6759ee065d0d726f1d9b001ffb8a532c2063b190a811916c82e1c14ca5637fe"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a1eeb5c7b4e011002c6d7cee8b607665525d2eb7252581a014a39c8bce4bd747"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "bc8d0101a41b8462c808e3b89ced8cf4c35abd2859da258810f45c7cc3d08eab"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "fbb25523f90c489a1d3e960c72a5e25e2015203f076b422979105d4237548fa7"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "da418435f548516e2c08d7152618cba4944c05ea97e7a6caf885d392367d6b1f"
+    sha256 cellar: :any_skip_relocation, sonoma:        "4ff364c6122dd2f76874efa3993473d44c1875a9af05f87ac2b6162e0d3c3081"
+    sha256 cellar: :any_skip_relocation, ventura:       "d354534be1f5892af69af5ad223d00864f39f49a1a05a161a45c32440f51bb87"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "35d4cb1858223e0a1b0badd91bc8d83393da2fcd30d9609bef6285d8fe5fef3c"
   end
 
   depends_on "postgresql@14" => [:build, :test]

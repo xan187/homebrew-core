@@ -1,18 +1,19 @@
 class SequoiaSq < Formula
   desc "Sequoia-PGP command-line tool"
   homepage "https://sequoia-pgp.org"
-  url "https://gitlab.com/sequoia-pgp/sequoia-sq/-/archive/v1.0.0/sequoia-sq-v1.0.0.tar.gz"
-  sha256 "ffbc8f61daddce8c3369bbfb36361debb38b21b035f4a321772d5dff19491ef6"
+  url "https://gitlab.com/sequoia-pgp/sequoia-sq/-/archive/v1.1.0/sequoia-sq-v1.1.0.tar.gz"
+  sha256 "3316902e1f52e8f01829b72014bda006ad9712ec3802703d395dbc6dbf50cb9d"
   license "LGPL-2.0-or-later"
   head "https://gitlab.com/sequoia-pgp/sequoia-sq.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "e6899032138cce8334beda6dfe51de1f6a3b78389bc2c7a962b331880f15e306"
-    sha256 cellar: :any,                 arm64_sonoma:  "a03f6386eda0cf4913052c2ec529953a1b6ab315ae367a07fa150b1f34b90875"
-    sha256 cellar: :any,                 arm64_ventura: "8a1a517fdf1494dc41d7490f791db35490a4f070b7954209d45082580d44ba3d"
-    sha256 cellar: :any,                 sonoma:        "912c5c8ac877949a15a0903ab87b5482eb752d0facca522b3af64361389ccf85"
-    sha256 cellar: :any,                 ventura:       "e9c91a625b7f6f8f54761f168e4f6bf04ca5fcfdef2ce59cdbc6801210b143e3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "888c4410499028b7032991afa7e50d49d1b02ac7029fbbac567e3334e65e1033"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sequoia: "ac0a88e3da8b1ca1e58bd4cabe8f6856e33ced6ca76b199cd17a2525f266eaca"
+    sha256 cellar: :any,                 arm64_sonoma:  "ac235bd5c73d7089051988d1e7dfc3dd50565ffc68b40bff128f74b2feebedd8"
+    sha256 cellar: :any,                 arm64_ventura: "11d615f16715a94f9ecc916e698bcf7efdad504d0f7c5d1559f1fc5be68d8c21"
+    sha256 cellar: :any,                 sonoma:        "10f79c2b3e41e4ac18562e18dcf950e6053cd956d77d7d02581ed48dd7a17bc8"
+    sha256 cellar: :any,                 ventura:       "e7e1a11322a46eb655a10b1d2243ac86ec92065d5c4cfe6533de46a0f726581f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a5bca0098990831f6be4e0431f32009a7a2030b464f870180cbb5a9464d5d86b"
   end
 
   depends_on "capnp" => :build
@@ -34,14 +35,15 @@ class SequoiaSq < Formula
     system "cargo", "install", *std_cargo_args
     man1.install Dir["man-pages/*.1"]
 
-    bash_completion.install "shell-completions/sq.bash"
+    bash_completion.install "shell-completions/sq.bash" => "sq"
     zsh_completion.install "shell-completions/_sq"
     fish_completion.install "shell-completions/sq.fish"
   end
 
   test do
     assert_match version.to_s, shell_output("#{bin}/sq version 2>&1")
-    assert_match "R0lGODdhAQABAPAAAAAAAAAAACwAAAAAAQABAAACAkQBADs=",
-      shell_output("cat #{test_fixtures("test.gif")} | #{bin}/sq packet armor")
+
+    output = pipe_output("#{bin}/sq packet armor", test_fixtures("test.gif").read, 0)
+    assert_match "R0lGODdhAQABAPAAAAAAAAAAACwAAAAAAQABAAACAkQBADs=", output
   end
 end

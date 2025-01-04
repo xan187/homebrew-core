@@ -3,18 +3,19 @@ class PolicySentry < Formula
 
   desc "Generate locked-down AWS IAM Policies"
   homepage "https://policy-sentry.readthedocs.io/en/latest/"
-  url "https://files.pythonhosted.org/packages/a4/05/75e8953eb5fa564e45fc5afc61696d38ce779169309ca270224561926fa8/policy_sentry-0.13.2.tar.gz"
-  sha256 "db2b39f92989077f83fc4dd1d064e3ff20b69cfed82168ebdc060e7dce292e77"
+  url "https://files.pythonhosted.org/packages/bc/4b/e03bbe626379bfee06c944a01ef25ad14ce30bc9dd86988dfda1cf343347/policy_sentry-0.14.0.tar.gz"
+  sha256 "5c52cebebad26e2360393f34af523c1685541d67b0dfd721b0779dbe9e327f1a"
   license "MIT"
   head "https://github.com/salesforce/policy_sentry.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "fde1b3e06bb5eb3c39a51af1c10082c0c5694daa04b441de0ddf01481158c43b"
-    sha256 cellar: :any,                 arm64_sonoma:  "b0dd955c6e2b44d68b7b935c09dc3d3ac2d12491ed08d748585f4bbf57595019"
-    sha256 cellar: :any,                 arm64_ventura: "14d470971cebf8b3dac675424d1d58956590d86d4b022c4baed5e56b967df751"
-    sha256 cellar: :any,                 sonoma:        "952d10e2f4ef7f6075ae5da83268b12ef0238a0774a1f7b7680cdbba71841cb8"
-    sha256 cellar: :any,                 ventura:       "2c7bfe2a9d22e9bf214a441d49eb294021a8b4b7135be12691531186f9aa9ea2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b3b0f18d8d4596e56de1da069ba69f5b09674edc68943b559c18f1b318610d5f"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sequoia: "860c76164176b1eeff4f588f406f401dde52783bd361ba984510b6ce91f0b5a8"
+    sha256 cellar: :any,                 arm64_sonoma:  "3555491fe5d02633cf2a50f65547fc2fb80525c56a3ef99a95d626832a6cb6f8"
+    sha256 cellar: :any,                 arm64_ventura: "aaa2e1c8171a28f5d2f86cb44d7c040edcfc7902da1f7e089aaeeb47829e12e2"
+    sha256 cellar: :any,                 sonoma:        "bcca67ecf36d4e7fbac2f7e820d8200cb51530e3e40c0f13fff17b96d31d232a"
+    sha256 cellar: :any,                 ventura:       "9242e399c04dc2bdd00852dc63f5310ef080a7cb43b25f5f2783754a770be818"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7c73b7b5dea54f6d5e0902da6190458092be9a7e5652d76baf2c9fe654e76417"
   end
 
   depends_on "rust" => :build # for orjson
@@ -28,13 +29,13 @@ class PolicySentry < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/f2/4f/e1808dc01273379acc506d18f1504eb2d299bd4131743b9fc54d7be4df1e/charset_normalizer-3.4.0.tar.gz"
-    sha256 "223217c3d4f82c3ac5e29032b3f1c2eb0fb591b72161f86d93f5719079dae93e"
+    url "https://files.pythonhosted.org/packages/16/b0/572805e227f01586461c80e0fd25d65a2115599cc9dad142fee4b747c357/charset_normalizer-3.4.1.tar.gz"
+    sha256 "44251f18cd68a75b56585dd00dae26183e102cd5e0f9f1466e6df5da2ed64ea3"
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/96/d3/f04c7bfcf5c1862a2a5b845c6b2b360488cf47af55dfa79c98f6a6bf98b5/click-8.1.7.tar.gz"
-    sha256 "ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"
+    url "https://files.pythonhosted.org/packages/b9/2e/0090cbf739cee7d23781ad4b89a9894a41538e4fcf4c31dcdd705b78eb8b/click-8.1.8.tar.gz"
+    sha256 "ed53c9d8990d83c2a27deae68e4ee337473f6330c040a31d4225c9574d16096a"
   end
 
   resource "idna" do
@@ -43,8 +44,8 @@ class PolicySentry < Formula
   end
 
   resource "orjson" do
-    url "https://files.pythonhosted.org/packages/e0/04/bb9f72987e7f62fb591d6c880c0caaa16238e4e530cbc3bdc84a7372d75f/orjson-3.10.12.tar.gz"
-    sha256 "0a78bbda3aea0f9f079057ee1ee8a1ecf790d4f1af88dd67493c6b8ee52506ff"
+    url "https://files.pythonhosted.org/packages/45/0b/8c7eaf1e2152f1e0fb28ae7b22e2b35a6b1992953a1ebe0371ba4d41d3ad/orjson-3.10.13.tar.gz"
+    sha256 "eb9bfb14ab8f68d9d9492d4817ae497788a15fd7da72e14dfabc289c3bb088ec"
   end
 
   resource "pyyaml" do
@@ -68,12 +69,14 @@ class PolicySentry < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/ed/63/22ba4ebfe7430b76388e7cd448d5478814d3032121827c12a2cc287e2260/urllib3-2.2.3.tar.gz"
-    sha256 "e7d814a81dad81e6caf2ec9fdedb284ecc9c73076b62654547cc64ccdcae26e9"
+    url "https://files.pythonhosted.org/packages/aa/63/e53da845320b757bf29ef6a9062f5c669fe997973f966045cb019c3f4b66/urllib3-2.3.0.tar.gz"
+    sha256 "f8c5449b3cf0861679ce7e0503c7b44b5ec981bec0d1d3795a07f1ba96f0204d"
   end
 
   def install
     virtualenv_install_with_resources
+
+    generate_completions_from_executable(bin/"policy_sentry", shells: [:fish, :zsh], shell_parameter_format: :click)
   end
 
   test do

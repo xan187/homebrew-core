@@ -3,19 +3,18 @@ class Yamale < Formula
 
   desc "Schema and validator for YAML"
   homepage "https://github.com/23andMe/Yamale"
-  url "https://files.pythonhosted.org/packages/a1/52/0faa32aa15f241a9f950ded276c942db69bce8dda5f19241f6b960080dca/yamale-5.2.1.tar.gz"
-  sha256 "19bbe713d588f07177bc519a46070c0793ed126ea37f425a76055b99703f835a"
+  url "https://files.pythonhosted.org/packages/37/27/da3742a358015f3c2a069ccdaf7e5766ac358e8200319f640755db3128ae/yamale-6.0.0.tar.gz"
+  sha256 "60be681f35e4939320b89de0d6f187ee0e5479ae7f7286b7f17f0859ddee4a66"
   license "MIT"
   head "https://github.com/23andMe/Yamale.git", branch: "master"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_sequoia: "972e3519557190a2fb6f6b22c98b61fe538d5624b14da8d34e0bfa553a30ab92"
-    sha256 cellar: :any,                 arm64_sonoma:  "9bc34bd97e2f3b863536b6d5a496a8d1e302a2c82d9e502a7fe9b5ce292e2928"
-    sha256 cellar: :any,                 arm64_ventura: "59d8b6c4c7d427f1ae7a5d7e12020372d12d9dac4e84112583d928c145062c9c"
-    sha256 cellar: :any,                 sonoma:        "a5b74a8255fd2673d509c7a5d83261c3091d62d756552e5f487e3fa011a2db38"
-    sha256 cellar: :any,                 ventura:       "4771d6bf1e8781dc07095dfc196702fcebad4d668e7cdce136b81e1e0f01a4c8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8896fa98af8cd7309abc1ae9a63ea54da11fdac0029b397481f9644f236fe0e6"
+    sha256 cellar: :any,                 arm64_sequoia: "e48267ff74adef8ba5d4d66834e837278195007081f1ba45e3b9142d17edcc1b"
+    sha256 cellar: :any,                 arm64_sonoma:  "84c923dcb48dca1e6eed547ce3768edc50d1cf4a357cbbe777b76e0cf9d1df50"
+    sha256 cellar: :any,                 arm64_ventura: "7a25c95c119ca7c208907a8a8f96555ceacaeb99ca3e33742127a1024293461d"
+    sha256 cellar: :any,                 sonoma:        "da45cebb15964ac288acd319dc2bf59553a4248ee2e0ec33959267b3fe684ac4"
+    sha256 cellar: :any,                 ventura:       "5d79479b30e4a0b9060051b53726d56cc6b96cd7a5e107584b5ca4459d6ad259"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "eef4d6178db727a8de6d7749a1e03f2fafe21384e58b20f7e29d2bd1f35450ca"
   end
 
   depends_on "libyaml"

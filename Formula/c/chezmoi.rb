@@ -1,8 +1,8 @@
 class Chezmoi < Formula
   desc "Manage your dotfiles across multiple diverse machines, securely"
   homepage "https://chezmoi.io/"
-  url "https://github.com/twpayne/chezmoi/archive/refs/tags/v2.56.0.tar.gz"
-  sha256 "bc56294a3c47c0dfa5e22f05b1e8f6f656b650fd212d83975039a521b74e3d3c"
+  url "https://github.com/twpayne/chezmoi/archive/refs/tags/v2.57.0.tar.gz"
+  sha256 "123efcfb37de7803ccb9ddf666adb3c7880a62c62550b877fc8f928e1622b4a5"
   license "MIT"
   head "https://github.com/twpayne/chezmoi.git", branch: "master"
 
@@ -14,12 +14,13 @@ class Chezmoi < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "59981bbb51876426e0f5dbe45fd7941dc817e74626b8727bede5094ca2f11095"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d57430e5ccfdc7362398e638eefaedd2645e6dbc356245daf5712c76f3de0a4c"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "7dc2f6fbd8f6649608760cbaab11c3f3c185425498bf1aa42365dac0806eb854"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ff5981b1bab8536e7b2fd900cd2469fa0ef88d864ee8664c68bf8290ce7705d6"
-    sha256 cellar: :any_skip_relocation, ventura:       "357f2b6e81ebf953a355a4696d4899a1cc92a41169afcb03bcd441e3bd502867"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b7d4b1be25655a3a283277296023b21680f81037e4a87e2ee2e393c3b26948b2"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "77ec7d2734d23bf0d9934d6d4744d8f19b1823cb98b79f8d55672b5a1f967df8"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6ecc493e76cce0753b19ece6210f8e5afbbca482f36aa44777d29e0d8b9f8424"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "6950d012926f1f58b81ef15778632d6ee82fc243a0720e85c5391035ecb7b192"
+    sha256 cellar: :any_skip_relocation, sonoma:        "5a8f970f1b158df239406918466394993a8eef00eaad46d2bc9179818300ad15"
+    sha256 cellar: :any_skip_relocation, ventura:       "0ff44c5283c43dc1114c0308b010507a697d21dfd4815c968603817b6cf98d4a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "48ca4c1c3f1a96365acc71402e6e3de922830aa635e859a04158cf6f9a1bb2c3"
   end
 
   depends_on "go" => :build
@@ -34,7 +35,7 @@ class Chezmoi < Formula
     ]
     system "go", "build", *std_go_args(ldflags:)
 
-    bash_completion.install "completions/chezmoi-completion.bash"
+    bash_completion.install "completions/chezmoi-completion.bash" => "chezmoi"
     fish_completion.install "completions/chezmoi.fish"
     zsh_completion.install "completions/chezmoi.zsh" => "_chezmoi"
   end
