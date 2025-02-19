@@ -298,7 +298,7 @@
     "package_name": "eralchemy[pygraphviz]"
   },
   "esphome": {
-    "exclude_packages": ["certifi", "cryptography"]
+    "exclude_packages": ["certifi", "cryptography", "pillow"]
   },
   "esptool": {
     "exclude_packages": ["cryptography"]
@@ -619,6 +619,9 @@
   "pass-import": {
     "exclude_packages": ["certifi"]
   },
+  "pdfly": {
+    "exclude_packages": ["pillow"]
+  },
   "pdm": {
     "exclude_packages": ["certifi"]
   },
@@ -814,6 +817,9 @@
   },
   "snakemake": {
     "exclude_packages": ["certifi"]
+  },
+  "snowflake-cli": {
+    "exclude_packages": ["certifi", "cryptography"]
   },
   "snapcraft": {
     "exclude_packages": ["certifi", "cryptography", "pygit2"],

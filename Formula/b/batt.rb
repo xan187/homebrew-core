@@ -2,14 +2,14 @@ class Batt < Formula
   desc "Control and limit battery charging on Apple Silicon MacBooks"
   homepage "https://github.com/charlie0129/batt"
   url "https://github.com/charlie0129/batt.git",
-      tag:      "v0.3.4",
-      revision: "296bc6c50e18e0ca371bacdb7648f9212f9f6f2e"
+      tag:      "v0.3.6",
+      revision: "a6952e4423e9f9cd175db5175e9b62de96edc6b7"
   license "GPL-2.0-only"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e3a86321ae93e4b8ef2388bce614194fa5cd3e2c767d97254844b5a9bcfb4978"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "b1a01cdbc3c255903ceed314ef9d0a42bc6fe3fc1558655817ca283a03f257be"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "9d0a0c3bdfdb7af80a89b7c27f027b0a7d561c263e97a8948f67d3502e644af7"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e386881441aa6f47e924c68949b6ae352942a3afa4db2f224396a26f14a2f6d2"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0810f6d7f6f8dccad981dde2c0bed237665e8ee03a752c12d521bfa66441fead"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "77c72ae72c4bd6f8d26c510604d8313e5d4b573e65df7882a1305d8616b9f095"
   end
 
   depends_on "go" => :build

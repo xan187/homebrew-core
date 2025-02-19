@@ -1,17 +1,17 @@
 class Cntb < Formula
   desc "Contabo Command-Line Interface (CLI)"
   homepage "https://github.com/contabo/cntb"
-  url "https://github.com/contabo/cntb/archive/refs/tags/v1.5.1.tar.gz"
-  sha256 "96e27d941179c3214e4198a8aeaa43ba7fe27882ea7aa4590bc9b430f3513375"
+  url "https://github.com/contabo/cntb/archive/refs/tags/v1.5.3.tar.gz"
+  sha256 "d7320abad0c67e0b22bf008e7efba0ca55c48838d42b6ae3bce2e9bfabb96ec6"
   license "GPL-3.0-only"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "375ad153b7cbbc554d3acdf0881d8f9cf3c8e65128479253b3200e591521578b"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "375ad153b7cbbc554d3acdf0881d8f9cf3c8e65128479253b3200e591521578b"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "375ad153b7cbbc554d3acdf0881d8f9cf3c8e65128479253b3200e591521578b"
-    sha256 cellar: :any_skip_relocation, sonoma:        "d26ef49f5d1b16eef6e6946ceecdb449acd084ff390a2390138de3a52463d0d9"
-    sha256 cellar: :any_skip_relocation, ventura:       "d26ef49f5d1b16eef6e6946ceecdb449acd084ff390a2390138de3a52463d0d9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a3fa1a2d2d2696aad88f9304b1b6ab54fcfb4b1f13a069cfa516e02bd2746792"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "2d1015034e1cd267b3a8ca19c2e130b5813924706a69997a9106fc6714905222"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2d1015034e1cd267b3a8ca19c2e130b5813924706a69997a9106fc6714905222"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "2d1015034e1cd267b3a8ca19c2e130b5813924706a69997a9106fc6714905222"
+    sha256 cellar: :any_skip_relocation, sonoma:        "b8b801ac1899bd8b2302ca19d2c19b4221b3b5f56f303c1459ec16608fa3336a"
+    sha256 cellar: :any_skip_relocation, ventura:       "b8b801ac1899bd8b2302ca19d2c19b4221b3b5f56f303c1459ec16608fa3336a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6c95866891216ebc9cfd7bc5e88987fb8b3d5887a3acc1b9a1c7318b205ccdcf"
   end
 
   depends_on "go" => :build

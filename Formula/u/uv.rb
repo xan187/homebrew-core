@@ -1,18 +1,18 @@
 class Uv < Formula
   desc "Extremely fast Python package installer and resolver, written in Rust"
-  homepage "https://github.com/astral-sh/uv"
-  url "https://github.com/astral-sh/uv/archive/refs/tags/0.5.31.tar.gz"
-  sha256 "c1d05f7046ccd37ed86f9812a9f980189183510eb8dee91387f05eeb45508b1c"
+  homepage "https://docs.astral.sh/uv/"
+  url "https://github.com/astral-sh/uv/archive/refs/tags/0.6.2.tar.gz"
+  sha256 "11a7e116801ce486a82d938afbaed59dbef5586c37e59635ba5a664d9570969c"
   license any_of: ["Apache-2.0", "MIT"]
   head "https://github.com/astral-sh/uv.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "2eb2c82a7c21faea776f64cb1b5662c74f60f4684910dc8f15e967575a4933a7"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "f72de968a76435217bc7d2aa8be7db9409a78a9fb34ace067c86e2f96472f280"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "3831f5fe9f1d810b30b895bcceb1834f904532f67e3abd6e97ee20ccffdf0ad5"
-    sha256 cellar: :any_skip_relocation, sonoma:        "9453a1af313a6855512a21ad0936171f0511346b8a0949475e4cd4a81a93eda1"
-    sha256 cellar: :any_skip_relocation, ventura:       "1895a09811e0c9be86a36acdf59beee1e2807d6ce23b922b376a9a8f52a597ba"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6cc7008ddf886d7262d190424b1d894560eaaca1e8a90a7cd575f1578fc634ba"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8b22556818eaa8a29e5f96ede2f29208784223d7f80dbde1fdb0bdb534189525"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2956b017a226db075ab2c409232da91f66f5daf6844422f3e27a2e754c0da7e3"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "8c8cfb31027e176f1aa71ecd57b0d4b47c87230a38e0ede57900eceb60933a2f"
+    sha256 cellar: :any_skip_relocation, sonoma:        "be78e509921388b4f2383d69fe52ab3f2413259721e73effdd0fbb4d2c681f1a"
+    sha256 cellar: :any_skip_relocation, ventura:       "e5e3718aeccf49299cc3cf8e0b3c4c312543cc5e78c9c2bf273fe69fb703d02e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9e0753c6877b5ce1fad36fc7713b06aa57c2ccfdafc998e6f51ad0682ef97c35"
   end
 
   depends_on "pkgconf" => :build

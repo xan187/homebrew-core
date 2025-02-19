@@ -3,17 +3,17 @@ class Molecule < Formula
 
   desc "Automated testing for Ansible roles"
   homepage "https://molecule.readthedocs.io"
-  url "https://files.pythonhosted.org/packages/2e/a6/d8f507bedf42a88eb96e10a34cfd93f7266fa29363e76a8c49aa729f7b21/molecule-25.2.0.tar.gz"
-  sha256 "2f74a31ed03a562c0cb453fe80c2f95a92f663c6104429817c56cb101d903047"
+  url "https://files.pythonhosted.org/packages/d6/fe/de492105b3d8973c82231bad57a6468c8ca4d1eaae2a2a93edd7725fbc1b/molecule-25.3.1.tar.gz"
+  sha256 "c8766907c8b8bfec88d7d1a5df1232bd4606a0c53d9cb95d38e84b455a6993a6"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "e9a3d547c986058098bfc24eaa3f230f23a495455aaa36d37840901b5b876d99"
-    sha256 cellar: :any,                 arm64_sonoma:  "7c2d2deaae98ddd674129301c742f66752374bfe73715b99afae7c1d72b695b7"
-    sha256 cellar: :any,                 arm64_ventura: "957003b2ac8f53f1c45e709fa3b6874d8a5b8caf3634026a09f87d47b45f16fa"
-    sha256 cellar: :any,                 sonoma:        "ee5158713195e7e9c8e49b177a301a2703674cebddc2c6b6327e683876cd6665"
-    sha256 cellar: :any,                 ventura:       "1b5395ab6de07622fb7697f14cb954e61944ec7df6f6823b9e88c4a68732f226"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8b322f3ad48f4a4ccca8066658e571248161c8371ddc4a0542dccc347819faf2"
+    sha256 cellar: :any,                 arm64_sequoia: "7e0aa9a25d195c37074e7aab917ebdb95c886794d98c09b385f7cd182cf0da6a"
+    sha256 cellar: :any,                 arm64_sonoma:  "f056cee7bf5aee8c600f20fe83787506970f0124ae81633819ab9a6879481b74"
+    sha256 cellar: :any,                 arm64_ventura: "00fc5e4056d54356511a990d0f9ac0b7f1ddfbb6472a52b00c56865811fec352"
+    sha256 cellar: :any,                 sonoma:        "140cbee54624d455c91d709f82e3ea798cae71e904697c73eae66122fbd1df2d"
+    sha256 cellar: :any,                 ventura:       "31f334d544197809516a0690ae7ccd17c6133ec2dab9548bbb5b60f5be23d125"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "39120889709fd5e3082deb9b1a24bde17d9800c3842b5c228a5722aecc3964c8"
   end
 
   depends_on "rust" => :build
@@ -30,8 +30,8 @@ class Molecule < Formula
   end
 
   resource "ansible-compat" do
-    url "https://files.pythonhosted.org/packages/19/43/e97e0cadff77f1a0aa96ade3b20cdc824a6343b3c334122f5d806157bcf9/ansible_compat-25.1.0.tar.gz"
-    sha256 "e6d696b0ffe098af2fae7c5b2085fe8fd92c9ed8cb938fe77c8c87af0f2da056"
+    url "https://files.pythonhosted.org/packages/b9/51/52af1cd75769bcc9cd54b012210c400eafaa6cd459302517fec08899b3ed/ansible_compat-25.1.4.tar.gz"
+    sha256 "ebf8620021dd25c2d7c3e8e9382efbe7328db58ea396cbbe688ebef80dc8f8ae"
   end
 
   resource "ansible-core" do
@@ -220,8 +220,8 @@ class Molecule < Formula
     # Test the Vagrant driver
     system bin/"molecule", "init", "scenario", "acme.foo_vagrant", "--driver-name",
                            "vagrant", "--provisioner-name", "ansible"
-    assert_predicate testpath/"molecule/acme.foo_vagrant/molecule.yml", :exist?,
-                     "Failed to create 'molecule/acme.foo_vagrant/molecule.yml' file!"
+    assert_path_exists testpath/"molecule/acme.foo_vagrant/molecule.yml",
+"Failed to create 'molecule/acme.foo_vagrant/molecule.yml' file!"
     output = shell_output("#{bin}/molecule list --format yaml").chomp
     assert_match "Scenario Name: acme.foo_vagrant", output
   end

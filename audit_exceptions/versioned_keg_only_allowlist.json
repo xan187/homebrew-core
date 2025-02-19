@@ -20,7 +20,6 @@
   "libxml++@4",
   "libxml++@5",
   "linux-headers@5.15",
-  "lua@5.1",
   "openssl@1.1",
   "openssl@3.0",
   "openssl@3",

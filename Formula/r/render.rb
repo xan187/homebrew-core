@@ -1,18 +1,19 @@
 class Render < Formula
   desc "Command-line interface for Render"
-  homepage "https://github.com/render-oss/cli"
+  homepage "https://render.com/docs/cli"
   url "https://github.com/render-oss/cli/archive/refs/tags/v2.0.0.tar.gz"
   sha256 "a7bcc78fd4d38df7a19fcfcd3958dc89ded4353c12b5ed695cd215c6998c9926"
   license "Apache-2.0"
   head "https://github.com/render-oss/cli.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "681dddef0b20697c1913c74aea32849ab4764d08d0c77d1c7380348b288accf6"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "681dddef0b20697c1913c74aea32849ab4764d08d0c77d1c7380348b288accf6"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "681dddef0b20697c1913c74aea32849ab4764d08d0c77d1c7380348b288accf6"
-    sha256 cellar: :any_skip_relocation, sonoma:        "135115371cc49b22b825566d5e4ad40f3f46a3d302a22ae8e403844cb1cc8bac"
-    sha256 cellar: :any_skip_relocation, ventura:       "135115371cc49b22b825566d5e4ad40f3f46a3d302a22ae8e403844cb1cc8bac"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6304d7700a199f1684d339d7dfeecd67949a86373fcaed0b6b585437fe3a29ee"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e96e67b0026c03994984904c9f04b34bfbc1618f00cf2620c42698763b7bb49a"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "e96e67b0026c03994984904c9f04b34bfbc1618f00cf2620c42698763b7bb49a"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "e96e67b0026c03994984904c9f04b34bfbc1618f00cf2620c42698763b7bb49a"
+    sha256 cellar: :any_skip_relocation, sonoma:        "668d6be46967a7a95f0fe53479f86ebebda33997781fd65f92e0200599c0fe73"
+    sha256 cellar: :any_skip_relocation, ventura:       "668d6be46967a7a95f0fe53479f86ebebda33997781fd65f92e0200599c0fe73"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3bdaed3e1e32be9841660912c4bf07003306532d1952957b2551c821f72017c2"
   end
 
   depends_on "go" => :build
@@ -20,7 +21,7 @@ class Render < Formula
   def install
     ldflags = %W[
       -s -w
-      -X github.com/renderinc/cli/pkg/cfg.Version=#{version}
+      -X github.com/render-oss/cli/pkg/cfg.Version=#{version}
     ]
     system "go", "build", *std_go_args(ldflags:)
   end

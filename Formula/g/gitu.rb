@@ -1,18 +1,18 @@
 class Gitu < Formula
   desc "TUI Git client inspired by Magit"
   homepage "https://github.com/altsem/gitu"
-  url "https://github.com/altsem/gitu/archive/refs/tags/v0.28.0.tar.gz"
-  sha256 "0ccf2b6de3a45091c4e8ddabd6539d5f6fb53526d1e2928a4bbfdf40808236d4"
+  url "https://github.com/altsem/gitu/archive/refs/tags/v0.28.2.tar.gz"
+  sha256 "6ff5b7caac401341ae5b2f01749e5c2ab49ab2a44b4e1e139fc2e7601223499e"
   license "MIT"
   head "https://github.com/altsem/gitu.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "43db867350902afc24e3b7cacb38823050e43a0c84003822bf2ff2a6cec22857"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d195d1d745eb34a41fd74d53a17369cbffd0fe109e3ca91e3f88da2c09c3ac95"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "9ca0f0d47a4efeeddc2143a7c2349fac93233871b41af31eb1d5a1eba3efb81f"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ece66de3fe57ffe5441128b9197734a6f6245f4fe7700fb52d662de12bea5129"
-    sha256 cellar: :any_skip_relocation, ventura:       "21c8b2b42f7decfce9e7cf652241f7e247593326bfbfa080c0282fedcfd708b8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "573a485a9652c7cba59593a3067c7fd4a31247d9bcb8f9d3840f335001ec2412"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d1a661359988c38166a22b5a1cd2f372e65acc6e2fd81fdd334d8338496847b1"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "742d966fa2247083051fa8ef4df3d0ee91de80a38f4bf4b40fcc0f8bae76eed5"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "7ab2aab5e9ee419f64ee102236a0380a41678ee545bc765402f8996d54937f8b"
+    sha256 cellar: :any_skip_relocation, sonoma:        "e640a1bc3d4841ed5c3e083fb30ef01144b9cd8b0b9a1313c79ac45b02e5ad19"
+    sha256 cellar: :any_skip_relocation, ventura:       "d2c113b919890dcbadbb16515e31a7b7fccb1cfc5203e32caae7c8f1ed9749fe"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "fa5c0ef5e9ae82a2b3d8e2b8833183bc52a687aca8f4379c9dfe1c70b3aa01ac"
   end
 
   depends_on "rust" => :build

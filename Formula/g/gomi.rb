@@ -1,18 +1,18 @@
 class Gomi < Formula
   desc "Functions like rm but with the ability to restore files"
   homepage "https://gomi.dev"
-  url "https://github.com/babarot/gomi/archive/refs/tags/v1.3.2.tar.gz"
-  sha256 "4adfb52f01a860c0248fc63785dc55e2a8cc7e7cb4084f29256d1f14e4524042"
+  url "https://github.com/babarot/gomi/archive/refs/tags/v1.4.3.tar.gz"
+  sha256 "8026dbba1f07a67b20c7a2ffa5bc7514da888a5f64a9fc11dde54112353a8912"
   license "MIT"
   head "https://github.com/babarot/gomi.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "096305bb43da9bc826d8115f213a903d6c3beaa0e835664565891dc5e293f61f"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "096305bb43da9bc826d8115f213a903d6c3beaa0e835664565891dc5e293f61f"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "096305bb43da9bc826d8115f213a903d6c3beaa0e835664565891dc5e293f61f"
-    sha256 cellar: :any_skip_relocation, sonoma:        "2f36d7ec6da01f449b95d32e91905314b45bc82b64d02073947374d60d47c4c2"
-    sha256 cellar: :any_skip_relocation, ventura:       "2f36d7ec6da01f449b95d32e91905314b45bc82b64d02073947374d60d47c4c2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c8e276210e9d45b12c258473fec36b2d43c013a45734e814909f8544d6b53305"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d97e4b9abe9e07847f0365360d4a6fab8c34177a2e57b452511c73354787c92a"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d97e4b9abe9e07847f0365360d4a6fab8c34177a2e57b452511c73354787c92a"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "d97e4b9abe9e07847f0365360d4a6fab8c34177a2e57b452511c73354787c92a"
+    sha256 cellar: :any_skip_relocation, sonoma:        "62d768b867c8abf14ff3bd71c13e290f54af143c949cec51fcfb054c10e36c61"
+    sha256 cellar: :any_skip_relocation, ventura:       "62d768b867c8abf14ff3bd71c13e290f54af143c949cec51fcfb054c10e36c61"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3d6ca2b7e9cb1d6062f025371791fdada6adbf7ef7e27b49a383c7bcb3a00143"
   end
 
   depends_on "go" => :build
@@ -28,6 +28,9 @@ class Gomi < Formula
   end
 
   test do
+    # Create a trash directory
+    mkdir ".gomi"
+
     assert_match version.to_s, shell_output("#{bin}/gomi --version")
 
     (testpath/"trash").write <<~TEXT

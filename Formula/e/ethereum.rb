@@ -1,8 +1,8 @@
 class Ethereum < Formula
   desc "Official Go implementation of the Ethereum protocol"
   homepage "https://geth.ethereum.org/"
-  url "https://github.com/ethereum/go-ethereum/archive/refs/tags/v1.15.0.tar.gz"
-  sha256 "b720c91aa6d721ba1f9ec753fa216b27880d0fdcb3204d0725d411d215507a13"
+  url "https://github.com/ethereum/go-ethereum/archive/refs/tags/v1.15.2.tar.gz"
+  sha256 "1728ae14d728d4ce86a840ee783d73dd9cffe9e1dbb82ecc032e8b93a9841cc4"
   license "LGPL-3.0-or-later"
   head "https://github.com/ethereum/go-ethereum.git", branch: "master"
 
@@ -12,16 +12,15 @@ class Ethereum < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "18ea2d65b0920a84220d0990f99bb1710476c6f47810e8baa2894429b5023f04"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d21db4489b02089d028aa86b968174e9766ee72aadd84076033db575788d905b"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "b92cd7a8aec12ae55aaa429e13d87275a6e8e8fec8e74ce6d05f15c0d8c5a10a"
-    sha256 cellar: :any_skip_relocation, sonoma:        "c1301eb97ce0bd81b4e4af5e0deb2c14544115dc5fb5546b1dcd980bbcaf44b6"
-    sha256 cellar: :any_skip_relocation, ventura:       "318625ff790c0aa3a27adcee3ad9fe48daa6fd54ac6abc01d685ab4646dd3cf3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a5c5d3d6d76a20cd42d3fcdc6f2ce2e83347481ec188b40d7ceff00d32238fc0"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "bf37125a98b59d964437bc25af0d2eb7363f685e6fdd277f0f924022aeb444d7"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "734ef3c02ca22958596ca7187b58434480c536d4076a7a6a6298e89faa1b4b65"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "7b29964d1f4f1c0d91e60771e53f7d2218bf4fc3245a43f1d7a630f82dc2a0ef"
+    sha256 cellar: :any_skip_relocation, sonoma:        "6c9004f938eaf735432a917a8b0d3ec57917a09114631f195ddca53e99bfd06f"
+    sha256 cellar: :any_skip_relocation, ventura:       "628094cfeec24f248bb189214199ad9b01c81a7ab62d47bead90d6d3dad9e379"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4a8f8ad3c3324e670c9d791688c54a751c4b2e6e78f0b75781f4770db6f2d1aa"
   end
 
-  # Use "go" again when https://github.com/ethereum/go-ethereum/issues/31072 is fixed and released
-  depends_on "go@1.23" => :build
+  depends_on "go" => :build
 
   conflicts_with "erigon", because: "both install `evm` binaries"
 
@@ -32,7 +31,7 @@ class Ethereum < Formula
     ENV.O0 if OS.linux?
 
     system "make", "all"
-    bin.install Dir["build/bin/*"]
+    bin.install buildpath.glob("build/bin/*")
   end
 
   test do
@@ -54,8 +53,8 @@ class Ethereum < Formula
     JSON
 
     system bin/"geth", "--datadir", "testchain", "init", "genesis.json"
-    assert_predicate testpath/"testchain/geth/chaindata/000002.log", :exist?
-    assert_predicate testpath/"testchain/geth/nodekey", :exist?
-    assert_predicate testpath/"testchain/geth/LOCK", :exist?
+    assert_path_exists testpath/"testchain/geth/chaindata/000002.log"
+    assert_path_exists testpath/"testchain/geth/nodekey"
+    assert_path_exists testpath/"testchain/geth/LOCK"
   end
 end

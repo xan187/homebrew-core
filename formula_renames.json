@@ -96,7 +96,6 @@
   "libtorch": "pytorch",
   "libxml++3": "libxml++@3",
   "llama": "walk",
-  "lua51": "lua@5.1",
   "mat": "mat2",
   "minizip2": "minizip-ng",
   "mist": "mist-cli",

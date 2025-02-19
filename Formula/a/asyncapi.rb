@@ -1,17 +1,17 @@
 class Asyncapi < Formula
   desc "All in one CLI for all AsyncAPI tools"
   homepage "https://github.com/asyncapi/cli"
-  url "https://registry.npmjs.org/@asyncapi/cli/-/cli-2.16.0.tgz"
-  sha256 "349541fdb294e783fed6a9ca2ee1819ed56f099cb67768608dbd44c21623edb5"
+  url "https://registry.npmjs.org/@asyncapi/cli/-/cli-2.16.5.tgz"
+  sha256 "ec55e2822f993508819d549de96416d301ce13ad409702a55e5da8f55121bf3a"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "ec41acd6b991caf7391e248439e78a4d7f3672dc1eaa5a0776dbe87cd8fb389d"
-    sha256 cellar: :any,                 arm64_sonoma:  "ec41acd6b991caf7391e248439e78a4d7f3672dc1eaa5a0776dbe87cd8fb389d"
-    sha256 cellar: :any,                 arm64_ventura: "ec41acd6b991caf7391e248439e78a4d7f3672dc1eaa5a0776dbe87cd8fb389d"
-    sha256 cellar: :any,                 sonoma:        "e72fccfaa111bc506375923a3f061cfa5eff01c37ddf403b2da573194c68622a"
-    sha256 cellar: :any,                 ventura:       "e72fccfaa111bc506375923a3f061cfa5eff01c37ddf403b2da573194c68622a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e24b582343f7346004c51f8abbf4ca310077ca4947f4bc076cf94856c343feed"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "0413c3d40c321124d0e8f319051833f494c1225491a0e6569df6f0971c61bdda"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0413c3d40c321124d0e8f319051833f494c1225491a0e6569df6f0971c61bdda"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "0413c3d40c321124d0e8f319051833f494c1225491a0e6569df6f0971c61bdda"
+    sha256 cellar: :any_skip_relocation, sonoma:        "266c7d6b76a47abb4fa7d2060257d75ea9043bc8ce2770b19b8b4d1e57e03e05"
+    sha256 cellar: :any_skip_relocation, ventura:       "266c7d6b76a47abb4fa7d2060257d75ea9043bc8ce2770b19b8b4d1e57e03e05"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0413c3d40c321124d0e8f319051833f494c1225491a0e6569df6f0971c61bdda"
   end
 
   depends_on "node"
@@ -22,7 +22,7 @@ class Asyncapi < Formula
   end
 
   test do
-    system bin/"asyncapi", "new", "--file-name=asyncapi.yml", "--example=default-example.yaml", "--no-tty"
-    assert_predicate testpath/"asyncapi.yml", :exist?, "AsyncAPI file was not created"
+    system bin/"asyncapi", "new", "file", "--file-name=asyncapi.yml", "--example=default-example.yaml", "--no-tty"
+    assert_path_exists testpath/"asyncapi.yml", "AsyncAPI file was not created"
   end
 end

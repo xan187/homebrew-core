@@ -1,8 +1,8 @@
 class QuiltInstaller < Formula
   desc "Installer for Quilt for the vanilla launcher"
   homepage "https://quiltmc.org/"
-  url "https://maven.quiltmc.org/repository/release/org/quiltmc/quilt-installer/0.10.2/quilt-installer-0.10.2.jar"
-  sha256 "42bcd1337074d25b51c1d97f2c43cab397d851b38f32b4ab5c87c84897c28c9a"
+  url "https://maven.quiltmc.org/repository/release/org/quiltmc/quilt-installer/0.11.3/quilt-installer-0.11.3.jar"
+  sha256 "58e209b370a3889be3049895012abf69077ccd82064b187da2bc3026783510b3"
   license "Apache-2.0"
 
   livecheck do
@@ -11,7 +11,7 @@ class QuiltInstaller < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "38775955a87a57552b1ea6a8c91202f37d08dd7e588af3c2ef14a65110726ae1"
+    sha256 cellar: :any_skip_relocation, all: "b0e97a729b329cd0490501e161907b2d6cd8460bf8fe31dedf0369aa0f14cd70"
   end
 
   depends_on "openjdk"
@@ -23,6 +23,6 @@ class QuiltInstaller < Formula
 
   test do
     system bin/"quilt-installer", "install", "server", "1.19.2"
-    assert_predicate testpath/"server/quilt-server-launch.jar", :exist?
+    assert_path_exists testpath/"server/quilt-server-launch.jar"
   end
 end
