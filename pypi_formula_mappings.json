@@ -911,7 +911,7 @@
     "exclude_packages": ["pygit2"]
   },
   "theharvester": {
-    "exclude_packages": ["certifi"]
+    "exclude_packages": ["cffi", "certifi"]
   },
   "tmt": {
     "exclude_packages": ["certifi"]

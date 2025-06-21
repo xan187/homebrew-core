@@ -126,6 +126,7 @@ arkade
 arm-none-eabi-gcc
 armadillo
 arp-scan
+arp-scan-rs
 arping
 arrayfire
 artillery
@@ -1804,6 +1805,7 @@ kaskade
 katago
 katana
 kbld
+kbt
 kcat
 kcgi
 kcov
@@ -2375,6 +2377,7 @@ memtester
 menhir
 mercurial
 mergiraf
+mermaid-cli
 mesa
 meson
 meta-package-manager
