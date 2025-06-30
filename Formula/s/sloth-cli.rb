@@ -1,4 +1,4 @@
-class Sloth < Formula
+class SlothCli < Formula
   desc "Prometheus SLO generator"
   homepage "https://sloth.dev/"
   url "https://github.com/slok/sloth/archive/refs/tags/v0.12.0.tar.gz"
@@ -12,19 +12,19 @@ class Sloth < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "76a59c6254842dd76f9020868f4ec38388e645039ef51077192d1f5f0fe573d9"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6e37e3ca543f2167c514db79724840c8174179f8c465b114a94e8a717d7ff56e"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "b93c679c5217405d26f967617e4de9b35fd5ae0c57814a4fc00302481023bd0b"
-    sha256 cellar: :any_skip_relocation, sonoma:        "95fd259914b02afb9489548a2420594eaeafc2afeebbe8d8772e37a5b3101036"
-    sha256 cellar: :any_skip_relocation, ventura:       "1b9c32ba8aa94c9f087fee074c651c7540bd66b11b0d1966d66b79e6fafccc87"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6ee5d6b1c4cb80ee6b90d2f6081a2adc59d952ef3515599b00e8f0a4aa7bb047"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d1c990842a4c39840e5f0240f27d9da5157d7d8bc016f3391f52b3b6766bafcd"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "170c93b4b71a8f35fc9ed555f4a04144978de36f33e591ce6f54826ec6ebc735"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "a277f241361a71ab209b262a8e1398153f01dee27aa516d74964e60e58b0b065"
+    sha256 cellar: :any_skip_relocation, sonoma:        "b59a01ec305744639a17c93f970bf0cdbdd46911762ff76a0df40bc5bcf41873"
+    sha256 cellar: :any_skip_relocation, ventura:       "eac5fbb9da7a44730c8dfff467cfec9f4ea0e3c14ddd6c6eb7460ccdc148a0e0"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "08c465be42d6e6b202aed56db3778072d4650aae2e78ac5aee752c6db0e1ea5b"
   end
 
   depends_on "go" => :build
 
   def install
     ldflags = "-s -w -X github.com/slok/sloth/internal/info.Version=#{version}"
-    system "go", "build", *std_go_args(ldflags:), "./cmd/sloth"
+    system "go", "build", *std_go_args(output: bin/"sloth", ldflags:), "./cmd/sloth"
 
     pkgshare.install "examples"
   end

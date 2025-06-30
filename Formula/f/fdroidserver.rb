@@ -3,19 +3,18 @@ class Fdroidserver < Formula
 
   desc "Create and manage Android app repositories for F-Droid"
   homepage "https://f-droid.org"
-  url "https://files.pythonhosted.org/packages/bd/81/728a7426ef7db26bee1a1737dbafe48f4253b249155ec1d6910ecad0c30c/fdroidserver-2.4.0.tar.gz"
-  sha256 "15d91bb8ca0fbc81a346ec222d910af064670c51f20a2b649ef2834c0555d19c"
+  url "https://files.pythonhosted.org/packages/33/76/2b5b90013b559a4cdc8dd627a937523ba58196dab16e48d4badb54bf5da5/fdroidserver-2.4.2.tar.gz"
+  sha256 "5dc926f8306473c33082fc4fdd3356207e5874f91c00c0d76125f26ce35bbe1b"
   license "AGPL-3.0-or-later"
-  revision 2
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "8d6016906c121f0002fae6c469f01c812fbb4518aebc1baaffa81f19f27ed563"
-    sha256 cellar: :any,                 arm64_sonoma:  "16ca987ab6f11fc0467431cdbe011fa69865fab15cff3f9a5c6c04db4386da8a"
-    sha256 cellar: :any,                 arm64_ventura: "5490efa112894e0987dfb59591d63d6d6e74b1cfc9ed3d2053439fc8a3bcb370"
-    sha256 cellar: :any,                 sonoma:        "458200d25496f767ef8c882be55a1b24d87cd830cdb2daf3bfeba52f65b48ae4"
-    sha256 cellar: :any,                 ventura:       "9ac3a07857d89827b13d0cda348b6284bfa22f8ba7f9ba16e014fe550cd3be9a"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "c80a192d684381098082c4813028a5724dd62e4bd553d3568df140c7c7af607c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5f2a78a34e51689f9792bdef1ed77c88ecbdd4e709fbfa78c3db9a654a2a6975"
+    sha256 cellar: :any,                 arm64_sequoia: "2a1121ce163db3c67d32b30e10667c000571e12b2d637d1b438e86cf64d361e5"
+    sha256 cellar: :any,                 arm64_sonoma:  "abfee552e53e4571f9142d6c0f9c93278b80b0add68aa11657eb226564c5f559"
+    sha256 cellar: :any,                 arm64_ventura: "8ea2ac8abc1462eb95554655fd6d1ba3b0ce73eabd552b9a4564ac96dbcbae2b"
+    sha256 cellar: :any,                 sonoma:        "7644e0fb34c58585c1267d384cc9bb00958331bf2b266f1a31df3973656154f1"
+    sha256 cellar: :any,                 ventura:       "fa4725b24f2d00d1b2954360b0ad0e906b47bfd3986c311825331b50f4f89d14"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "72d345d6a950b14c30fb1551c7947f63f963d2d7f70ef79a790b13f1f6e08539"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c29de3c7626ef5a3bdb231624a6427fa2087bb1281c77f52b118c085605492ff"
   end
 
   depends_on "ninja" => :build
@@ -265,8 +264,8 @@ class Fdroidserver < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/7c/2d/c3338d48ea6cc0feb8446d8e6937e1408088a72a39937982cc6111d17f84/pygments-2.19.1.tar.gz"
-    sha256 "61c16d2a8576dc0649d9f39e089b5f02bcd27fba10d8fb4dcc28173f7a45151f"
+    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
+    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
   end
 
   resource "pynacl" do

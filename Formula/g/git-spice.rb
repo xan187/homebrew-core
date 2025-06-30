@@ -1,20 +1,20 @@
 class GitSpice < Formula
   desc "Manage stacked Git branches"
   homepage "https://abhinav.github.io/git-spice/"
-  url "https://github.com/abhinav/git-spice/archive/refs/tags/v0.14.1.tar.gz"
-  sha256 "d03e4d1909ebc2b2c0ab4fb3cfb6248c8209de55eab4f2f564708f9cbd013b8e"
+  url "https://github.com/abhinav/git-spice/archive/refs/tags/v0.15.1.tar.gz"
+  sha256 "f10bbe6d27c68957d52859c81a0f91f11389d77c3f8ee32791040d80d5124e60"
   license "GPL-3.0-or-later"
   head "https://github.com/abhinav/git-spice.git", branch: "main"
 
-  no_autobump! because: :requires_manual_review
+  no_autobump! because: :bumped_by_upstream
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3962cd71cccfbcf207a34e553b8b996e4c4690344d62ae5fe88e3820eab9a0b0"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "3962cd71cccfbcf207a34e553b8b996e4c4690344d62ae5fe88e3820eab9a0b0"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "3962cd71cccfbcf207a34e553b8b996e4c4690344d62ae5fe88e3820eab9a0b0"
-    sha256 cellar: :any_skip_relocation, sonoma:        "c102a8959d74358807163645acf5771a7617406da2b2673429cee0fe96801a50"
-    sha256 cellar: :any_skip_relocation, ventura:       "c102a8959d74358807163645acf5771a7617406da2b2673429cee0fe96801a50"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a88d424b787b4b0e9c48c5aec8c0a340b2eb3e53ad026ea6217405210c08ed5d"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c5996c91ef5186590d7afe73429b2568f8cdedfbd29f6a2f9e7b685f2d55adf2"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c5996c91ef5186590d7afe73429b2568f8cdedfbd29f6a2f9e7b685f2d55adf2"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "c5996c91ef5186590d7afe73429b2568f8cdedfbd29f6a2f9e7b685f2d55adf2"
+    sha256 cellar: :any_skip_relocation, sonoma:        "2b757f83fb8a583ff389d8e3f4481ac40febb11690b977a97b6dfe6eee511060"
+    sha256 cellar: :any_skip_relocation, ventura:       "2b757f83fb8a583ff389d8e3f4481ac40febb11690b977a97b6dfe6eee511060"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e9a1d2413cc3e6e79a4932ed5ff8d21df76d4b00477854669b488112f4f31dec"
   end
 
   depends_on "go" => :build

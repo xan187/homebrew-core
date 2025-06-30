@@ -1,18 +1,18 @@
 class Dish < Formula
   desc "Lightweight monitoring service that efficiently checks socket connections"
   homepage "https://github.com/thevxn/dish"
-  url "https://github.com/thevxn/dish/archive/refs/tags/v1.11.0.tar.gz"
-  sha256 "52981fda7ad890e7c028c11dc656f11ce2e3842735f48b3d173220ea41a3b458"
+  url "https://github.com/thevxn/dish/archive/refs/tags/v1.11.3.tar.gz"
+  sha256 "555a0b673487e02c4f3344d355da3dbbbdb7d4d5293897a875c52c5af0224c45"
   license "MIT"
   head "https://github.com/thevxn/dish.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3215eff5fce1b0eca049f90df81d980a3201df0431956f0da031196bd574f095"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "3215eff5fce1b0eca049f90df81d980a3201df0431956f0da031196bd574f095"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "3215eff5fce1b0eca049f90df81d980a3201df0431956f0da031196bd574f095"
-    sha256 cellar: :any_skip_relocation, sonoma:        "f42cb17f7387a4673aa5f912ca620bb48e772a167cdc934263816bfb8019ba34"
-    sha256 cellar: :any_skip_relocation, ventura:       "f42cb17f7387a4673aa5f912ca620bb48e772a167cdc934263816bfb8019ba34"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0954f4e438d7d0fba720e26ccf2fe1561658b55dd5fcf208b55132e1a2dab289"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "09ac922898e6c1e7486ae0b535cef2a15fed39747343bf87dd8caecdc250aa3e"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "09ac922898e6c1e7486ae0b535cef2a15fed39747343bf87dd8caecdc250aa3e"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "09ac922898e6c1e7486ae0b535cef2a15fed39747343bf87dd8caecdc250aa3e"
+    sha256 cellar: :any_skip_relocation, sonoma:        "18209d738c2ad51461738c42ddb9ef322e46beaaef8a74230fd4ac6c7142c7e6"
+    sha256 cellar: :any_skip_relocation, ventura:       "18209d738c2ad51461738c42ddb9ef322e46beaaef8a74230fd4ac6c7142c7e6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0bc50b47c81c397e16a26c1a260a9c290d99f57867a2915639e50fd56898f6eb"
   end
 
   depends_on "go" => :build
@@ -22,7 +22,7 @@ class Dish < Formula
   end
 
   test do
-    ouput = shell_output("#{bin}/dish https://example.com/:instance 2>&1")
+    ouput = shell_output("#{bin}/dish https://example.com/:instance 2>&1", 3)
     assert_match "error loading socket list: failed to fetch sockets from remote source", ouput
   end
 end

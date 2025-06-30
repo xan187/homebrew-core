@@ -98,6 +98,10 @@
   "badkeys": {
     "exclude_packages": ["cryptography"]
   },
+  "backgroundremover": {
+    "exclude_packages": ["certifi", "numpy", "torch", "torchvision", "pillow", "scipy", "scikit-image"],
+    "extra_packages": ["imageio"]
+  },
   "bagels": {
     "exclude_packages": ["numpy"]
   },
@@ -133,8 +137,7 @@
     "exclude_packages": ["certifi"]
   },
   "btcli": {
-    "exclude_packages": ["certifi", "cffi", "cryptography", "numpy", "pycparser", "six"],
-    "extra_packages": ["setuptools"]
+    "exclude_packages": ["certifi", "numpy"]
   },
   "buku": {
     "package_name": "buku[server]",
@@ -544,7 +547,7 @@
     "exclude_packages": ["pillow", "numpy", "scipy"]
   },
   "mapproxy": {
-    "exclude_packages": ["certifi", "pillow"],
+    "exclude_packages": ["certifi", "numpy", "pillow"],
     "extra_packages": ["pyproj"]
   },
   "mat2": {
@@ -911,7 +914,7 @@
     "exclude_packages": ["pygit2"]
   },
   "theharvester": {
-    "exclude_packages": ["certifi"]
+    "exclude_packages": ["cffi", "certifi"]
   },
   "tmt": {
     "exclude_packages": ["certifi"]

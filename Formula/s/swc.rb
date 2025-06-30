@@ -1,8 +1,8 @@
 class Swc < Formula
   desc "Super-fast Rust-based JavaScript/TypeScript compiler"
   homepage "https://swc.rs"
-  url "https://github.com/swc-project/swc/archive/refs/tags/v1.12.4.tar.gz"
-  sha256 "985b47d6dfd3e9d84a1274b8f7964bb3d957e286d649276af4b097f0e36e6eb0"
+  url "https://github.com/swc-project/swc/archive/refs/tags/v1.12.7.tar.gz"
+  sha256 "4b8a7988943ded37449c5be65d878ba9b810e656e41118ac848a30c79137e4cd"
   license "Apache-2.0"
   head "https://github.com/swc-project/swc.git", branch: "main"
 
@@ -12,13 +12,13 @@ class Swc < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "42549e039f2789ea3d425c384e0872dc15b7300b92fdb0f486cc62921685aec4"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "aba0b68f45a96087de0074a9f0ed8652a18d70e91a9a4f98eaba5da597a56fc8"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "acbbf46610064c5beceec9f22dbddd59831489c31c091ae9e4482eab76a7bdf5"
-    sha256 cellar: :any_skip_relocation, sonoma:        "86c4846107c316e3bcc517d8398c7f207cf496e8f84b8aad230d073b74c83740"
-    sha256 cellar: :any_skip_relocation, ventura:       "6096838d93ab68d2cbd8f31469598f63957338006f839784b39fd6612ddf4f99"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "1d19ac53666dd69a7296277999db283b157544013dcd43c3336189664d810da4"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f6a7aef948f8c28c4268ce71f16598195bf7b155b600f120c633756cd82d01e9"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "5c94e6ddfebae335d5283463717e0e223dc8f511f363b3c2be04d8a6a8cbd5f5"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "abb8da4cfa57348b1b7dfe5b4f7a22b927dee9eac202ca2349fa44b4927b856e"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "4dbe1c9b90466b88c2085589f210700f8693c7ec01308d01ecdabf9e3a089f6c"
+    sha256 cellar: :any_skip_relocation, sonoma:        "47d74e9def85a210ac6f1c28195ebb75cefe20449f6d6b84bc81cd4086f5d3c8"
+    sha256 cellar: :any_skip_relocation, ventura:       "b97feb93ef05765cbca10f538ca27cea7262c4e77f90505b78f38b38804973ef"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "225eabfaec0c1231ac0ca2fdc8e1af6c2787392eff647924208e0efbe306b781"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3b16fb2312d60eff0716b97e49b5cdb154fce5ae5b2822ffceeb3af61839f1f3"
   end
 
   depends_on "rust" => :build

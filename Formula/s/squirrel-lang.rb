@@ -1,4 +1,4 @@
-class Squirrel < Formula
+class SquirrelLang < Formula
   desc "High level, imperative, object-oriented programming language"
   homepage "http://www.squirrel-lang.org"
   url "https://downloads.sourceforge.net/project/squirrel/squirrel3/squirrel%203.2%20stable/squirrel_3_2_stable.tar.gz"
@@ -17,18 +17,13 @@ class Squirrel < Formula
   no_autobump! because: :requires_manual_review
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia:  "c208328e416371ac27e3ae7a78bfd4e319b972848e47647526d282ff36539eb1"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "55b91fac014d0478c05c654b6a4d45edc116a7c4853933a7a8d1ee27643a61b5"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "631ffa6eed034f912c1a23b1f52cca805632e175caa1a1dc22a4a7718fc61fe1"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "4a1b1eaad58270a2b924e75720f9c3a1ce63ca408868ce31637e26fd27d66062"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "0b4a46f4bce39d747dcf5e7ec4ee43afc76646ae6f4e8c0e7ae1601d147061f5"
-    sha256 cellar: :any_skip_relocation, sonoma:         "ba1ea042885244cbc99365b811ec4da8636e538c3ee6eaf5c7b6db2f4557d3bc"
-    sha256 cellar: :any_skip_relocation, ventura:        "9bd02555a226495fcb30c9f539359be571890111c920318f430ecca760c46cc0"
-    sha256 cellar: :any_skip_relocation, monterey:       "c8822588938ec4e83897e6f883ccfad6f39ae6fff7279ea35e988a39c2da4c10"
-    sha256 cellar: :any_skip_relocation, big_sur:        "bb230ed7a9aa535e40bbe4f127cd6d4325fed6be46b4a4dae58c39d01b169666"
-    sha256 cellar: :any_skip_relocation, catalina:       "749bb90e798990994fa79d8846661f95fa7e150d3606b889c0351697c82add62"
-    sha256 cellar: :any_skip_relocation, arm64_linux:    "6b1ea68a161e998f86c3b3e8a4111eea54037fed0a62a08afe6b413de78ebf79"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "747575d9f05e9496d0eecf8ea4d6db59711396eac5feca1ae2f61794a53a6a64"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c69026132fadde7bb41e0e27e9b59a697bf8cd34890b2533decb9a5bf577f08c"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "fc0172703a066072344effffa54a83bfa9cb9ed019e1dce5f95d555479d32d66"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "c7e75c2f1186ed55390936d42640165a9d14e7545850d8a0e36429b385f75611"
+    sha256 cellar: :any_skip_relocation, sonoma:        "a6cbfceef8cc3dd290df3502851c6825d556e1de243577a77e1d5ec791d53e2c"
+    sha256 cellar: :any_skip_relocation, ventura:       "84b89afca8ac2aebb170f9465f60338bde3bea89f6fa5ef94b0d59c3e16147ca"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "7a93f8baacd46111ca23a759b1982217b9f17b9191f638c6cd8773d377f1d6b1"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d9107cb3585f85f4bed3a63a5f0ab579c559b805b316e955c4e1ee6e8fa23685"
   end
 
   conflicts_with "sq", because: "both install `sq` binaries"

@@ -1,28 +1,22 @@
 class ParallelDiskUsage < Formula
   desc "Highly parallelized, blazing fast directory tree analyzer"
   homepage "https://github.com/KSXGitHub/parallel-disk-usage"
-  url "https://github.com/KSXGitHub/parallel-disk-usage/archive/refs/tags/0.11.0.tar.gz"
-  sha256 "a11e19906981c46d5cc694cfc2908163e88d84cd9f4f8b2d516487e5f150d588"
+  url "https://github.com/KSXGitHub/parallel-disk-usage/archive/refs/tags/0.12.0.tar.gz"
+  sha256 "f3093800ed425d550bfa8574a365a3a23ccc5b58733158e992462cf5fa98b822"
   license "Apache-2.0"
   head "https://github.com/KSXGitHub/parallel-disk-usage.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "54a80c6cab3c8a5865b1b518f193f63d49dd6d7990d45d725407faa3afb55927"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "30b5f5b49a939dd902b34b6d13be2aa49d632ca8fce5b5754ba397d358699ad1"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "813b20404ed758b4e2fceecc75ef706871696c98930ad185f182fd14c96bc20b"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ab569a47c73fcfa96edf0bcb3015caee836d7630ed0b064533c9e258382fc0ec"
-    sha256 cellar: :any_skip_relocation, ventura:       "27d6b6a2502e8c45bb315b12864ce6fe7a8d9c07ef2bccffc7dd1f4547fc72a3"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "cbbbe4c829a923733c3c721b7699b0b61be65954fbca5454df55a7c683a11e4a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f233a9ade03a7211653eca2b211b91538a9c54a5f4ebfab3b0865c9b4eb168d4"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "b3ff2ce5c5625d4b8386669c0a9e8814e3db8ba553652d31d32ea6edfe6a6481"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "3903c71af59b7e43008c68d2f090f4c12c5ba96c3018f959c12a3a0d0c8bb607"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "4104b3671dc7332b48f2380fb7e828e3edd23c1333573ca31daf250c9e1440bb"
+    sha256 cellar: :any_skip_relocation, sonoma:        "3d5c02ec12ce22fbecba199f597997a9e6266de5fa01fb79b8bfb45bfc4a12cb"
+    sha256 cellar: :any_skip_relocation, ventura:       "05e2ab18e7a7bda4dae465e2792e31ee9562a5051d626bfb67e9c0fe13690242"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "34928a37a3a085e7869d63af4440e6d6684a923038021c4804d6d6abe02939e5"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "97ee2d780c179ac75e46c144cbc87b57e67431d47e6d1544da196f60f0c89a1b"
   end
 
   depends_on "rust" => :build
-
-  # rust 1.87 build patch, upstream pr ref, https://github.com/KSXGitHub/parallel-disk-usage/pull/276
-  patch do
-    url "https://github.com/KSXGitHub/parallel-disk-usage/commit/20fe7513f96cfbc456b835faf36c003d039500e2.patch?full_index=1"
-    sha256 "cd7555caa0e2f976fe2dfab81be0077ac1b95977accf70a3d6975c86123207d3"
-  end
 
   def install
     system "cargo", "install", "--features", "cli,cli-completions", *std_cargo_args

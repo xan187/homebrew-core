@@ -3,22 +3,21 @@ class Sigstore < Formula
 
   desc "Codesigning tool for Python packages"
   homepage "https://github.com/sigstore/sigstore-python"
-  url "https://files.pythonhosted.org/packages/10/dc/fb0306a86bd1bc79f99f2f53b2421a11c42d2bbd106f7ccf0acfb460b5db/sigstore-3.6.3.tar.gz"
-  sha256 "9f957ef239b77695992b62823f79fc9554a589572dcc7bc0c1566a31b4bafc10"
+  url "https://files.pythonhosted.org/packages/c9/81/dca1dc73d250e9b37b7ba9b5083ba309896e4cffb1ab1800876f1287f3bb/sigstore-3.6.4.tar.gz"
+  sha256 "76f247a86738c9e076a243e0068ac68625848868890ed38491acc159752a46ac"
   license "Apache-2.0"
-  revision 2
+  head "https://github.com/sigstore/sigstore-python.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "cb58eaddde081109295ab893f273ab1c3cee1a52015e05c7da45e6ed3ca03433"
-    sha256 cellar: :any,                 arm64_sonoma:  "929e06d9791bfcfe6b3356c9b95719a9f43aae74ccf85486c536bb739ff71d77"
-    sha256 cellar: :any,                 arm64_ventura: "3a5145a14bd8cdd76f981e12839157566ea4131a63840c9a3fc002e48643539e"
-    sha256 cellar: :any,                 sonoma:        "e6679fd76ae6001b99d876b0c53177b1223d0cfe8286344527af14a9b0353e9d"
-    sha256 cellar: :any,                 ventura:       "fd2952fa590f9a3c095a9a06da012534c01c287022aeef03aeca19bbbe73a279"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "5b308640bcaf1b818fea568bc8ed61ed6006f707442caf249c214d84c1760825"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4c934b9e20c2656bae1141483e7dd604e958b611063c3df172dd6e22d3044447"
+    sha256 cellar: :any,                 arm64_sequoia: "ae549c2519b01d9fde123c5496691a9a24c55f91da96385d928338ebd8c44bbd"
+    sha256 cellar: :any,                 arm64_sonoma:  "bb48d91d762b75481890c72a3138d102a9500a33a8c56f10f712ed25201a80be"
+    sha256 cellar: :any,                 arm64_ventura: "79e8ee237b417fd5d3f5dcb8916c24ba8093e4dafde49135a00a8ebb010d63cf"
+    sha256 cellar: :any,                 sonoma:        "8d99a9e0f67cc27e6fa47fedd3ff8958ebd7d731ab4f0270f778a10c9cc07091"
+    sha256 cellar: :any,                 ventura:       "22e4896dade599e1c54b391d0ec11d1fc2b177567632441a8e4ec1683e74ea4f"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "43b3db485bdcab7ddaf1009be7bc334abbc9e0c1f65584b7e25b20a70ea88cbc"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "443aa1d2e019b337a0f507cd832f9f8ec56d7a9259442dc99de008ae3dfd1bbd"
   end
 
-  depends_on "maturin" => :build # for rfc3161-client
   depends_on "pkgconf" => :build # for rfc3161-client
   depends_on "rust" => :build
   depends_on "certifi"
@@ -142,8 +141,8 @@ class Sigstore < Formula
   end
 
   resource "rfc3161-client" do
-    url "https://files.pythonhosted.org/packages/40/cd/84c91ba1a5f214ecfc2f63ba081436a971e8361a71a069a42f03f275168b/rfc3161_client-1.0.2.tar.gz"
-    sha256 "37c78277d78aab02baf17393c30f66d1c2ab1a398d3540b0657792c0ceb81858"
+    url "https://files.pythonhosted.org/packages/ed/d5/a304985ce0117de9984f1af40e458376804710a68036809f40745afdb808/rfc3161_client-1.0.3.tar.gz"
+    sha256 "e9b614a5a4596ab9aea44d3fe8a4995bd84ac7f20dcbfaa82b115224202d88d8"
   end
 
   resource "rfc8785" do
