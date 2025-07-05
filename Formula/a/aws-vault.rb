@@ -1,26 +1,23 @@
 class AwsVault < Formula
   desc "Securely store and access AWS credentials in development environments"
-  homepage "https://github.com/99designs/aws-vault"
-  url "https://github.com/99designs/aws-vault/archive/refs/tags/v7.2.0.tar.gz"
-  sha256 "3f2f1d0ec06eb0873f9b96b59dc70f9fcc832dc97b927af3dbab6cdc87477b0e"
+  homepage "https://github.com/ByteNess/aws-vault"
+  url "https://github.com/ByteNess/aws-vault/archive/refs/tags/v7.5.0.tar.gz"
+  sha256 "93e9ed87cb31b3713b39bd302891f02dc791156fea4f5cba44d83f55bf49023d"
   license "MIT"
-  head "https://github.com/99designs/aws-vault.git", branch: "master"
+  head "https://github.com/ByteNess/aws-vault.git", branch: "main"
 
   livecheck do
     url :stable
     regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
-  no_autobump! because: :requires_manual_review
-
   bottle do
-    rebuild 2
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d977e625b3ac401635b1d95b4b18e4fc0b058f251f425c102b7b965e08b2ecf6"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "4e85192e42b17524b0a1321b1d69beebfd2c0a10baf961e514bce2914eace59f"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "578a68527779690f0f37b655af958895f8b6d854a34767a263dcf5a7e7a14e1d"
-    sha256 cellar: :any_skip_relocation, sonoma:        "02d404644b13dc1667c7ccf0912be79ea2788cb339773f2e350b0cdda9d1f7d5"
-    sha256 cellar: :any_skip_relocation, ventura:       "a1eb3f660e906283eb1d48d6c96b1f81a10060f7d0367735b219f3c103191921"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "61114565f6c9bf24fb99520e20f46494517ff949805299d178861e8e24b59d58"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d0d4e7045b5fca27b0b1da823650898c9120c81d95272cfa43f9eb1b9c5534a6"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "10335829bf753150ca012e568200878d20c127ff3899d30076148082822ed33c"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "aea0d8e5d30cd7bbe782602728b8cbd57f6d59ce3a9a08cf7a854d13433481f0"
+    sha256 cellar: :any_skip_relocation, sonoma:        "5514ddccf1e7be1e4e9e3eae1f394a6403ceeb22e0d34e40df0dbf712f7c53d4"
+    sha256 cellar: :any_skip_relocation, ventura:       "bc059b442632470be79654d0dbe411c401f04869d92353b1a433172cd7d3b61f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2f2e6a20205e277438842f22e424aaefa83c84e41322398eb48dfd045d777c3a"
   end
 
   depends_on "go" => :build
@@ -41,7 +38,7 @@ class AwsVault < Formula
   end
 
   test do
-    assert_match("aws-vault: error: login: argument 'profile' not provided, nor any AWS env vars found. Try --help",
+    assert_match("aws-vault: error: login: unable to select a 'profile', nor any AWS env vars found.",
       shell_output("#{bin}/aws-vault --backend=file login 2>&1", 1))
 
     assert_match version.to_s, shell_output("#{bin}/aws-vault --version 2>&1")

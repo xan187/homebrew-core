@@ -1,4 +1,4 @@
-class Shuttle < Formula
+class ShuttleCli < Formula
   desc "CLI for handling shared build and deploy tools between many projects"
   homepage "https://github.com/lunarway/shuttle"
   url "https://github.com/lunarway/shuttle/archive/refs/tags/v0.24.3.tar.gz"
@@ -7,12 +7,12 @@ class Shuttle < Formula
   head "https://github.com/lunarway/shuttle.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "414eba11f78301d309539025b2a9bee382861c85a6ffb60a8d6088eccf49f309"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "414eba11f78301d309539025b2a9bee382861c85a6ffb60a8d6088eccf49f309"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "414eba11f78301d309539025b2a9bee382861c85a6ffb60a8d6088eccf49f309"
-    sha256 cellar: :any_skip_relocation, sonoma:        "bc4f871490cdf6db9bf94893d38fec42bcf43c112551bd5be81a0a0881208467"
-    sha256 cellar: :any_skip_relocation, ventura:       "bc4f871490cdf6db9bf94893d38fec42bcf43c112551bd5be81a0a0881208467"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c99e855c6690a5fbe1c25e42989b914ecd974f185c6229d83796dae55ad870f7"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6239f4fa616ca21a781595b6da437d6debcb1ad013242c33c3a54aba9764da64"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6239f4fa616ca21a781595b6da437d6debcb1ad013242c33c3a54aba9764da64"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "6239f4fa616ca21a781595b6da437d6debcb1ad013242c33c3a54aba9764da64"
+    sha256 cellar: :any_skip_relocation, sonoma:        "5aed20ea25a270dd87249277003e75da31e91988fb461b95596b727bb35df25c"
+    sha256 cellar: :any_skip_relocation, ventura:       "5aed20ea25a270dd87249277003e75da31e91988fb461b95596b727bb35df25c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "be0bb28ca0505b75b4c6606f528eac6a2b6fdbb1e40e1ed3fb788793114daaff"
   end
 
   depends_on "go" => :build
@@ -25,7 +25,7 @@ class Shuttle < Formula
       -X github.com/lunarway/shuttle/cmd.version=#{version}
       -X github.com/lunarway/shuttle/cmd.commit=#{tap.user}
     ]
-    system "go", "build", *std_go_args(ldflags:)
+    system "go", "build", *std_go_args(output: bin/"shuttle", ldflags:)
 
     generate_completions_from_executable(bin/"shuttle", "completion", shells: [:bash, :zsh])
   end

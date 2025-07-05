@@ -1,18 +1,18 @@
 class Rqlite < Formula
   desc "Lightweight, distributed relational database built on SQLite"
   homepage "https://www.rqlite.io/"
-  url "https://github.com/rqlite/rqlite/archive/refs/tags/v8.38.1.tar.gz"
-  sha256 "0e47a00411b701a9d0c98541b2b772ffaf8ecddb3edfe9903e7473c009dfdf7a"
+  url "https://github.com/rqlite/rqlite/archive/refs/tags/v8.38.3.tar.gz"
+  sha256 "d9b87b39440dec2b0e9a47a31c26539cb0cb1ed18e9be4035e6fa3dbb4ccd3fb"
   license "MIT"
   head "https://github.com/rqlite/rqlite.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "28a2d8c8b8f52e444eae39c446b61f764fa154b114681234ee132cd849278ab1"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "5f94f7650f3922c1bacc97aa5f81cf27165924d6d0f9f0cd08a446371bc9a3c8"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "be6d909be66b376368679c8b40761d2e008abf257f130d0f31de1771279f8cbf"
-    sha256 cellar: :any_skip_relocation, sonoma:        "0d6c95cb3e778da35780c417b72c307f7bbc72639766020d3dcccbf4fcefff95"
-    sha256 cellar: :any_skip_relocation, ventura:       "47affc6fd0da4279ae750a6c749f55d332109d298f651ca27dedecca471b368c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "67c7eb1942917c98b1e4f82283078d120f8e3801774e1dce9d9cb9bd640ca1a9"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "071c971b49fdb7cf506dd2c82af174d90a536b4ef05b4eabda6f2211a778eaac"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "48981ae17deb2a529e606d0828059f5ecaac4f7ee307cb683df1032e27d76977"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "a8245a1567b1cebec8974ec1ff1c380b5defc660371cf6dbc73289aa959534ac"
+    sha256 cellar: :any_skip_relocation, sonoma:        "4244df65844f273cbf46c30de54adbecbadcd134e300edb40f163ef9879813d8"
+    sha256 cellar: :any_skip_relocation, ventura:       "7cd39fba9277119765535f088f24aef009a44f3f936f7690b8cb6fd329ad1f90"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "db20dd9f60f6762b2b11be3733d6f504336eeed8b53c1dd0ec3b36acb9c0d6fe"
   end
 
   depends_on "go" => :build

@@ -1,18 +1,18 @@
 class Ducker < Formula
   desc "Slightly quackers Docker TUI based on k9s"
   homepage "https://github.com/robertpsoane/ducker"
-  url "https://github.com/robertpsoane/ducker/archive/refs/tags/v0.3.0.tar.gz"
-  sha256 "122026ec9d835ded2f623993918e25ef60f753a7e1210d73d3d1d3728836ecb8"
+  url "https://github.com/robertpsoane/ducker/archive/refs/tags/v0.4.1.tar.gz"
+  sha256 "8a194a077ad6c278f3b5a3157fdf70285d517c5a9b76d09740cbd56ae685b1c0"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "879ee0904c0c8d6604d6c4df86566910b0934c304a3f47d1903e09af01a734c8"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "de041d0416d502a00f6fc6431cf742f5c796683a709aa95cfe764f340f280494"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "3f2d51a8877db9e944e862e8f19d6372f0bcee65cbb59ddc06a6b284d56c74f5"
-    sha256 cellar: :any_skip_relocation, sonoma:        "a06955cdf22f6b67ea433a47be4b070f399bd9d272e074ae432b2f8184fee7b2"
-    sha256 cellar: :any_skip_relocation, ventura:       "613bef7394717defcb7ddc43b29bfb72c4ace6a6c4e4298d0a6c3111127af2f3"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "d1191adb12ed76927e47accc1b7df8234603c7603ed65e4f0bafc7fd89199220"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "23dbe74594546f8e990291b4ade931849aa513f5c775d44c04859243fb760927"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "65a084efb351dc275a0451a0d3cebf8c8b232d29e82892eb248ffadfb642b318"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "641bae2181d618051a983cf8bd891b6293b2cf7c4f8a2fcd95fde6a07e5f2375"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "c38cd0f5c02d0df00fe2c6a9682af7c60a2aa49fbe2f9e5045e8b01f0cc641ba"
+    sha256 cellar: :any_skip_relocation, sonoma:        "ad2e836505663c917060b08cd244720459f70290a4aab0e4d2a832d2a3c0090b"
+    sha256 cellar: :any_skip_relocation, ventura:       "31970d3d323e8ff6bc49d2a6f359693958ae6461bcec3ed9a55ddf8bfc5f8a3d"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "d68dab3a1f328cb6060709b9b82674d6c6e69a9e597f3563875916fc935c4957"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "67f68fd898023c6f6b29c4404e07be98806f073862a2e005c2174d4c34175a8a"
   end
 
   depends_on "rust" => :build
@@ -22,8 +22,8 @@ class Ducker < Formula
   end
 
   test do
-    output = shell_output("#{bin}/ducker --export-default-config 2>&1", 1)
-    assert_match "failed to create docker connection", output
+    system bin/"ducker", "--export-default-config"
+    assert_match "prompt", (testpath/".config/ducker/config.yaml").read
 
     assert_match "ducker #{version}", shell_output("#{bin}/ducker --version")
   end

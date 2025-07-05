@@ -1,31 +1,25 @@
 class Egctl < Formula
   desc "Command-line utility for operating Envoy Gateway"
   homepage "https://gateway.envoyproxy.io/"
-  url "https://github.com/envoyproxy/gateway/archive/refs/tags/v1.4.0.tar.gz"
-  sha256 "546dade7aaabb8a853eb2c9101929c3098abbf67d9525ecd69507d33769a5a4a"
+  url "https://github.com/envoyproxy/gateway/archive/refs/tags/v1.4.2.tar.gz"
+  sha256 "5c8d2df2246a62f5314bebac3b95f07e3e0d77887201dfe44b5da0c553d9fbe3"
   license "Apache-2.0"
   head "https://github.com/envoyproxy/gateway.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3ff6c5ee453791185f179d3ca054b1633e89adf09fd347a50517adef8a726080"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d6d246b0c715dce6a100f9a7665d34c5363b0985cfa6e4ae122e6f997e581b39"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "264636055a3f2cfbe61f99bc5ac7862d823c0d609a9c1a2c923fe15dee15cd43"
-    sha256 cellar: :any_skip_relocation, sonoma:        "72962639567b7ed30b6d3e461d32d43e1b85c89d21062cee4a0339411aaca797"
-    sha256 cellar: :any_skip_relocation, ventura:       "a52c5950b21853961ba3c44f5e66a8e1465b40aba687149b0002a641dda68bb4"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "36e97acec1fbb23f7613d6978f4463ea8df68fd9c54cab7b114a32a4f0dc906d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3b68e77662b82f265ee6ed45c77bc2a55008661ad02d4334a09a7af6b51558c0"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "dbea8d46d3331db5d0336a72a51a04e4e684631ce0a99c6d8c207393085c11f4"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0005fcd6e8ad9ab0bb5d95925d2aaf0d110ca1d946b8f05fa3f3f568484139c7"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "a5a0d1c6a8e66241dd152632f3e653ea4cd031a8a9eb3e087057d80407326027"
+    sha256 cellar: :any_skip_relocation, sonoma:        "5fef4b9f87090e1a2992a87d61310d378ecfaa93f6648ad347069afdae085dd2"
+    sha256 cellar: :any_skip_relocation, ventura:       "b62ecbf4b9237692c57db957acfc3b041bc8c493ad7ba1de5064bce352a57dbf"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "f25da476d398e3fd220c3100f654d71099bd82b71b58aa84d12e524bdb13075b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d3e7feec93f81e58d321b73910706d9aa9431a75b464e84bae83bda0c365b623"
   end
 
   depends_on "go" => :build
 
   on_linux do
     depends_on "btrfs-progs"
-  end
-
-  # bump purego to build against go 1.24.3, upstream pr ref, https://github.com/envoyproxy/gateway/pull/6075
-  patch do
-    url "https://github.com/envoyproxy/gateway/commit/8aaee41dde53411a03d71c0808d4ed502455195d.patch?full_index=1"
-    sha256 "37fac3a17bc8876e07df799d6dd7a614411c9fceb63988654c1e3d18c6b28a45"
   end
 
   def install

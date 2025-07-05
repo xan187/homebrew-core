@@ -1,4 +1,4 @@
-class Alloy < Formula
+class AlloyAnalyzer < Formula
   desc "Open-source language and analyzer for software modeling"
   homepage "https://alloytools.org"
   url "https://search.maven.org/remotecontent?filepath=org/alloytools/org.alloytools.alloy.dist/6.2.0/org.alloytools.alloy.dist-6.2.0.jar"
@@ -13,7 +13,7 @@ class Alloy < Formula
   no_autobump! because: :requires_manual_review
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "e82b9d3a9c9882398cf30d603d668cfd94b774ddc19ba83e627529e611d64c5d"
+    sha256 cellar: :any_skip_relocation, all: "e6b7ea99c4d94c851e458306d370fcdd49b32426042bc21618972e37f3c5a907"
   end
 
   depends_on "openjdk"

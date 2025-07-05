@@ -53,7 +53,7 @@ jobs:
   create:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/homebrew/ubuntu22.04:master
+      image: ghcr.io/homebrew/ubuntu22.04:main
     permissions:
       contents: read
       pull-requests: write # for `post-comment`, `gh api`, `gh pr edit`
@@ -62,7 +62,7 @@ jobs:
       id-token: write # for actions/attest-build-provenance
     steps:
       - name: Post comment once started
-        uses: Homebrew/actions/post-comment@master
+        uses: Homebrew/actions/post-comment@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue: ${{ env.PR }}
@@ -72,7 +72,7 @@ jobs:
 
       - name: Set up Homebrew
         id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: Homebrew/actions/setup-homebrew@main
         with:
           core: true
           cask: false
@@ -118,7 +118,7 @@ jobs:
 
       - name: Configure Git user
         id: git-user-config
-        uses: Homebrew/actions/git-user-config@master
+        uses: Homebrew/actions/git-user-config@main
         with:
           username: BrewTestBot
 
@@ -132,7 +132,7 @@ jobs:
       - name: Checkout replacement PR branch
         working-directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
         env:
-          START_POINT: ${{ inputs.autosquash && 'origin/master' || 'HEAD' }}
+          START_POINT: ${{ inputs.autosquash && 'origin/main' || 'HEAD' }}
         run: |
           if git ls-remote --exit-code --heads origin "$REPLACEMENT_BRANCH"
           then
@@ -143,14 +143,14 @@ jobs:
 
       - name: Dismiss approvals
         if: fromJson(steps.reviewers.outputs.approved)
-        uses: Homebrew/actions/dismiss-approvals@master
+        uses: Homebrew/actions/dismiss-approvals@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr: ${{ env.PR }}
           message: Replacement PR dispatched
 
       - name: Set up commit signing
-        uses: Homebrew/actions/setup-commit-signing@master
+        uses: Homebrew/actions/setup-commit-signing@main
         with:
           signing_key: ${{ secrets.BREWTESTBOT_SSH_SIGNING_KEY }}
 
@@ -206,7 +206,7 @@ jobs:
 
 
       - name: Push commits
-        uses: Homebrew/actions/git-try-push@master
+        uses: Homebrew/actions/git-try-push@main
         with:
           token: ${{ secrets.HOMEBREW_GITHUB_PUBLIC_REPO_TOKEN }}
           directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
@@ -278,7 +278,7 @@ jobs:
         run: gh pr ready --undo "$PR" --repo "$GITHUB_REPOSITORY"
 
       - name: Post comment on success
-        uses: Homebrew/actions/post-comment@master
+        uses: Homebrew/actions/post-comment@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue: ${{ env.PR }}
@@ -288,7 +288,7 @@ jobs:
 
       - name: Post comment on failure
         if: ${{ !success() }}
-        uses: Homebrew/actions/post-comment@master
+        uses: Homebrew/actions/post-comment@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue: ${{ env.PR }}

@@ -39,7 +39,7 @@ jobs:
       actions: read # for `gh run download`
       pull-requests: read # for `gh api`
     steps:
-      - uses: Homebrew/actions/find-related-workflow-run-id@master
+      - uses: Homebrew/actions/find-related-workflow-run-id@main
         if: github.event_name == 'workflow_run'
         with:
           run-id: ${{ github.event.workflow_run.id }}
@@ -99,14 +99,14 @@ jobs:
 
       - name: Wait for idle runner
         id: killable
-        uses: Homebrew/actions/wait-for-idle-runner@master
+        uses: Homebrew/actions/wait-for-idle-runner@main
         with:
           runner_name: ${{ matrix.runner_name }}
           github_token: ${{ secrets.HOMEBREW_GITHUB_PUBLIC_REPO_TOKEN }}
 
       - name: Kill runner and create a new one
         if: ${{ steps.killable.outputs.runner-found == 'true' && steps.killable.outputs.runner-idle == 'true' }}
-        uses: Homebrew/actions/create-gcloud-instance@master
+        uses: Homebrew/actions/create-gcloud-instance@main
         with:
           runner_name: ${{ matrix.runner_name }}
           gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}

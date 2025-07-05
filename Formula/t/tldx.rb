@@ -1,26 +1,28 @@
 class Tldx < Formula
   desc "Domain Availability Research Tool"
   homepage "https://brandonyoung.dev/blog/introducing-tldx/"
-  url "https://github.com/brandonyoungdev/tldx/archive/refs/tags/v1.2.3.tar.gz"
-  sha256 "e4bc51c3b698d2fe52570aff891e6631c43d3a5afea66675abfbd6079183fcd9"
+  url "https://github.com/brandonyoungdev/tldx/archive/refs/tags/v1.2.5.tar.gz"
+  sha256 "fd137e59e495da1458cb3ff44be62af63856096a5f9a1879bc6d311fed62ca86"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "b41c7f08e210436496144324df9278198b1106b863cf3c3d7bf28ce95ac7b7bb"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "b41c7f08e210436496144324df9278198b1106b863cf3c3d7bf28ce95ac7b7bb"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "b41c7f08e210436496144324df9278198b1106b863cf3c3d7bf28ce95ac7b7bb"
-    sha256 cellar: :any_skip_relocation, sonoma:        "48aed93150ea50cc88f7d35c66a88b207262d486203c22e81173d4460e542b80"
-    sha256 cellar: :any_skip_relocation, ventura:       "48aed93150ea50cc88f7d35c66a88b207262d486203c22e81173d4460e542b80"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5b95d2781e50ab796aa41f42f8c897fcc5b6c04a92b956b220bac25ba69b73fa"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "601038f524b47d16d4319d58e6056352719a8cccc5d3e974a5bda068d71972e8"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "601038f524b47d16d4319d58e6056352719a8cccc5d3e974a5bda068d71972e8"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "601038f524b47d16d4319d58e6056352719a8cccc5d3e974a5bda068d71972e8"
+    sha256 cellar: :any_skip_relocation, sonoma:        "28b61e4691c67f1d03494cdae2c991436d85839d55cfbf33829c8d9b0d70c706"
+    sha256 cellar: :any_skip_relocation, ventura:       "28b61e4691c67f1d03494cdae2c991436d85839d55cfbf33829c8d9b0d70c706"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e2d84492fbcd19f69a130d5d17a4847f33e454ca03cdf8e782d9adfe0022c030"
   end
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/brandonyoungdev/tldx/cmd.Version=#{version}")
   end
 
   test do
     assert_match "brew.sh is not available", shell_output("#{bin}/tldx brew --tlds sh")
+
+    assert_match version.to_s, shell_output("#{bin}/tldx --version")
   end
 end

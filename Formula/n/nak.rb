@@ -1,18 +1,18 @@
 class Nak < Formula
   desc "CLI for doing all things nostr"
   homepage "https://github.com/fiatjaf/nak"
-  url "https://github.com/fiatjaf/nak/archive/refs/tags/v0.14.2.tar.gz"
-  sha256 "5d3d1688a36f16c5cb84cdd72298f54289309eb9d94d27b00e536329f8a26571"
+  url "https://github.com/fiatjaf/nak/archive/refs/tags/v0.15.1.tar.gz"
+  sha256 "67670a0a4107ed65371a8b310bfbf832996a57f832edebef7fac28d637a82ee9"
   license "Unlicense"
   head "https://github.com/fiatjaf/nak.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d066ec1cc25006bc7dbc8cfc621b186e54c4f3f3a56415092a8f1c13573f4d9b"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d066ec1cc25006bc7dbc8cfc621b186e54c4f3f3a56415092a8f1c13573f4d9b"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "d066ec1cc25006bc7dbc8cfc621b186e54c4f3f3a56415092a8f1c13573f4d9b"
-    sha256 cellar: :any_skip_relocation, sonoma:        "8ec7b2883d368e37643d6beb81cbca45c1794fbca9843777f512f271e7c85c7b"
-    sha256 cellar: :any_skip_relocation, ventura:       "8ec7b2883d368e37643d6beb81cbca45c1794fbca9843777f512f271e7c85c7b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b921fec4e2af1eb83377b3db9e9999c3a9b8cdb5e7948477d735b4b65de4d180"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d4b38de21c0bca69d84547c94511148cddbafbfe90f5d88cf4cea8708c977dbc"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d4b38de21c0bca69d84547c94511148cddbafbfe90f5d88cf4cea8708c977dbc"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "d4b38de21c0bca69d84547c94511148cddbafbfe90f5d88cf4cea8708c977dbc"
+    sha256 cellar: :any_skip_relocation, sonoma:        "b45d5adf4067cf6eff2a05795c25d895b3ba6ccdf2a6fe09dd661f756b4646d6"
+    sha256 cellar: :any_skip_relocation, ventura:       "b45d5adf4067cf6eff2a05795c25d895b3ba6ccdf2a6fe09dd661f756b4646d6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7c0cc718f4e0014f7f939db5fb2448b3e6cb7f0b5077d3e90cdc53e34a543bb0"
   end
 
   depends_on "go" => :build

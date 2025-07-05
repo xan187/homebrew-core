@@ -1,18 +1,18 @@
 class Lmod < Formula
   desc "Lua-based environment modules system to modify PATH variable"
   homepage "https://lmod.readthedocs.io"
-  url "https://github.com/TACC/Lmod/archive/refs/tags/8.7.60.tar.gz"
-  sha256 "340bdafedc0d5cdad812ca7372667df95078fd068a09e4fdff23a3fb8a560572"
+  url "https://github.com/TACC/Lmod/archive/refs/tags/8.7.63.tar.gz"
+  sha256 "dec0e5e94e36e44f9e3fee36e7dc6fbb4af4e51ab997d45bf59eb1e722ef7727"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "056e1f1a964646ac14d49ea7463066a37c5ea71873a836c5802101f9a06e9bc2"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0e69aa68c80897631eacfd5ed83c07182b82975a4d0fde7100755a4aa10c7938"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "20d42e35cc836b2204c75160076b8bfc0c0cfdc5fbb7293163ffd67e0597930a"
-    sha256 cellar: :any_skip_relocation, sonoma:        "cb736a1c3863b7aa0246026ae92dacb5ec939a834ae7eaca361552db00c571ad"
-    sha256 cellar: :any_skip_relocation, ventura:       "59362099789a5b6df054b487fd8596dbb67b005373e5a335142352c28a53aff1"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "571adc367cb5532a142d29f691cbdc2d786493830916326b7f25270cb07f2d94"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6d3908106cdce8f914f9ba1add655afa9fc909812a047c3cfa3b83d72857412b"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "0c9431a09e29ac9ae6db874045d9f60a5e1362433e8a7f50d3885de4f612c7db"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "46ccb1c767d9cfcb849ff145591c3aecca03cfde3fe866ebeb401fd3537b1932"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "e4bef1d1db63040e1409766b605b602fab4a378abc05f54a53c80ec517e4cb34"
+    sha256 cellar: :any_skip_relocation, sonoma:        "559fc1a2438671e301a67191baf6af3a6bd670c1477f75a70ab216b1dcf8abbb"
+    sha256 cellar: :any_skip_relocation, ventura:       "533fbdf69ee11ccda72de50848eb10ae8ae2d12b387d1c31ef9f3e71a916eb22"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "4eb4795554809a8f22c44dc47b0bdb880ae828e7362ae80585a6fc43dff589e7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ff5a7f2f761bcc5fad941642858a69a54c5bc5205af2069c9e51aacd0366b82c"
   end
 
   depends_on "luarocks" => :build
@@ -33,7 +33,7 @@ class Lmod < Formula
   end
 
   resource "luafilesystem" do
-    url "https://github.com/keplerproject/luafilesystem/archive/refs/tags/v1_8_0.tar.gz"
+    url "https://github.com/lunarmodules/luafilesystem/archive/refs/tags/v1_8_0.tar.gz"
     sha256 "16d17c788b8093f2047325343f5e9b74cccb1ea96001e45914a58bbae8932495"
   end
 

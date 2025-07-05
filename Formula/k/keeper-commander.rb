@@ -3,20 +3,20 @@ class KeeperCommander < Formula
 
   desc "Command-line and SDK interface to Keeper Password Manager"
   homepage "https://docs.keeper.io/en/privileged-access-manager/commander-cli/overview"
-  url "https://files.pythonhosted.org/packages/d6/56/5911f0e6eeee11d2e72ee7ab3130513e8ad60e480eb4e108a50922c2fbf8/keepercommander-17.1.1.tar.gz"
-  sha256 "03abf94fb594ff6eec63a1ac9076c8a7e839723e13b0ade9afabcfc123270969"
+  url "https://files.pythonhosted.org/packages/4a/35/946cf22d05714e4b7dfbd5b60fad139f86dc0a583497663d7c31e8e5dca3/keepercommander-17.1.2.tar.gz"
+  sha256 "ac111f0935f339edd6bb6c166124b6afed6738aff42e2c6daffe615ee676b1f7"
   license "MIT"
-  revision 2
+  revision 1
   head "https://github.com/Keeper-Security/Commander.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "1902cbff976c090c1fcc1679179b71ddf140ecb534c3f9296e8d6a58bd659d5a"
-    sha256 cellar: :any,                 arm64_sonoma:  "394cbfd89b9f2324429b43869f7a2c4ff9fce355e87a8a814d77c38541bbbd57"
-    sha256 cellar: :any,                 arm64_ventura: "05009c9421d7be38b13c8c0ade2075552f382d5399240ecd4f45c9b97cb096c4"
-    sha256 cellar: :any,                 sonoma:        "3507587a0d0c165d114df0babe0c3cee3d0cc179b30d18e88ca1ecaf9e9ea040"
-    sha256 cellar: :any,                 ventura:       "770224956f0b8b489dadcba274c1520ef910b4b5bbf1a90cf971cd451c5e9c00"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "750633726358ee19590c328714ec96b5906e74bd8537e194ec83dd6f1cbf22ee"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1c230cbc9d0bb05303ba4fdfcb74dfe866fbbd551e87f1d551f8380433d5047d"
+    sha256 cellar: :any,                 arm64_sequoia: "5a2cf7b4ce240b0ca2006e593360b475175afbf48b7bc08e574e75945b5efdb1"
+    sha256 cellar: :any,                 arm64_sonoma:  "8cb3f62a8b4c17aa43887f3742a4b5ef23da244637e62fb6f32bf4497b7e0861"
+    sha256 cellar: :any,                 arm64_ventura: "9fa310cb5be158aad07dd67d6519bb6a515a94f0ac59a5925430c0e8d53058c5"
+    sha256 cellar: :any,                 sonoma:        "3778368fdb076f54ec8aa8463c1fb809566d0b01ea6308daeccedee6e833e5c7"
+    sha256 cellar: :any,                 ventura:       "e63a116160418551d60c686e72b3f6c4ae9db507335759cddca7105075c52c2c"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "0932e4ae26c2d48ef632fc2d0d0363b76cbbc7a7ac3ab21f069ab6f5cc463742"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "475502eed4da4c642e2e1000b451ce9fbf2190539348c717d1b9b7a66bb7e093"
   end
 
   depends_on "pkgconf" => :build
@@ -203,8 +203,8 @@ class KeeperCommander < Formula
   end
 
   resource "pillow" do
-    url "https://files.pythonhosted.org/packages/af/cb/bb5c01fcd2a69335b86c22142b2bccfc3464087efb7fd382eee5ffc7fdf7/pillow-11.2.1.tar.gz"
-    sha256 "a64dd61998416367b7ef979b73d3a85853ba9bec4c2925f74e588879a58716b6"
+    url "https://files.pythonhosted.org/packages/f3/0d/d0d6dea55cd152ce3d6767bb38a8fc10e33796ba4ba210cbab9354b6d238/pillow-11.3.0.tar.gz"
+    sha256 "3828ee7586cd0b2091b6209e5ad53e20d0649bbe87164a459d0676e035e8f523"
   end
 
   resource "prompt-toolkit" do
@@ -243,8 +243,8 @@ class KeeperCommander < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/7c/2d/c3338d48ea6cc0feb8446d8e6937e1408088a72a39937982cc6111d17f84/pygments-2.19.1.tar.gz"
-    sha256 "61c16d2a8576dc0649d9f39e089b5f02bcd27fba10d8fb4dcc28173f7a45151f"
+    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
+    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
   end
 
   resource "pylibsrtp" do
@@ -273,8 +273,8 @@ class KeeperCommander < Formula
   end
 
   resource "python-dotenv" do
-    url "https://files.pythonhosted.org/packages/88/2c/7bb1416c5620485aa793f2de31d3df393d3686aa8a8506d11e10e13c5baf/python_dotenv-1.1.0.tar.gz"
-    sha256 "41f90bc6f5f177fb41f53e87666db362025010eb28f60a01c9143bfa33a2b2d5"
+    url "https://files.pythonhosted.org/packages/f6/b0/4bc07ccd3572a2f9df7e6782f52b0c6c90dcbb803ac4a167702d7d0dfe1e/python_dotenv-1.1.1.tar.gz"
+    sha256 "a8a6399716257f45be6a007360200409fce5cda2661e3dec71d23dc15f6189ab"
   end
 
   resource "pyyaml" do
