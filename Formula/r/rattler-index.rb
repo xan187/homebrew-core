@@ -1,8 +1,8 @@
 class RattlerIndex < Formula
   desc "Index conda channels using rattler"
   homepage "https://github.com/conda/rattler"
-  url "https://github.com/conda/rattler/archive/refs/tags/rattler_index-v0.23.0.tar.gz"
-  sha256 "d6a3e7014a115551e9ba55247446c5b4b3d3edb748766cc225f377075c5543f0"
+  url "https://github.com/conda/rattler/archive/refs/tags/rattler_index-v0.24.3.tar.gz"
+  sha256 "27c6778b694f48d0b6e14cf9002593b36bc751ddb09efd47feb80b538f3c263b"
   license "BSD-3-Clause"
   head "https://github.com/conda/rattler.git", branch: "main"
 
@@ -12,13 +12,13 @@ class RattlerIndex < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8af8738357043cf63cb9881221bde6434e1454b340bc93f826604eae85a967ea"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "ba32bb79abe8bad6cae4ebadeb3046c80ba4d60bcaa6e0e893bc217eff9b3a12"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "18ffea234cc8457421cd50d0791be4c7db2329bbcf84a8eb82c711fa7aefdf34"
-    sha256 cellar: :any_skip_relocation, sonoma:        "a92ba6fca239685c242026066c54d4cf91b2b7dbefd251dd264ea3608b8ffd0c"
-    sha256 cellar: :any_skip_relocation, ventura:       "f7361777df553d478ba0768108c8de4bf49e0d1dbb659d10cf1ad5ca2872b5fc"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "9dec9bc57cba222ed1d86ba806d77f6450c8c32dd2b99f2822933411bafe19bf"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2811d70dd7f033287b511ed8fb718d582b6ed76c40843ec258d7508440fc21ab"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a084c58a8f760c7f9309d8efd526c752c77cf3bffe80013e0525a5d1a66f71c1"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "ceb2566830f17280f0481aba1364d98a8704954a8f5a4c345f949df72c2a5483"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "ec634f5c0ac6a7806e167e20f3119d2a23d46d3eb56731606ee8e13a3f417331"
+    sha256 cellar: :any_skip_relocation, sonoma:        "2054cb21f6f1fb0ebd3ae534cb26d0efc9f66d0e34387d53f788bc93791d1944"
+    sha256 cellar: :any_skip_relocation, ventura:       "d634d47c1d179c0d440e9e3c1520f6ae3dc161faaa634a82a6a40818ad2973de"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "401b93d2f4fc81bb4838f2b0e032dcd9ac2717a724081a885e91e33bf0f573b4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9fb516fd20b7223a3393dbdbde0f22c170989b67258d6afbdf0280e40b203447"
   end
 
   depends_on "pkgconf" => :build
@@ -29,7 +29,7 @@ class RattlerIndex < Formula
   end
 
   def install
-    system "cargo", "install", "--features", "native-tls", "--no-default-features",
+    system "cargo", "install", "--features", "native-tls,rattler_config", "--no-default-features",
         *std_cargo_args(path: "crates/rattler_index")
   end
 

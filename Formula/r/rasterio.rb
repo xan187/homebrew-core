@@ -9,13 +9,14 @@ class Rasterio < Formula
   revision 1
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "4410576ace32e78400ed9d09167fdb8512765eec039229237a3db59dbdf3a673"
-    sha256 cellar: :any,                 arm64_sonoma:  "f66b60551ec2f3d51a889d8738a4b0bec36b1212d05183fd0d0623dbcb9a6221"
-    sha256 cellar: :any,                 arm64_ventura: "26af3700f3b615d9eac3d871eb2e9efbae7f402294966b12108414ec57296eab"
-    sha256 cellar: :any,                 sonoma:        "50ad9d3ac08ab03e08678ca3d6551016421b7b186fe95c362b9dbd67a8304214"
-    sha256 cellar: :any,                 ventura:       "868807093a9173ae0a22dcc9426e4e7a38fce818789bbc9e51192eea11695887"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "a3591bf74726a6e4663aad38970345a67c0bd75cd5eb553c8ca8b218cc6dacce"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "00de49b47c6a04925b1575417950a468713913e3a64279ca8e02b77fb86b9131"
+    rebuild 2
+    sha256 cellar: :any,                 arm64_sequoia: "69d6254809fe65612da5354e838772c31f1511fd9307e151da921b595cca7ff8"
+    sha256 cellar: :any,                 arm64_sonoma:  "e8ce574ad5c9c74fb0643ac62fff89fb94867619ee31cf38dfd5e3aee74c5d36"
+    sha256 cellar: :any,                 arm64_ventura: "49c3192e555a01d0fd652911a7354ec290bd1ce811fb76ffd8c7bb1c88eef823"
+    sha256 cellar: :any,                 sonoma:        "b45e231a05de506dc858047edc3a85df5de047fc7f4b400529dd64bca67ab502"
+    sha256 cellar: :any,                 ventura:       "05c0132ae71b41656bed058dc097893d70a9183a54b4b3fd8bcfaefa34ea6210"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "c360906d37469280284a0bd960e29c13808561ea499bfbafc80b4be87f5d7960"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a408e0ce4ed6b9b105791dee0d8b098c0741990984477516683c68417fa332be"
   end
 
   depends_on "cmake" => :build
@@ -30,7 +31,7 @@ class Rasterio < Formula
     depends_on "patchelf" => :build
   end
 
-  conflicts_with "rio", because: "both install `rio` binaries"
+  conflicts_with "rio-terminal", because: "both install `rio` binaries"
   conflicts_with cask: "rio", because: "both install `rio` binaries"
 
   resource "affine" do
@@ -66,7 +67,7 @@ class Rasterio < Formula
   def install
     virtualenv_install_with_resources
 
-    generate_completions_from_executable(bin/"rio", shells: [:fish, :zsh], shell_parameter_format: :click)
+    generate_completions_from_executable(bin/"rio", shells: [:bash, :fish, :zsh], shell_parameter_format: :click)
   end
 
   test do

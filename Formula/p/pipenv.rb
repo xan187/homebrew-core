@@ -3,18 +3,19 @@ class Pipenv < Formula
 
   desc "Python dependency management tool"
   homepage "https://github.com/pypa/pipenv"
-  url "https://files.pythonhosted.org/packages/59/ca/397e375554481d70356d29890d44398aec3b52a0484b32a7e25c487ee81e/pipenv-2025.0.3.tar.gz"
-  sha256 "f0a67aa928824e61003d52acea72a94b180800019f03d38a311966f6330bc8d1"
+  url "https://files.pythonhosted.org/packages/3b/15/4c869c2ec2819f8e6529cc26a044c9f7c714246c972b9b2cbbafda0847f9/pipenv-2025.0.4.tar.gz"
+  sha256 "36fc2a7841ccdb2f58a9f787b296c2e15dea3b5b79b84d4071812f28b7e8d7a2"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "61d780b7a748b63bd05b46b5440d59814c1f2595ef2e46f4752acc1dd41ba209"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "61d780b7a748b63bd05b46b5440d59814c1f2595ef2e46f4752acc1dd41ba209"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "61d780b7a748b63bd05b46b5440d59814c1f2595ef2e46f4752acc1dd41ba209"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ba1a02747fc9d34f12f94a4caefd785c4432e652f73fac7cacefd2a135fe1397"
-    sha256 cellar: :any_skip_relocation, ventura:       "ba1a02747fc9d34f12f94a4caefd785c4432e652f73fac7cacefd2a135fe1397"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "825e9f00270a3fd8a89de24fa7a0a25fefbd7744d582d0265ae6e3a437edfe0a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "825e9f00270a3fd8a89de24fa7a0a25fefbd7744d582d0265ae6e3a437edfe0a"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d893071d832157295d63f41328a99011754fa494cae1145dae161b0f6a134523"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d893071d832157295d63f41328a99011754fa494cae1145dae161b0f6a134523"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "d893071d832157295d63f41328a99011754fa494cae1145dae161b0f6a134523"
+    sha256 cellar: :any_skip_relocation, sonoma:        "012d62423d083b855864de35e3493e7e0195cb560a1720b166d8db3b7302789e"
+    sha256 cellar: :any_skip_relocation, ventura:       "012d62423d083b855864de35e3493e7e0195cb560a1720b166d8db3b7302789e"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "0ed68be928dd68a2571a09ddac28d8eb376efd1fa246cae3f29be4a1658e6698"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0ed68be928dd68a2571a09ddac28d8eb376efd1fa246cae3f29be4a1658e6698"
   end
 
   depends_on "certifi"
@@ -57,7 +58,7 @@ class Pipenv < Formula
   def install
     virtualenv_install_with_resources
 
-    generate_completions_from_executable(libexec/"bin/pipenv", shells:                 [:fish, :zsh],
+    generate_completions_from_executable(libexec/"bin/pipenv", shells:                 [:bash, :fish, :zsh],
                                                                shell_parameter_format: :click)
   end
 

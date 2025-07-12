@@ -3,18 +3,19 @@ class LanggraphCli < Formula
 
   desc "Command-line interface for deploying apps to the LangGraph platform"
   homepage "https://www.github.com/langchain-ai/langgraph"
-  url "https://files.pythonhosted.org/packages/f0/c2/53aaae208a3a08f727ef9d03edfd8f499403e017fc451c8ca5b52e95c930/langgraph_cli-0.3.3.tar.gz"
-  sha256 "120adc44064786bb11f1376a7b324b2125276a2e2c3a04bbfab7b8c1622ad4d7"
+  url "https://files.pythonhosted.org/packages/fe/ee/41f54032b2ab64c06e66e7f5e7a6c22d9159f2bff6bf08a38c9f11f84753/langgraph_cli-0.3.4.tar.gz"
+  sha256 "6300df4fc6f7106fd5fcdba2cbec9e8b1158daa6760d41333d1b3b5999280ad0"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "0c337ec1f2313eeea92353e45f016b050aaa8b61086d4180102fd6a9394e24a5"
-    sha256 cellar: :any,                 arm64_sonoma:  "7313d3d95934df27276303d5b14bffca4399261c093fec4c6d830f02f4768928"
-    sha256 cellar: :any,                 arm64_ventura: "92514486b663d6fa03ace892975fcbccf54d2d678beb1f660a6668e53fb16360"
-    sha256 cellar: :any,                 sonoma:        "5cd5c362eb4a354cebc473047007d1844294127445665c6055da89bfa5f3bd8a"
-    sha256 cellar: :any,                 ventura:       "0939c84dfcbfed14b9cbdb6a63b7517160d2073687b5ffa36bba74f382885c3e"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "ffb9a63ad3e2f498fb6bf8a8104953b4af89eb8754602681773dde91732fc59e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f90ae17f8ef6a8c54a7a3d030c499ed97f693fdf1ce37474d59847e169d5956f"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sequoia: "0775cae834985eb80c60829314e987ab1a27757efd98348aa29d6ceaf5006b6b"
+    sha256 cellar: :any,                 arm64_sonoma:  "312b74ad155ec0981948cb51adbcff1efafa0ab8d0f37a8f8bfe7e6ead1ec89a"
+    sha256 cellar: :any,                 arm64_ventura: "944040abd612ddbfd7f622c4924dae43c2055247390d81541f205549352ad4fb"
+    sha256 cellar: :any,                 sonoma:        "92c153bf2723fbe68abb554e3e80935f7178eb55d9201ff2ebcb13fc3cfb5957"
+    sha256 cellar: :any,                 ventura:       "4a6f3bd7259ab263673490d30e354835fedf5ba3ac5d5d8890cf41e44ff1d247"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "9f5e4e68f5a5914e51a4e97b1b947056da90a81efe3fc22348fe5fd7005fe00a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "86a07cfe64df3e6f2b73b369810ccb658d6980adf55f97a6df16774799120d0d"
   end
 
   depends_on "rust" => :build # for orjson
@@ -26,8 +27,8 @@ class LanggraphCli < Formula
   end
 
   resource "certifi" do
-    url "https://files.pythonhosted.org/packages/e8/9e/c05b3920a3b7d20d3d3310465f50348e5b3694f4f88c6daf736eef3024c4/certifi-2025.4.26.tar.gz"
-    sha256 "0a816057ea3cdefcef70270d2c515e4506bbc954f417fa5ade2021213bb8f0c6"
+    url "https://files.pythonhosted.org/packages/73/f7/f14b46d4bcd21092d7d3ccef689615220d8a08fb25e564b65d20738e672e/certifi-2025.6.15.tar.gz"
+    sha256 "d747aa5a8b9bbbb1bb8c22bb13e22bd1f18e9796defa16bab421f7f7a317323b"
   end
 
   resource "click" do
@@ -56,8 +57,8 @@ class LanggraphCli < Formula
   end
 
   resource "langgraph-sdk" do
-    url "https://files.pythonhosted.org/packages/c1/dd/c074adf91d2fe67f00dc3be4348119f40a9d0ead9e55c958f81492c522c0/langgraph_sdk-0.1.70.tar.gz"
-    sha256 "cc65ec33bcdf8c7008d43da2d2b0bc1dd09f98d21a7f636828d9379535069cf9"
+    url "https://files.pythonhosted.org/packages/c0/a6/cf13ace9bc7f0e8b13852ced0b37ece97f3140e232821c28bc852f8c1ea2/langgraph_sdk-0.1.72.tar.gz"
+    sha256 "396d8195881830700e2d54a0a9ee273e8b1173428e667502ef9c182a3cec7ab7"
   end
 
   resource "orjson" do
@@ -73,7 +74,8 @@ class LanggraphCli < Formula
   def install
     virtualenv_install_with_resources
 
-    generate_completions_from_executable(bin/"langgraph", shells: [:fish, :zsh], shell_parameter_format: :click)
+    generate_completions_from_executable(bin/"langgraph",
+                                         shells: [:bash, :fish, :zsh], shell_parameter_format: :click)
   end
 
   test do

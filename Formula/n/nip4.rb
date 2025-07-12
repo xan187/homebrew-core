@@ -1,21 +1,19 @@
 class Nip4 < Formula
   desc "Image processing spreadsheet"
   homepage "https://github.com/jcupitt/nip4"
-  url "https://github.com/jcupitt/nip4/releases/download/v9.0.9-2/nip4-9.0.9-2.tar.xz"
-  sha256 "ed3cc21ae581b1b0725c68632ca6a97c21c5cd5169c24c71119daa0b8b026e38"
+  url "https://github.com/jcupitt/nip4/releases/download/v9.0.10-1/nip4-9.0.10-1.tar.xz"
+  sha256 "1439698adb1e4bff149d77c40d180b2b9b03d30283df2f842fbaefc973f8c36c"
   license "GPL-2.0-or-later"
   head "https://github.com/jcupitt/nip4.git", branch: "main"
 
-  no_autobump! because: :requires_manual_review
-
   bottle do
-    sha256 cellar: :any, arm64_sequoia: "94dfc45a48ac1b7a5a59574263a4dc10d227037db8112056b3d2b181422aa24a"
-    sha256 cellar: :any, arm64_sonoma:  "9d19a8ad64f055c68aed6c2344ef40ffab5f8acc3d2d6edb2dcea224430fa34a"
-    sha256 cellar: :any, arm64_ventura: "29ebfcc9e16dc0b66c52e0a6964df8884e7104779825276768530016038bed94"
-    sha256 cellar: :any, sonoma:        "ddf67099c010d19f6cce581d8f351e6c142c9c5f2fa06160b8ad53fb6060b665"
-    sha256 cellar: :any, ventura:       "3e008b64a71c9ac42bc162c651f9a0f7b9bf3a341e145ef02a9e4eb42ca122d0"
-    sha256               arm64_linux:   "f5011712faacc0538556a0dc6c91ef8088bd7bfb0efe1fb4fdd08618a5790cc8"
-    sha256               x86_64_linux:  "c0a0134a2d2b04f8ee1ebe410a0f26b95bc617b28c4a787c556238eaf190fc60"
+    sha256 cellar: :any, arm64_sequoia: "d515083872b8e16bfb40ae41c2cb3590a1be1ab13af3a66fde1c36e6af502d77"
+    sha256 cellar: :any, arm64_sonoma:  "7b77a2288a3715753e14b88e2aad9ab87b3fcec2c5449da53c88f7734c071440"
+    sha256 cellar: :any, arm64_ventura: "5449572026bb559ae7df645ddb5b9d4c44b6878b1b5375a9a9f0309a154b1ca7"
+    sha256 cellar: :any, sonoma:        "246e75a16058579dfb11eb0d9977636580474f7109d9f82ae86ed8ef18c3140b"
+    sha256 cellar: :any, ventura:       "f72a601d0c82d33e94a7fef6bcc4018363366e12b3a0c7455fe9a5d8b97ed517"
+    sha256               arm64_linux:   "3d8a3f2606868a12cc548a9d0d7d345659a22fe6af31eab8183f26dc1e3799b4"
+    sha256               x86_64_linux:  "2a326517de7b3a116ead086e46f91f5543a8ca5825f93f6bd469577164c6b311"
   end
 
   depends_on "bison" => :build

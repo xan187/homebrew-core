@@ -251,14 +251,14 @@ jobs:
       fromJson(needs.status-check.outputs.complete) &&
       fromJson(needs.status-check.outputs.mergeable)
     container:
-      image: ghcr.io/homebrew/ubuntu22.04:master
+      image: ghcr.io/homebrew/ubuntu22.04:main
     permissions:
       contents: read
       pull-requests: read
       actions: write # to dispatch publish workflow
     steps:
       - name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: Homebrew/actions/setup-homebrew@main
         with:
           core: false
           cask: false

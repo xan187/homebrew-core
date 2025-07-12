@@ -1,8 +1,8 @@
 class Oxlint < Formula
   desc "Suite of high-performance tools for JavaScript and TypeScript written in Rust"
   homepage "https://oxc.rs/"
-  url "https://github.com/oxc-project/oxc/archive/refs/tags/oxlint_v1.2.0.tar.gz"
-  sha256 "0625ba7fae24d11b534bdeb612f3d23402d201cc7e6537e4e6242b7acd24d726"
+  url "https://github.com/oxc-project/oxc/archive/refs/tags/oxlint_v1.6.0.tar.gz"
+  sha256 "1012d2b31a9dd6f962dc5e1ebf6a65058d2b0dd1cf497e5c404589adf822e38a"
   license "MIT"
   head "https://github.com/oxc-project/oxc.git", branch: "main"
 
@@ -12,13 +12,13 @@ class Oxlint < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "01573d2dce3e12de45b105c8fb43b639a699c263f8e9b5d593f33d6023940f1a"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "03e27b8fb529cf8100dee714fd652a248fce2093565fb8b03406df1a8822bd00"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "5618470842f94a407535476742cb672a82642d0d230f89545cd2e2104c781d41"
-    sha256 cellar: :any_skip_relocation, sonoma:        "5a03ccf73235f1f59edcb13624e4a2b14cde52e1ab946348f49b7d518d34bbd7"
-    sha256 cellar: :any_skip_relocation, ventura:       "c1689d7fbf010d6fafd91e936afa9b074a245d48d7c50aa90a25df1e51671bbd"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "d5a18a8e9d5c4b0ac9b83bf5780ee3ad724f4853a1a53c5b30de6a96bb5d728f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2a78d8d0d3b6be1dc33d8aa0283bc1fafe62f566308a9736d77ccdc97950820f"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "63875c59db982fd814cf8928a91704a4bd894437a277fe34e5b5abc28547ddf0"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c12cf25e3c05e6a7db03c8cdaa3e080ae3dd98fc176fc1ba419611014dff2afc"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "cc516f75a6888f6b047c7c6bef14f8f4e9c038371d5876c4d379063a5855506b"
+    sha256 cellar: :any_skip_relocation, sonoma:        "32a320b6b637b0b5136d458ee2bdb2882ea8d619f235b1d6a89f3efba63825b7"
+    sha256 cellar: :any_skip_relocation, ventura:       "fba9e71c4044e1df22d9c8575e38ea4fa5eb9f6db62d50a7a468f548d25a9aca"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "ef4969bddde86f3754bb70610faae50cb3afacfcdf8ac81ddb1c05e5d9d0189b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "49d05d090b67456bdbeaafb09e4aa8e3974c9455e3fa4b8f3c4ef7875bca2da7"
   end
 
   depends_on "rust" => :build

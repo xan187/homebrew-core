@@ -17,6 +17,7 @@ env:
   GH_REPO: ${{ github.repository }}
   GH_NO_UPDATE_NOTIFIER: 1
   GH_PROMPT_DISABLED: 1
+  HOMEBREW_DISABLE_LOAD_FORMULA: 1
   PR: ${{ github.event.number }}
 
 jobs:

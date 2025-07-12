@@ -1,22 +1,21 @@
 class PhpCsFixer < Formula
   desc "Tool to automatically fix PHP coding standards issues"
   homepage "https://cs.symfony.com/"
-  # Bump to php 8.4 on the next release, if possible.
-  url "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.75.0/php-cs-fixer.phar"
-  sha256 "6fcd912a97f48069f06cc6447a9b3694d81d0baf7299b84f66368cd1ee516ee0"
+  url "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.82.2/php-cs-fixer.phar"
+  sha256 "4027224dd6a19a291da22e263d0d251cca069e3b3c471d3f80983a68579619eb"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "e162bedf7bf598c0687c913d0dbd3c9c069ccbc7db8a2dff76d9eb7e01e7eadd"
+    sha256 cellar: :any_skip_relocation, all: "b587a3c425b73ab4799ea38eb372ed5b6b8f221429b18c9b113f5d6366f35554"
   end
 
-  depends_on "php@8.3" # php 8.4 support milestone, https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/milestone/173
+  depends_on "php"
 
   def install
     libexec.install "php-cs-fixer.phar"
 
     (bin/"php-cs-fixer").write <<~PHP
-      #!#{Formula["php@8.3"].opt_bin}/php
+      #!#{Formula["php"].opt_bin}/php
       <?php require '#{libexec}/php-cs-fixer.phar';
     PHP
   end

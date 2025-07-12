@@ -1,8 +1,8 @@
 class Dotslash < Formula
   desc "Simplified executable deployment"
   homepage "https://dotslash-cli.com"
-  url "https://github.com/facebook/dotslash/archive/refs/tags/v0.5.4.tar.gz"
-  sha256 "92e8f39796931436e122e6c57bfd49d2050eae07d800a920ce2bf52238c1ff02"
+  url "https://github.com/facebook/dotslash/archive/refs/tags/v0.5.7.tar.gz"
+  sha256 "6241825e7f325a958cd1ac3e541a6974a5c0718e63d6172fd5898cc8a64fea2e"
   license "Apache-2.0"
 
   livecheck do
@@ -11,13 +11,13 @@ class Dotslash < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "91b6b4a9b932a4dd6cfbe44ac4d3ffc00a1e1e501cd806a5b97460687119ed3c"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "45e7b52fd8f24163f285681fe6314ee0e660ebe99a7c42252a295b434ce9c55d"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "2e5a9805bffb4a46c1b2e587f17a116da53a2eae9c22ccb0d12dddaaa6394841"
-    sha256 cellar: :any_skip_relocation, sonoma:        "bd36b90ae165d74df24b50f2bafbf0d3fb8ebf39921bbc81d4c844f9c7495da6"
-    sha256 cellar: :any_skip_relocation, ventura:       "3da81ec9fc051eac5058dd6c75847a4f2257e9d48ee6671413381efcd88ed425"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "8a2604418e667cca15f3408471e1e1061cd9572fde2414b5da461e46db2ccbf8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1f6683eddc86a7a15762fa7f1a0b77cf630eb0a1d889783ecac448f743377ae5"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "708b7227122f3d87b2c005e5e08d96e8f8762a32588f348078be128816bc399f"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "937ee205c5e6e349ccfe5ba1e60ff38beafed9efe0fd4e48f4ffc793be7095e7"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "e4c213aa8ce6c5d0b031ca1aa2a18e54017a9c98926a0a5a9ae8e3af1f756f66"
+    sha256 cellar: :any_skip_relocation, sonoma:        "8da318115de7e09da26c1687b656a2b514fe9173ed95d48321fa54969cea16db"
+    sha256 cellar: :any_skip_relocation, ventura:       "73c7e38ad2e42686e1f22fed9d798b31b371b96ebc1661cbd573d08e16408469"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "d539bdb30c991eb62f6db97e57f496445d3b8c56f6c9ac2c2eac63740130269e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "12083e62c4c2f6fb88d4d266396a2cc00369cbdcb5c3e0110b847f94bebda116"
   end
 
   depends_on "rust" => :build

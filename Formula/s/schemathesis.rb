@@ -3,19 +3,18 @@ class Schemathesis < Formula
 
   desc "Testing tool for web applications with specs"
   homepage "https://schemathesis.readthedocs.io/"
-  url "https://files.pythonhosted.org/packages/50/80/0536e1410009a22bda88a3c32dfa06702fce1a8a5075aa1d76af616a4c95/schemathesis-4.0.2.tar.gz"
-  sha256 "5783ee87422281e9414a26babafd7bf47d7f52f465f5801f2e316781026d5a93"
+  url "https://files.pythonhosted.org/packages/1a/f3/c078ef7d7f82e4e013a5df90c276a658bc41ef0ec56fd383d87d1c7988e2/schemathesis-4.0.8.tar.gz"
+  sha256 "96935bbcb26f875ded2ad156258cb5d869539bfd8a8733cbd71af90a2b67527e"
   license "MIT"
-  revision 1
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "9bce4759cf0e34822844726d86da81f078928e84a7bbc462527ce5634b3c8ea4"
-    sha256 cellar: :any,                 arm64_sonoma:  "4477b8bfc4e63f6cc7bb7dca99c55046e510db954a86235c7b4a35389e1372bf"
-    sha256 cellar: :any,                 arm64_ventura: "ecb945fe318d4cf1d355f0cc844bc09d761aee66a6cec8b1c4a7853ef9e6ab16"
-    sha256 cellar: :any,                 sonoma:        "1a4d2dfbdd255993e54ac81c3e8e35b0fc9686ce4892f37b1ab56896c99015d0"
-    sha256 cellar: :any,                 ventura:       "6b9d8e3e405ae2126573937050707e34679e3ea519692ccbffc8649f43c0e28a"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "0c7578cfaac55867eb8128afe36e65b030feda3ac46df9e50248e67853eab72a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bf4b4083caa1307ed849cf167efc64ac048088a1a1ff1d8cf8d14947580c773e"
+    sha256 cellar: :any,                 arm64_sequoia: "2dca8476eadd80f1a1fe8eb85ea33b0db70a746858ebcb6dd942466b4a2725b8"
+    sha256 cellar: :any,                 arm64_sonoma:  "289d2fbe7485a260de6e433da40fc800b504a58238576bf8307d91b70677c2ec"
+    sha256 cellar: :any,                 arm64_ventura: "776e0128cb7e9e8800c60fb2c01d1b9b59fe2b6a3ceea5438b2ae378a1265406"
+    sha256 cellar: :any,                 sonoma:        "3dbd26f1d06a030d73ec93fa5622538a66714491acaa2597cbfd109d1bc0c154"
+    sha256 cellar: :any,                 ventura:       "88d2ea0fb95f87dcb964eb8576bed3d3677e3c11c59c6739955c07800ba2b341"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "778222d7707e957621f93ad44111b8d6efb81505466f23b7282648a1651f4a54"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "471fedb2af6cbcb1c35f488e7eb799d809f690e28dd2bfe4b5b8c17b2125c5e2"
   end
 
   depends_on "rust" => :build # for rpds-py
@@ -91,8 +90,8 @@ class Schemathesis < Formula
   end
 
   resource "hypothesis" do
-    url "https://files.pythonhosted.org/packages/63/03/28f2158273fa2119641f793b7a73bbf8b38257800e18c825324cff6c9f8d/hypothesis-6.135.12.tar.gz"
-    sha256 "d2aeed8db7defc368841cbfb021d703cf98102827460bee7ba0d2e2aab6580f6"
+    url "https://files.pythonhosted.org/packages/da/83/15c4e30561a0d8c8d076c88cb159187823d877118f34c851ada3b9b02a7b/hypothesis-6.135.26.tar.gz"
+    sha256 "73af0e46cd5039c6806f514fed6a3c185d91ef88b5a1577477099ddbd1a2e300"
   end
 
   resource "hypothesis-graphql" do
@@ -166,8 +165,8 @@ class Schemathesis < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/7c/2d/c3338d48ea6cc0feb8446d8e6937e1408088a72a39937982cc6111d17f84/pygments-2.19.1.tar.gz"
-    sha256 "61c16d2a8576dc0649d9f39e089b5f02bcd27fba10d8fb4dcc28173f7a45151f"
+    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
+    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
   end
 
   resource "pyrate-limiter" do
@@ -221,8 +220,8 @@ class Schemathesis < Formula
   end
 
   resource "rpds-py" do
-    url "https://files.pythonhosted.org/packages/8c/a6/60184b7fc00dd3ca80ac635dd5b8577d444c57e8e8742cecabfacb829921/rpds_py-0.25.1.tar.gz"
-    sha256 "8960b6dac09b62dac26e75d7e2c4a22efb835d827a7278c34f72b2b84fa160e3"
+    url "https://files.pythonhosted.org/packages/a5/aa/4456d84bbb54adc6a916fb10c9b374f78ac840337644e4a5eda229c81275/rpds_py-0.26.0.tar.gz"
+    sha256 "20dae58a859b0906f0685642e591056f1e787f3a8b39c8e8749a45dc7d26bdb0"
   end
 
   resource "six" do
@@ -241,8 +240,8 @@ class Schemathesis < Formula
   end
 
   resource "starlette" do
-    url "https://files.pythonhosted.org/packages/8b/d0/0332bd8a25779a0e2082b0e179805ad39afad642938b371ae0882e7f880d/starlette-0.47.0.tar.gz"
-    sha256 "1f64887e94a447fed5f23309fb6890ef23349b7e478faa7b24a851cd4eb844af"
+    url "https://files.pythonhosted.org/packages/0a/69/662169fdb92fb96ec3eaee218cf540a629d629c86d7993d9651226a6789b/starlette-0.47.1.tar.gz"
+    sha256 "aef012dd2b6be325ffa16698f9dc533614fb1cebd593a906b90dc1025529a79b"
   end
 
   resource "starlette-testclient" do
@@ -256,13 +255,13 @@ class Schemathesis < Formula
   end
 
   resource "types-python-dateutil" do
-    url "https://files.pythonhosted.org/packages/ef/88/d65ed807393285204ab6e2801e5d11fbbea811adcaa979a2ed3b67a5ef41/types_python_dateutil-2.9.0.20250516.tar.gz"
-    sha256 "13e80d6c9c47df23ad773d54b2826bd52dbbb41be87c3f339381c1700ad21ee5"
+    url "https://files.pythonhosted.org/packages/c9/95/6bdde7607da2e1e99ec1c1672a759d42f26644bbacf939916e086db34870/types_python_dateutil-2.9.0.20250708.tar.gz"
+    sha256 "ccdbd75dab2d6c9696c350579f34cffe2c281e4c5f27a585b2a2438dd1d5c8ab"
   end
 
   resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/d1/bc/51647cd02527e87d05cb083ccc402f93e441606ff1f01739a62c8ad09ba5/typing_extensions-4.14.0.tar.gz"
-    sha256 "8676b788e32f02ab42d9e7c61324048ae4c6d844a399eebace3d4979d75ceef4"
+    url "https://files.pythonhosted.org/packages/98/5a/da40306b885cc8c09109dc2e1abd358d5684b1425678151cdaed4731c822/typing_extensions-4.14.1.tar.gz"
+    sha256 "38b39f4aeeab64884ce9f74c94263ef78f3c22467c8724005483154c26648d36"
   end
 
   resource "uri-template" do
@@ -288,7 +287,7 @@ class Schemathesis < Formula
   def install
     virtualenv_install_with_resources
 
-    generate_completions_from_executable(bin/"st", shells: [:fish, :zsh], shell_parameter_format: :click)
+    generate_completions_from_executable(bin/"st", shells: [:bash, :fish, :zsh], shell_parameter_format: :click)
   end
 
   test do

@@ -6,6 +6,7 @@ env:
   GH_REPO: ${{ github.repository }}
   GH_NO_UPDATE_NOTIFIER: 1
   GH_PROMPT_DISABLED: 1
+  HOMEBREW_DISABLE_LOAD_FORMULA: 1
 
 defaults:
   run:
@@ -65,6 +66,42 @@ jobs:
           PR: ${{ github.event.number }}
         run: gh pr edit --add-label workflows "$PR" --repo "$GITHUB_REPOSITORY"
 
+  check-bottle-block:
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    if: always() && github.repository_owner == 'Homebrew'
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/homebrew/ubuntu22.04:main
+    env:
+      PR: ${{ github.event.number }}
+    steps:
+      - name: Set up Homebrew
+        id: setup-homebrew
+        uses: Homebrew/actions/setup-homebrew@main
+        with:
+          core: true
+          cask: false
+          test-bot: false
+
+      - name: Check that bottle block is not modified
+        id: bottle-block
+        env:
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: brew check-bottle-modification "${PR}"
+
+      - name: Post comment
+        if: failure() && steps.bottle-block.conclusion == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BODY: |-
+            > [!CAUTION]
+            > Please **do not** modify the bottle block. Bottle block modifications can cause CI to misbehave.
+            > @BrewTestBot will handle updating the bottle block before this PR is merged.
+        run: gh pr comment "${PR}" --body "${BODY}" --repo "${GITHUB_REPOSITORY}"
+
   triage:
     runs-on: ubuntu-latest
     permissions:
@@ -77,12 +114,12 @@ jobs:
         if: >
           github.actor != 'BrewTestBot' &&
           !contains(github.event.pull_request.labels.*.name, 'CI-published-bottle-commits')
-        uses: Homebrew/actions/check-commit-format@master
+        uses: Homebrew/actions/check-commit-format@main
         with:
           token: ${{secrets.GITHUB_TOKEN}}
 
       - name: Label pull request
-        uses: Homebrew/actions/label-pull-requests@master
+        uses: Homebrew/actions/label-pull-requests@main
         if: always()
         with:
           token: ${{secrets.GITHUB_TOKEN}}

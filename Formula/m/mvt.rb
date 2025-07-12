@@ -10,13 +10,14 @@ class Mvt < Formula
   head "https://github.com/mvt-project/mvt.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "18e5b0cb9215344ff1bfc3152e1d13b0af57b22d02b96c5c5f4457fa76bd9c44"
-    sha256 cellar: :any,                 arm64_sonoma:  "f560ddecb115f6af60a1ebf8f8539e9e7f5d16ccde4ba6fbbb42624cbbf2544f"
-    sha256 cellar: :any,                 arm64_ventura: "37fbb149c3dc926cb3e73d7f3786389ccb618c95bd0b37d7196bf3be89603673"
-    sha256 cellar: :any,                 sonoma:        "a0c7320f7d483a9cbd68c6845d644fbe2f5e277bfeff2ba0aad9fbbbf972b40c"
-    sha256 cellar: :any,                 ventura:       "2288fcd8f64dc35ff1b11f6e8dd959dbc2608a7370948eec5973b459eb6bf552"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "5da706ca0fee18e90b93022d636203a26ea308069d065eca0e37f5b8b24e6ca1"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1207a4ee3ef44f8701b40ab3d6c7d55fe10da489f1e1478284240a08867f9b68"
+    rebuild 2
+    sha256 cellar: :any,                 arm64_sequoia: "019a921277efc60788a144d1c68580a98eeeee163b639e0e22f9534c885c72fe"
+    sha256 cellar: :any,                 arm64_sonoma:  "acabd46c127e6a382ce08fedf87518be8ed08ff9e3ce9366b5c82bd2dea98390"
+    sha256 cellar: :any,                 arm64_ventura: "4ce6858ec2368bb64e1e0e4f2cc18826ada7eec0504e5646bd580fa0a7bc5dd7"
+    sha256 cellar: :any,                 sonoma:        "d6b7e78cebd2e155aef747abb2a4e6e3199504b19226f1b4077d78c0501b0cee"
+    sha256 cellar: :any,                 ventura:       "b8848727d7299db1033a5617b885753a7b6aa0f592e204238df8faf66171818e"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "a3c06e9ef9020e4015a79ebf93ee622fdb8c39961702cb762766a8ed352f0809"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "61e7512075c70b3892f9c5407c957f4ec42f5220b7f4c38c6d8f646e8830c66f"
   end
 
   depends_on "rust" => :build # for pydantic_core
@@ -101,8 +102,8 @@ class Mvt < Formula
   end
 
   resource "multidict" do
-    url "https://files.pythonhosted.org/packages/46/b5/59f27b4ce9951a4bce56b88ba5ff5159486797ab18863f2b4c1c5e8465bd/multidict-6.5.0.tar.gz"
-    sha256 "942bd8002492ba819426a8d7aefde3189c1b87099cdf18aaaefefcf7f3f7b6d2"
+    url "https://files.pythonhosted.org/packages/3d/2c/5dad12e82fbdf7470f29bff2171484bf07cb3b16ada60a6589af8f376440/multidict-6.6.3.tar.gz"
+    sha256 "798a9eb12dab0a6c2e29c1de6f3468af5cb2da6053a20dfa3344907eed0937cc"
   end
 
   resource "nskeyedunarchiver" do
@@ -146,13 +147,13 @@ class Mvt < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/7c/2d/c3338d48ea6cc0feb8446d8e6937e1408088a72a39937982cc6111d17f84/pygments-2.19.1.tar.gz"
-    sha256 "61c16d2a8576dc0649d9f39e089b5f02bcd27fba10d8fb4dcc28173f7a45151f"
+    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
+    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
   end
 
   resource "python-dotenv" do
-    url "https://files.pythonhosted.org/packages/88/2c/7bb1416c5620485aa793f2de31d3df393d3686aa8a8506d11e10e13c5baf/python_dotenv-1.1.0.tar.gz"
-    sha256 "41f90bc6f5f177fb41f53e87666db362025010eb28f60a01c9143bfa33a2b2d5"
+    url "https://files.pythonhosted.org/packages/f6/b0/4bc07ccd3572a2f9df7e6782f52b0c6c90dcbb803ac4a167702d7d0dfe1e/python_dotenv-1.1.1.tar.gz"
+    sha256 "a8a6399716257f45be6a007360200409fce5cda2661e3dec71d23dc15f6189ab"
   end
 
   resource "pyyaml" do
@@ -191,8 +192,8 @@ class Mvt < Formula
   end
 
   resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/d1/bc/51647cd02527e87d05cb083ccc402f93e441606ff1f01739a62c8ad09ba5/typing_extensions-4.14.0.tar.gz"
-    sha256 "8676b788e32f02ab42d9e7c61324048ae4c6d844a399eebace3d4979d75ceef4"
+    url "https://files.pythonhosted.org/packages/98/5a/da40306b885cc8c09109dc2e1abd358d5684b1425678151cdaed4731c822/typing_extensions-4.14.1.tar.gz"
+    sha256 "38b39f4aeeab64884ce9f74c94263ef78f3c22467c8724005483154c26648d36"
   end
 
   resource "typing-inspection" do
@@ -215,7 +216,7 @@ class Mvt < Formula
     end
 
     %w[mvt-android mvt-ios].each do |script|
-      generate_completions_from_executable(bin/script, shells: [:fish, :zsh], shell_parameter_format: :click)
+      generate_completions_from_executable(bin/script, shells: [:bash, :fish, :zsh], shell_parameter_format: :click)
     end
   end
 

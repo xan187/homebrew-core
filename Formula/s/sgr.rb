@@ -6,19 +6,20 @@ class Sgr < Formula
   url "https://files.pythonhosted.org/packages/dd/61/7d6cf822edb39d2426f6f185c7fc4de0ad4b80e0da3e5f50d94952795c11/splitgraph-0.3.12.tar.gz"
   sha256 "76a4476002b5ac5a2b9fba36b6fcffd85b878bcc25f5aae411387e04a5532459"
   license "Apache-2.0"
-  revision 14
-
-  no_autobump! because: :requires_manual_review
+  revision 15
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "7485b10c51cb90010959f17809af83e7674462b8a1d84a5606bd5a0181c27629"
-    sha256 cellar: :any,                 arm64_sonoma:  "932b534c9740339132f1fa769236206a753ba9a8d2aa4a128145c82f289fbe86"
-    sha256 cellar: :any,                 arm64_ventura: "808887ba8146bc6104a500749553d38a0cc097731a0fb7424de40a02aab937c3"
-    sha256 cellar: :any,                 sonoma:        "84c0b5fb6184feaa0b8b515bd3c45fc8f993f2f9eb5bb0ed2dbbda267117674a"
-    sha256 cellar: :any,                 ventura:       "21deb66a3b70da99d0a48f5e306956df5a77a98ea0ff4dbe35145a27e1fa36f9"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "a386be11602cdf781dcc8f6b512937545cbd60e60b980bc664a5690840c4b32d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b1f7e6a756e02126681cd5d007315ce6e669769b187d6fa0c03e1d7db835d484"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sequoia: "8b6bd0d9d65b7016b133c9d477aa33849ffd840701d1db2fb9a5c3c090315b0a"
+    sha256 cellar: :any,                 arm64_sonoma:  "58817b8360687ae5872644c9e92446a3c04148ba83cee89c164f98d10cdc27a4"
+    sha256 cellar: :any,                 arm64_ventura: "310c1a29339601e36bd39f82a0919f851c74b7284f3eaad89bfa14050f97f6fe"
+    sha256 cellar: :any,                 sonoma:        "ab95cfa5b159b8908abae601bcc28164720b10cb58fbc7c859b9512ea5315da8"
+    sha256 cellar: :any,                 ventura:       "144d8d6b437fc851507e9af0bf52b94b60b48225ce3048cbc7fb39be6fa0a0cb"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "5861073b4b9db73e936df361f0974760224d19b30c43a044cae5f6192fc9dda9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c956a3928ad6f7473ea2eea0c6124f167d18e02a96cdc3ea584a253314efebff"
   end
+
+  deprecate! date: "2025-06-21", because: :unmaintained
 
   depends_on "rust" => :build # for pydantic
   depends_on "certifi"
@@ -134,8 +135,8 @@ class Sgr < Formula
   end
 
   resource "pydantic" do
-    url "https://files.pythonhosted.org/packages/f0/86/8ce9040065e8f924d642c58e4a344e33163a07f6b57f836d0d734e0ad3fb/pydantic-2.11.5.tar.gz"
-    sha256 "7f853db3d0ce78ce8bbb148c401c2cdd6431b3473c0cdff2755c7690952a7b7a"
+    url "https://files.pythonhosted.org/packages/00/dd/4325abf92c39ba8623b5af936ddb36ffcfe0beae70405d456ab1fb2f5b8c/pydantic-2.11.7.tar.gz"
+    sha256 "d989c3c6cb79469287b1569f7447a17848c998458d49ebe294e975b9baf0f0db"
   end
 
   resource "pydantic-core" do
@@ -204,8 +205,8 @@ class Sgr < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/8a/78/16493d9c386d8e60e442a35feac5e00f0913c0f4b7c217c11e8ec2ff53e0/urllib3-2.4.0.tar.gz"
-    sha256 "414bc6535b787febd7567804cc015fee39daab8ad86268f1310a9250697de466"
+    url "https://files.pythonhosted.org/packages/15/22/9ee70a2574a4f4599c47dd506532914ce044817c7752a79b6a51286319bc/urllib3-2.5.0.tar.gz"
+    sha256 "3fc47733c7e419d4bc3f6b3dc2b4f890bb743906a30d56ba4a5bfa4bbff92760"
   end
 
   # Switch build-system to poetry-core to avoid rust dependency on Linux.
@@ -221,7 +222,7 @@ class Sgr < Formula
     inreplace "pyproject.toml", 'version = "==3.4"', 'version = ">=3.4"'
 
     virtualenv_install_with_resources start_with: "setuptools"
-    generate_completions_from_executable(bin/"sgr", shells: [:fish, :zsh], shell_parameter_format: :click)
+    generate_completions_from_executable(bin/"sgr", shells: [:bash, :fish, :zsh], shell_parameter_format: :click)
   end
 
   test do

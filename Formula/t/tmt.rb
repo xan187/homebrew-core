@@ -3,18 +3,19 @@ class Tmt < Formula
 
   desc "Test Management Tool"
   homepage "https://tmt.readthedocs.io"
-  url "https://files.pythonhosted.org/packages/0e/9e/bc3a8b95f3b18897b0492f5b2ba39501788b7b570cf850cf8b268c4e4ec5/tmt-1.51.0.tar.gz"
-  sha256 "b3441f2475d1124ee83d900b60460fd7cfc38de4cc21496aa9e946188bac1295"
+  url "https://files.pythonhosted.org/packages/23/f7/b6caca7e9fa5e9b725936ccb2fd78b8710043b5887ee02761406e47c787b/tmt-1.52.0.tar.gz"
+  sha256 "da235b1aea81b9d2b2b734464c8fbf88d6102e748dae61455142794705616728"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "ce8a23522f3f02d6193a0fd9a8799c22905aa68860a8e42c486c053211af86ed"
-    sha256 cellar: :any,                 arm64_sonoma:  "bdc11f5a6d3d13f204ffc79ccb523b5892028d1eafd96668c65f36c9bd57faf1"
-    sha256 cellar: :any,                 arm64_ventura: "d769d9b6cd6a5c7f4dbf04ef800d7325050a0b36163b05309a619453757aae86"
-    sha256 cellar: :any,                 sonoma:        "97d4f11a40195da30269afcaf7d81cf7ff797607ccd342f6c59eba8f6770041d"
-    sha256 cellar: :any,                 ventura:       "16f36b9a14daa795ff8a86783ac05591f467e3af9da2fc18e7adde6d164c3391"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "a6a494891cb57b0a79e86c1487e75ca5e33a87d2c39158eb8128f3636c7c69a9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7426295481b17522946a59daa297f4271ce8d17c746ab81749e85295f3daafbe"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sequoia: "70fe364e29ea3e6fe9f6bc079a28a9944cf579ea1a94c43c27784aa4c004a838"
+    sha256 cellar: :any,                 arm64_sonoma:  "ccc8641a250dbc8dfb4aabf44479ae1e26123ed3d87aa77b209277f86f93400e"
+    sha256 cellar: :any,                 arm64_ventura: "759496b8e2fde51c651350b463a5ba000aac961c20f3b17380fd1329afa006a6"
+    sha256 cellar: :any,                 sonoma:        "7a7c6cfa8ab8baf2121597dd3b16f5ddec7466fc46cca105ddb68a4032a605be"
+    sha256 cellar: :any,                 ventura:       "22bebbb2ef264f31c2b766939ad308bec55644029e52797af04a43e7e38b8004"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "75beaba48ea7f078b77cb2c46b6bb2d15002c742ba35b7d97dff53f53d486bbe"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f63406ed6bbd7503cf0a3f979e49f7c88992ad234e1a38e53ffe9a2d251a1511"
   end
 
   depends_on "rust" => :build # for rpds-py
@@ -118,8 +119,8 @@ class Tmt < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/7c/2d/c3338d48ea6cc0feb8446d8e6937e1408088a72a39937982cc6111d17f84/pygments-2.19.1.tar.gz"
-    sha256 "61c16d2a8576dc0649d9f39e089b5f02bcd27fba10d8fb4dcc28173f7a45151f"
+    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
+    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
   end
 
   resource "referencing" do
@@ -133,8 +134,8 @@ class Tmt < Formula
   end
 
   resource "rpds-py" do
-    url "https://files.pythonhosted.org/packages/8c/a6/60184b7fc00dd3ca80ac635dd5b8577d444c57e8e8742cecabfacb829921/rpds_py-0.25.1.tar.gz"
-    sha256 "8960b6dac09b62dac26e75d7e2c4a22efb835d827a7278c34f72b2b84fa160e3"
+    url "https://files.pythonhosted.org/packages/a5/aa/4456d84bbb54adc6a916fb10c9b374f78ac840337644e4a5eda229c81275/rpds_py-0.26.0.tar.gz"
+    sha256 "20dae58a859b0906f0685642e591056f1e787f3a8b39c8e8749a45dc7d26bdb0"
   end
 
   resource "ruamel-yaml" do
@@ -148,8 +149,8 @@ class Tmt < Formula
   end
 
   resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/d1/bc/51647cd02527e87d05cb083ccc402f93e441606ff1f01739a62c8ad09ba5/typing_extensions-4.14.0.tar.gz"
-    sha256 "8676b788e32f02ab42d9e7c61324048ae4c6d844a399eebace3d4979d75ceef4"
+    url "https://files.pythonhosted.org/packages/98/5a/da40306b885cc8c09109dc2e1abd358d5684b1425678151cdaed4731c822/typing_extensions-4.14.1.tar.gz"
+    sha256 "38b39f4aeeab64884ce9f74c94263ef78f3c22467c8724005483154c26648d36"
   end
 
   resource "typing-inspection" do
@@ -165,7 +166,7 @@ class Tmt < Formula
   def install
     virtualenv_install_with_resources
 
-    generate_completions_from_executable(bin/"tmt", shells: [:fish, :zsh], shell_parameter_format: :click)
+    generate_completions_from_executable(bin/"tmt", shells: [:bash, :fish, :zsh], shell_parameter_format: :click)
   end
 
   test do

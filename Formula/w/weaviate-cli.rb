@@ -3,19 +3,19 @@ class WeaviateCli < Formula
 
   desc "Command-line interface for managing and interacting with Weaviate"
   homepage "https://pypi.org/project/weaviate-cli/"
-  url "https://files.pythonhosted.org/packages/6d/55/51608eb9c5005b81c62dd6c37f50451d262018caa4001a9f4f9b82033823/weaviate_cli-3.2.0.tar.gz"
-  sha256 "2f6476e25e04c2080eee6415dd817dd08a28887a268a5a54dbacbd2684ce60d7"
+  url "https://files.pythonhosted.org/packages/94/4a/0c9aff0b93bd5efe0a48954d41245f982af2d2ae96e195c965b21216d7dd/weaviate_cli-3.2.1.tar.gz"
+  sha256 "9982c6b80ee2695618df97b1e69f54739c82ca92c9de90c395da8c3c4bb8c573"
   license "BSD-3-Clause"
-  revision 2
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "30ab3e267a837fc91fc4ebbd82ad1ee947ad7b836cec7993bc6a2f42e540e850"
-    sha256 cellar: :any,                 arm64_sonoma:  "996a13c61039e8e9b9e4bf2a1f8c1b9fedaf4a0db1f7d86d932b1d9654d4e57f"
-    sha256 cellar: :any,                 arm64_ventura: "a599199d45f436dc0136f51b0965f0e9e22a9bc5bd60e245723fdf1370aa9a88"
-    sha256 cellar: :any,                 sonoma:        "345e9018e43696441e26b71d9766ee00636c1ac4e0cf40d2322ef8daeee69fc4"
-    sha256 cellar: :any,                 ventura:       "00e6f78bb826168910e6ee42890bd7f1cc12c0f9b36c498379ef27d97787b4bb"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "67ddd952df83fc45e7bd390ec9178dcd916a07d2813d4caa6235bb6cd49ce5d3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "df6e39e7465784df8a16d443d849651adb34bc3a9d0a4d0554fc340b0dc5ebb4"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sequoia: "650abbef118c44a8ebe76773f861656276ba0243f0930d3061539365d82ee5bb"
+    sha256 cellar: :any,                 arm64_sonoma:  "bf4e41e5388b51c2626d04fae0de4a9c73307d0e53ddd2c3f10235eab087c236"
+    sha256 cellar: :any,                 arm64_ventura: "9e16a758d59c0496f8b7cdde8c466993dbbceb7654bf408fed18f9952dfc0032"
+    sha256 cellar: :any,                 sonoma:        "e339304f00a42f189bbb8785a6cd39d4f60a40ed3f018566fcbfd2580d437720"
+    sha256 cellar: :any,                 ventura:       "50a951d27ac46d4d74471a40a3132e235e60581bf1c6baabafa8d554aede57be"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "a3f539c680dd3e3c21dfda7e9b43a47cd79328e77b36e07166f7778da819c912"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9878b7a18bf87a8808a36ed9129997d3873e3c5483b7f0f78d990fa0c868cdf7"
   end
 
   depends_on "ninja" => :build
@@ -173,14 +173,15 @@ class WeaviateCli < Formula
   end
 
   resource "weaviate-client" do
-    url "https://files.pythonhosted.org/packages/c2/b7/7b27a1530c0425a6b8fa9bcdf57a60b7f01e74aad6e452edafc221655bb2/weaviate_client-4.15.1.tar.gz"
-    sha256 "efa61c43f94eeb5039def03b76c1c4b845e8c17868d92f8e77cdcdfe5a4c611e"
+    url "https://files.pythonhosted.org/packages/7c/36/049a033f2887c29dcfc300a124be8c8c791be30d76a16088c71f30c55ceb/weaviate_client-4.15.2.tar.gz"
+    sha256 "d396f01341aa6534ae6f22c0a1e6382d7c462da14093cad8c4cccd4538efce49"
   end
 
   def install
     virtualenv_install_with_resources
 
-    generate_completions_from_executable(bin/"weaviate-cli", shells: [:fish, :zsh], shell_parameter_format: :click)
+    generate_completions_from_executable(bin/"weaviate-cli",
+                                         shells: [:bash, :fish, :zsh], shell_parameter_format: :click)
   end
 
   test do

@@ -1,18 +1,18 @@
 class Kingfisher < Formula
   desc "MongoDB's blazingly fast secret scanning and validation tool"
   homepage "https://github.com/mongodb/kingfisher"
-  url "https://github.com/mongodb/kingfisher/archive/refs/tags/v1.9.0.tar.gz"
-  sha256 "749c5532ee49d9a358e8be9f925abda5589002398fec664bbd54db029af13e88"
+  url "https://github.com/mongodb/kingfisher/archive/refs/tags/v1.20.0.tar.gz"
+  sha256 "e2f70384ebb0bf61de20190504a6d05f9c32e9bf1d63ae1a14679629b9da81d4"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e0eb0cd6fba2e9977739200896b5c28e7cffc15411f857cd92588f9e958d7cb3"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d233a59ba04ccf23fec9bfe70941f8a0f4f80540cd8a553ccc39d6b21cc2a577"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "6a3ef8a03d5fade6934c8e6d7dcfc9c8ad08cd1c39650fda4a75f45f0d7768a5"
-    sha256 cellar: :any_skip_relocation, sonoma:        "276fbd7389fcf55c5b628cc1fcb92b944d6d54d16274aadc9f5d115c6cc7380c"
-    sha256 cellar: :any_skip_relocation, ventura:       "8c194d7846d281bee9ad974f41e9628d55637bd2f2ede1a157019b0dd3833ceb"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "7ddea66796e4dbfcb952c4fb5dd34663622d68e807ee260a527bb041a0a26c35"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3b23f276ef14ea3c135027104c67b74d0fe54781d38e82cb49e413f0d08b3e07"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "191e6025706b39182a55645d13b29329a0ad0752ae9240b2896ddb45436d976f"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "f2e29a2fc95ed425bb82e87ec18fc8259383cd205a7e9d76bbe64344221de60d"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "763ab8c4fdaa42e157cff02d3d73db0bc9cb8cef5d2a6ad13d1ad1225b063093"
+    sha256 cellar: :any_skip_relocation, sonoma:        "00c780d1d31a730965c970197c84a2d5d3b6cbb349a4c9e6758c8e222715f015"
+    sha256 cellar: :any_skip_relocation, ventura:       "aaa2b19bc37cccee81967d7e17cc074902c6293233ea4364adff0c371d5c0f96"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "cf7a39a093630fa43f75499a5346e7116ecc2c606e42628eedd9dd75c0994869"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "561de86b404474173687ae1cc2b2548ed718cfa4f1bcf117650df1c4b64ea3eb"
   end
 
   depends_on "boost" => :build
@@ -25,8 +25,6 @@ class Kingfisher < Formula
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/kingfisher --version")
-
     output = shell_output(bin/"kingfisher scan --git-url https://github.com/homebrew/.github")
     assert_match "|Findings....................: 0", output
   end

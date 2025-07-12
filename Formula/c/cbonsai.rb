@@ -1,18 +1,18 @@
 class Cbonsai < Formula
   desc "Console Bonsai is a bonsai tree generator, written in C using ncurses"
   homepage "https://gitlab.com/jallbrit/cbonsai"
-  url "https://gitlab.com/jallbrit/cbonsai/-/archive/v1.4.1/cbonsai-v1.4.1.tar.gz"
-  sha256 "cfbe2d7b215393b1d4e110920cf4a24253ac8c7f6139fc3085ddc0dbce330de2"
+  url "https://gitlab.com/jallbrit/cbonsai/-/archive/v1.4.2/cbonsai-v1.4.2.tar.gz"
+  sha256 "75cf844940e5ef825a74f2d5b1551fe81883551b600fecd00748c6aa325f5ab0"
   license "GPL-3.0-or-later"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "87acaebbc9ccbfa0498afe372a9e5929e517d1101db0c810934f8a207b723ee8"
-    sha256 cellar: :any,                 arm64_sonoma:  "258a8ec97fa1633d7d2afb8175e3231ba3f71a71bb65d9355ce53ef03dc76601"
-    sha256 cellar: :any,                 arm64_ventura: "fabbe949cd5b6269de61806f6d35db18d06c7741713545dd80edaf1ab6963cd4"
-    sha256 cellar: :any,                 sonoma:        "e871751b77d3bd14012d40e23c7c95eecd7490b671514cbc91aa7baa42281d47"
-    sha256 cellar: :any,                 ventura:       "99596c38d7af3904b2b9fd0fc1b66fb3bb7bb1a7fb9419fb3af075522df84a3e"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "b17b5ec41467258a18fa8054cb97f97e330fc86cc5b6daf36516d41af8d6bf67"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "67d4b19d09853ab041fa86b89cf288e4ad38655f516ef784f3ab40feb35d6ce5"
+    sha256 cellar: :any,                 arm64_sequoia: "869d5f9329619e9bc7fafd702f44e2f3725cde753cc0c4b8653599b70153d0c1"
+    sha256 cellar: :any,                 arm64_sonoma:  "71feed554a3774e5ded7a663fc43519ef0a9c633805495464326a0d078feed8c"
+    sha256 cellar: :any,                 arm64_ventura: "75af3e2e01e01d53c62a195d5f9f43d30f799a8126c342e668201dddcea5022b"
+    sha256 cellar: :any,                 sonoma:        "2ec9072aa232ecf1242b783d7db8b61023532e28e1a11789dc9f49fdd185bc9d"
+    sha256 cellar: :any,                 ventura:       "c9ce84ec6ca012fb023bd5648e585660ca47aaa525686aba6c2404ff22580a91"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "5607d8b16bcd0d2f736cef0014baeef29eeec6fed5ffa98bbf017728d0d62a92"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3b8bee402d858d1ade576595f3e0727f3f65bfab1b9a500c7de7a08fe861c935"
   end
 
   depends_on "pkgconf" => :build

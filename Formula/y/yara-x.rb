@@ -1,8 +1,8 @@
 class YaraX < Formula
   desc "Tool to do pattern matching for malware research"
   homepage "https://virustotal.github.io/yara-x/"
-  url "https://github.com/VirusTotal/yara-x/archive/refs/tags/v1.2.1.tar.gz"
-  sha256 "e0457c0cd4f6a7a1c4c0e5df7453af49f3d8027453fd1fc053a1491ca1823122"
+  url "https://github.com/VirusTotal/yara-x/archive/refs/tags/v1.4.0.tar.gz"
+  sha256 "4a6b6a24665ef749ea66ddaa7e197412f2cdbc695c01445d86dcfcf4b351dcf9"
   license "BSD-3-Clause"
   head "https://github.com/VirusTotal/yara-x.git", branch: "main"
 
@@ -12,13 +12,13 @@ class YaraX < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "272efeec017cc0a10e1a97531ab3fc04cdf9e829dc203f0166b803399502f476"
-    sha256 cellar: :any,                 arm64_sonoma:  "7efd2803640931f8f804af21c009c6df0dbfacb06ccf71442b328e520a36ea0a"
-    sha256 cellar: :any,                 arm64_ventura: "5cef330438cdf6d29a3287147d417cc06a02bb3b64dd999587089ada3b4fb3e3"
-    sha256 cellar: :any,                 sonoma:        "a5db58245877394b54e8011244c62b9d4ea395baedf87f3bf5b51c2dbf173064"
-    sha256 cellar: :any,                 ventura:       "ec5960a7853206a654a3e5e81e895b6834568b3ad88580d52e8c2349ac5d37a1"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "a374a246b80b4ea6dec71c1bd783d32242367aa892862c760a0932a8a62d1ae5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "45b3412a96d5827e46654e742af4096787bbecaa78e6305dd50acfbf582da63f"
+    sha256 cellar: :any,                 arm64_sequoia: "9388ffe2aab9727c9d3f2b8b2c6325c39e783e276b2d5a64cb59f18235350985"
+    sha256 cellar: :any,                 arm64_sonoma:  "05fd534c090f9fd0ba8a2ced001e74d826c9b7fb0f54c4f18c92cdeb938e5246"
+    sha256 cellar: :any,                 arm64_ventura: "cea257bf549a2727ad6e24fe79bda4ff90e5292e396dfb3311853b67267695a8"
+    sha256 cellar: :any,                 sonoma:        "7cad8ea8a5a0902d3dcdc08d2af3fa14175cb5c064b49bdbe1ae23ca451b417e"
+    sha256 cellar: :any,                 ventura:       "c568c91cb8587ba155b3e27f5ad1fbf38c321e91ffb9a1f6349f31aac484aace"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "f6caf7c8e6e4509593884cc7d857ee3d05e3e0b2866e93ce7ca1be508977b690"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "11f31a9b46d1a3af565f005477666221ec3738432174ac3d967c0f973cd23eb0"
   end
 
   depends_on "cargo-c" => :build

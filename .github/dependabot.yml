@@ -12,7 +12,11 @@ updates:
   allow:
   - dependency-type: all
   groups:
-    github-actions:
+    dependabot:
       patterns:
       - "*"
+  cooldown:
+    default-days: 1
+    include:
+    - "*"
 

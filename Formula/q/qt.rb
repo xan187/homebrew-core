@@ -3,10 +3,10 @@ class Qt < Formula
 
   desc "Cross-platform application and UI framework"
   homepage "https://www.qt.io/"
-  url "https://download.qt.io/official_releases/qt/6.9/6.9.0/single/qt-everywhere-src-6.9.0.tar.xz"
-  mirror "https://qt.mirror.constant.com/archive/qt/6.9/6.9.0/single/qt-everywhere-src-6.9.0.tar.xz"
-  mirror "https://mirrors.ukfast.co.uk/sites/qt.io/archive/qt/6.9/6.9.0/single/qt-everywhere-src-6.9.0.tar.xz"
-  sha256 "4f61e50551d0004a513fefbdb0a410595d94812a48600646fb7341ea0d17e1cb"
+  url "https://download.qt.io/official_releases/qt/6.9/6.9.1/single/qt-everywhere-src-6.9.1.tar.xz"
+  mirror "https://qt.mirror.constant.com/archive/qt/6.9/6.9.1/single/qt-everywhere-src-6.9.1.tar.xz"
+  mirror "https://mirrors.ukfast.co.uk/sites/qt.io/archive/qt/6.9/6.9.1/single/qt-everywhere-src-6.9.1.tar.xz"
+  sha256 "364fde2d7fa42dd7c9b2ea6db3d462dd54f3869e9fd0ca0a0ca62f750cd8329b"
   license all_of: [
     "BSD-3-Clause",
     "GFDL-1.3-no-invariants-only",
@@ -23,14 +23,12 @@ class Qt < Formula
     regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
-  no_autobump! because: :requires_manual_review
-
   bottle do
-    sha256 cellar: :any, arm64_sonoma:  "861acfe809369d19c8cbc923afa94c62f48784f087a150e09d3522e5eeb15f9e"
-    sha256 cellar: :any, arm64_ventura: "f30408e5e2a56aef97597398e4d552da3286b9fb45ba040e405291584009bea8"
-    sha256 cellar: :any, sonoma:        "1cb92af62ec86c41bd6901428356fc8908ab98706a1f4b1e7791f09fd6cad498"
-    sha256 cellar: :any, ventura:       "3f55e107498966094f5b47f6e729728c7cc97d503f9deed8c59d87ca9f69cfa4"
-    sha256               x86_64_linux:  "0f25abc1c0b90ec910b12b3d5c4db85e77e5f0888a2a8446f2d2dc5c973ede78"
+    sha256 cellar: :any, arm64_sonoma:  "1cf02761bf4f637e566b41fbb98fdc569ebf813ebd20fc5ab47178758728194c"
+    sha256 cellar: :any, arm64_ventura: "63597d1fc6c6637bf094bd81f5653ed4738d7ff9e6e2bb64890627b7ccd7e61e"
+    sha256 cellar: :any, sonoma:        "119fe4df5bc1b88b1282bc26545094ea1a6bfe8679765c795d05943922e279e6"
+    sha256 cellar: :any, ventura:       "965a804ac6a3dba6efbe0639602005b8cdc622517eac7d16ccbe81cbfe839ce8"
+    sha256               x86_64_linux:  "d6b6ebda449e8066ec1ae3ee61074925d2b74edade6d9b77d3caa46f6eeb76aa"
   end
 
   depends_on "cmake" => [:build, :test]
@@ -43,7 +41,7 @@ class Qt < Formula
   depends_on "vulkan-loader" => [:build, :test]
   depends_on xcode: :build
 
-  depends_on "assimp"
+  depends_on "assimp@5"
   depends_on "brotli"
   depends_on "dbus"
   depends_on "double-conversion"
@@ -139,6 +137,20 @@ class Qt < Formula
     sha256 "b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923"
   end
 
+  # Fix for `invalid use of attribute 'fallthrough'` with GCC <= 12 and gperf >= 3.2
+  # upstream bug report, https://bugreports.qt.io/browse/QTBUG-137278 (fixed in 6.9.2)
+  patch do
+    url "https://raw.githubusercontent.com/Homebrew/formula-patches/196ba5754b09b668647a772fac2025fbb9c1b859/qt/6.9.0-fallthrough.patch"
+    sha256 "8450a2611badc612ff8da9f116263dea29266a73913922dbc96022be744e9560"
+  end
+
+  # 6.9.1 patch to fix `std::unique_lock` usage
+  # upstream bug report, https://bugreports.qt.io/browse/QTBUG-138060
+  patch do
+    url "https://raw.githubusercontent.com/Homebrew/formula-patches/e013656cb06ab4a1a54ca6fd9269647d4bf530bc/qt/6.9.1-unique_lock.patch"
+    sha256 "6bca73d693e8fc24a5b30109e8d652f666a7b5b0fe1f5ae76202f14044eda02c"
+  end
+
   def install
     python3 = "python3.13"
 
@@ -219,6 +231,8 @@ class Qt < Formula
       # Chromium needs Xcode 15.3+ and using LLVM Clang is not supported on macOS
       # See https://bugreports.qt.io/browse/QTBUG-130922
       cmake_args << "-DBUILD_qtwebengine=OFF" if MacOS::Xcode.version < "15.3"
+
+      cmake_args << "-DQT_FORCE_WARN_APPLE_SDK_AND_XCODE_CHECK=ON" if MacOS.version <= :monterey
 
       %W[
         -DCMAKE_OSX_DEPLOYMENT_TARGET=#{MacOS.version}.0

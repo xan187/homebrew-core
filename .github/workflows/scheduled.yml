@@ -33,8 +33,7 @@ jobs:
     if: startsWith( github.repository, 'Homebrew/' )
     runs-on: ubuntu-latest
     container:
-      # TODO: switch to main when we're pushing those images
-      image: ghcr.io/homebrew/ubuntu22.04:master
+      image: ghcr.io/homebrew/ubuntu22.04:main
     outputs:
       json: ${{ steps.matrix.outputs.json }}
     env:
@@ -42,7 +41,7 @@ jobs:
     steps:
       - name: Set up Homebrew
         id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: Homebrew/actions/setup-homebrew@main
         with:
           core: true
           cask: false
@@ -98,8 +97,7 @@ jobs:
     if: startsWith( github.repository, 'Homebrew/' )
     runs-on: ubuntu-latest
     container:
-      # TODO: switch to main when we're pushing those images
-      image: ghcr.io/homebrew/ubuntu22.04:master
+      image: ghcr.io/homebrew/ubuntu22.04:main
     permissions:
       issues: write
     needs: create_matrix
@@ -115,7 +113,7 @@ jobs:
     steps:
       - name: Set up Homebrew
         id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: Homebrew/actions/setup-homebrew@main
         with:
           core: true
           cask: false

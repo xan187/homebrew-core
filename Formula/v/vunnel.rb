@@ -3,19 +3,20 @@ class Vunnel < Formula
 
   desc "Tool for collecting vulnerability data from various sources"
   homepage "https://github.com/anchore/vunnel"
-  url "https://files.pythonhosted.org/packages/f6/83/c65b3e981e20103d49b2b2d9404138d164066c3656657a90394f64ff8987/vunnel-0.34.1.tar.gz"
-  sha256 "cd6cedb3a039d794c25fdf61d686ae8bf669f0835b9b916b0da41704ad33ecf5"
+  url "https://files.pythonhosted.org/packages/6a/7e/9fe82716b44830b5429a8f431250d9bde638187552b0073ac4f16e89d0b3/vunnel-0.34.2.tar.gz"
+  sha256 "6d0bffca9e9b14a74e5c3c1ec8c8079a402bf0dff5890ba2cfcfcd1f1d9a41cf"
   license "Apache-2.0"
   head "https://github.com/anchore/vunnel.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "27ce138645f26c327ccd6ce24e82394af42d72fc549831a7b4fc91c0cb04defa"
-    sha256 cellar: :any,                 arm64_sonoma:  "e2f05505a7d5239ba418c0190dfccdecb925af1c8266bf8564a7aaa91168a6b9"
-    sha256 cellar: :any,                 arm64_ventura: "0226b2bca0a7ba098e7d14622a48eb40ac23d58164329f2044e9a0f01f103ef9"
-    sha256 cellar: :any,                 sonoma:        "398c56b01d16b22b1b3fbb3626799ab760c436ad61f89ca428e098461c34c314"
-    sha256 cellar: :any,                 ventura:       "79a138fd90ed63563a98c737b7ad69ea35acc35ec8de9159f06f0519694115bb"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "aee4188e62464ca7771d65a40c22db22532198eeb97f293025bb2f95f1f75b3d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9d4b3f6e309ad30797b3a82c6120540b78258a7e9b7bcd1bfb70da3383b41500"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sequoia: "eecd440ffc8d96b888453a4b3264a1a7f2d3949722e7382c157550385b7a763b"
+    sha256 cellar: :any,                 arm64_sonoma:  "34e6d48a3cee7a5472a3fceb185e22a9030f14eb42a84e6fc08d7df33fd783b9"
+    sha256 cellar: :any,                 arm64_ventura: "1ae2ef716bc20d5ce4832af749c2ebba984368c7e6892d9edd2fb8187dffedf1"
+    sha256 cellar: :any,                 sonoma:        "a3802f259775bc15fe24d4c8c541628fb21e8d89e193007b0b5360427b29ec10"
+    sha256 cellar: :any,                 ventura:       "a46b9f98dc54828d99f0b0a98dc70aa5bc5c3f4a7cf4fa9ad5c09901413bbf58"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "6cedda3543d08c930d2b1039ba9dd71489a036fbdc94953d8a9d0f359307f257"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e561c61896216e27b5a401460744c94715fcec1ff301281f5468d924d35ec0a2"
   end
 
   depends_on "rust" => :build
@@ -61,6 +62,11 @@ class Vunnel < Formula
     sha256 "9dc71659d3b853c3018cd7b2ec34d5d054370128e12b79ee655498cb339cc711"
   end
 
+  resource "greenlet" do
+    url "https://files.pythonhosted.org/packages/c9/92/bb85bd6e80148a4d2e0c59f7c0c2891029f8fd510183afc7d8d2feeed9b6/greenlet-3.2.3.tar.gz"
+    sha256 "8b0dd8ae4c0d6f5e54ee55ba935eeb3d735a9b58a8a1e5b5cbab64e01a39f365"
+  end
+
   resource "idna" do
     url "https://files.pythonhosted.org/packages/f1/70/7703c29685631f5a7590aa73f1f1d3fa9a380e654b86af429e0934a32f7d/idna-3.10.tar.gz"
     sha256 "12f65c9b470abda6dc35cf8e63cc574b1c52b11df2c86030af0ac09b01b13ea9"
@@ -92,8 +98,8 @@ class Vunnel < Formula
   end
 
   resource "lxml" do
-    url "https://files.pythonhosted.org/packages/76/3d/14e82fc7c8fb1b7761f7e748fd47e2ec8276d137b6acfe5a4bb73853e08f/lxml-5.4.0.tar.gz"
-    sha256 "d12832e1dbea4be280b22fd0ea7c9b87f0d8fc51ba06e92dc62d52f804f78ebd"
+    url "https://files.pythonhosted.org/packages/c5/ed/60eb6fa2923602fba988d9ca7c5cdbd7cf25faa795162ed538b527a35411/lxml-6.0.0.tar.gz"
+    sha256 "032e65120339d44cdc3efc326c9f660f5f7205f3a535c1fdbf898b29ea01fb72"
   end
 
   resource "markupsafe" do
@@ -132,8 +138,8 @@ class Vunnel < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/7c/2d/c3338d48ea6cc0feb8446d8e6937e1408088a72a39937982cc6111d17f84/pygments-2.19.1.tar.gz"
-    sha256 "61c16d2a8576dc0649d9f39e089b5f02bcd27fba10d8fb4dcc28173f7a45151f"
+    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
+    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
   end
 
   resource "pytest" do
@@ -225,12 +231,9 @@ class Vunnel < Formula
     # currently held back: https://github.com/anchore/vunnel/pull/103
     ENV.append_to_cflags "-Wno-implicit-function-declaration" if DevelopmentTools.clang_build_version >= 1403
 
-    # Fix python upper bound: https://github.com/anchore/vunnel/issues/809
-    # upstream patch PR, https://github.com/anchore/vunnel/pull/823
-    inreplace "pyproject.toml", "<=3.13,>=3.11", ">=3.11"
     virtualenv_install_with_resources
 
-    generate_completions_from_executable(bin/"vunnel", shells: [:fish, :zsh], shell_parameter_format: :click)
+    generate_completions_from_executable(bin/"vunnel", shells: [:bash, :fish, :zsh], shell_parameter_format: :click)
   end
 
   test do

@@ -10,13 +10,15 @@ class Vdirsyncer < Formula
   head "https://github.com/pimutils/vdirsyncer.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "43138c7655b5032094d75ae8757b62f0e4c404b69ba2305d1e9c8698e7d20f82"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c9ef5a3f46004aa33770b661faa36ba9e0abf05273c1b5861839b56e434aa51b"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "972e52600fb94bd5898202c434526cd419eaeb4c99b7f6cba072428b226dcdc1"
-    sha256 cellar: :any_skip_relocation, sonoma:        "dafa07a55e5ff77fd0a7387361987c97c2c6a88c8045af12dbee817b5220e93d"
-    sha256 cellar: :any_skip_relocation, ventura:       "91ad8c329283dd29e353c6291360bd72b23cedc91dba297f20f8b43c3b1afdb1"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "4d353e8c2e836188e2c0da766bf5e8025fac38ef35eebace081db69f713212bd"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "148b89340918a3c863b26372f1a38e3e6e28ef248817b820339c66ae212b44ab"
+    rebuild 2
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3657bc1eaffd27f2668c60f33e89f9f37fafeb64f4198fce7bf5c8a779357586"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "cfeee986c1a79967d262818996887ec9860fa6bc00c608814a968fbbb662347a"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "f461ae1043502856a606a1aa38bc9c7423d71205e1e6a074a2d31024a2b678ee"
+    sha256 cellar: :any_skip_relocation, sequoia:       "62671d42404089375e1c46a2ab1e20da558b3e5ab4f5f3259c96e8a6297c4de0"
+    sha256 cellar: :any_skip_relocation, sonoma:        "88dea32f7752c424343ddb77219cc1ab163a0aca17da6de42d74434ddbc901b5"
+    sha256 cellar: :any_skip_relocation, ventura:       "891bc227096bd03144f4e8d1d557d83cae7b8179a7f271289dadcbb916c07861"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "8c39fa7339230154b24fe6ce4147f59f657d086f7f680f4edebf4689be4cc285"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2d4743921ee8aaf3ad99f638956cd42979f1cd084bad796e88a773e20c9852aa"
   end
 
   depends_on "certifi"
@@ -38,8 +40,8 @@ class Vdirsyncer < Formula
   end
 
   resource "aiosignal" do
-    url "https://files.pythonhosted.org/packages/ba/b5/6d55e80f6d8a08ce22b982eafa278d823b541c925f11ee774b0b9c43473d/aiosignal-1.3.2.tar.gz"
-    sha256 "a8c255c66fafb1e499c9351d0bf32ff2d8a0321595ebac3b93713656d2436f54"
+    url "https://files.pythonhosted.org/packages/61/62/06741b579156360248d1ec624842ad0edf697050bbaf7c3e46394e106ad1/aiosignal-1.4.0.tar.gz"
+    sha256 "f47eecd9468083c2029cc99945502cb7708b082c232f9aca65da147157b251c7"
   end
 
   resource "aiostream" do
@@ -83,8 +85,8 @@ class Vdirsyncer < Formula
   end
 
   resource "multidict" do
-    url "https://files.pythonhosted.org/packages/46/b5/59f27b4ce9951a4bce56b88ba5ff5159486797ab18863f2b4c1c5e8465bd/multidict-6.5.0.tar.gz"
-    sha256 "942bd8002492ba819426a8d7aefde3189c1b87099cdf18aaaefefcf7f3f7b6d2"
+    url "https://files.pythonhosted.org/packages/3d/2c/5dad12e82fbdf7470f29bff2171484bf07cb3b16ada60a6589af8f376440/multidict-6.6.3.tar.gz"
+    sha256 "798a9eb12dab0a6c2e29c1de6f3468af5cb2da6053a20dfa3344907eed0937cc"
   end
 
   resource "oauthlib" do
@@ -115,7 +117,8 @@ class Vdirsyncer < Formula
   def install
     virtualenv_install_with_resources
 
-    generate_completions_from_executable(bin/"vdirsyncer", shells: [:fish, :zsh], shell_parameter_format: :click)
+    generate_completions_from_executable(bin/"vdirsyncer",
+                                         shells: [:bash, :fish, :zsh], shell_parameter_format: :click)
   end
 
   service do

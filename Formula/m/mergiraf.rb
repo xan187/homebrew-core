@@ -1,19 +1,19 @@
 class Mergiraf < Formula
   desc "Syntax-aware git merge driver"
   homepage "https://mergiraf.org"
-  url "https://codeberg.org/mergiraf/mergiraf/archive/v0.10.0.tar.gz"
-  sha256 "862743390d831febdf8d423c68c4507c9da7e2f18741d601671d7f8052965f9c"
+  url "https://codeberg.org/mergiraf/mergiraf/archive/v0.12.1.tar.gz"
+  sha256 "5006c72d446e2b634e41d6d760661773ad449fed93154a8c8d461ad91461f997"
   license "GPL-3.0-only"
   head "https://codeberg.org/mergiraf/mergiraf.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "feaa82ea220e1cb6858387c0c116d0f0e5368c3ae1913da0153dbce8640a4aaa"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d4d01e9d8876b67ab22aaf37eb352d36508216bee82d371f981ac7d5128f195c"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "0cdf1fb8cc29317990f1cf9f8051430af78b5ef4125d77f671d02eff9144de0d"
-    sha256 cellar: :any_skip_relocation, sonoma:        "b48f7c0fbae29fd90501fa718cd2ed47e35c78511272015d1428143750fc39c0"
-    sha256 cellar: :any_skip_relocation, ventura:       "fe918a0e69d69aa88fb3aec8be4049b3da39e11cfdc274b959bb2e56aa99fa46"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "237bca642fbdabda1236dde3a326941231c8d9fff8310d714c3b80f207d27a43"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "becd36cd9c79f54a7c8761cc9fcee4d6a4244997373e8e3b8e6f8e6cbd9a280f"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "87d68076a3612e3ebcd5b3c295901865cbbedd064346db7593d66080bdbc1107"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "ac00d7a67e70447c2be392ae0dc326435c7be3a08c6cbf3e6679b7b4bf199ceb"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "1739e63a285a276ef91c2684830fc7f8388d58840e36be153e89a280350e419e"
+    sha256 cellar: :any_skip_relocation, sonoma:        "47284149544e97c6a37662b2c2df4f6d19f4eb2ae2f59191131c04053ccbe715"
+    sha256 cellar: :any_skip_relocation, ventura:       "f8b97a5b6f6bbab8eea681a615fe85ec06ab02d7768b192e8aa612a9354d26a3"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "bc14877d9d6a44581099f667de7b7cdac1597ec69f2d46617661244f6b2a9afc"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "fd9bb4f3e0ee6a326bf2e89248f35081ca29ab4e01f2e8bcb5b824c8b4714f3d"
   end
 
   depends_on "rust" => :build

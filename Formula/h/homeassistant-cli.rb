@@ -12,13 +12,15 @@ class HomeassistantCli < Formula
   no_autobump! because: :requires_manual_review
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "686ebf7592d8aa13f28a8c77c486e125235838b58be49ccabec14a886d016725"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "50de04efe64b3ad063963979ee99aa5c3567f4785d246149bd18894697ebbb7d"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "70781f95a6f1011bf3c21490822a644d33bf4ebd018d0e6919492ed0bac840f6"
-    sha256 cellar: :any_skip_relocation, sonoma:        "cd9350f48a7149e078c69390b38e6b978cf08be79dea9de90d0497630fa5b646"
-    sha256 cellar: :any_skip_relocation, ventura:       "9b9123363fac8a300c57959807f5397300922ab6475e5dd7a5154f2fe91399d2"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "42fe4722accd0ca6e96e32cf8777afec0d3866378125f4298aca5869f06b655a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5c65662a6d73bd47c3942ecf51dc5c15d02b3db0c39ec240572702595e0bcf89"
+    rebuild 2
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "14097ae33fea2b0d77d5363e5f6ae93679d9bedb151904e44b5142fc93ec397f"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1cee8de39515ba9f20532f1087b0306d86a6ce1b7c7be88238eb8b8dcca8fa3b"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "837a0a83085ca60fe4cd87450a3bee0d7358e73a61aca65323ea719f8eea1899"
+    sha256 cellar: :any_skip_relocation, sequoia:       "db6a25db6cd469930d3de33aca9b1bf6eef3c7b32c97afe2d50323e3f3579c2f"
+    sha256 cellar: :any_skip_relocation, sonoma:        "f860f0751af5e27ead4cea58aa8ade9df19a01f2a1329f95e8d641ee8f1de8d6"
+    sha256 cellar: :any_skip_relocation, ventura:       "fdfe44c2d48970dc85a6eb09e850fb97267bbda675ce899040d67a2dc8f958bd"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "59171904c78d5bea8fac7d0a51c1004de37d43b06a715f04132edc15ee0d9bd6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "376cfba4260399d338367c5e6997b692f6d98881b396ad5ec4fe340de8aebc58"
   end
 
   depends_on "python@3.13"
@@ -34,8 +36,8 @@ class HomeassistantCli < Formula
   end
 
   resource "aiosignal" do
-    url "https://files.pythonhosted.org/packages/ba/b5/6d55e80f6d8a08ce22b982eafa278d823b541c925f11ee774b0b9c43473d/aiosignal-1.3.2.tar.gz"
-    sha256 "a8c255c66fafb1e499c9351d0bf32ff2d8a0321595ebac3b93713656d2436f54"
+    url "https://files.pythonhosted.org/packages/61/62/06741b579156360248d1ec624842ad0edf697050bbaf7c3e46394e106ad1/aiosignal-1.4.0.tar.gz"
+    sha256 "f47eecd9468083c2029cc99945502cb7708b082c232f9aca65da147157b251c7"
   end
 
   resource "attrs" do
@@ -99,8 +101,8 @@ class HomeassistantCli < Formula
   end
 
   resource "multidict" do
-    url "https://files.pythonhosted.org/packages/46/b5/59f27b4ce9951a4bce56b88ba5ff5159486797ab18863f2b4c1c5e8465bd/multidict-6.5.0.tar.gz"
-    sha256 "942bd8002492ba819426a8d7aefde3189c1b87099cdf18aaaefefcf7f3f7b6d2"
+    url "https://files.pythonhosted.org/packages/3d/2c/5dad12e82fbdf7470f29bff2171484bf07cb3b16ada60a6589af8f376440/multidict-6.6.3.tar.gz"
+    sha256 "798a9eb12dab0a6c2e29c1de6f3468af5cb2da6053a20dfa3344907eed0937cc"
   end
 
   resource "netdisco" do
@@ -175,7 +177,7 @@ class HomeassistantCli < Formula
 
   def install
     virtualenv_install_with_resources
-    generate_completions_from_executable(bin/"hass-cli", shells:                 [:fish, :zsh],
+    generate_completions_from_executable(bin/"hass-cli", shells:                 [:bash, :fish, :zsh],
                                                          shell_parameter_format: :click)
   end
 

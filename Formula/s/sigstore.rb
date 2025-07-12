@@ -3,22 +3,22 @@ class Sigstore < Formula
 
   desc "Codesigning tool for Python packages"
   homepage "https://github.com/sigstore/sigstore-python"
-  url "https://files.pythonhosted.org/packages/10/dc/fb0306a86bd1bc79f99f2f53b2421a11c42d2bbd106f7ccf0acfb460b5db/sigstore-3.6.3.tar.gz"
-  sha256 "9f957ef239b77695992b62823f79fc9554a589572dcc7bc0c1566a31b4bafc10"
+  url "https://files.pythonhosted.org/packages/c9/81/dca1dc73d250e9b37b7ba9b5083ba309896e4cffb1ab1800876f1287f3bb/sigstore-3.6.4.tar.gz"
+  sha256 "76f247a86738c9e076a243e0068ac68625848868890ed38491acc159752a46ac"
   license "Apache-2.0"
-  revision 2
+  head "https://github.com/sigstore/sigstore-python.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "cb58eaddde081109295ab893f273ab1c3cee1a52015e05c7da45e6ed3ca03433"
-    sha256 cellar: :any,                 arm64_sonoma:  "929e06d9791bfcfe6b3356c9b95719a9f43aae74ccf85486c536bb739ff71d77"
-    sha256 cellar: :any,                 arm64_ventura: "3a5145a14bd8cdd76f981e12839157566ea4131a63840c9a3fc002e48643539e"
-    sha256 cellar: :any,                 sonoma:        "e6679fd76ae6001b99d876b0c53177b1223d0cfe8286344527af14a9b0353e9d"
-    sha256 cellar: :any,                 ventura:       "fd2952fa590f9a3c095a9a06da012534c01c287022aeef03aeca19bbbe73a279"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "5b308640bcaf1b818fea568bc8ed61ed6006f707442caf249c214d84c1760825"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4c934b9e20c2656bae1141483e7dd604e958b611063c3df172dd6e22d3044447"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_sequoia: "6c85e8679c854b071a0de9088a5229db428a90d7dafeca306ba08103281e36c5"
+    sha256 cellar: :any,                 arm64_sonoma:  "8c80b57c3daa3319573bd4b16ff62701161de53686c7009d7e7d1628e414c46d"
+    sha256 cellar: :any,                 arm64_ventura: "0f64805356cc752bd32aa017e2f2057ba822b4b573bb3ec124eb42af94ab0d88"
+    sha256 cellar: :any,                 sonoma:        "29baca8e3bf73744710b583d02dd7df16a2743eca081a4d42e21559112c18f03"
+    sha256 cellar: :any,                 ventura:       "c361ec5c94b6ba3e66efc0fcb456f043134c620dceae65f94e7fd4be295c04f0"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "0736c039b325b911a0f8fd35b80b8ef3efac7f2d22d813ff234bb57264be35f6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1a62d19b24fbf950b8a982bc0b0371f7ecfcbb8f936a21fcccb216d9c2d65b7f"
   end
 
-  depends_on "maturin" => :build # for rfc3161-client
   depends_on "pkgconf" => :build # for rfc3161-client
   depends_on "rust" => :build
   depends_on "certifi"
@@ -92,8 +92,8 @@ class Sigstore < Formula
   end
 
   resource "multidict" do
-    url "https://files.pythonhosted.org/packages/46/b5/59f27b4ce9951a4bce56b88ba5ff5159486797ab18863f2b4c1c5e8465bd/multidict-6.5.0.tar.gz"
-    sha256 "942bd8002492ba819426a8d7aefde3189c1b87099cdf18aaaefefcf7f3f7b6d2"
+    url "https://files.pythonhosted.org/packages/3d/2c/5dad12e82fbdf7470f29bff2171484bf07cb3b16ada60a6589af8f376440/multidict-6.6.3.tar.gz"
+    sha256 "798a9eb12dab0a6c2e29c1de6f3468af5cb2da6053a20dfa3344907eed0937cc"
   end
 
   resource "platformdirs" do
@@ -117,8 +117,8 @@ class Sigstore < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/7c/2d/c3338d48ea6cc0feb8446d8e6937e1408088a72a39937982cc6111d17f84/pygments-2.19.1.tar.gz"
-    sha256 "61c16d2a8576dc0649d9f39e089b5f02bcd27fba10d8fb4dcc28173f7a45151f"
+    url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
+    sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
   end
 
   resource "pyjwt" do
@@ -142,8 +142,8 @@ class Sigstore < Formula
   end
 
   resource "rfc3161-client" do
-    url "https://files.pythonhosted.org/packages/40/cd/84c91ba1a5f214ecfc2f63ba081436a971e8361a71a069a42f03f275168b/rfc3161_client-1.0.2.tar.gz"
-    sha256 "37c78277d78aab02baf17393c30f66d1c2ab1a398d3540b0657792c0ceb81858"
+    url "https://files.pythonhosted.org/packages/ed/d5/a304985ce0117de9984f1af40e458376804710a68036809f40745afdb808/rfc3161_client-1.0.3.tar.gz"
+    sha256 "e9b614a5a4596ab9aea44d3fe8a4995bd84ac7f20dcbfaa82b115224202d88d8"
   end
 
   resource "rfc8785" do
@@ -182,8 +182,8 @@ class Sigstore < Formula
   end
 
   resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/d1/bc/51647cd02527e87d05cb083ccc402f93e441606ff1f01739a62c8ad09ba5/typing_extensions-4.14.0.tar.gz"
-    sha256 "8676b788e32f02ab42d9e7c61324048ae4c6d844a399eebace3d4979d75ceef4"
+    url "https://files.pythonhosted.org/packages/98/5a/da40306b885cc8c09109dc2e1abd358d5684b1425678151cdaed4731c822/typing_extensions-4.14.1.tar.gz"
+    sha256 "38b39f4aeeab64884ce9f74c94263ef78f3c22467c8724005483154c26648d36"
   end
 
   resource "typing-inspection" do

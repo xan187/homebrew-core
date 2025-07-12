@@ -126,6 +126,7 @@ arkade
 arm-none-eabi-gcc
 armadillo
 arp-scan
+arp-scan-rs
 arping
 arrayfire
 artillery
@@ -1445,6 +1446,7 @@ gperftools
 gpg-tui
 gpgme
 gprof2dot
+gpsd
 gpsim
 gptme
 gptscript
@@ -1804,6 +1806,7 @@ kaskade
 katago
 katana
 kbld
+kbt
 kcat
 kcgi
 kcov
@@ -2064,6 +2067,7 @@ libmxml
 libnetfilter_conntrack
 libnfs
 libnftnl
+libnghttp2
 libnghttp3
 libnotify
 libntlm
@@ -2375,6 +2379,7 @@ memtester
 menhir
 mercurial
 mergiraf
+mermaid-cli
 mesa
 meson
 meta-package-manager
@@ -2585,6 +2590,7 @@ nexttrace
 nfdump
 nfpm
 nftables
+nghttp2
 nginx
 ngs
 ngt
@@ -3089,6 +3095,7 @@ python-packaging
 python-setuptools
 python-yq
 pythran
+pytr
 pyupgrade
 qbe
 qbec
@@ -3109,6 +3116,13 @@ qrcp
 qrtool
 qshell
 qsv
+qt
+qt-libiodbc
+qt-mariadb
+qt-mysql
+qt-percona-server
+qt-postgresql
+qt-unixodbc
 qthreads
 qtkeychain
 quantlib
@@ -3515,6 +3529,7 @@ spoofdpi
 spot
 spotbugs
 spotify_player
+spotifyd
 spr
 sprocket
 spytrap-adb
